@@ -1,0 +1,29 @@
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  *margin-right: .3em;
+  line-height: 16px;
+  vertical-align: middle;
+  background-image: url("../images/sprite_16x16.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+/*button:hover > [class^="icon-"],
+button:hover > [class*=" icon-"] {
+  background-position-x: -16px;
+}*/
+
+.icon-search {
+  background-position-y: -32px;
+}
+
+.icon-down-small {
+  background-position-y: -16px;
+}
+
+button:hover > i.icon-search {
+  background-position-x: -16px;
+}
