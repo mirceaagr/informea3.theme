@@ -1,5 +1,4 @@
-body > div,
-#breadcrumbs {
+body > div {
 	width: 940px;
 	margin-left: auto;
 	margin-right: auto;
@@ -85,22 +84,18 @@ span.status.retired { color: #ff6666; }
 	color: #8a95a6;
 }
 
+
+
+
+
 #breadcrumbs {
 	margin-bottom: 8px;
 	line-height: 24px;
 }
 
-#breadcrumbs li {
-	float: left;
-}
-
-#breadcrumbs li:after {
+#breadcrumbs a:after {
 	content: "-";
 	margin: 0 6px;
-}
-
-#breadcrumbs li:last-child:after {
-	display: none;
 }
 
 
@@ -276,7 +271,6 @@ div.sub-menu div.wrap > div {
 }
 div.sub-menu div.wrap > div h3 {
 	margin: 12px 0;
-	font-weight: bold;
 	font-size: 15px;
 }
 
@@ -583,7 +577,6 @@ section#members {
 
 footer {
 	overflow: hidden;
-	border-top: 2px solid #8a95a6;
 	line-height: 24px;
 	color: #505c6a;
 	background-color: #16232e;
@@ -609,6 +602,10 @@ footer section {
 footer section:first-child {
 	border-top: 0;
 }
+
+/*footer section > ul.no-ul {
+	margin-bottom: 12px;
+}*/
 
 footer h3 {
 	margin: 6px 0;
@@ -817,9 +814,7 @@ ul.drop-menu li a:hover {
 }
 
 /* Remove list */
-ul.no-ul,
-ol.no-ul,
-dl.no-ul {
+ul.no-ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
