@@ -279,9 +279,17 @@ button,
 input,
 select,
 textarea {
+    margin: 0; /* 3 */
     font-family: inherit; /* 1 */
     font-size: 100%; /* 2 */
-    margin: 0; /* 3 */
+    
+}
+
+button {
+    width: auto;
+    border: none;
+    padding: 0;
+    background: none;
 }
 
 /**

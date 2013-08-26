@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/sprite.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
 		<script src="../js/jquery-1.10.2.min.js"></script>
-		<script src="../js/simple.js"></script>
+		<script src="../js/script.js"></script>
 		<!--[if lt IE 9]>
 		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
 		<![endif]-->
@@ -22,48 +22,55 @@
 							<div class="wrap clear">
 								<div>
 									<h3>Biological Diversity</h3>
-									<a href="#">CBD</a>
-									<a href="#">Cartagena Protocol</a>
-									<a href="#">Nagoya Protocol</a>
-									<a href="#">CITES</a>
-									<a href="#">CMS</a>
-									<a href="#">AEWA</a>
-									<a href="#">ITPGRFA</a>
-									<a href="#">Ramsar</a>
-									<a href="#">WHCCBD</a>
+									<ul>
+										<li><a href="#">CBD</a></li>
+										<li><a href="#">Cartagena Protocol</a></li>
+										<li><a href="#">Nagoya Protocol</a></li>
+										<li><a href="#">CITES</a></li>
+										<li><a href="#">CMS</a></li>
+										<li><a href="#">AEWA</a></li>
+										<li><a href="#">ITPGRFA</a></li>
+										<li><a href="#">Ramsar</a></li>
+										<li><a href="#">WHCCBD</a></li>
+									</ul>
 								</div>
 								<div>
 									<h3>Chemicals / Waste</h3>
-									<a href="#">Basel</a>
-									<a href="#">Rotterdam</a>
-									<a href="#">Stockholm</a>
-
+									<ul>
+										<li><a href="#">Basel</a></li>
+										<li><a href="#">Rotterdam</a></li>
+										<li><a href="#">Stockholm</a></li>
+									</ul>
 									<h3>Climate / Atmosphere</h3>
-									<a href="#">UNFCCC</a>
-									<a href="#">Kyoto Protocol</a>
-									<a href="#">UNCCD</a>
-									<a href="#">Vienna</a>
-									<a href="#">Montreal Protocol</a>
+									<ul>
+										<li><a href="#">UNFCCC</a></li>
+										<li><a href="#">Kyoto Protocol</a></li>
+										<li><a href="#">UNCCD</a></li>
+										<li><a href="#">Vienna</a></li>
+										<li><a href="#">Montreal Protocol</a></li>
+									</ul>
 								</div>
 								<div class="span2col">
 									<h3>Other Treaties</h3>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
-									<a href="#">Treaty</a>
+									<ul>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+										<li><a href="#">Treaty</a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -86,7 +93,7 @@
 
   						<p class="category">Countries</p>
   						<a href="#" class="country-suggestion">
-  							<img src="" alt="Treaty Logo" />
+  							<img src="" alt="Country Flag" />
   							<span>Country<span>
   						</a>
 
@@ -121,11 +128,12 @@
 					<strong>Year: </strong>_Year
 				</p>
 				<div class="drop-down-button">
-					<a class="btn cta" href="#">Read Treaty Text</a><span class="drop">&ensp;</span>
-					<div class="drop-menu">
-						<a href="#">Read Treaty Text from Source</a>
-						<a href="#">Visit Convention Website</a>
-					</div>
+					<button class="btn default cta" href="#">Read Treaty Text</button><!--
+				 --><button class="btn btn-menu-toggle cta"><i class="icon-down-large"> </i></button>
+					<ul class="drop-menu">
+						<li><a href="#">Read Treaty Text from Source</a></li>
+						<li><a href="#">Visit Convention Website</a></li>
+					</ul>
 				</div>
 			</div>
 
@@ -303,35 +311,38 @@
 				
 				<section id="members">
 					<h2>Members</h2>
-					<div class="tabs clear">
-						<a href="#" class="active">List</a><a href="#">Map</a>
-					</div>
+					<ul class="tabs clear">
+						<li><a href="#merbers-list" class="active">List</a></li>
+						<li><a href="#merbers-map">Map</a></li>
+					</ul>
 					<!-- Need a Trigger between Tabs and Tab-content -->
-					<div id="members-list" class="tab-content">
-						<tabLe>
-							<thead>
-								<tr>
-									<th>Country</th><th>Year 1</th><th>Year 2</th><th>Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Albania</td><td>1990</td><td>2013</td><td>Okay</td>
-								</tr>
-								<tr>
-									<td>Narnia</td><td>`</td><td>Forever</td><td>Happy</td>
-								</tr>
-								<tr>
-									<td>Example</td><td>Example</td><td>Example</td><td>Example</td>
-								</tr>
-								<tr>
-									<td>Example</td><td>Example</td><td>Example</td><td>Example</td>
-								</tr>
-							</tbody>
-						</tabLe>
-					</div>
-					<!-- Use .hide class to toggle display -->
-					<div id="members-map" class="tab-content hide">
+					<div class="tab-display">
+						<div id="members-list" class="tab-content">
+							<tabLe>
+								<thead>
+									<tr>
+										<th>Country</th><th>Year 1</th><th>Year 2</th><th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Albania</td><td>1990</td><td>2013</td><td>Okay</td>
+									</tr>
+									<tr>
+										<td>Narnia</td><td>`</td><td>Forever</td><td>Happy</td>
+									</tr>
+									<tr>
+										<td>Example</td><td>Example</td><td>Example</td><td>Example</td>
+									</tr>
+									<tr>
+										<td>Example</td><td>Example</td><td>Example</td><td>Example</td>
+									</tr>
+								</tbody>
+							</tabLe>
+						</div>
+						<!-- Use .hide class to toggle display -->
+						<div id="members-map" class="tab-content hide">
+						</div>
 					</div>
 				</section>
 			</div>

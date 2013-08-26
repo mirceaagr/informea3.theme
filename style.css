@@ -229,25 +229,44 @@ ul#top-menu > li > div.drop:hover > a {
 
 }
 
-
-
-div.sub-menu {
+/* Adds a little arrow underneath "Treaties" */
+ul#top-menu > li > div.drop > a:after {
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	margin: 0 auto -16px;
+	background: url('images/sprite_16x16.png') 0 -16px no-repeat;
+}
+/* Removes the arrow on hover */
+ul#top-menu > li > div.drop:hover > a:after {
 	display: none;
+
 }
 
-ul#top-menu > li > div.drop:hover > div.sub-menu {
-	display: block;
+
+
+ul#top-menu > li > div.drop > div.sub-menu {
+	display: none;
 	position: absolute;
 	top: 60px;
 	left: 0;
 	right: 0;
 	z-index: 1;
+	height: 0;
+	overflow: hidden;
 	border-bottom: 1px solid #c6cedb;
 	background: #f7f7f7;
             box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
-         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);  
+         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
        -moz-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);      
 	-webkit-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul#top-menu > li > div.drop:hover > div.sub-menu {
+	display: block;
+	height: auto;
 }
 
 div.sub-menu div.wrap {
@@ -271,7 +290,17 @@ div.sub-menu div.wrap > div h3:first-child {
 	margin-top: 0;
 }
 
-div.sub-menu div.wrap > div a {
+div.sub-menu div.wrap > div ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+div.sub-menu div.wrap > div ul li {
+
+}
+
+div.sub-menu div.wrap > div ul li a {
 	display: block;
 	line-height: 22px;
 }
@@ -284,7 +313,7 @@ div.sub-menu div.wrap > div.span2col h3 {
 	color: #8a95a6;
 }
 
-div.sub-menu div.wrap > div.span2col a {
+div.sub-menu div.wrap > div.span2col ul li {
 	float: left;
 	width: 220px;
 }
@@ -417,6 +446,22 @@ div.sub-menu div.wrap > div.span2col a {
 .treaty-header div.drop-down-button {
 	float: right;
 }
+
+.treaty-header button.btn.default.cta {
+	border-right: 1px solid rgba(26,58,111,0.25);
+}
+
+.treaty-header button.btn-menu-toggle {
+	width: 30px;
+	height: 30px;
+	padding: 7px;
+	border-left: 1px solid rgba(247,247,247,0.25);
+}
+
+.treaty-header button.btn-menu-toggle:focus + div.drop-menu {
+	display: block;
+}
+
 
 section#decisions > h2 { 
 	margin-bottom: -1px;
@@ -568,12 +613,14 @@ footer {
 /* GENERIC COMPONENTS */
 
 /* Tabs */
-div.tabs {
+ul.tabs {
+	list-style-type: none;
 	margin: 0 0 -1px 0;
 	border-bottom: 1px solid #c6cedb;
+	padding: 0;
 }
 
-div.tabs > a {
+ul.tabs > li > a {
 	display: block;
 	float:left;
 	margin-bottom: -1px;
@@ -582,14 +629,14 @@ div.tabs > a {
 	line-height: 24px;
 }
 
-div.tabs > a:hover {
+ul.tabs > li > a:hover {
 	border-bottom: 3px solid #3399cc;
 	padding-bottom: 0;
 	text-decoration: none;
 }
 
-div.tabs > a.active,
-div.tabs > a.active:hover {
+ul.tabs > li > a.active,
+ul.tabs > li > a.active:hover {
 	cursor: default;
 	padding-bottom: 3px;
 	border-top: 1px solid #c6cedb;
@@ -601,7 +648,7 @@ div.tabs > a.active:hover {
 	background: #fff;
 }
 
-div.tab-content {
+div.tab-display {
 	border-right: 1px solid #c6cedb;
 	border-left: 1px solid #c6cedb;
 	border-bottom: 1px solid #c6cedb;
@@ -640,43 +687,6 @@ a.drop-down-button > span.drop {
 }*/
 
 
-/* Drop-down Button */
-.drop-down-button {
-	float: left;
-	position: relative;
-	text-align: left;
-}
-
-.drop-down-button span.drop {
-	display: inline-block;
-	width: 18px;
-	height: 18px;
-	padding: 6px;
-	font-size: 15px;
-	line-height: 18px;
-/*	background: #f7f7f7 url('images/sprite_16x16.png') -15px 5px no-repeat;*/
-}
-
-.drop-down-button span.drop:hover {
-	background-color: #f7f7f7;
-	background-position: -15px 5px;
-}
-
-.drop-menu {
-	display: none;
-	position: absolute;
-	top: 30px;
-	right: 0;
-	border: 1px solid #c6cedb;
-	background: #f7f7f7;
-}
-
-.drop-menu a {
-	display: block;
-	padding: 3px 6px;
-	line-height: 18px;
-}
-
 /* Display+Select Box */
 .select > div {
 	padding: 12px;
@@ -710,20 +720,23 @@ a.drop-down-button > span.drop {
 }
 
 /* Anchor>Button + cta(Call to Action) */
-a.btn {
+a.btn,
+button.btn {
 	display: inline-block;
-	padding: 6px 12px;
-	line-height: 18px;
+	padding: 7px 12px;
+	line-height: 16px;
 	color: #fff;
 	background: #3399cc;
 }
 
-a.btn:hover {
+a.btn:hover,
+button.btn:hover {
 	text-decoration: none;
 	background: #1a3a6f;
 }
 
-a.btn.cta {
+a.btn.cta,
+button.btn.cta {
 	font-family: Georgia, serif;
 	font-size: 14px;
 	background: #3399cc;
@@ -734,6 +747,65 @@ a.btn.cta {
 	background: -ms-linear-gradient(top,  #3399cc 0%,#267399 100%);
 	background: linear-gradient(to bottom,  #3399cc 0%,#267399 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399cc', endColorstr='#267399',GradientType=0 );
+}
+
+a.btn.cta:hover,
+button.btn.cta:hover {
+	color: #16232e;
+	background: #ffcc66;
+}
+
+/* Drop-down Button */
+.drop-down-button {
+	position: relative;
+	text-align: left;
+}
+
+.drop-down-button button.btn.default, 
+.drop-down-button button.btn.btn-menu-toggle {
+	display: block;
+	float: left;
+}
+
+ul.drop-menu {
+	display: none;
+	list-style-type: none;
+	position: absolute;
+	top: 30px;
+	right: 0;
+	width: auto;
+	overflow: visible;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #c6cedb;
+	background: #f7f7f7;
+	        box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);      
+	-webkit-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul.drop-menu li {
+	text-align: right;
+	border-bottom: 1px solid #c6cedb;
+}
+
+ul.drop-menu li:last-child {
+	border-bottom: 0;
+}
+
+ul.drop-menu li a {
+	display: block;
+	white-space:nowrap;
+	padding: 3px 6px;
+	line-height: 18px;
+}
+
+ul.drop-menu li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: #3399cc;
 }
 
 /* Tag Cloud */
