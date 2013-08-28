@@ -5,19 +5,23 @@
   height: 16px;
   *margin-right: .3em;
   line-height: 16px;
-  vertical-align: middle;
+  vertical-align: top;
   background-image: url("../images/sprite_16x16.png");
   background-position: 0 0;
   background-repeat: no-repeat;
 }
 
-/*button:hover > [class^="icon-"],
+button:hover > [class^="icon-"],
 button:hover > [class*=" icon-"] {
   background-position-x: -16px;
-}*/
+}
 
 .icon-search {
   background-position-y: -32px;
+}
+
+.icon-down-large {
+  background-position-y: 0;
 }
 
 .icon-down-small {

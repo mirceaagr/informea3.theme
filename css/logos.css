@@ -1,0 +1,100 @@
+/* GLOBAL :: logos */
+li.logo a > div {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    
+    background: url("../images/all_logos.png") no-repeat;
+    background-position-x: 0;
+    background-position-y: 0px;
+}
+
+li.logo:hover a > div,
+li.logo:active a > div,
+li.logo:focus a > div {
+    background-position-y: -60px;
+}
+
+
+
+
+/*later*/
+li.logo a.later > div {
+  background-position-x: 0;
+}
+li.logo a.itpgrfa > div {
+  background-position-x: -60px;
+}
+li.logo a.stockholm > div {
+  background-position-x: -120px;
+}
+li.logo a.later > div {
+  background-position-x: -180px;
+}
+li.logo a.un > div {
+  background-position-x: -240px;
+}
+li.logo a.un > div {
+  background-position-x: -300px;
+}
+li.logo a.basel > div {
+  background-position-x: -360px;
+}
+li.logo a.ozone > div {
+  background-position-x: -420px;
+}
+li.logo a.unccd > div {
+  background-position-x: -480px;
+}
+li.logo a.cbd > div {
+  background-position-x: -540px;
+}
+li.logo a.later > div {
+  background-position-x: -600px;
+}
+li.logo a.unece > div {
+  background-position-x: -660px;
+}
+li.logo a.cites > div {
+  background-position-x: -720px;
+}
+li.logo a.ramsar > div {
+  background-position-x: -780px;
+}
+li.logo a.unep > div {
+  background-position-x: -840px;
+}
+li.logo a.unep > div {
+  background-position-x: -840px;
+}
+li.logo a.abidjan > div {
+  background-position-x: -840px;
+}
+li.logo a.cms > div {
+  background-position-x: -900px;
+}
+li.logo a.later > div {
+  background-position-x: -960px;
+}
+li.logo a.unesco > div {
+  background-position-x: -1020px;
+}
+li.logo a.fao > div {
+  background-position-x: -1080px;
+}
+li.logo a.rotterdam > div {
+  background-position-x: -1140px;
+}
+li.logo a.unfccc > div {
+  background-position-x: -1200px;
+}
+li.logo a.later > div {
+  background-position-x: -1260px;
+}
+li.logo a.later > div {
+  background-position-x: -1320px;
+}
+li.logo a.later > div {
+  background-position-x: -1380px;
+}

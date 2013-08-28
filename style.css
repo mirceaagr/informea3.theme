@@ -1,4 +1,24 @@
-body > div {
+/*
+Theme Name: Informea3
+theme URI: http//www.informea.org
+Description: The 2013 theme for www.informea.org
+Author: Eau De Web
+Author URI: http://www.eaudeweb.ro
+Version: 1.0
+Tags: blue
+License: GPL
+*/
+
+/*
+CSS Structure
+-GLOBAL
+  -Header (blue stripe)
+      -Primary menu
+      -Secondary menu
+*/
+
+body > div,
+#breadcrumbs {
 	width: 940px;
 	margin-left: auto;
 	margin-right: auto;
@@ -17,6 +37,12 @@ h2 {
 	font-weight: normal;
 	font-size: 18px;
 	line-height: 24px;
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 18px;
 }
 
 h4,
@@ -78,91 +104,108 @@ span.status.retired { color: #ff6666; }
 	color: #8a95a6;
 }
 
+/* GENERIC COMPONENTS */
 
+/* Content Wrapper */
+.wrap {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
 
+/* Tabs */
+ul.tabs {
+	margin: 0 0 -1px 0;
+	border-bottom: 1px solid #c6cedb;
+}
 
-
-#breadcrumbs {
-	margin-bottom: 8px;
+ul.tabs > li > a {
+	display: block;
+	float:left;
+	margin-bottom: -1px;
+	padding: 3px 12px;
+	font-size: 15px;
 	line-height: 24px;
 }
 
-#breadcrumbs a:after {
-	content: "-";
-	margin: 0 6px;
+ul.tabs > li > a:hover {
+	border-bottom: 3px solid #3399cc;
+	padding-bottom: 0;
+	text-decoration: none;
 }
 
-
-nav {
-	position: fixed;
-	top: 190px;
-	width: 200px;
+ul.tabs > li > a.active,
+ul.tabs > li > a.active:hover {
+	cursor: default;
+	padding-bottom: 3px;
+	border-top: 1px solid #c6cedb;
+	border-right: 1px solid #c6cedb;
+	border-left: 1px solid #c6cedb;
+	border-bottom: 0;
+	text-decoration: none;
+	color: #565656;
+	background: #fff;
 }
 
-nav > div {
-	margin: 0 0 12px 0;
-	padding: 6px 0;
-	font-size: 13px;
-	line-height: 24px;
+div.tab-display {
+	border-right: 1px solid #c6cedb;
+	border-left: 1px solid #c6cedb;
+	border-bottom: 1px solid #c6cedb;
+}
+
+/* Display+Select Box */
+.select > div {
+	padding: 12px;
+	text-align: center;
 	background: #f7f7f7;
 }
 
-nav > div > h4 {
-	padding: 0 12px;
-	line-height: 24px;
-}
-
-
-#table-of-contents {
-
-}
-
-#table-of-contents > ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-
-#table-of-contents > ul > li a {
+.select > div > img {
 	display: block;
-	padding: 0 12px;
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
 }
 
-#table-of-contents > ul > li a:hover {
-	text-decoration: none;
+.select > div > a {
+	display: block;
+	font-size: 14px;
+	line-height: 18px;
+	margin: 6px 0;
+}
+
+.select > div > p {
+	margin: 0;
+	font-size: 11px;
+	color: #8a95a6;
+}
+
+.select > select {
+	width: 100%;
+	margin: 8px 0 0 0;
+}
+
+/* Anchor>Button + cta(Call to Action) */
+a.btn,
+button.btn {
+	display: inline-block;
+	padding: 1px 3px;
+	line-height: 16px;
 	color: #fff;
 	background: #3399cc;
 }
 
-#treaty-jump {
-	padding: 12px;
+a.btn:hover,
+button.btn:hover {
+	text-decoration: none;
+	background: #1a3a6f;
 }
 
-#treaty-jump select {
-	width: 100%;
-}
-
-nav + #content {
-	float:right;
-	width: 720px;
-}
-
-#content section h2 {
-	margin: 0 0 8px 0; 
-	border-bottom: 1px solid #c6cedb;
-}
-
-#content section h2:first-child {
-	margin-top: 0;
-}
-
-#content section {
-	margin-bottom: 24px;
-}
-
-header {
-	height: 60px;
-	border-bottom: 1px solid #1a3a6f;
+a.btn.cta,
+button.btn.cta {
+	padding: 7px 12px;
+	font-family: Georgia, serif;
+	font-size: 14px;
 	background: #3399cc;
 	background: -moz-linear-gradient(top,  #3399cc 0%, #267399 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3399cc), color-stop(100%,#267399));
@@ -173,25 +216,118 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399cc', endColorstr='#267399',GradientType=0 );
 }
 
-.wrap {
-	width: 960px;
-	margin-left: auto;
-	margin-right: auto;
+a.btn.cta:hover,
+button.btn.cta:hover {
+	color: #16232e;
+	background: #ffcc66;
 }
 
-header .logo {
+/* Drop-down Button */
+.drop-down-button {
+	position: relative;
+	text-align: left;
+}
+
+.drop-down-button button {
+	display: block;
 	float: left;
-	margin: 0 24px 0 10px;
 }
 
-header .logo img {
-	margin: 4px 0 0 0;
+.drop-down-button button.btn-menu-toggle {
+	padding: 1px;
 }
 
-ul#top-menu {
+ul.drop-menu {
+	/*display: none;*/
+	list-style-type: none;
+	position: absolute;
+	top: 18px;
+	right: 0;
+	width: auto;
+	overflow: visible;
 	margin: 0;
 	padding: 0;
+	background: #f7f7f7;
+	        box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);      
+	-webkit-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul.drop-menu li a {
+	display: block;
+	white-space:nowrap;
+	padding: 3px 6px;
+	line-height: 18px;
+}
+
+ul.drop-menu li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: #3399cc;
+}
+
+/* Remove list */
+ul.no-ul,
+ol.no-ul,
+dl.no-ul {
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Tag Cloud */
+#tag-cloud > ol {
+	padding: 0 0 0 30px;
+	font-size: 10px;
+	line-height: 14px;
+}
+
+.tag10 { font-size:15px; line-height: 18px; }
+.tag9  { font-size:14px; line-height: 17px; }
+.tag8  { font-size:14px; line-height: 17px; }
+.tag7  { font-size:14px; line-height: 17px; }
+.tag6  { font-size:12px; line-height: 16px; }
+.tag5  { font-size:12px; line-height: 16px; }
+.tag4  { font-size:12px; line-height: 16px; }
+.tag3  { font-size:10px; line-height: 15px; }
+.tag2  { font-size:10px; line-height: 15px; }
+.tag1  { font-size:10px; line-height: 15px; }
+
+/* Toggle View Classes */
+.hide { display: none; }
+
+/* Clear fix */
+.clear:after,
+#content > section:after,
+footer > section:after,
+#treaties-list li a:after {
+	content: ".";
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+}
+
+/* GLOBAL :: Header (blue stripe) */
+div#header {
+	height: 60px;
+	border-bottom: 1px solid rgb(26, 58, 111);
+	background: #3399cc;
+	background: -moz-linear-gradient(top,  #3399cc 0%, #267399 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3399cc), color-stop(100%,#267399));
+	background: -webkit-linear-gradient(top,  #3399cc 0%,#267399 100%);
+	background: -o-linear-gradient(top,  #3399cc 0%,#267399 100%);
+	background: -ms-linear-gradient(top,  #3399cc 0%,#267399 100%);
+	background: linear-gradient(to bottom,  #3399cc 0%,#267399 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399cc', endColorstr='#267399',GradientType=0 );
+}
+.wrap{width: 960px;	margin-left: auto; margin-right: auto;}
+
+div#header .logo {float: left;	margin: 0 24px 0 10px;}
+div#header .logo img {	margin: 4px 0 0 0; width: 452px;
 }
 
 ul#top-menu > li {
@@ -229,25 +365,43 @@ ul#top-menu > li > div.drop:hover > a {
 
 }
 
-
-
-div.sub-menu {
+/* Adds a little arrow underneath "Treaties" */
+ul#top-menu > li > div.drop > a:after {
+	content: "";
+	display: block;
+	width: 16px;
+	height: 16px;
+	margin: 0 auto -16px;
+	background: url('images/sprite_16x16.png') 0 -16px no-repeat;
+}
+/* Removes the arrow on hover */
+ul#top-menu > li > div.drop:hover > a:after {
 	display: none;
 }
 
-ul#top-menu > li > div.drop:hover > div.sub-menu {
-	display: block;
+
+
+ul#top-menu > li > div.drop > div.sub-menu {
+	display: none;
 	position: absolute;
 	top: 60px;
 	left: 0;
 	right: 0;
 	z-index: 1;
+	height: 0;
+	overflow: hidden;
 	border-bottom: 1px solid #c6cedb;
 	background: #f7f7f7;
             box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
-         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);  
+         -o-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+        -ms-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
        -moz-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);      
 	-webkit-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul#top-menu > li > div.drop:hover > div.sub-menu {
+	display: block;
+	height: auto;
 }
 
 div.sub-menu div.wrap {
@@ -264,6 +418,7 @@ div.sub-menu div.wrap > div {
 }
 div.sub-menu div.wrap > div h3 {
 	margin: 12px 0;
+	font-weight: bold;
 	font-size: 15px;
 }
 
@@ -271,7 +426,7 @@ div.sub-menu div.wrap > div h3:first-child {
 	margin-top: 0;
 }
 
-div.sub-menu div.wrap > div a {
+div.sub-menu div.wrap > div ul li a {
 	display: block;
 	line-height: 22px;
 }
@@ -284,7 +439,7 @@ div.sub-menu div.wrap > div.span2col h3 {
 	color: #8a95a6;
 }
 
-div.sub-menu div.wrap > div.span2col a {
+div.sub-menu div.wrap > div.span2col ul li {
 	float: left;
 	width: 220px;
 }
@@ -386,6 +541,164 @@ div.sub-menu div.wrap > div.span2col a {
 	background: #ffcc66;
 }
 
+/* Breadcrumbs */
+#breadcrumbs {
+	margin-bottom: 8px;
+	line-height: 24px;
+}
+
+#breadcrumbs li {
+	float: left;
+}
+
+#breadcrumbs li:after {
+	content: "-";
+	margin: 0 6px;
+}
+
+#breadcrumbs li:last-child:after {
+	display: none;
+}
+
+/* Navigation Box */
+nav {
+	position: absolute; /* TEMP: change back to fixed */
+	top: 190px;
+	width: 200px;
+}
+
+nav > div {
+	margin: 0 0 12px 0;
+	padding: 6px 0;
+	font-size: 13px;
+	line-height: 24px;
+	background: #f7f7f7;
+}
+
+nav > div > h4 {
+	padding: 0 12px;
+	line-height: 24px;
+}
+
+#table-of-contents > ul > li a {
+	display: block;
+	padding: 0 12px;
+}
+
+#table-of-contents > ul > li a:hover {
+	text-decoration: none;
+	color: #fff;
+	background: #3399cc;
+}
+
+#treaty-jump {
+	padding: 12px;
+}
+
+#treaty-jump select {
+	width: 100%;
+}
+
+footer {
+	overflow: hidden;
+	border-top: 2px solid #8a95a6;
+	line-height: 24px;
+	color: #505c6a;
+	background-color: #16232e;
+}
+
+footer a,
+footer a:visited {
+	color: #8a95a6;
+}
+
+footer a:hover,
+footer a:focus {
+	color: #c6cedb;
+}
+
+
+footer section {
+	width: 960px;
+	margin: 12px auto 0;
+	border-top: 1px solid #505c6a;
+}
+
+footer section:first-child {
+	border-top: 0;
+}
+
+footer h3 {
+	margin: 6px 0;
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #505c6a;
+}
+
+footer h4 {
+	font-size: 14px;
+	color: #8a95a6;
+}
+
+footer li.logo {
+	float: left;
+	width: 80px;
+}
+
+footer li.logo:hover,
+footer li.logo:active,
+footer li.logo:focus {
+    background-color: rgba(255,255,255,0.2);
+}
+
+footer li.logo a {
+	display: block;
+	text-align: center;
+}
+
+footer li.logo a:hover {
+	text-decoration: none;
+}
+
+footer li.logo a p {
+	margin: 0;
+}
+
+footer section > div {
+	float: left;
+	width: 225px;
+	margin: 0 20px 0 0;
+}
+
+footer section > div:last-child {
+	margin-right: 0;
+}
+footer section > div {
+	display: block;
+}
+
+/* Page-specific Content */
+#content {
+	min-height: 360px;
+}
+
+nav + #content {
+	float:right;
+	width: 720px;
+}
+
+#content section h2 {
+	margin: 0 0 8px 0; 
+	border-bottom: 1px solid #c6cedb;
+}
+
+#content section h2:first-child {
+	margin-top: 0;
+}
+
+#content section {
+	margin-bottom: 24px;
+}
 
 .treaty-header {
 	margin-bottom: 24px; 
@@ -418,15 +731,28 @@ div.sub-menu div.wrap > div.span2col a {
 	float: right;
 }
 
+.treaty-header button.btn.default.cta {
+	border-right: 1px solid rgba(26,58,111,0.25);
+}
+
+.treaty-header button.btn.btn-menu-toggle {
+	width: 30px;
+	height: 30px;
+	padding: 7px;
+	border-left: 1px solid rgba(247,247,247,0.25);
+}
+
+.treaty-header ul.drop-menu {
+	top:30px;
+}
+
 section#decisions > h2 { 
 	margin-bottom: -1px;
 }
 
 section#decisions > ul {
-	list-style-type: none;
 	max-height: 612px;
 	overflow-y: scroll;
-	margin: 0;
 	border: 1px solid #c6cedb;
 	padding: 12px 0;
 }
@@ -502,12 +828,6 @@ section#decisions > ul > li > p {
 	width: 160px;
 }
 
-#focal-points > ul {
-	margin:0;
-	padding: 0;
-	list-style-type: none;
-}
-
 #focal-points > ul > li {
 	margin: 0 0 24px 180px;
 }
@@ -561,209 +881,53 @@ section#members {
 
 }
 
-footer {
-	background-color: #16232e;
+/* 'Treaties' section page (lvl 2) */
+#treaties-list {
+
 }
 
-/* GENERIC COMPONENTS */
-
-/* Tabs */
-div.tabs {
-	margin: 0 0 -1px 0;
-	border-bottom: 1px solid #c6cedb;
+#treaties-list li {
+	margin: 0 0 12px 0;
 }
 
-div.tabs > a {
+#treaties-list li a {
 	display: block;
-	float:left;
-	margin-bottom: -1px;
-	padding: 3px 12px;
-	font-size: 15px;
+	background: #f7f7f7;
+}
+
+#treaties-list li a:hover {
+	background: #fff;
+	-webkit-box-shadow:  0px 0px 2px 2px #3399cc;
+            box-shadow:  0px 0px 2px 2px #3399cc;
+}
+
+#treaties-list li a:hover div {
+	text-decoration: none;
+}
+
+#treaties-list li a div {
+	color: #565656;
+}
+
+#treaties-list li a > img {
+	display: block;
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 0 11px 0 0;
+	border-right: 1px solid #f7f7f7;
+}
+
+#treaties-list li a > h2,
+#treaties-list li a > div {
+	float: left;
+	overflow: hidden;
+	margin: 0;
+	padding: 18px 0;
 	line-height: 24px;
 }
 
-div.tabs > a:hover {
-	border-bottom: 3px solid #3399cc;
-	padding-bottom: 0;
-	text-decoration: none;
-}
-
-div.tabs > a.active,
-div.tabs > a.active:hover {
-	cursor: default;
-	padding-bottom: 3px;
-	border-top: 1px solid #c6cedb;
-	border-right: 1px solid #c6cedb;
-	border-left: 1px solid #c6cedb;
-	border-bottom: 0;
-	text-decoration: none;
-	color: #565656;
-	background: #fff;
-}
-
-div.tab-content {
-	border-right: 1px solid #c6cedb;
-	border-left: 1px solid #c6cedb;
-	border-bottom: 1px solid #c6cedb;
-}
-
-/* Drop-down Button */
-/*div.drop-down-button {
-	position: relative;
-}
-
-a.drop-down-button > span.drop {
-
-}
-
-.focal-point div.avatar > img {
-	display: block;
-}
-
-.focal-point div.drop-down-button {
-
-}
-
-.focal-point div.drop-down-button > a {
-	display: inline-block;
-	width: 39px;
-	padding: 0 0 0 3px;
-	font-size: 12px;
-	line-height: 18px;
-	color: #fff;
-	background: #3399cc;
-}
-
-.focal-point div.drop-down-button > span.drop {
-	padding: 1px;
-	background-color: #3399cc;
-}*/
-
-
-/* Drop-down Button */
-.drop-down-button {
-	float: left;
-	position: relative;
-	text-align: left;
-}
-
-.drop-down-button span.drop {
-	display: inline-block;
-	width: 18px;
-	height: 18px;
-	padding: 6px;
-	font-size: 15px;
-	line-height: 18px;
-/*	background: #f7f7f7 url('images/sprite_16x16.png') -15px 5px no-repeat;*/
-}
-
-.drop-down-button span.drop:hover {
-	background-color: #f7f7f7;
-	background-position: -15px 5px;
-}
-
-.drop-menu {
-	display: none;
-	position: absolute;
-	top: 30px;
-	right: 0;
-	border: 1px solid #c6cedb;
-	background: #f7f7f7;
-}
-
-.drop-menu a {
-	display: block;
-	padding: 3px 6px;
-	line-height: 18px;
-}
-
-/* Display+Select Box */
-.select > div {
-	padding: 12px;
-	text-align: center;
-	background: #f7f7f7;
-}
-
-.select > div > img {
-	display: block;
-	width: 60px;
-	height: 60px;
-	margin: 0 auto;
-}
-
-.select > div > a {
-	display: block;
-	font-size: 14px;
-	line-height: 18px;
-	margin: 6px 0;
-}
-
-.select > div > p {
-	margin: 0;
-	font-size: 11px;
-	color: #8a95a6;
-}
-
-.select > select {
-	width: 100%;
-	margin: 8px 0 0 0;
-}
-
-/* Anchor>Button + cta(Call to Action) */
-a.btn {
-	display: inline-block;
-	padding: 6px 12px;
-	line-height: 18px;
-	color: #fff;
-	background: #3399cc;
-}
-
-a.btn:hover {
-	text-decoration: none;
-	background: #1a3a6f;
-}
-
-a.btn.cta {
-	font-family: Georgia, serif;
-	font-size: 14px;
-	background: #3399cc;
-	background: -moz-linear-gradient(top,  #3399cc 0%, #267399 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3399cc), color-stop(100%,#267399));
-	background: -webkit-linear-gradient(top,  #3399cc 0%,#267399 100%);
-	background: -o-linear-gradient(top,  #3399cc 0%,#267399 100%);
-	background: -ms-linear-gradient(top,  #3399cc 0%,#267399 100%);
-	background: linear-gradient(to bottom,  #3399cc 0%,#267399 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3399cc', endColorstr='#267399',GradientType=0 );
-}
-
-/* Tag Cloud */
-#tag-cloud > ol {
-	padding: 0 0 0 30px;
-	font-size: 10px;
-	line-height: 14px;
-}
-
-.tag10 { font-size:15px; line-height: 18px; }
-.tag9  { font-size:14px; line-height: 17px; }
-.tag8  { font-size:14px; line-height: 17px; }
-.tag7  { font-size:14px; line-height: 17px; }
-.tag6  { font-size:12px; line-height: 16px; }
-.tag5  { font-size:12px; line-height: 16px; }
-.tag4  { font-size:12px; line-height: 16px; }
-.tag3  { font-size:10px; line-height: 15px; }
-.tag2  { font-size:10px; line-height: 15px; }
-.tag1  { font-size:10px; line-height: 15px; }
-
-/* Toggle View Classes */
-.hide { display: none; }
-
-/* Clear fix */
-.clear:after,
-#content > section:after {
-	content: ".";
-    display: block;
-    visibility: hidden;
-    clear: both;
-    height: 0;
-    line-height: 0;
-}
+#treaties-list li a > h2 { width: 280px; }
+#treaties-list li a > div.treaty-topic { width: 360px; }
+#treaties-list li a > div.treaty-coverage { width: 120px; }
+#treaties-list li a > div.treaty-year { width: 102px; text-align: center; }
