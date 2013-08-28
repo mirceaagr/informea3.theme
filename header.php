@@ -1,3 +1,7 @@
+<?php
+global $post;
+require_once (get_template_directory()."/template/index.php");
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -13,12 +17,11 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/normalize.css">
    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/sprite.css">
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 </head>
 <body>
 <header>
 <div class="wrap">
-<div class="logo"><a href="#"><img src=".../images/informea_logo.png" alt="InforMea Logo" title="InforMEA" id="logo-image"></a></div>
+<div class="logo"><a href="#"><img src="../images/informea_logo.png" alt="InforMea Logo" title="InforMEA" id="logo-image"></a></div>
  <ul id="top-menu" class="no-ul">
  <li>
  <div class="drop">
@@ -109,6 +112,7 @@
   				 --><button type="submit" class=""><i class="icon-search"> </i></button>
 				</form>
 			</div>
+    <?php do_action('breadcrumbtrail'); ?>	
 </div>
 </div>
 </header>
