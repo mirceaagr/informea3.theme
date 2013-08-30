@@ -69,7 +69,7 @@
 					</ul>
 					<form class="navbar-search pull-right">
   						<input type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-  						<button type="submit"><i class="icon-search"></i> </button>
+  						<button type="submit" class="btn"><i class="icon-search"></i> </button>
 					</form>
 				</div>
 			</div>
@@ -80,63 +80,60 @@
 
 			<!-- BREADCRUMBS -->
 			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Library</a></li>
-				<li>Data</li>
+				<li><a href="#">InforMEA.org</a></li>
+				<li><a href="#">Treaties</a></li>
+				<li>This Treaty</li>
 			</ul>
 
 			<!-- TREATY HEADER -->
-			<div class="treaty-header media">
+			<div class="treaty-header clearfix">
 				<div class="pull-left">
 					<a class="thumbnail" href="" title="Visit Treaty Website">
             			<img src="http://placehold.it/60x60" alt="Treaty Logo">
             		</a>
 	      		</div>
-	      		<div class="media-body">
-	      			<h1>Treaty Name</h1>
-	      			<div class="row">
-	      				<div class="span6">
-	      					<strong>Treaty Topic:</strong> Treaty Subject<br/>
-	      					<strong>Depository</strong> Depository
-	      				</div>
-	      				<div class="span2">
-	      					<strong>Coverage:</strong> Coverage<br/>
-	      					<strong>Year</strong> _Year
-	      				</div>
-	      				<div class="span3">
-	      					<div class="btn-group">
-								<button class="btn btn-primary">Read Treaty Text</button>
-								<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Read Treaty Text from Source</a></li>
-									<li><a href="#">Go to Treaty Website</a></li>
-								</ul>
-							</div>
-	      				</div>
-	      			</div>
-	      		</div>
+      			<h1>Treaty Name</h1>
+      			<div class="treaty-info1">
+   					<span class="marker">Treaty Topic</span> Treaty Subject<br/>
+   					<span class="marker">Depository</span> Depository
+   				</div>
+   				<div class="treaty-info2">
+   					<span class="marker">Coverage</span> Coverage<br/>
+   					<span class="marker">Year</span> _Year
+   				</div>
+   				<div class="treaty-actions">
+  					<div class="btn-group pull-right">
+						<button class="btn btn-primary">Read Treaty Text</button>
+						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">Read Treaty Text from Source</a></li>
+							<li><a href="#">Go to Treaty Website</a></li>
+						</ul>
+					</div>
+				</div>
 	      	</div>
 
 	      	<!-- ACTUAL PAGE STARTS HERE -->
 	      	<div class="row">
 
 	      		<!-- NAVIGATION BOX -->
-		    	<div class="nav-box span3">
+		    	<div class="left span3">
 
 	      			<!-- TABLE OF CONTENTS -->
-		        	<ul class="nav-list">
-		        		<li class="nav-header">Contents</li>
-		          		<li class="active"><a href="#summary">Summary</a></li>
-		          		<li><a href="#decisions">Decisions</a></li>
-		          		<li><a href="#focal-points">Focal Points</a></li>
-		          		<li><a href="#members">Members</a></li>
-		        	</ul>
-
+	      			<div class="box">
+	      				<h4>Contents</h4>
+		      			<ul class="nav nav-list">
+							<li class="active"><a href="#summary">Summary</a></li>
+							<li><a href="#decisions">Decisions<span class="qty">267</span></a></li>
+							<li><a href="#decisions">Focal Points<span class="qty">12</span></a></li>
+							<li><a href="#decisions">Members<span class="qty">78</span></a></li>
+						</ul>
+					</div>
 		        	<!-- TAG CLOUD -->
-	        		<div id="tag-cloud">
-						<p class="nav-header">Most Frequent Terms</p>
+	        		<div id="tag-cloud" class="box">
+						<h4>Most Frequent Terms</h4>
 						<ol>
 							<li><a class="tag10" href="#">Tag 10</a></li>
 							<li><a class="tag9" href="#">Tag 9</a></li>
@@ -152,6 +149,11 @@
 					</div>
 
 					<!-- SELECT TREATY -->
+					<div class="box">
+						<select class="input-block-level">
+							<option>...</option>
+						</select>
+					</div>
 		    	</div>
 
 		    	<!-- CONTENT -->
@@ -163,22 +165,83 @@
 		    			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
 		    		</div>
 
+		    		<!-- SUMMARY -->
+		    		<div class="section" id="decisions">
+		    			<h2>Decisions</h2>
+		    			<ul class="meeting-bar clearfix">
+		    				<li class="prev">
+								<a href="#">&larr; Earlier Meeting</a>
+							</li>
+							<li class="meeting">
+								<a href="#">Meeting Name</a> - Date, Location - 32 Decisions 
+								<div class="dropdown filter pull-right">
+									<button class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li>Select a Meeting</li>
+										<li><a tabindex="-1" href="#">Meeting 1</a></li>
+										<li><a tabindex="-1" href="#">Meeting 2</a></li>
+										<li><a tabindex="-1" href="#">Meeting 3</a></li>
+										<li><a tabindex="-1" href="#">Meeting 4</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="next">
+								<a href="#">Older Meeting &rarr;</a>
+							</li>
+						</ul>
+						<ul class="decisions-list clear">
+							<li>
+								<div class="decision-number pull-left"><!-- Decision Number -->
+									No.<br/><span>_Value</span>
+								</div>
+								<div class="decision-info">
+									<span class="decision-type">Decisions</span>&emsp;<span class="status retired">Retired</span>
+									<!-- Decision status can receive 3 classes: Active, Revised, Retired -->
+								</div>
+								<p class="decision-title">
+									<a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
+								</p>
+							</li>
+							<li>
+								<div class="decision-number pull-left">
+									No.<br/><span>_Value</span>
+								</div>
+								<div class="decision-info">
+									<span class="decision-type">Decisions</span>&emsp;<span class="status active">Active</span>
+									<!-- Decision status can receive 3 classes: Active, Revised, Retired -->
+								</div>
+								<p class="decision-title">
+									<a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
+								</p>
+							</li>
+						</ul>
+		    		</div>
+
 		    		<!-- FOCAL POINTS -->
 		    		<div class="section" id="focal-points">
 		    			<h2>Focal Points</h2>
 		    			<div class="row">
-		    				<div class="select country span2">
-								<a class="thumbnail" href="" title="Go to Country Profile page">
-           							<img src="http://placehold.it/60x60" alt="Country Flag">
-           						</a>
+		    				<div class="select span2">
+		    					<div class="box country">
+									<a class="" href="" title="Go to Country Profile page">
+	           							<img src="http://placehold.it/60x60" alt="Country Flag">
+	           							<h3>Country name</h3>
+	           						</a>
+	           						<p>Number of Focal Points</p>
+	           					</div>
+	           					<select class="input-block-level">
+	           						<option>Select a Country</option>
+	           					</select>
            					</div>
-      						<ul class="media-list span7">
-       							<li class="media focal-point">
-       								<div class="media-object pull-left">
-										<img src="http://placehold.it/60x60" alt="Profile Picture" />
+      						<ul class="unstyled span7">
+       							<li class="focal-point">
+       								<div class="focal-point-avatar pull-left">
+										<img class="thumbnail" src="http://placehold.it/60x60" alt="Profile Picture" />
 										<div class="btn-group">
-											<button class="btn">Action</button>
-											<button class="btn dropdown-toggle" data-toggle="dropdown">
+											<button class="btn btn-mini">Email</button>
+											<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
 												<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu">
@@ -187,22 +250,20 @@
 										</div>
 									</div>
 
-									<div class="media-body">
+									<div class="focal-point-info">
 										<h3>Person Name</h3>
 										<p>Occupation</p>
-										<dl class="dl-horizontal">
-											<dt>Department</dt><dd>_Department Name</dd>
-											<dt>Institution</dt><dd>_Institution Name</dd>
-											<dt>Address</dt><dd>_Institution Address</dd>
-										</dl>
+										<span class="marker">Department</span>Department Name<br/>
+										<span class="marker">Institution</span>Institution Name<br/>
+										<span class="marker">Address</span>Institution Address
 									</div>
        							</li>
-       							<li class="media focal-point">
-       								<div class="media-object pull-left">
-										<img src="http://placehold.it/60x60" alt="Profile Picture" />
+       							<li class="focal-point">
+       								<div class="focal-point-avatar pull-left">
+										<img class="thumbnail" src="http://placehold.it/60x60" alt="Profile Picture" />
 										<div class="btn-group">
-											<button class="btn">Action</button>
-											<button class="btn dropdown-toggle" data-toggle="dropdown">
+											<button class="btn btn-mini">Email</button>
+											<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
 												<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu">
@@ -211,14 +272,12 @@
 										</div>
 									</div>
 
-									<div class="media-body">
+									<div class="focal-point-info">
 										<h3>Person Name</h3>
 										<p>Occupation</p>
-										<dl class="dl-horizontal">
-											<dt>Department</dt><dd>_Department Name</dd>
-											<dt>Institution</dt><dd>_Institution Name</dd>
-											<dt>Address</dt><dd>_Institution Address</dd>
-										</dl>
+										<span class="marker">Department</span>Department Name<br/>
+										<span class="marker">Institution</span>Institution Name<br/>
+										<span class="marker">Address</span>Institution Address
 									</div>
        							</li>
        						</ul>
