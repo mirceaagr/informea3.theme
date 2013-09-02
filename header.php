@@ -23,11 +23,13 @@
    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
 </head>
 <body>
-<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-		<img src="<?php bloginfo('template_directory')?>/images/informea_logo.png" class="brand"/>
-               <?php wp_nav_menu(array('menu' => 'primary', 'theme_location' =>'primary', 'menu_class'=>'nav') );?>
+  <div class="navbar">
+     <div class="navbar-inner">
+	 <div class="container">
+		<a class="brand" href="#"><img src="<?php bloginfo('template_directory')?>/images/informea_logo.png"/></a>
+               <?php wp_nav_menu(array('menu' => 'primary', 'theme_location' =>'primary', 'menu_class'=>'nav', 'container_id' => 'top-menu' ) );?>
+<br/>
+
 						</div>
 			</div>
 		</div>
