@@ -3,7 +3,6 @@
 *The header for InforMEA3.
 *
 */
-wp_nav_menu(array('menu' => 'primary', 'menu_class'=>'nav', 'container_id' => 'navbar' ,'theme_location' =>'primary') );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -28,10 +27,7 @@ wp_nav_menu(array('menu' => 'primary', 'menu_class'=>'nav', 'container_id' => 'n
 			<div class="navbar-inner">
 				<div class="container">
 		<img src="<?php bloginfo('template_directory')?>/images/informea_logo.png" class="brand"/>
-		<form class="navbar-search pull-right">
-  					<input type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-  						<button type="submit"><i class="icon-search"></i> </button>
-					</form>
-				</div>
+               <?php wp_nav_menu(array('menu' => 'primary', 'theme_location' =>'primary', 'menu_class'=>'nav') );?>
+						</div>
 			</div>
 		</div>
