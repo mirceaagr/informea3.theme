@@ -1,9 +1,9 @@
 <?php
 function tengine_footer(){
 ?>
-
+<div class="footer">
  <footer>
- <section id="organizations">
+ <div id="organizations" class="footer_section">
  <h3>Organizations</h3>
 	            <ul class="no-ul clear">
 	                <li class="logo">
@@ -91,7 +91,7 @@ function tengine_footer(){
 	                        <div></div><p>CMS</p>
 	                    </a></li>
 	            </ul>
-	        </section>
+	        </div>
 	        <section id="regional_treaties">
 	            <h3>Regional treaties</h3>
                 <div>
@@ -145,6 +145,7 @@ function tengine_footer(){
 	        	<p><a href="">Terms and conditions</a> - Portions Copyright &copy; United Nations, FAO, UNEP, UNESCO</p>
 	        </section>
 </footer>
-<?PHP
+</div>
+<?php
 }
 ?>

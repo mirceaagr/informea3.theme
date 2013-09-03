@@ -7,7 +7,6 @@
 
  
 <?php 
-tengine_footer();
 /*Always have wp_footer () just before closing </body>
 */
 wp_footer();
