@@ -104,7 +104,7 @@ sub {
 }
 
 img {
-  width: auto\9;
+  width: auto;
   height: auto;
   max-width: 100%;
   vertical-align: middle;
@@ -3091,7 +3091,7 @@ button.close {
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   -webkit-background-clip: padding-box;
-     -moz-background-clip: padding;
+     -moz-background-clip: padding-box;
           background-clip: padding-box;
 }
 
@@ -3580,7 +3580,7 @@ a.badge:focus {
   font-size: 60px;
   font-weight: 100;
   line-height: 30px;
-  color: ##8a95a6;
+  color: #8a95a6;
   text-align: center;
 }
 
