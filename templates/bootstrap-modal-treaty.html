@@ -30,8 +30,37 @@
 			}
 
 			.xmodal .xbar {
-				padding: 6px 6px;
+				padding: 6px 0;
 				border-bottom: 1px solid #f7f7f7;
+			}
+
+			.xbar strong {
+				margin-left: 12px;
+			}
+
+			.xbar a {
+				color: #565656;
+				display: inline-block;
+				*display: inline;
+				*zoom: 1;
+			}
+			.xbar a:hover,
+			.xbar a:focus {
+				padding: 1px 3px;
+				margin: -1px -3px;
+				background: #3399cc;
+				-webkit-border-radius: 2px;
+     			-moz-border-radius: 2px;
+          		border-radius: 2px;
+				text-decoration: none;
+				color: #fff;
+			}
+			.xbar a:active {
+				background: #ffcc66;
+			}
+
+			.treaty-text {
+				padding: 12px;
 			}
 		</style>
 	</head>
@@ -45,11 +74,9 @@
 			</div>
 
 			<div class="treaty-header clearfix">
-				<div class="pull-left">
-					<a class="thumbnail" href="" title="Visit Treaty Website">
-            			<img src="http://placehold.it/60x60" alt="Treaty Logo">
-            		</a>
-	      		</div>
+				<a class="thumbnail" href="" title="Visit Treaty Website">
+           			<img src="http://placehold.it/60x60" alt="Treaty Logo">
+           		</a>
       			<h1>Treaty Name</h1>
       			<div class="treaty-info1">
    					<span class="marker">Treaty Topic</span> Treaty Subject<br/>
@@ -82,6 +109,13 @@
 	      		<div class="span9" style="margin-left:0px; width:720px;">
 	      			<div class="xbar">
 	      				<strong>Treaty Text</strong>
+	      				<div class="pull-right">
+	      					<a href="#"><i class="icon-print"></i> Print</a>&emsp;<a href="#"><i class="icon-url"></i> Cite/Link</a>
+	      				</div>
+	      			</div>
+	      			<div class="treaty-text">
+	      				<h2>Title</h2>
+	      				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
 	      			</div>
 	      		</div>
 	      	</div>

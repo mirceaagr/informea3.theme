@@ -514,12 +514,6 @@ div.select .box {
   margin-bottom: 12px;
 }
 
-div.select .box img {
-  display: block;
-  margin: 0 auto;
-  background: #f7f7f7;
-}
-
 div.select .box h3 {
   font-size: 13px;
   margin: 3px 0;
@@ -815,24 +809,6 @@ h1 + #term-definition {
   color: #8a95a6;
 }
 
-
-/*********************************/
-/********** OTHER PAGES **********/
-/*********************************/
-.highlight {
-  max-width: 700px;
-  padding: 5px;
-  border: 1px solid #f7f7f7;
-  margin: 12px auto;
-}
-
-.highlight img {
-  width: 100%;
-  height: auto;
-}
-
-
-
 /************************************/
 /********** DISPLAY STATES **********/
 /************************************/
@@ -924,11 +900,7 @@ h1 + #term-definition {
   margin-bottom: 18px;
 }
 
-.focal-point .focal-point-avatar {
-  width: 60px;
-}
-
-.focal-point .focal-point-avatar button:first-child {
+.focal-point .thumbnail button:first-child {
   width: 43px;
 }
 
@@ -945,4 +917,97 @@ h1 + #term-definition {
   margin-top: -12px;
   font-family: Georgia, serif;
   font-style: italic;
+}
+
+/*******************************/
+/********** HOME PAGE **********/
+/*******************************/
+.logo-description { margin-bottom: 24px; }
+
+.features {
+  font-size: 14px;
+  text-align: center;
+}
+
+.features h2 {
+  color: #1a3a6f;
+  text-transform: uppercase;
+}
+
+.features p,
+.features a {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.features p {
+}
+
+.features .f-treaties {
+  border: 1px solid #c6cedb;
+  padding: 12px;
+  margin: 0 24px;
+}
+
+.features img,
+.select-country {
+  margin-bottom: 12px;
+}
+
+.select-country {
+  position: relative;
+}
+
+.select-country select {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%;
+  width: 160px;
+  height: 24px;
+  margin-top: -11px;
+  margin-left: -80px;
+  padding: 1px;
+  border: 2px solid #1a3a6f;
+}
+
+/*******************************/
+/********** NEWS ROOM **********/
+/*******************************/
+.news {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+.news li {
+  padding: 6px 0;
+  border-bottom: 1px solid #f7f7f7;
+  *zoom: 1;
+}
+
+.news li:first-child {
+  margin-top: -6px;
+}
+
+.news li:before,
+.news li:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.news li:after {
+  clear: both;
+}
+
+.news li strong,
+.news li a {
+  display: block;
+}
+
+.latest a {
+  display: block;
+  font-size: 15px;
 }
