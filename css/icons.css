@@ -12,6 +12,11 @@
   background-repeat: no-repeat;
 }
 
+[class^="icon-"]:after,
+[class*=" icon-"]:after {
+  content: " ";
+}
+
 .icon-white,
 .nav-list > .active > a > [class^="icon-"],
 .nav-list > .active > a > [class*=" icon-"],
@@ -310,7 +315,7 @@
   background-position: -96px -72px;
 }
 
-.icon-share {
+.icon-new-window {
   background-position: -120px -72px;
 }
 

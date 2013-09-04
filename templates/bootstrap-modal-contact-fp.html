@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>InforMEA Test page</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../bootstrap-style.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="../css/icons.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="../css/logos.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="../css/informea.css" media="screen">
+		<style type="text/css">
+			body {
+				background: #565656!important;
+			}
+			body > .container {
+				background: #fff;
+				margin-top: 48px;
+				padding: 12px;
+				position: relative;
+				min-height: 200px!important;
+			}
+
+			.close-modal {
+				position: absolute;
+				top: 12px;
+				right: 16px;
+			}
+
+			.xmodal .treaty-header {
+				margin-bottom: -1px;
+
+			}
+
+			.xmodal .xbar {
+				padding: 6px 6px;
+				border-bottom: 1px solid #f7f7f7;
+			}
+
+			h2 {
+				padding-bottom: 8px;
+				border-bottom: 1px solid #c6cedb;
+			}
+
+			form {
+				margin-left: 72px;
+				margin-right: 72px;
+				margin-bottom: 6px;
+			}
+
+			hr {
+				margin: 12px 0;
+			}
+			form hr {
+				margin: 12px -72px;
+			}
+
+
+
+		</style>
+	</head>
+	<body>
+		
+
+		<!-- PAGE CONTAINER -->
+		<div class="container xmodal" style="width: 540px;">
+			<div class="close-modal">
+				<button class="close">&times;</button>
+			</div>
+			<h2>Contact Form</h2>
+			<div class="focal-point">
+				<div class="focal-point-avatar pull-left">
+					<img class="thumbnail" src="http://placehold.it/60x60" alt="Profile Picture" />
+					<!-- <div class="btn-group">
+						<button class="btn btn-mini">Email</button>
+						<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">vCard</a></li>
+						</ul>
+					</div> -->
+				</div>
+
+				<div class="focal-point-info">
+					<h3>Person Name</h3>
+					<p>Occupation</p>
+					<span class="marker">Department</span>Department Name<br/>
+					<span class="marker">Institution</span>Institution Name<br/>
+					<span class="marker">Address</span>Institution Address
+				</div>
+			</div>
+			<hr>
+			<form>
+				<input class="input-block-level" type="text" placeholder="Your name">
+				<input class="input-block-level" type="text" placeholder="Email">
+				<textarea class="input-block-level" rows="3"></textarea>
+				<div>
+					Captcha
+				</div>
+				<hr>
+				<button type="submit" class="btn btn-primary input-block-level">Send Message</button>
+			</form>
+		</div>
+
+		
+		<!-- SCRIPTS -->
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="../scripts/bootstrap.js"></script>
+	</body>
+</html>
