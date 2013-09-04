@@ -225,7 +225,6 @@ button.btn.cta:hover {
 /* Drop-down Button */
 .drop-down-button {
 	position: relative;
-	text-align: left;
 }
 
 .drop-down-button button {
@@ -238,7 +237,7 @@ button.btn.cta:hover {
 }
 
 ul.drop-menu {
-	/*display: none;*/
+	display: none;
 	list-style-type: none;
 	position: absolute;
 	top: 18px;
@@ -253,6 +252,10 @@ ul.drop-menu {
         -ms-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
        -moz-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);      
 	-webkit-box-shadow:  0px 6px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul.drop-menu:focus {
+	background: red;
 }
 
 ul.drop-menu li a {
@@ -300,8 +303,7 @@ dl.no-ul {
 
 /* Clear fix */
 .clear:after,
-#content > section:after,
-footer > section:after,
+section > *:after,
 #treaties-list li a:after {
 	content: ".";
     display: block;
@@ -602,7 +604,6 @@ nav > div > h4 {
 footer {
 	overflow: hidden;
 	border-top: 2px solid #8a95a6;
-	line-height: 24px;
 	color: #505c6a;
 	background-color: #16232e;
 }
@@ -620,8 +621,10 @@ footer a:focus {
 
 footer section {
 	width: 960px;
-	margin: 12px auto 0;
+	overflow: hidden;
+	margin: 0 auto;
 	border-top: 1px solid #505c6a;
+	padding: 6px 0 12px;
 }
 
 footer section:first-child {
@@ -629,7 +632,7 @@ footer section:first-child {
 }
 
 footer h3 {
-	margin: 6px 0;
+	margin: 0 0 8px 0;
 	font-size: 11px;
 	text-transform: uppercase;
 	color: #505c6a;
@@ -661,11 +664,12 @@ footer li.logo a:hover {
 }
 
 footer li.logo a p {
-	margin: 0;
+	margin: 6px 0 0 0;
 }
 
 footer section > div {
 	float: left;
+	display: block;
 	width: 225px;
 	margin: 0 20px 0 0;
 }
@@ -673,8 +677,9 @@ footer section > div {
 footer section > div:last-child {
 	margin-right: 0;
 }
-footer section > div {
-	display: block;
+
+footer section > div > ul > li {
+	padding: 3px 0;
 }
 
 /* Page-specific Content */

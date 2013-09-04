@@ -79,262 +79,98 @@
 		<!-- PAGE CONTAINER -->
 		<div class="container">
 
-			<!-- BREADCRUMBS -->
-			<ul class="breadcrumb">
-				<li><a href="#">InforMEA.org</a></li>
-				<li><a href="#">Treaties</a></li>
-				<li>This Treaty</li>
-			</ul>
+			<!-- Page HEADER -->
+			<h1>Treaties</h1>
 
-			<!-- TREATY HEADER -->
-			<div class="treaty-header clearfix">
-				<div class="pull-left">
-					<a class="thumbnail" href="" title="Visit Treaty Website">
-            			<img src="http://placehold.it/60x60" alt="Treaty Logo">
-            		</a>
-	      		</div>
-      			<h1>Treaty Name</h1>
-      			<div class="treaty-info1">
-   					<span class="marker">Treaty Topic</span> Treaty Subject<br/>
-   					<span class="marker">Depository</span> Depository
-   				</div>
-   				<div class="treaty-info2">
-   					<span class="marker">Coverage</span> Coverage<br/>
-   					<span class="marker">Year</span> _Year
-   				</div>
-   				<div class="treaty-actions">
-  					<div class="btn-group pull-right">
-						<button class="btn btn-primary">Read Treaty Text</button>
-						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			<!-- FILTERS -->
+			<div id="treaties-filters" class="clearfix">
+				<div class="treaty-title">
+					Showing _x out of _y Treaties
+				</div>
+				<div class="treaty-topic">
+					<span class="info">All Topics</span>
+					<div class="dropdown inline filter">
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
 						</button>
-						<ul class="dropdown-menu">
-							<li><a href="#">Read Treaty Text from Source</a></li>
-							<li><a href="#">Go to Treaty Website</a></li>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li><a tabindex="-1" href="#">Biological Diversity</a></li>
+							<li><a tabindex="-1" href="#">Chemicals / Waste</a></li>
+							<li><a tabindex="-1" href="#">Climate / Atmosphere</a></li>
+							<li><a tabindex="-1" href="#">Other Topics</a></li>
 						</ul>
 					</div>
 				</div>
-	      	</div>
+				<div class="treaty-coverage">
+					<span class="info">Coverage</span>
+					<div class="dropdown inline filter">
+						<button class="btn dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu pull-right" role="menu">
+							<li><a tabindex="-1" href="#">Global</a></li>
+							<li><a tabindex="-1" href="#">Africa</a></li>
+							<li><a tabindex="-1" href="#">Asia Pacific</a></li>
+							<li><a tabindex="-1" href="#">Europe</a></li>
+							<li><a tabindex="-1" href="#">Latin America and the Carribean</a></li>
+							<li><a tabindex="-1" href="#" class="disabled">North America</a></li>
+							<li><a tabindex="-1" href="#">West Asia</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="treaty-year">
+					<span>Year</span>
+				</div>
+			</div>
 
 	      	<!-- ACTUAL PAGE STARTS HERE -->
-	      	<div class="row">
-
-	      		<!-- NAVIGATION BOX -->
-		    	<div class="span3">
-
-	      			<!-- TABLE OF CONTENTS -->
-	      			<div class="box">
-	      				<h4>Contents</h4>
-		      			<ul class="nav nav-list">
-							<li class="active"><a href="#summary">Summary</a></li>
-							<li><a href="#decisions">Decisions<span class="qty">267</span></a></li>
-							<li><a href="#decisions">Focal Points<span class="qty">12</span></a></li>
-							<li><a href="#decisions">Members<span class="qty">78</span></a></li>
-						</ul>
-					</div>
-		        	<!-- TAG CLOUD -->
-	        		<div id="tag-cloud" class="box">
-						<h4>Most Frequent Terms</h4>
-						<ol>
-							<li><a class="tag10" href="#">Tag 10</a></li>
-							<li><a class="tag9" href="#">Tag 9</a></li>
-							<li><a class="tag8" href="#">Tag 8</a></li>
-							<li><a class="tag7" href="#">Tag 7</a></li>
-							<li><a class="tag6" href="#">Tag 6</a></li>
-							<li><a class="tag5" href="#">Tag 5</a></li>
-							<li><a class="tag4" href="#">Tag 4</a></li>
-							<li><a class="tag3" href="#">Tag 3</a></li>
-							<li><a class="tag2" href="#">Tag 2</a></li>
-							<li><a class="tag1" href="#">Tag 1</a></li>
-						</ol>
-					</div>
-
-					<!-- SELECT TREATY -->
-					<div class="box">
-						<select class="input-block-level">
-							<option>...</option>
-						</select>
-					</div>
-		    	</div>
-
-		    	<!-- CONTENT -->
-		    	<div class="span9" id="content">
-
-		    		<!-- SUMMARY -->
-		    		<section id="summary">
-		    			<h2>Summary</h2>
-		    			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
-		    		</section>
-
-		    		<!-- SUMMARY -->
-		    		<section id="decisions">
-		    			<h2>Decisions</h2>
-		    			<ul class="meeting-bar clearfix">
-		    				<li class="prev">
-								<a class="disabled" href="#">&larr; Earlier Meeting</a>
-							</li>
-							<li class="meeting">
-								<a href="#">Meeting Name</a> - Date, Location - 32 Decisions 
-								<div class="dropdown filter pull-right">
-									<button class="btn dropdown-toggle" data-toggle="dropdown">
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li class="info">Select a Meeting</li>
-										<li><a tabindex="-1" href="#">Meeting 1</a></li>
-										<li><a tabindex="-1" href="#">Meeting 2</a></li>
-										<li><a tabindex="-1" href="#">Meeting 3</a></li>
-										<li><a tabindex="-1" href="#">Meeting 4</a></li>
-									</ul>
-								</div>
-							</li>
-							<li class="next">
-								<a href="#">Older Meeting &rarr;</a>
-							</li>
-						</ul>
-						<ul class="decisions-list clear">
-							<li>
-								<div class="decision-number pull-left"><!-- Decision Number -->
-									<span class="aux">No.</span><br/>
-									<strong>_Value</strong>
-								</div>
-								<div class="decision-info">
-									<span>Decision</span>&emsp;<span class="status retired">Retired</span>
-									<!-- Decision status can receive 3 classes: Active, Revised, Retired -->
-									<br/>
-									<a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
-								</div>
-							</li>
-							<li>
-								<div class="decision-number pull-left"><!-- Decision Number -->
-									<span class="aux">No.</span><br/>
-									<strong>_Value</strong>
-								</div>
-								<div class="decision-info">
-									<span>Decision</span>&emsp;<span class="status active">Active</span>
-									<!-- Decision status can receive 3 classes: Active, Revised, Retired -->
-									<br/>
-									<a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
-								</div>
-							</li>
-						</ul>
-		    		</section>
-
-		    		<!-- FOCAL POINTS -->
-		    		<section id="focal-points">
-		    			<h2>Focal Points</h2>
-		    			<div class="row">
-		    				<div class="select span2">
-		    					<div class="box country">
-									<a class="" href="" title="Go to Country Profile page">
-	           							<img src="http://placehold.it/60x60" alt="Country Flag">
-	           							<h3>Country name</h3>
-	           						</a>
-	           						<p>Number of Focal Points</p>
-	           					</div>
-	           					<select class="input-block-level">
-	           						<option>Select a Country</option>
-	           					</select>
-           					</div>
-      						<ul class="unstyled span7">
-       							<li class="focal-point">
-       								<div class="focal-point-avatar pull-left">
-										<img class="thumbnail" src="http://placehold.it/60x60" alt="Profile Picture" />
-										<div class="btn-group">
-											<button class="btn btn-mini">Email</button>
-											<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-												<li><a href="#">vCard</a></li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="focal-point-info">
-										<h3>Person Name</h3>
-										<p>Occupation</p>
-										<span class="marker">Department</span>Department Name<br/>
-										<span class="marker">Institution</span>Institution Name<br/>
-										<span class="marker">Address</span>Institution Address
-									</div>
-       							</li>
-       							<li class="focal-point">
-       								<div class="focal-point-avatar pull-left">
-										<img class="thumbnail" src="http://placehold.it/60x60" alt="Profile Picture" />
-										<div class="btn-group">
-											<button class="btn btn-mini">Email</button>
-											<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-												<li><a href="#">vCard</a></li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="focal-point-info">
-										<h3>Person Name</h3>
-										<p>Occupation</p>
-										<span class="marker">Department</span>Department Name<br/>
-										<span class="marker">Institution</span>Institution Name<br/>
-										<span class="marker">Address</span>Institution Address
-									</div>
-       							</li>
-       						</ul>
-           				</div>
-           			</section>
-
-		    		<!-- MEMBERS -->
-					<section id="members">
-		    			<h2>Members</h2>
-		    			<ul class="nav nav-tabs" id="members-tabs">
-							<li class="active"><a href="#members-list" data-toggle="tab">List</a></li>
-							<li><a href="#members-map" data-toggle="tab">Map</a></li>
-						</ul>
- 
-						<div class="tab-content">
-
-							<!-- MEMBERS-LIST -->
-							<div class="tab-pane active" id="members-list">
-								<table class="table table-bordered table-striped">
-									<!-- <caption>If necessary</caption> -->
-									<thead>
-										<tr>
-											<th class="span5">Country</th>
-											<th>Year 1</th>
-											<th>Year 2</th>
-											<th>Status</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Example</td>
-											<td>Example</td>
-											<td>Example</td>
-								      		<td>Example</td>
-										</tr>
-										<tr>
-											<td>...</td>
-											<td>...</td>
-											<td>...</td>
-								      		<td>...</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-							<!-- MEMBERS-MAP -->
-							<div class="tab-pane" id="members-map">
-								...
-							</div>
-
+			<ul id="treaties-list" class="unstyled">
+				<li>
+					<a href="">
+						<div class="treaty-title">
+							<img class="thumbnail" src="http://placehold.it/60x60" alt="Treaty Logo" />
+							<h2>_Treaty Name</h2>
 						</div>
-		    		</section>
+						<div class="treaty-topic"><strong>_Treaty Topic:</strong> _Treaty Subject</div>
+						<div class="treaty-coverage">_Coverage</div>
+						<div class="treaty-year">_Year</div>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<div class="treaty-title">
+							<img class="thumbnail" src="http://placehold.it/60x60" alt="Treaty Logo" />
+							<h2>_Treaty Name</h2>
+						</div>
+						<div class="treaty-topic"><strong>_Treaty Topic:</strong> _Treaty Subject</div>
+						<div class="treaty-coverage">_Coverage</div>
+						<div class="treaty-year">_Year</div>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<div class="treaty-title">
+							<img class="thumbnail" src="http://placehold.it/60x60" alt="Treaty Logo" />
+							<h2>_Treaty Name</h2>
+						</div>
+						<div class="treaty-topic"><strong>_Treaty Topic:</strong> _Treaty Subject</div>
+						<div class="treaty-coverage">_Coverage</div>
+						<div class="treaty-year">_Year</div>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<div class="treaty-title">
+							<img class="thumbnail" src="http://placehold.it/60x60" alt="Treaty Logo" />
+							<h2>_Treaty Name</h2>
+						</div>
+						<div class="treaty-topic"><strong>_Treaty Topic:</strong> _Treaty Subject</div>
+						<div class="treaty-coverage">_Coverage</div>
+						<div class="treaty-year">_Year</div>
+					</a>
+				</li>
+			</ul>
 
-		    	</div>
-
-		    </div>
 		</div>
 
 		<footer>
