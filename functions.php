@@ -36,14 +36,11 @@ function i3_treaties_count() {
 }
 
 
-function i3_treaties_topics() {
+function i3_treaties_primary_topics() {
 	global $wpdb;
 	$sql = $wpdb->prepare("
 		SELECT DISTINCT (a.theme) AS theme FROM ai_treaty a
-			WHERE TRIM(a.theme) <> '' AND a.enabled = 1 AND a.use_informea = 1
-		UNION
-		SELECT DISTINCT(a.theme_secondary) AS theme FROM ai_treaty a
-			WHERE TRIM(a.theme_secondary) <> '' AND a.enabled = 1 AND a.use_informea = 1 ORDER BY theme",
+			WHERE TRIM(a.theme) <> '' AND a.enabled = 1 AND a.use_informea = 1 ORDER BY theme",
 		array()
 	);
 	return $wpdb->get_col($sql);
