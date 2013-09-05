@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<title><?php wp_title('-', true, 'right'); ?></title>
-	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/bootstrap-style.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icons.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
@@ -87,7 +86,7 @@
 					<li><a href="#">Glossary</a></li>
 				</ul>
 				<form class="navbar-search pull-right">
-					<input type="text" class="search-query" data-provide="typeahead" placeholder="Search">
+					<input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
 					<button type="submit" class="btn"><i class="icon-search"></i> </button>
 				</form>
 			</div>

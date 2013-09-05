@@ -143,9 +143,9 @@
 		</section>
 	</footer>
 <?php
-	wp_enqueue_script('jquery');
+	wp_enqueue_script('informea-common');
+	wp_enqueue_script('bootstrap');
 	wp_footer();
 ?>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/scripts/bootstrap.js"></script>
 </body>
 </html>
