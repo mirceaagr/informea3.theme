@@ -69,6 +69,14 @@ function i3_treaty_format_topic($treaty) {
 }
 
 
+function i3_treaties_title($title, $sep) {
+	$id = get_request_variable('id');
+	if(empty($id)) {
+		$title .= get_bloginfo('name');
+	}
+	return $title;
+}
+
 function i3_treaty_url($treaty) {
 	return sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty->odata_name);
 }
