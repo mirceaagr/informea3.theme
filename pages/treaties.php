@@ -52,7 +52,7 @@ $regions = i3_treaty_regions_in_use();
 <ul id="treaties-list" class="unstyled">
 	<?php foreach($treaties as $row): ?>
 	<li>
-		<a href="<?php echo i3_treaty_url($treaty); ?>">
+		<a href="<?php echo i3_treaty_url($row); ?>">
 			<div class="treaty-title">
 				<img class="thumbnail" src="<?php echo $row->logo_medium; ?>" alt="<?php echo $row->short_title; ?> logo">
 				<h2><?php echo $row->short_title; ?></h2>
