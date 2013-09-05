@@ -7,119 +7,64 @@
 		<link rel="stylesheet" type="text/css" href="../css/icons.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="../css/logos.css" media="screen">
 		<link rel="stylesheet" type="text/css" href="../css/informea.css" media="screen">
-		<style type="text/css">
-			body {
-				background: #565656!important;
-			}
-			body > .container {
-				background: #fff;
-				margin-top: 48px;
-				padding: 10px;
-				position: relative;
-			}
-
-			.close-modal {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-			}
-
-			.xmodal .treaty-header {
-				margin-bottom: -1px;
-
-			}
-
-			.xmodal .xbar {
-				padding: 6px 0;
-				border-bottom: 1px solid #f7f7f7;
-			}
-
-			.xbar strong {
-				margin-left: 12px;
-			}
-
-			.xbar a {
-				color: #565656;
-				display: inline-block;
-				*display: inline;
-				*zoom: 1;
-			}
-			.xbar a:hover,
-			.xbar a:focus {
-				padding: 1px 3px;
-				margin: -1px -3px;
-				background: #3399cc;
-				-webkit-border-radius: 2px;
-     			-moz-border-radius: 2px;
-          		border-radius: 2px;
-				text-decoration: none;
-				color: #fff;
-			}
-			.xbar a:active {
-				background: #ffcc66;
-			}
-
-			.treaty-text {
-				padding: 12px;
-			}
-		</style>
 	</head>
 	<body>
 		
 
 		<!-- PAGE CONTAINER -->
-		<div class="container xmodal">
-			<div class="close-modal">
-				<button class="close">&times;</button>
-			</div>
-
-			<div class="treaty-header clearfix">
-				<a class="thumbnail" href="" title="Visit Treaty Website">
-           			<img src="http://placehold.it/60x60" alt="Treaty Logo">
-           		</a>
-      			<h1>Treaty Name</h1>
-      			<div class="treaty-info1">
-   					<span class="marker">Treaty Topic</span> Treaty Subject<br/>
-   					<span class="marker">Depository</span> Depository
-   				</div>
-   				<div class="treaty-info2">
-   					<span class="marker">Coverage</span> Coverage<br/>
-   					<span class="marker">Year</span> _Year
-   				</div>
-   				<div class="treaty-actions">
-					<a href="#">Read Treaty Text from Source</a><br/>
-					<a href="#">Go to Treaty Website</a>
+		<div class="modal treaty-reader">
+			<div class="container">
+				<div class="close-modal">
+					<button class="close">&times;</button>
 				</div>
-	      	</div>
 
-	      	<div class="row">
-	      		<div class="span3">
-	      			<div class="xbar">
-	      				<strong>Table of Contents</strong>
-	      			</div>
-	      			<ul class="nav nav-list">
-	      				<li><a href="#">Target</a></li>
-	      				<li><a href="#">Target</a></li>
-	      				<li><a href="#">Target</a></li>
-	      				<li><a href="#">Target</a></li>
-	      				<li><a href="#">Target</a></li>
-	      				<li><a href="#">Target</a></li>
-	      			</ul>
-	      		</div>
-	      		<div class="span9" style="margin-left:0px; width:720px;">
-	      			<div class="xbar">
-	      				<strong>Treaty Text</strong>
-	      				<div class="pull-right">
-	      					<a href="#"><i class="icon-print"></i> Print</a>&emsp;<a href="#"><i class="icon-url"></i> Cite/Link</a>
-	      				</div>
-	      			</div>
-	      			<div class="treaty-text">
-	      				<h2>Title</h2>
-	      				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
-	      			</div>
-	      		</div>
-	      	</div>
+				<div class="treaty-header clearfix">
+					<a class="thumbnail" href="" title="Visit Treaty Website">
+	           			<img src="http://placehold.it/60x60" alt="Treaty Logo">
+	           		</a>
+	      			<h1>Treaty Name</h1>
+	      			<div class="treaty-info1">
+	   					<span class="marker">Treaty Topic</span> Treaty Subject<br/>
+	   					<span class="marker">Depository</span> Depository
+	   				</div>
+	   				<div class="treaty-info2">
+	   					<span class="marker">Coverage</span> Coverage<br/>
+	   					<span class="marker">Year</span> _Year
+	   				</div>
+	   				<div class="treaty-actions">
+						<a href="#">Read Treaty Text from Source</a><br/>
+						<a href="#">Go to Treaty Website</a>
+					</div>
+		      	</div>
 
+		      	<div class="row">
+		      		<div class="span3">
+		      			<div class="toolbar">
+		      				<strong>Table of Contents</strong>
+		      			</div>
+		      			<ul class="nav nav-list">
+		      				<li><a href="#">Target</a></li>
+		      				<li><a href="#">Target</a></li>
+		      				<li><a href="#">Target</a></li>
+		      				<li><a href="#">Target</a></li>
+		      				<li><a href="#">Target</a></li>
+		      				<li><a href="#">Target</a></li>
+		      			</ul>
+		      		</div>
+		      		<div class="treaty-text-container span9">
+		      			<div class="toolbar">
+		      				<strong>Treaty Text</strong>
+		      				<div class="pull-right">
+		      					<a href="#"><i class="icon-print"></i> Print</a>&emsp;<a href="#"><i class="icon-url"></i> Cite/Link</a>
+		      				</div>
+		      			</div>
+		      			<div class="treaty-text">
+		      				<h1>Title</h1>
+		      				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
+		      			</div>
+		      		</div>
+		      	</div>
+    		</div>
 		</div>
 
 		

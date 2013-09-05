@@ -32,8 +32,8 @@
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"],
-.xbar a:hover i,
-.xbar a:focus i {
+.toolbar a:hover i,
+.toolbar a:focus i {
   background-image: url("../images/glyphicons-halflings-white.png");
 }
 
