@@ -31,7 +31,9 @@
 .dropdown-submenu:hover > a > [class^="icon-"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
-.dropdown-submenu:focus > a > [class*=" icon-"] {
+.dropdown-submenu:focus > a > [class*=" icon-"],
+.toolbar a:hover i,
+.toolbar a:focus i {
   background-image: url("../images/glyphicons-halflings-white.png");
 }
 
@@ -303,7 +305,7 @@
   background-position: -24px -72px;
 }
 
-.icon-adjust {
+.icon-url {
   background-position: -48px -72px;
 }
 

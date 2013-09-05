@@ -377,7 +377,7 @@ a:focus .qty {
 }
 
 /* TAG CLOUD */
-#tag-cloud ol {
+.tag-cloud ol {
   margin-top: 6px;
   padding-left: 30px;
   font-size: 10px;
@@ -385,7 +385,7 @@ a:focus .qty {
   color: #8a95a6;
 }
 
-#tag-cloud ol li a,
+.tag-cloud ol li a,
 a.tag {
   display: inline-block;
   *display: inline;
@@ -394,7 +394,7 @@ a.tag {
 
 a.tag:hover,
 a.tag:focus,
-#tag-cloud ol li a:hover {
+.tag-cloud ol li a:hover {
   padding: 1px 3px;
   margin: -1px -3px;
   color: #fff;
@@ -512,12 +512,6 @@ div.select {
 
 div.select .box {
   margin-bottom: 12px;
-}
-
-div.select .box img {
-  display: block;
-  margin: 0 auto;
-  background: #f7f7f7;
 }
 
 div.select .box h3 {
@@ -815,24 +809,6 @@ h1 + #term-definition {
   color: #8a95a6;
 }
 
-
-/*********************************/
-/********** OTHER PAGES **********/
-/*********************************/
-.highlight {
-  max-width: 700px;
-  padding: 5px;
-  border: 1px solid #f7f7f7;
-  margin: 12px auto;
-}
-
-.highlight img {
-  width: 100%;
-  height: auto;
-}
-
-
-
 /************************************/
 /********** DISPLAY STATES **********/
 /************************************/
@@ -924,11 +900,7 @@ h1 + #term-definition {
   margin-bottom: 18px;
 }
 
-.focal-point .focal-point-avatar {
-  width: 60px;
-}
-
-.focal-point .focal-point-avatar button:first-child {
+.focal-point .thumbnail button:first-child {
   width: 43px;
 }
 
@@ -945,4 +917,342 @@ h1 + #term-definition {
   margin-top: -12px;
   font-family: Georgia, serif;
   font-style: italic;
+}
+
+/*******************************/
+/********** HOME PAGE **********/
+/*******************************/
+#homepage {
+  text-align: center; 
+}
+
+#homepage
+
+.feature {
+  font-size: 14px;
+  text-align: center;
+}
+
+.feature h2 {
+  color: #1a3a6f;
+  text-transform: uppercase;
+}
+
+.feature p,
+.feature a {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.feature p {
+}
+
+.feature.treaties h2 {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 0 6px;
+  background: #fff;
+}
+
+.feature.treaties ul {
+  margin: -24px 36px 24px;
+  border: 1px solid #1a3a6f;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  padding: 12px 24px 12px;
+  list-style-type: none;
+  color: #1a3a6f;
+}
+
+.feature.treaties ul li {
+  border-bottom: 1px solid #c6cedb;
+  padding: 12px 0;
+}
+
+.feature.treaties ul li:last-child {
+  border-bottom: 0;
+}
+
+.feature img,
+.select-country {
+  margin-bottom: 12px;
+}
+
+.select-country {
+  position: relative;
+}
+
+.select-country select {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 50%;
+  right: 50%;
+  width: 160px;
+  height: 24px;
+  margin-top: -11px;
+  margin-left: -80px;
+  padding: 1px;
+  border: 2px solid #1a3a6f;
+}
+
+/*******************************/
+/********** NEWS ROOM **********/
+/*******************************/
+.news {
+  padding: 6px 0;
+  border-bottom: 1px solid #f7f7f7;
+  *zoom: 1;
+}
+
+.news:first-child {
+  margin-top: -6px;
+}
+
+.news:before,
+.news:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.news:after {
+  clear: both;
+}
+
+.news strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.news a {
+  display: block;
+  margin-left: 72px;
+}
+
+.latest a {
+  font-size: 15px;
+  margin-left: 0;
+}
+
+/****************************/
+/********** MODALS **********/
+/****************************/
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+
+.modal.contact-fp {
+  width: 540px;
+  margin-left: -282px!important;
+}
+
+.contact-fp > .container {
+  width: auto;
+}
+
+.treaty-reader .treaty-header {
+  margin-bottom: 12px;
+}
+
+.treaty-reader .span9 {
+  margin-left:0px; 
+  width:720px;
+}
+
+.toolbar {
+  padding: 6px 0;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.treaty-reader .toolbar {
+  margin-top: -13px;
+}
+
+.toolbar strong {
+  margin-left: 12px;
+}
+
+.toolbar a {
+  color: #565656;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.toolbar a:hover,
+.toolbar a:focus {
+  padding: 1px 3px;
+  margin: -1px -3px;
+  background: #3399cc;
+  -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+        border-radius: 2px;
+  text-decoration: none;
+  color: #fff;
+}
+.toolbar a:active {
+  background: #ffcc66;
+}
+
+.treaty-text {
+  padding: 12px;
+}
+
+.treaty-text h1,
+.treaty-text h1 a,
+.treaty-text h1 a:hover,
+.treaty-text h1 a:focus {
+  font-size: 18px;
+  line-height: 24px;
+  text-decoration: none;
+  color: #565656;
+  outline: 0;
+  border: 0;
+}
+
+.modal form {
+  margin-left: 72px;
+  margin-right: 72px;
+  margin-bottom: 6px;
+}
+
+.modal hr {
+  margin: 12px 0;
+}
+
+.modal form hr {
+  margin: 12px -72px;
+}
+
+.decision-reader .decision-info {
+  margin-top: 24px;
+}
+.decision-reader .decision-info dt {
+  width: 120px;
+}
+
+.decision-reader .decision-info dt,
+.decision-reader .decision-info dd {
+  border-top: 1px solid #f7f7f7;
+  padding: 3px 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #000000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.modal-backdrop,
+.modal-backdrop.fade.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  z-index: 1050;
+  margin-left: -482px;
+  padding: 12px;
+  background-color: #ffffff;
+/*  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;*/
+  outline: none;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  /*-webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;*/
+}
+
+.modal.fade {
+  top: -25%;
+  -webkit-transition: opacity 0.3s linear, top 0.3s ease-out;
+     -moz-transition: opacity 0.3s linear, top 0.3s ease-out;
+       -o-transition: opacity 0.3s linear, top 0.3s ease-out;
+          transition: opacity 0.3s linear, top 0.3s ease-out;
+}
+
+.modal.fade.in {
+  top: 10%;
+}
+
+.modal-header {
+  padding: 9px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header .close {
+  margin-top: 2px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  line-height: 30px;
+}
+
+.modal-body {
+  position: relative;
+  max-height: 400px;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.modal-form {
+  margin-bottom: 0;
+}
+
+.modal-footer {
+  padding: 14px 15px 15px;
+  margin-bottom: 0;
+  text-align: right;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 #ffffff;
+     -moz-box-shadow: inset 0 1px 0 #ffffff;
+          box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.modal-footer:after {
+  clear: both;
+}
+
+.modal-footer .btn + .btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.modal-footer .btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+.modal-footer .btn-block + .btn-block {
+  margin-left: 0;
 }
