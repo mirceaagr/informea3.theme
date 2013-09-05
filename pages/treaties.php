@@ -9,6 +9,7 @@ $treaties = i3_treaties_listing();
 $count = i3_treaties_count();
 $count_total = i3_treaties_count();
 $topics = i3_treaties_primary_topics();
+$regions = i3_treaty_regions_in_use();
 ?>
 
 <h1><?php the_title(); ?></h1>
@@ -37,13 +38,9 @@ $topics = i3_treaties_primary_topics();
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu pull-right" role="menu">
-				<li><a tabindex="-1" href="#">Global</a></li>
-				<li><a tabindex="-1" href="#">Africa</a></li>
-				<li><a tabindex="-1" href="#">Asia Pacific</a></li>
-				<li><a tabindex="-1" href="#">Europe</a></li>
-				<li><a tabindex="-1" href="#">Latin America and the Carribean</a></li>
-				<li><a tabindex="-1" href="#" class="disabled">North America</a></li>
-				<li><a tabindex="-1" href="#">West Asia</a></li>
+				<?php foreach($regions as $row): ?>
+				<li><a tabindex="-1" href="#<?php echo $row->name; ?>"><?php echo $row->name; ?></a></li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>
