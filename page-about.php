@@ -3,11 +3,11 @@
  * Template name: InfoMEA About page
  */
 if(have_posts()): while(have_posts()) : the_post();
-$about = get_page_by_title('Introduction');
 get_header();
 ?>
-
-<h1><?php the_title(); ?></h1>
+<div class="breadcrumb">
+<a href='#'><?php echo get_bloginfo('url'); ?> </a>- <?php the_title(); ?>
+<h1><?php the_title(); ?></h1></div>
 <div class="row">
  <div class="span3">
 <?php wp_nav_menu(array('menu'=>'about_page_menu', 'menu_class'=>'nav nav-list', 'container_class'=>'box')); ?>
