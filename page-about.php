@@ -18,7 +18,7 @@ get_header();
 		    	<div class="span3">
 
 	      			<!-- TABLE OF CONTENTS -->
-	      			<div class="box">
+	      			<div class="well">
 	      				<h4>Contents</h4>
 		      			<ul class="nav nav-list">
 							<li class="active"><a href="#Introduction">Introduction</a></li>
