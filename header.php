@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
 </head>
-<body>
+<body <?php body_class($class); ?>>
 	<div class="navbar navbar-static-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -47,7 +47,7 @@
 										<li><a href="#">Vienna</a></li>
 									</ul>
 									<ul class="nav-list span6">
-										<li class="nav-header">Regional Treaties</li>										
+										<li class="nav-header">Regional Treaties</li>
 										<!-- <li class="nav-header">Africa</li> -->
 										<li><a href="#">Abidjan Convention</a></li>
 										<li><a href="#">Nairobi Convention</a></li>
