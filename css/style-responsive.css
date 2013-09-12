@@ -1,4 +1,16 @@
+
+
 /* NAVBAR phone and tablet*/
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar-inner {
+    padding: 0;
+  }
+
+  .navbar-inner .container {
+    width: 724px;
+  }
+}
+
 @media (max-width: 979px) {
 
   .nav .caret,
@@ -93,16 +105,19 @@
     width: 100%;
     height: 26px;
     padding: 4px 8px;
-    margin: 0 -9px;
+    margin: 0 -10px;
   }
 
   .nav-collapse .navbar-search button {
     width: 60px;
     position: absolute;
     top: 0;
-    right: -9px;
+    right: -8px;
     padding: 7px 8px;
     font-weight: bold;
+    -webkit-border-radius: 0 2px 2px 0;
+       -moz-border-radius: 0 2px 2px 0;
+            border-radius: 0 2px 2px 0;
   }
 
   .nav-collapse .navbar-search button .icon-search {
