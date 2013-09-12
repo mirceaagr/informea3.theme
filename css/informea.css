@@ -289,6 +289,7 @@ div.select .box p {
 
 .footer {
   overflow: hidden;
+  margin-top: 24px;
   border-top: 2px solid #8a95a6;
   color: #505c6a;
   background-color: #16232e;
@@ -364,24 +365,62 @@ div.select .box p {
 /******************************/
 /********** TREATIES **********/
 /******************************/
-#treaties-filters {
+
+#treaties-table {
+  border-collapse: collapse;
+}
+
+#treaties-table tbody tr {
+  border: 1px solid #f7f7f7;
+}
+
+#treaties-table tbody tr:hover {
+  cursor: pointer;
+  outline: 2px solid #3399cc;
+  /*outline-offset: 10px;*/ /*Delete if you don't want an offset*/
+}
+
+#treaties-table thead th {
   padding-bottom: 8px;
-  border-bottom: 1px solid #c6cedb;
-  margin-bottom: 12px;
-}
-
-#treaties-filters > div {
-  float: left;
+  border: 0;
   position: relative;
-  font-size: 18px;
-  line-height: 30px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 15px;
+  font-weight: normal;
 }
 
-#treaties-filters .treaty-title {
-  color: #8a95a6;
-  font-size: 15px;
+#treaties-table thead th:first-child {
+  padding-left: 0;
+  color: #565656;
+}
+
+#treaties-table thead th .filter,
+#treaties-table thead th .dropdown-toggle {
+  position: static;
+}
+
+#treaties-table thead th .dropdown-menu {
+  left: 0;
+}
+
+#treaties-table tbody td {
+  height: 60px;
+  border: 0;
+  vertical-align: middle;
+}
+
+#treaties-table tbody td:first-child {
+  width: 60px;
+}
+
+#treaties-table tbody td:first-child img {
+  display: block; 
+  width: 100%;
+  height: auto;
+}
+
+#treaties-table tbody td h2 {
+  margin: 0; 
+  color: #3399cc;
 }
 
 div.dropdown.inline {
@@ -389,58 +428,6 @@ div.dropdown.inline {
   *display: inline;
   *zoom: 1;
 }
-
-#treaties-filters div.dropdown .dropdown-toggle {
-  margin: 6px 3px;
-  vertical-align: top;
-}
-
-#treaties-list {
-  margin-bottom: 24px;
-}
-
-#treaties-list li a > div {
-  float: left;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  line-height: 60px;
-  color: #565656;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* Control columns */
-/* Replicate a table */
-.treaty-title {
-  width: 332px;
-}
-
-.treaty-title img {
-  display: block;
-  float: left;
-  width: 60px;
-  height: 60px;
-  margin: 0 12px 0 0;
-}
-
-.treaty-title h2 {
-  line-height: 60px;
-  margin: 0;
-  color: #3399cc;
-}
-
-.treaty-topic { 
-  width: 360px; 
-}
-.treaty-coverage { 
-  width: 120px; 
-}
-.treaty-year { 
-  width: 102px;
-  text-align: center; 
-}
-
 /************************************/
 /********** SEARCH RESULTS **********/
 /************************************/

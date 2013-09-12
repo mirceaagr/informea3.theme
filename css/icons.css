@@ -33,11 +33,6 @@
   margin-top: 0;
 }
 
-.btn-mini [class^="icon-"],
-.btn-mini [class*=" icon-"] {
-  margin-top: -1px;
-}
-
 .nav-list [class^="icon-"],
 .nav-list [class*=" icon-"] {
   margin-right: 2px;
@@ -203,7 +198,7 @@
   background-position: -456px -24px;
 }
 
-.icon-tag {
+.icon-more {
   background-position: 0 -48px;
 }
 
