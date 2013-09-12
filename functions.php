@@ -13,6 +13,13 @@ function informea3_setup() {
 }
 add_action('after_setup_theme', 'informea3_setup');
 
+add_filter('nav_menu_css_class' , 'about_page_menu');
+function about_page_menu($classes){
+     if( in_array('current-menu-item', $classes) ){
+             $classes[] = 'active ';
+     }
+     return $classes;
+}
 
 /**
  * Treaties listing page
