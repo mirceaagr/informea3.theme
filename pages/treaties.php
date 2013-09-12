@@ -14,7 +14,7 @@ $regions = i3_treaty_regions_in_use();
 
 <h1><?php the_title(); ?></h1>
 
-<div id="treaties-filters" class="clearfix">
+<!-- <div id="treaties-filters" class="clearfix">
 	<div class="treaty-title">
 		Showing <?php echo $count; ?> out of <?php echo $count_total; ?> treaties
 	</div>
@@ -47,9 +47,9 @@ $regions = i3_treaty_regions_in_use();
 	<div class="treaty-year">
 		<span>Year</span>
 	</div>
-</div><!-- #treaties-filters -->
+</div> --><!-- #treaties-filters -->
 
-<ul id="treaties-list" class="unstyled">
+<!-- <ul id="treaties-list" class="unstyled">
 	<?php foreach($treaties as $row): ?>
 	<li>
 		<a href="<?php echo i3_treaty_url($row); ?>">
@@ -65,4 +65,35 @@ $regions = i3_treaty_regions_in_use();
 		</a>
 	</li>
 	<?php endforeach; ?>
-</ul><!-- #treaties-list -->
+</ul> --><!-- #treaties-list -->
+
+<table class="treaties-table">
+	<thead>
+		<tr>
+			<th>Showing <?php echo $count; ?> out of <?php echo $count_total; ?> treaties</th>
+			<th>
+				<span class="info">All Topics</span>
+				<div class="dropdown inline filter">
+					<button class="btn dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu pull-right" role="menu">
+						<?php foreach($topics as $row): ?>
+						<li><a tabindex="-1" href="#<?php echo $row; ?>"><?php echo $row; ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
