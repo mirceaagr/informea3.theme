@@ -178,30 +178,30 @@ a.tag:focus,
 /*****************************/
 /********** SECTION **********/
 /*****************************/
-section {
+.section {
   margin-bottom: 24px;
 }
 
-section h2 {
+.section h2 {
 	margin: 0 0 8px 0; 
 	border-bottom: 1px solid #c6cedb;
 }
 
-section > .tab-content {
+.section > .tab-content {
   overflow: hidden;
 }
 
-section > .tab-content > .tab-pane {
+.section > .tab-content > .tab-pane {
 	/*border: 1px solid #c6cedb;*/
   padding: 6px 12px;
   margin: -1px;
 }
 
-section > .tab-content > .tab-pane#members-list {
+.section > .tab-content > .tab-pane#members-list {
   padding: 0;
 }
 
-section > .tab-content > .tab-pane#members-list table {
+.section > .tab-content > .tab-pane#members-list table {
   margin: 0;
 }
 
