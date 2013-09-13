@@ -9,6 +9,17 @@
   .navbar-inner .container {
     width: 724px;
   }
+
+  .upcoming-meetings {
+    margin-left: 0;
+  }
+
+  .upcoming-meetings .span4 {
+    width: 100%;
+    margin-left: 0;
+    display: block;
+    float: none;
+  } 
 }
 
 @media (max-width: 979px) {
