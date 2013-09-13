@@ -178,13 +178,18 @@ a.tag:focus,
 /*****************************/
 /********** SECTION **********/
 /*****************************/
-.section {
-  margin-bottom: 24px;
+#content h2 {
+  margin: 24px 0 8px 0; 
+  border-bottom: 1px solid #c6cedb;
 }
 
-.section h2 {
-	margin: 0 0 8px 0; 
-	border-bottom: 1px solid #c6cedb;
+#content .section h2,
+#content h2:first-child {
+  margin-top: 0;
+}
+
+.section {
+  margin-bottom: 24px;
 }
 
 .section > .tab-content {
