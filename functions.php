@@ -86,6 +86,15 @@ function i3_treaties_title($title, $sep) {
 	return $title;
 }
 
-function i3_treaty_url($treaty) {
-	return sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty->odata_name);
+function i3_treaty_url($treaty, $echo = FALSE) {
+    if(is_string($treaty)) {
+        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty);
+    } else {
+        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty->odata_name);
+    }
+    if($echo) {
+        echo $url;
+    } else {
+        return $url;
+    }
 }

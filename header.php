@@ -32,8 +32,8 @@
 									<div class="row">
 										<ul class="nav-list span3">
 											<li class="nav-header">Biological Diversity</li>
-											<li><a href="#">AEWA</a></li>
-											<li><a href="#">Cartagena Protocol</a></li>
+											<li><a href="<?php i3_treaty_url('aewa', TRUE); ?>">AEWA</a></li>
+											<li><a href="<?php i3_treaty_url('cartagena', TRUE); ?>">Cartagena Protocol</a></li>
 											<li><a href="#">CBD</a></li>
 											<li><a href="#">CITES</a></li>
 											<li><a href="#">CMS</a></li>
@@ -84,7 +84,7 @@
 											<li><a href="#">Industrial Accidents Convention</a></li>
 
 											<!-- <li class="nav-header">Latin America and the Carribean</li> -->
-											<li><a href="#">Cartagena Convention</a></li>
+											<li><a href="<?php i3_treaty_url('cartagena-conv', TRUE); ?>">Cartagena Convention</a></li>
 											<li><a href="#">Antigua Convention</a></li>
 
 											<!-- <li class="nav-header">West Asia</li> -->
