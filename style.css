@@ -535,10 +535,106 @@ input[type="submit"].btn::-moz-focus-inner {
 
 
 /* THUMBNAILS */
-.thumbnail {
 
+.logo {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
 }
 
+.upcoming-meetings {
+  list-style-type: none;
+}
+
+.upcoming-meetings > li {
+  margin-bottom: 12px;
+}
+
+.upcoming-meetings .thumbnail {
+  min-height: 60px;
+  max-height: 100px;
+  overflow: hidden;
+  line-height: 16px;
+  *zoom: 1;
+}
+
+.upcoming-meetings .thumbnail:before,
+.upcoming-meetings .thumbnail:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.upcoming-meetings .thumbnail:after {
+  clear: both;
+}
+
+.upcoming-meetings .thumbnail .logo {
+  margin-right: 6px;
+  float: left;
+}
+
+.upcoming-meetings .thumbnail h3,
+.upcoming-meetings .thumbnail p {
+  margin-left: 66px;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+.upcoming-meetings .thumbnail:hover {
+  text-decoration: none;
+}
+
+.upcoming-meetings .thumbnail p {
+  color: #8a95a6;
+  font-weight: bold;
+}
+
+
+.thumbnail {
+  padding: 0;
+  border: 0;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+.thumbnail .thumbnail-bordered {
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #c6cedb;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus {
+  border-color: #0088cc;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+     -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+          box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
+}
+
+.thumbnail > img {
+  display: block;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.thumbnail .caption {
+  padding: 9px;
+  color: #555555;
+}
 /* BUTTONS HOVER/FOCUS */
 .navbar .nav > li:focus > a,
 .navbar .nav > li:hover > a,

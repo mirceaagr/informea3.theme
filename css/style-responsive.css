@@ -9,6 +9,17 @@
   .navbar-inner .container {
     width: 724px;
   }
+
+  .upcoming-meetings {
+    margin-left: 0;
+  }
+
+  .upcoming-meetings .span4 {
+    width: 100%;
+    margin-left: 0;
+    display: block;
+    float: none;
+  } 
 }
 
 @media (max-width: 979px) {
@@ -157,5 +168,17 @@
   .nav-collapse .nav > li a:focus {
     color: #16232e;
     background: transparent;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  .footer .container {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

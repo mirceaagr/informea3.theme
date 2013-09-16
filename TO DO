@@ -3,3 +3,7 @@ TO DO
 1. ON navbar mobile and tablet, when you expand the header for search you should automatically focus on search input.
 
 2. Treaties Section requires onclick event to table row for link to treaty
+
+3. Stop affix from overlapping with footer
+
+4. use js to create affix menu based on h2 in article

@@ -178,13 +178,19 @@ a.tag:focus,
 /*****************************/
 /********** SECTION **********/
 /*****************************/
-.section {
-  margin-bottom: 24px;
+.section h2, 
+#content h2 {
+  margin: 24px 0 8px 0; 
+  border-bottom: 1px solid #c6cedb;
 }
 
-.section h2 {
-	margin: 0 0 8px 0; 
-	border-bottom: 1px solid #c6cedb;
+.section h2,
+#content h2:first-child {
+  margin-top: 0;
+}
+
+.section {
+  margin-bottom: 24px;
 }
 
 .section > .tab-content {
@@ -727,38 +733,17 @@ h1 + #term-definition {
 /*******************************/
 /********** NEWS ROOM **********/
 /*******************************/
-.news {
+.latest-news li {
   padding: 6px 0;
   border-bottom: 1px solid #f7f7f7;
   *zoom: 1;
 }
 
-.news:first-child {
+.latest-news li:first-child {
   margin-top: -6px;
 }
 
-.news:before,
-.news:after {
-  display: table;
-  line-height: 0;
-  content: "";
-}
-
-.news:after {
-  clear: both;
-}
-
-.news strong {
-  display: block;
-  margin-bottom: 6px;
-}
-
-.news a {
-  display: block;
-  margin-left: 72px;
-}
-
-.latest a {
+.latest-news a {
   font-size: 15px;
   margin-left: 0;
 }
