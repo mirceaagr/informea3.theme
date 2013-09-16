@@ -6,6 +6,9 @@ function about_body_attributes($c) {
 }
 add_filter('body_class','about_body_attributes');
 
+wp_register_script('informea.about', get_template_directory_uri() . '/scripts/about.js', array('jquery'));
+wp_enqueue_script('informea.about');
+
 get_header();
 
 if(have_posts()): while(have_posts()) : the_post();
@@ -20,11 +23,7 @@ if(have_posts()): while(have_posts()) : the_post();
         <div class="row">
             <div class="span3 affix hidden-phone">
                 <div class="well scrollspy" data-spy="scroll affix" data-offset-top="">
-                    <?php wp_nav_menu(
-                        array(
-                            'menu' => 'About Page Menu', 'menu_class' => 'nav nav-list', 'container' => false
-                        )
-                    ); ?>
+                    <ul id="menu-about-page-menu" class="nav nav-list"></ul>
                 </div>
             </div>
             <div class="user-article span9 pull-right" id="content">  <?php  the_content(); ?> </div>
