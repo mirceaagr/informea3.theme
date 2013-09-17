@@ -31,6 +31,16 @@ function informea_treaties_breadcrumbtrail($items) {
 }
 add_filter('the_breadcrumb', 'informea_treaties_breadcrumbtrail');
 
+if($treaty) {
+    /**
+     * Add the scrollspy classes to the body tag
+     */
+    function informea_treaties_body_attributes($c) {
+        $c[] = '" data-spy="scroll" data-target=".scrollspy';
+        return $c;
+    }
+    add_filter('body_class','informea_treaties_body_attributes');
+}
 
 wp_enqueue_script('informea-treaties');
 get_header();
