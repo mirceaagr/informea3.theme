@@ -4,7 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="<?php bloginfo('charset'); ?>" />
-	<title><?php wp_title('-', true, 'right'); ?></title>
+	<title><?php
+        bloginfo( 'name' );
+        $site_description = get_bloginfo('description', 'display');
+        if ($site_description && (is_home() || is_front_page()))
+            echo " | $site_description";
+        wp_title(' - ', true, 'left');
+    ?></title>
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icons.css">

@@ -1,5 +1,7 @@
 <?php
 
+require_once(dirname(__FILE__) . '/functions_informea.php');
+
 wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'));
 wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'));
 wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'));
@@ -95,18 +97,6 @@ function i3_treaty_format_topic($treaty) {
 function i3_treaty_regions_in_use() {
 	global $wpdb;
 	return $wpdb->get_results('SELECT a.* FROM ai_region a INNER JOIN ai_treaty_region b ON a.id = b.id_region GROUP BY a.id ORDER BY a.id');
-}
-
-
-/**
- * Filter used by the treaty pages
- */
-function i3_treaties_title($title, $sep) {
-	$id = get_request_variable('id');
-	if(empty($id)) {
-		$title .= get_bloginfo('name');
-	}
-	return $title;
 }
 
 
