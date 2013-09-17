@@ -57,7 +57,7 @@ $parties_c = count($parties);
                     <li><a href="#decisions">Decisions<span class="qty">267</span></a></li>
                     <li><a href="#nfp">Focal Points<span class="qty">12</span></a></li>
                     <?php if($parties_c): ?>
-                    <li><a href="#member_parties">Member parties<span class="qty">78</span></a></li>
+                    <li><a href="#member_parties">Member parties<span class="qty"><?php echo $parties_c; ?></span></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
