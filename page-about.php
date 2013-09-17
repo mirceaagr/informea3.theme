@@ -2,11 +2,11 @@
 /**
  * Add the scrollspy classes to the body tag
  */
-function about_body_attributes($c) {
-    $c[] = '" data-spy="scroll" data-target=".scrollspy"';
+function informea_about_body_attributes($c) {
+    $c[] = '" data-spy="scroll" data-target=".scrollspy';
     return $c;
 }
-add_filter('body_class','about_body_attributes');
+add_filter('body_class','informea_about_body_attributes');
 
 /**
  * Breadcrumbtrail set-up for the about page
