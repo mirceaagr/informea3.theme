@@ -17,4 +17,12 @@ class InforMEA {
             $wpdb->prepare('SELECT * FROM ai_treaty WHERE odata_name = %s', $odata_name)
         );
     }
+
+
+    static function get_organization($id) {
+        global $wpdb;
+        return $wpdb->get_row(
+            $wpdb->preparE('SELECT * FROM ai_organization WHERE id = %d', $id)
+        );
+    }
 }

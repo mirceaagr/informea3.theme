@@ -119,6 +119,31 @@ function i3_treaty_url($treaty, $echo = TRUE) {
 }
 
 
+function i3_print_topics($treaty) {
+    if(!empty($treaty->theme) || !empty($treaty->theme_secondary)) {
+        echo '<span class="marker">Topics</span>';
+        if(!empty($treaty->theme)) {
+            echo $treaty->theme;
+        }
+        if(!empty($treaty->theme_secondary)) {
+            if(!empty($treaty->theme)) {
+                echo ', ';
+            }
+            echo $treaty->theme_secondary;
+        }
+    }
+}
+
+
+function i3_print_treaty_year($treaty) {
+    if(!empty($treaty->start)) {
+        $date = date('Y', strtotime($treaty->start));
+        if(!empty($date)) {
+            echo sprintf('<span class="marker">Year</span> %s', $date);
+        }
+    }
+}
+
 /**
  * Build the website breadcrumbtrail
  */

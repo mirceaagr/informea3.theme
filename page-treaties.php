@@ -16,6 +16,22 @@ function i3_treaties_title($title, $sep) {
 }
 add_filter('wp_title', 'i3_treaties_title', 1, 2);
 
+/**
+ * Breadcrumbtrail set-up
+ */
+function informea_treaties_breadcrumbtrail($items) {
+    global $treaty;
+    if($treaty) {
+        $items[] = sprintf('<li><a href="%s">%s</a> <span class="divider">/</span></li>', get_permalink(), get_the_title());
+        $items[] = sprintf('<li class="active">%s</li>', $treaty->short_title);
+    } else {
+        $items[] = '<li class="active">Treaties</li>';
+    }
+    return $items;
+}
+add_filter('the_breadcrumb', 'informea_treaties_breadcrumbtrail');
+
+
 wp_enqueue_script('informea-treaties');
 get_header();
 if (have_posts()) : while (have_posts()) : the_post();
