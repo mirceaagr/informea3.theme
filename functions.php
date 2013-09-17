@@ -94,9 +94,8 @@ function i3_treaty_url($treaty, $echo = FALSE) {
     }
     if($echo) {
         echo $url;
-    } else {
-        return $url;
     }
+    return $url;
 }
 
 
