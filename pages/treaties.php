@@ -3,7 +3,6 @@
  * Author: Cristian Romanescu <cristi _at_ eaudeweb dot ro>
  * Created: 201309041444
  */
-wp_enqueue_script('treaties');
 
 $treaties = i3_treaties_listing();
 $count = i3_treaties_count();
@@ -55,7 +54,11 @@ $regions = i3_treaty_regions_in_use();
     <?php foreach ($treaties as $row): ?>
         <tr>
             <td><img src="<?php echo $row->logo_medium; ?>" alt="<?php echo $row->short_title; ?> logo"></td>
-            <td class="treaty-title"><h2><?php echo $row->short_title; ?></h2></td>
+            <td class="treaty-title">
+                <h2>
+                    <a href="<?php i3_treaty_url($row); ?>"><?php echo $row->short_title; ?></a>
+                </h2>
+            </td>
             <td class="hidden-phone"><?php i3_treaty_format_topic($row); ?>&nbsp;</td>
             <td class="hidden-phone"><?php i3_treaty_format_region($row); ?></td>
             <td class="hidden-phone"><?php echo $row->year; ?></td>
