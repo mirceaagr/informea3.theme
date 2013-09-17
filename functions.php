@@ -112,10 +112,11 @@ function i3_treaties_title($title, $sep) {
 
 /**
  * Build the treaty URL (use this instead of hard-coding the URL inside pages)
- * @param stdClass Treaty object
- * @param boolean (Optional) echo the URL instead of returning it
+ * @param $treaty stdClass Treaty object
+ * @param bool $echo (Optional) echo the URL instead of returning it
+ * @return string The treaty URL
  */
-function i3_treaty_url($treaty, $echo = FALSE) {
+function i3_treaty_url($treaty, $echo = TRUE) {
     if(is_string($treaty)) {
         $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty);
     } else {
