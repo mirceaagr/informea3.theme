@@ -36,10 +36,10 @@ class InforMEA {
      * Retrieve InforMEA enabled treaties
      * @return array Array of treaty objects
      */
-    static function get_treaties_enabled() {
+    static function get_treaties_enabled($order_by = 'a.`order`') {
         global $wpdb;
         $sql = $wpdb->prepare('SELECT a.* FROM ai_treaty a WHERE a.enabled = 1 AND a.use_informea = 1', array());
-        $sql .= ' ORDER BY a.`order`';
+        $sql .= " ORDER BY $order_by";
         return $wpdb->get_results($sql);
     }
 

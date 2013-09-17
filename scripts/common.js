@@ -3,4 +3,5 @@ jQuery('document').ready(function() {
     jQuery('input#search').focus();
     jQuery('.scrollspy').scrollspy();
     jQuery('.affix').affix();
+    jQuery('.informea-tooltip').tooltip();
 });

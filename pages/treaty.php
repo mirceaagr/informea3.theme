@@ -5,6 +5,7 @@
  */
 
 global $treaty;
+$treaties = InforMEA::get_treaties_enabled('a.short_title');
 $organization = InforMEA::get_organization($treaty->id_organization);
 $parties = InforMEA::get_treaty_member_parties($treaty);
 $parties_c = count($parties);
@@ -89,8 +90,17 @@ if($decisions_c && $cop_meetings_c) {
             </div>
             <!-- SELECT TREATY -->
             <div class="box">
-                <select class="input-block-level">
-                    <option>...</option>
+                <select id="select_treaty" onchange="window.location = jQuery(this).val()"
+                        class="input-block-level informea-tooltip"
+                        data-placement="right" data-toggle="tooltip"
+                        title="View another treaty">
+                    <option>View another treaty</option>
+                <?php
+                    foreach($treaties as $row):
+                        $active = $row->id == $treaty->id ? ' selected="selected"' : '';
+                ?>
+                    <option value="<?php i3_treaty_url($row); ?>"<?php echo $active; ?>><?php echo $row->short_title; ?></option>
+                <?php endforeach; ?>
                 </select>
             </div>
         </div>
