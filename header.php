@@ -109,4 +109,5 @@
 		</div>
 	</div>
 
-	<div class="container">
+    <div class="container">
+        <?php informea_the_breadcrumb(); ?>

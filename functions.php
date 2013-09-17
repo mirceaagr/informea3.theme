@@ -98,3 +98,19 @@ function i3_treaty_url($treaty, $echo = FALSE) {
         return $url;
     }
 }
+
+
+function informea_the_breadcrumb() {
+    $items = array();
+    if(!is_front_page()) {
+        $items[] = sprintf('<li><a href="%s">Home</a> <span class="divider">/</span></li>', get_bloginfo('url'));
+    }
+    $items = apply_filters('the_breadcrumb', $items);
+    if(!empty($items)) {
+        echo '<ul class="breadcrumb">';
+        foreach($items as $item) {
+            echo $item;
+        }
+        echo '</ul>';
+    }
+}
