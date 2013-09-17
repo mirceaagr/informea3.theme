@@ -97,11 +97,23 @@ function i3_treaty_print_topics($treaty) {
  */
 function i3_treaty_print_year($treaty) {
     if(!empty($treaty->start)) {
-        $date = date('Y', strtotime($treaty->start));
+        $date = i3_format_mysql_date($treaty->start, 'Y');
         if(!empty($date)) {
             echo sprintf('<span class="marker">Year</span> %s', $date);
         }
     }
+}
+
+
+function i3_format_mysql_date($mysql_date, $format = 'd F Y', $empty = '&nbsp;') {
+    $ret = $empty;
+    if(!empty($mysql_date)) {
+        $date = strtotime($mysql_date);
+        if(!empty($date)) {
+            $ret = date($format, $date);
+        }
+    }
+    return $ret;
 }
 
 /**
