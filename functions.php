@@ -21,6 +21,7 @@ function about_page_menu($classes){
      return $classes;
 }
 
+
 /**
  * Treaties listing page
  * @return array treaties
@@ -31,6 +32,7 @@ function i3_treaties_listing() {
 	$sql .= ' ORDER BY a.`order`';
 	return $wpdb->get_results($sql);
 }
+
 
 /**
  * Treaties listing page
@@ -43,6 +45,10 @@ function i3_treaties_count() {
 }
 
 
+/**
+ * Retrieve the primary treaty topics from the database
+ * @return array Array of string with the terms
+ */
 function i3_treaties_primary_topics() {
 	global $wpdb;
 	$sql = $wpdb->prepare("
@@ -53,11 +59,20 @@ function i3_treaties_primary_topics() {
 	return $wpdb->get_col($sql);
 }
 
+
+/**
+ * Echo the formatted region of a treaty (empty regions are treated as global)
+ * @param $treaty Treaty object
+ */
 function i3_treaty_format_region($treaty) {
 	echo !empty($treaty->region) ? $treaty->region : __('Global', 'informea');
 }
 
 
+/**
+ * Echo the formatted topic of a treaty (printing primary and secondary topics)
+ * @param $treaty Treaty object
+ */
 function i3_treaty_format_topic($treaty) {
 	$ret = '';
 	if(!empty($treaty->theme)) {
@@ -73,11 +88,19 @@ function i3_treaty_format_topic($treaty) {
 }
 
 
+/**
+ * Retrieve the unique regions in use within a treaty
+ * @return array Array of object classes from ai_region table
+ */
 function i3_treaty_regions_in_use() {
 	global $wpdb;
 	return $wpdb->get_results('SELECT a.* FROM ai_region a INNER JOIN ai_treaty_region b ON a.id = b.id_region GROUP BY a.id ORDER BY a.id');
 }
 
+
+/**
+ * Filter used by the treaty pages
+ */
 function i3_treaties_title($title, $sep) {
 	$id = get_request_variable('id');
 	if(empty($id)) {
@@ -86,6 +109,12 @@ function i3_treaties_title($title, $sep) {
 	return $title;
 }
 
+
+/**
+ * Build the treaty URL (use this instead of hard-coding the URL inside pages)
+ * @param stdClass Treaty object
+ * @param boolean (Optional) echo the URL instead of returning it
+ */
 function i3_treaty_url($treaty, $echo = FALSE) {
     if(is_string($treaty)) {
         $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty);
@@ -99,6 +128,9 @@ function i3_treaty_url($treaty, $echo = FALSE) {
 }
 
 
+/**
+ * Build the website breadcrumbtrail
+ */
 function informea_the_breadcrumb() {
     $items = array();
     if(!is_front_page()) {
