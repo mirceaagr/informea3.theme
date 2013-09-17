@@ -4,11 +4,11 @@
  * Created: 201309041444
  */
 
-$treaties = i3_treaties_listing();
-$count = i3_treaties_count();
-$count_total = i3_treaties_count();
-$topics = i3_treaties_primary_topics();
-$regions = i3_treaty_regions_in_use();
+$treaties = InforMEA::get_treaties_enabled();
+$count = InforMEA::get_treaties_enabled_count();
+$count_total = InforMEA::get_treaties_enabled_count();
+$topics = InforMEA::get_treaties_enabled_primary_topics();
+$regions = InforMEA::get_treaties_enabled_regions_in_use();
 ?>
 
 <h1><?php the_title(); ?></h1>

@@ -6,8 +6,6 @@
 
 global $treaty;
 $organization = InforMEA::get_organization($treaty->id_organization);
-var_dump($treaty);
-var_dump($organization);
 ?>
 <!-- TREATY HEADER -->
     <div class="treaty-header row">
