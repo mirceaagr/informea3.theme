@@ -12,7 +12,7 @@ add_filter('body_class','about_body_attributes');
  * Breadcrumbtrail set-up for the about page
  */
 function informea_about_breadcrumbtrail($items) {
-    $items[] = sprintf('<li class="active">About InforMEA</li>');
+    $items[] = '<li class="active">About InforMEA</li>';
     return $items;
 }
 add_filter('the_breadcrumb', 'informea_about_breadcrumbtrail');
