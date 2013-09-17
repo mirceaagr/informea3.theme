@@ -64,18 +64,18 @@ function i3_treaties_primary_topics() {
 
 /**
  * Echo the formatted region of a treaty (empty regions are treated as global)
- * @param $treaty Treaty object
+ * @param $treaty stdClass object
  */
-function i3_treaty_format_region($treaty) {
+function i3_treaty_print_region($treaty) {
 	echo !empty($treaty->region) ? $treaty->region : __('Global', 'informea');
 }
 
 
 /**
  * Echo the formatted topic of a treaty (printing primary and secondary topics)
- * @param $treaty Treaty object
+ * @param $treaty stdClass Treaty object
  */
-function i3_treaty_format_topic($treaty) {
+function i3_treaty_print_topic($treaty) {
 	$ret = '';
 	if(!empty($treaty->theme)) {
 		$ret = sprintf('<strong>%s</strong>', $treaty->theme);
@@ -119,7 +119,7 @@ function i3_treaty_url($treaty, $echo = TRUE) {
 }
 
 
-function i3_print_topics($treaty) {
+function i3_treaty_print_topics($treaty) {
     if(!empty($treaty->theme) || !empty($treaty->theme_secondary)) {
         echo '<span class="marker">Topics</span>';
         if(!empty($treaty->theme)) {
@@ -135,7 +135,7 @@ function i3_print_topics($treaty) {
 }
 
 
-function i3_print_treaty_year($treaty) {
+function i3_treaty_print_year($treaty) {
     if(!empty($treaty->start)) {
         $date = date('Y', strtotime($treaty->start));
         if(!empty($date)) {

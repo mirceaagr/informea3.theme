@@ -59,8 +59,8 @@ $regions = i3_treaty_regions_in_use();
                     <a href="<?php i3_treaty_url($row); ?>"><?php echo $row->short_title; ?></a>
                 </h2>
             </td>
-            <td class="hidden-phone"><?php i3_treaty_format_topic($row); ?>&nbsp;</td>
-            <td class="hidden-phone"><?php i3_treaty_format_region($row); ?></td>
+            <td class="hidden-phone"><?php i3_treaty_print_topic($row); ?>&nbsp;</td>
+            <td class="hidden-phone"><?php i3_treaty_print_region($row); ?></td>
             <td class="hidden-phone"><?php echo $row->year; ?></td>
         </tr>
     <?php endforeach; ?>

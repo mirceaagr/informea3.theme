@@ -20,15 +20,15 @@ var_dump($organization);
             <h1><?php echo $treaty->short_title; ?></h1>
             <div class="row">
                 <div class="treaty-info1 span5">
-                <?php i3_print_topics($treaty); ?>
+                <?php i3_treaty_print_topics($treaty); ?>
                 <?php if(!empty($organization->depository)) : ?>
                     <br />
                     <span class="marker">Depository</span> <?php echo $organization->depository; ?>
                 <?php endif; ?>
                 </div>
                 <div class="treaty-info2 span3">
-                    <span class="marker">Coverage</span> <?php i3_treaty_format_region($treaty); ?><br/>
-                    <?php i3_print_treaty_year($treaty); ?>
+                    <span class="marker">Coverage</span> <?php i3_treaty_print_region($treaty); ?><br/>
+                    <?php i3_treaty_print_year($treaty); ?>
                 </div>
                 <div class="treaty-actions span3">
                     <div class="btn-group pull-right">
