@@ -77,4 +77,75 @@ class InforMEA {
         global $wpdb;
         return $wpdb->get_results('SELECT a.* FROM ai_region a INNER JOIN ai_treaty_region b ON a.id = b.id_region GROUP BY a.id ORDER BY a.id');
     }
+
+
+    /**
+     * Retrieve the treaty member parties
+     * @param $treaty
+     * @return array Array with membership information
+     */
+    static function get_treaty_member_parties($treaty) {
+        global $wpdb;
+        $ret = array();
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT a.*, b.name AS country, b.icon_medium AS flag
+                    FROM ai_treaty_country a
+                    INNER JOIN ai_country b ON a.id_country = b.id
+                WHERE a.id_treaty = %d
+                ORDER BY b.name', $treaty->id)
+        );
+        foreach($rows as $row) {
+            $update = array_key_exists($row->id, $ret);
+            $ob = $update ? $ret[$row->id] : new stdClass();
+            $ob->country = $row->country;
+            $ob->entryIntoForce = '';
+            $ob->signed = '';
+            $ob->notes = $row->notes;
+            switch($row->status) {
+                case 'entryIntoForce':
+                    $ob->entryIntoForce = $row->date;
+                    $ob->status = 'Party';
+                    break;
+                case 'signature':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Signature';
+                    }
+                    break;
+                case 'succesion':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Succession';
+                    }
+                    break;
+                case 'ratification':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Ratification';
+                    }
+                    break;
+                case 'acceptance':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Acceptance';
+                    }
+                    break;
+                case 'approval':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Approval';
+                    }
+                    break;
+                case 'accesion':
+                    $ob->signed = $row->date;
+                    if(!$update) {
+                        $ob->status = 'Accesion';
+                    }
+                    break;
+            }
+            $ret[$row->id_country] = $ob;
+        }
+        return $ret;
+    }
 }
