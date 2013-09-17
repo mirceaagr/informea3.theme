@@ -148,4 +148,39 @@ class InforMEA {
         }
         return $ret;
     }
+
+
+    static function get_treaty_cop_meetings($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_results(
+            $wpdb->prepare("
+                SELECT a.* FROM ai_event a
+                  INNER JOIN ai_decision b ON b.id_meeting = a.id
+                  WHERE a.id_treaty = 1 AND LOWER(a.`type`) IN ('cop', 'mop')
+                  GROUP BY a.id
+                  ORDER BY a.`start` DESC
+                ", $id_treaty
+            )
+        );
+    }
+
+
+    static function get_meeting_decisions($id_meeting) {
+        global $wpdb;
+        return $wpdb->get_results(
+            $wpdb->prepare("
+                SELECT * FROM ai_decision WHERE id_meeting = %d ORDER BY display_order
+            ", $id_meeting)
+        );
+    }
+
+
+    static function get_treaty_decisions_count($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_var(
+            $wpdb->prepare("
+                SELECT COUNT(*) FROM ai_decision WHERE id_treaty = %d
+            ", $id_treaty)
+        );
+    }
 }

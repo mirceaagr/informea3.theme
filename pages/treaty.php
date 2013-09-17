@@ -8,7 +8,15 @@ global $treaty;
 $organization = InforMEA::get_organization($treaty->id_organization);
 $parties = InforMEA::get_treaty_member_parties($treaty);
 $parties_c = count($parties);
-
+$cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
+$cop_meetings_c = count($cop_meetings);
+$decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
+$decisions = array();
+$cop = null;
+if($decisions_c && $cop_meetings_c) {
+    $cop = $cop_meetings[0];
+    $decisions = InforMEA::get_meeting_decisions($cop->id);
+}
 //var_dump($treaty);
 ?>
 <!-- TREATY HEADER -->
@@ -54,7 +62,9 @@ $parties_c = count($parties);
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
                     <li class="active"><a href="#summary">Summary</a></li>
-                    <li><a href="#decisions">Decisions<span class="qty">267</span></a></li>
+                    <?php if($decisions_c): ?>
+                    <li><a href="#decisions">Decisions<span class="qty"><?php echo $decisions_c; ?></span></a></li>
+                    <?php endif; ?>
                     <li><a href="#nfp">Focal Points<span class="qty">12</span></a></li>
                     <?php if($parties_c): ?>
                     <li><a href="#member_parties">Member parties<span class="qty"><?php echo $parties_c; ?></span></a></li>
@@ -94,6 +104,7 @@ $parties_c = count($parties);
             </section>
 
             <!-- SUMMARY -->
+            <?php if($decisions_c && $cop_meetings_c): ?>
             <section id="decisions">
                 <h2 id="decisions">Decisions</h2>
                 <ul class="meeting-bar clearfix">
@@ -101,17 +112,16 @@ $parties_c = count($parties);
                         <a class="disabled" href="#">← Earlier Meeting</a>
                     </li>
                     <li class="meeting">
-                        <a href="#">Meeting Name</a> - Date, Location - 32 Decisions
+                        <a href="#"><?php echo $cop->abbreviation; ?></a> - Date, Location - 32 Decisions
                         <div class="dropdown filter pull-right">
                             <button class="btn dropdown-toggle" data-toggle="dropdown">
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="info">Select a Meeting</li>
-                                <li><a tabindex="-1" href="#">Meeting 1</a></li>
-                                <li><a tabindex="-1" href="#">Meeting 2</a></li>
-                                <li><a tabindex="-1" href="#">Meeting 3</a></li>
-                                <li><a tabindex="-1" href="#">Meeting 4</a></li>
+                                <li class="info">Select a COP/MOP meeting</li>
+                            <?php foreach($cop_meetings as $row): ?>
+                                <li><a tabindex="-1" href="#"><?php echo $row->abbreviation; ?></a></li>
+                            <?php endforeach; ?>
                             </ul>
                         </div>
                     </li>
@@ -120,32 +130,24 @@ $parties_c = count($parties);
                     </li>
                 </ul>
                 <ul class="decisions-list clear">
+                    <?php foreach($decisions as $row): ?>
                     <li>
-                        <div class="decision-number pull-left"><!-- Decision Number -->
+                        <div class="decision-number pull-left">
                             <span class="aux">No.</span><br>
-                            <strong>_Value</strong>
+                            <strong><?php echo $row->number; ?></strong>
                         </div>
                         <div class="decision-info">
-                            <span>Decision</span> <span class="status retired">Retired</span>
+                            <span><?php echo ucfirst($row->type); ?></span>
+                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo $row->status; ?></span>
                             <!-- Decision status can receive 3 classes: Active, Revised, Retired -->
                             <br>
-                            <a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
+                            <a href="#"><?php echo $row->short_title; ?></a>
                         </div>
                     </li>
-                    <li>
-                        <div class="decision-number pull-left"><!-- Decision Number -->
-                            <span class="aux">No.</span><br>
-                            <strong>_Value</strong>
-                        </div>
-                        <div class="decision-info">
-                            <span>Decision</span> <span class="status active">Active</span>
-                            <!-- Decision status can receive 3 classes: Active, Revised, Retired -->
-                            <br>
-                            <a href="#">Status Of The Nagoya Protocol On Access To Genetic Resources And The Fair And Equitable Sharing Of Benefits Arising From Their Utilization And Related Developments</a>
-                        </div>
-                    </li>
+                    <?php endforeach; ?>
                 </ul>
             </section>
+            <?php endif; ?>
 
             <!-- FOCAL POINTS -->
             <section id="focal-points">
