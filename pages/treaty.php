@@ -53,7 +53,7 @@ $cop = null;
     </div>
     <div class="row">
         <!-- NAVIGATION BOX -->
-        <div class="span3 scrollspy affix">
+        <div class="span3 scrollspy affix-menu affix-top" data-affix-top="155">
             <div class="well">
                 <h4>Contents</h4>
                 <ul class="nav nav-list">

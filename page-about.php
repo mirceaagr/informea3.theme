@@ -26,8 +26,8 @@ if(have_posts()): while(have_posts()) : the_post();
     <div class="container">
         <h1><?php the_title(); ?></h1></div>
         <div class="row">
-            <div class="span3 affix hidden-phone">
-                <div class="well scrollspy" data-spy="scroll affix" data-offset-top="">
+            <div class="span3 affix-menu affix hidden-phone">
+                <div class="well scrollspy" data-spy="scroll">
                     <ul id="menu-about-page-menu" class="nav nav-list"></ul>
                 </div>
             </div>
