@@ -3,90 +3,99 @@
 		<div class="container">
 			<div class="section" id="organizations">
 				<h3>Organizations</h3>
-				<ul class="unstyled clearfix">
-					<li class="logo">
+				<ul class="logo-grid">
+					<li>
 						<a class="un" target="_blank" href="http://www.un.org/" title="Visit United Nations website">
-							<div></div><p>UN</p>
+							<div class="logo"></div>
+							UN
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="unep" target="_blank" href="http://www.unep.org/" title="Visit United Nations Environment Programme website">
-							<div></div><p>UNEP</p>
+							<div class="logo"></div>
+							UNEP
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="fao" target="_blank" href="http://www.fao.org/" title="Visit Food and Agriculture Organization website website">
-							<div></div><p>FAO</p>
+							<div class="logo"></div>
+							FAO
 						</a>
 					</li>
-					<li class="logo"><a class="unesco" target="_blank" href="http://www.unesco.org/" title="Visit United Nations Educational, Scientific and Cultural Organization website">
-							<div></div><p>UNESCO</p></a>
+					<li>
+						<a class="unesco" target="_blank" href="http://www.unesco.org/" title="Visit United Nations Educational, Scientific and Cultural Organization website">
+							<div class="logo"></div>
+							UNESCO
+						</a>
 					</li>
-					<li class="logo"><a class="unece" target="_blank" href="http://www.unece.org/" title="Visit UNECE website">
-							<div></div><p>UNECE</p></a>
+					<li>
+						<a class="unece" target="_blank" href="http://www.unece.org/" title="Visit UNECE website">
+							<div class="logo"></div>
+							UNECE
+						</a>
 					</li>
 				</ul>
 			</div>
 			<div class="section" id="participating_treaties">
 				<h3>Global treaties</h3>
-				<ul class="unstyled clearfix">
-					<li class="logo">
+				<ul class="logo-grid">
+					<li>
 						<a class="unfccc" target="_blank" href="http://unfccc.int/" title="Visit United Nations Framework Convention on Climate Change website">
-							<div></div><p>UNFCCC</p>
+							<div class="logo"></div>UNFCCC
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="unccd" target="_blank" href="http://www.unccd.int/" title="Visit United Nations Convention to Combat Desertification website">
-							<div></div><p>UNCCD</p>
+							<div class="logo"></div>UNCCD
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="ozone" target="_blank" href="http://ozone.unep.org/" title="Visit Ozone Secretariat website">
-							<div></div><p>OZONE</p>
+							<div class="logo"></div>OZONE
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="basel" target="_blank" href="http://www.basel.int/" title="Visit Basel Convention website">
-							<div></div><p>BASEL</p>
+							<div class="logo"></div>BASEL
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="rotterdam" target="_blank" href="http://www.pic.int/" title="Visit Rotterdam Convention website">
-							<div></div><p>ROTTERDAM</p>
+							<div class="logo"></div>ROTTERDAM
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="stockholm" target="_blank" href="http://chm.pops.int/" title="Visit Stockholm Convention website">
-							<div></div><p>STOCKHOLM</p>
+							<div class="logo"></div>STOCKHOLM
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="cbd" target="_blank" href="http://www.cbd.int/" title="Visit Convention on Biological Diversit website">
-							<div></div><p>CBD</p>
+							<div class="logo"></div>CBD
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="cites" target="_blank" href="http://www.cites.org/" title="Visit Convention on International Trade in Endangered Species website">
-							<div></div><p>CITES</p>
+							<div class="logo"></div>CITES
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="whc" target="_blank" href="http://whc.unesco.org/" title="Visit UNESCO World Heritage Convention website">
-							<div></div><p>WHC</p>
+							<div class="logo"></div>WHC
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="ramsar" target="_blank" href="http://www.ramsar.org/" title="Visit Ramsar Convention website">
-							<div></div><p>Ramsar</p>
+							<div class="logo"></div>Ramsar
 						</a>
 					</li>
-					<li class="logo">
+					<li>
 						<a class="itpgrfa" target="_blank" href="http://www.planttreaty.org/" title="Visit International Treaty on Genetic Resources for Food and Agriculture website">
-							<div></div><p>ITPGRFA</p>
+							<div class="logo"></div>ITPGRFA
 						</a></li>
-					<li class="logo">
+					<li>
 						<a class="cms" target="_blank" href="http://www.cms.int/" title="Visit Convention on Migratory Species website">
-							<div></div><p>CMS</p>
+							<div class="logo"></div>CMS
 						</a></li>
 				</ul>
 			</div>

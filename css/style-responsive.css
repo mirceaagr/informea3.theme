@@ -171,9 +171,17 @@
     color: #16232e;
     background: transparent;
   }
+
+  #focal-points .select {
+    padding: 4px 8px;
+  }
 }
 
 @media (max-width: 767px) {
+  .navbar {
+    margin-bottom: 12px;
+  }
+
   .treaty-info {
     margin-right: 0;
   }
@@ -199,6 +207,30 @@
     margin-top: 6px;
   }
 
+  #focal-points .select {
+    text-align: left;
+  }
+
+  #focal-points .select select {
+    margin-right: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50%;
+    min-width: 120px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+  }
+  #focal-points .select p {
+    display: inline;
+  }
+
+  .dl-horizontal dt {
+    float: left;
+  }
+  /*.focal-point .dl-horizontal dd {
+    margin-left: 0;
+  }*/
 
   .footer {
     margin-left: -20px;
@@ -223,14 +255,31 @@
   .nav-collapse .navbar-search {
     margin-right: 48px;
   }
-  /*.navbar .btn-navbar:first-child {
-    -webkit-border-radius: 2px 0 0 2px;
-       -moz-border-radius: 2px 0 0 2px;
-            border-radius: 2px 0 0 2px;
+
+  .dl-horizontal dt {
+    float: none;
   }
-  .navbar .btn-navbar:last-child {
-    -webkit-border-radius: 0 2px 2px 0;
-       -moz-border-radius: 0 2px 2px 0;
-            border-radius: 0 2px 2px 0;
-  }*/
+
+  .focal-point .dl-horizontal dd {
+    margin-left: 0;
+  }
+
+  .decision-list .decision-number,
+  .decision-list .decision-title,
+  .decision-list .decision-type {
+    margin:0;
+    width: auto;
+    float: none;
+    clear: left;
+  }
+
+  .decision-list .visible-phone {
+    width: 48px;
+    display: block;
+    float: left;
+  }
+
+  .decision-list strong {
+    display: inline!important;
+  }
 }

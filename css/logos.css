@@ -1,5 +1,5 @@
 /* GLOBAL :: logos */
-li.logo a > div {
+a .logo {
     display: block;
     width: 60px;
     height: 60px;
@@ -10,91 +10,88 @@ li.logo a > div {
     background-position-y: 0px;
 }
 
-li.logo:hover a > div,
-li.logo:active a > div,
-li.logo:focus a > div {
+a:hover .logo,
+a:active .logo,
+a:focus .logo {
     background-position-y: -60px;
 }
 
-
-
-
 /*later*/
-li.logo a.later > div {
+.later .logo {
   background-position-x: 0;
 }
-li.logo a.itpgrfa > div {
+.itpgrfa .logo {
   background-position-x: -60px;
 }
-li.logo a.stockholm > div {
+.stockholm .logo {
   background-position-x: -120px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -180px;
 }
-li.logo a.un > div {
+.un .logo {
   background-position-x: -240px;
 }
-li.logo a.un > div {
+.un .logo {
   background-position-x: -300px;
 }
-li.logo a.basel > div {
+.basel .logo {
   background-position-x: -360px;
 }
-li.logo a.ozone > div {
+.ozone .logo {
   background-position-x: -420px;
 }
-li.logo a.unccd > div {
+.unccd .logo {
   background-position-x: -480px;
 }
-li.logo a.cbd > div {
+.cbd .logo {
   background-position-x: -540px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -600px;
 }
-li.logo a.unece > div {
+.unece .logo {
   background-position-x: -660px;
 }
-li.logo a.cites > div {
+.cites .logo {
   background-position-x: -720px;
 }
-li.logo a.ramsar > div {
+.ramsar .logo {
   background-position-x: -780px;
 }
-li.logo a.unep > div {
+.unep .logo {
   background-position-x: -840px;
 }
-li.logo a.unep > div {
+.unep .logo {
   background-position-x: -840px;
 }
-li.logo a.abidjan > div {
+.abidjan .logo {
   background-position-x: -840px;
 }
-li.logo a.cms > div {
+.cms .logo {
   background-position-x: -900px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -960px;
 }
-li.logo a.unesco > div {
+.unesco .logo {
   background-position-x: -1020px;
 }
-li.logo a.fao > div {
+.fao .logo {
   background-position-x: -1080px;
 }
-li.logo a.rotterdam > div {
+.rotterdam .logo {
   background-position-x: -1140px;
 }
-li.logo a.unfccc > div {
+.unfccc .logo {
   background-position-x: -1200px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -1260px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -1320px;
 }
-li.logo a.later > div {
+.later .logo {
   background-position-x: -1380px;
 }

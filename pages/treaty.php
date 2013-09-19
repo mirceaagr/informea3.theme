@@ -40,23 +40,23 @@ if($decisions_c && $cop_meetings_c) {
                 <strong>Coverage</strong>&ensp;<?php i3_treaty_print_region($treaty); ?><br/>
                  <?php i3_treaty_print_year($treaty); ?>
             </div>
-            <div class="treaty-actions">
-                <div class="btn-group">
-                    <button class="btn btn-primary">Read Treaty Text</button>
-                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu pull-right">
-                        <li><a href="#">Read Treaty Text from Source</a></li>
-                        <li><a href="#">Go to Treaty Website</a></li>
-                    </ul>
-                </div>
+        </div>
+        <div class="treaty-actions">
+            <div class="btn-group">
+                <button class="btn btn-primary">Read Treaty Text</button>
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right">
+                    <li><a href="#">Read Treaty Text from Source</a></li>
+                    <li><a href="#">Go to Treaty Website</a></li>
+                </ul>
             </div>
         </div>
     </div>
     <div class="row">
         <!-- NAVIGATION BOX -->
-        <div class="span3 hidden-phone scrollspy">
+        <div class="span3 hidden-phone scrollspy" data-offset="10">
             <div class="well">
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
@@ -104,127 +104,96 @@ if($decisions_c && $cop_meetings_c) {
         </div>
 
         <!-- #content -->
-        <div class="span9" id="content">
+        <div class="span9 pull-right" id="content">
             <!-- SUMMARY -->
-            <section id="summary">
+            <div class="section" id="summary">
                 <h2 id="summary">Summary</h2>
                 <p><?php echo $treaty->abstract; ?></p>
-            </section>
+            </div>
 
             <!-- SUMMARY -->
             <?php if($decisions_c && $cop_meetings_c): ?>
-            <section id="decisions">
+            <div class="section" id="decisions">
                 <h2 id="decisions">Decisions</h2>
-                <ul class="meeting-bar clearfix">
-                    <li class="prev">
-                        <a class="disabled" href="#">← Earlier Meeting</a>
-                    </li>
-                    <li class="meeting">
-                        <a href="#"><?php echo $cop->abbreviation; ?></a> - Date, Location - 32 Decisions
-                        <div class="dropdown filter pull-right">
-                            <button class="btn dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="info">Select a COP/MOP meeting</li>
-                            <?php foreach($cop_meetings as $row): ?>
-                                <li><a tabindex="-1" href="#"><?php echo $row->abbreviation; ?></a></li>
+                <ul class="meeting-list">
+                    <?php foreach($cop_meetings as $row): ?>
+                    <li>
+                        <a data-toggle="collapse" data-target="#collapse-meeting"><?php echo $row->title; ?></a>
+                        <div id="collapse-meeting">
+                            <p class="info">Date, Location&ensp;-&ensp;Number of Decisions</p>
+                            <ul class="decision-list">
+                            <?php foreach($decisions as $row): ?>
+                            <li class="clearfix">
+                                <div class="decision-number">
+                                    <span class="visible-phone">No.</span>
+                                    <strong><?php echo $row->number; ?></strong>
+                                </div>
+                                <div class="decision-type">
+                                    <span class="visible-phone">Type</span>
+                                    <strong><?php echo ucfirst($row->type); ?></strong>
+                                    <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?></span>
+                                </div>
+                                <div class="decision-title">
+                                    <a href="#"><?php echo $row->short_title; ?></a>
+                                </div>
+                            </li>
                             <?php endforeach; ?>
                             </ul>
                         </div>
                     </li>
-                    <li class="next">
-                        <a href="#">Older Meeting →</a>
-                    </li>
-                </ul>
-                <ul class="decisions-list clear">
-                    <?php foreach($decisions as $row): ?>
-                    <li>
-                        <div class="decision-number pull-left">
-                            <span class="aux">No.</span><br>
-                            <strong><?php echo $row->number; ?></strong>
-                        </div>
-                        <div class="decision-info">
-                            <span><?php echo ucfirst($row->type); ?></span>
-                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo $row->status; ?></span>
-                            <!-- Decision status can receive 3 classes: Active, Revised, Retired -->
-                            <br>
-                            <a href="#"><?php echo $row->short_title; ?></a>
-                        </div>
-                    </li>
                     <?php endforeach; ?>
                 </ul>
-            </section>
+            </div>
             <?php endif; ?>
 
             <!-- FOCAL POINTS -->
-            <section id="focal-points">
+            <div class="section" id="focal-points">
                 <h2 id="nfp">Focal Points</h2>
                 <div class="row">
-                    <div class="select span2">
-                        <div class="box country">
-                            <a class="" href="" title="Go to Country Profile page">
+                    <div class="span2">
+                        <div class="well select clearfix">
+                            <a class="visible-desktop" href="" title="Go to Country Profile page">
                                 <img src="http://placehold.it/60x60" alt="Country Flag">
-                                <h3>Country name</h3>
                             </a>
-                            <p>Number of Focal Points</p>
+                            <select class="input-block-level">
+                                <option>Country</option>
+                            </select>
+                            <p>x Focal Points</p>
+                            <button class="btn btn-link">Show all</button>
                         </div>
-                        <select class="input-block-level">
-                            <option>Select a Country</option>
-                        </select>
                     </div>
-                    <ul class="unstyled span7">
+                    <ul class="focal-point-list span7">
                         <li class="focal-point">
-                            <div class="thumbnail thumb-60">
-                                <img src="http://placehold.it/60x60" alt="Profile Picture">
-                                <div class="btn-group">
-                                    <button class="btn btn-mini">Email</button>
-                                    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">vCard</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="focal-point-info">
-                                <h3>Person Name</h3>
-                                <p>Occupation</p>
-                                <span class="marker">Department</span>Department Name<br>
-                                <span class="marker">Institution</span>Institution Name<br>
-                                <span class="marker">Address</span>Institution Address
+                            <h3>Person Name</h3>
+                            <p>Occupation</p>
+                            <dl class="dl-horizontal">
+                                <dt>Department</dt><dd>Department Name</dd>
+                                <dt>Institution</dt><dd>Institution Name</dd>
+                                <dt>Address</dt><dd>Institution Address</dd>
+                            </dl>
+                            <div class="focal-point-actions">
+                                <a class="btn btn-link" href="">Email</a>&ensp;|&ensp;<a class="btn btn-link disabled" href="#">vCard</a>
                             </div>
                         </li>
                         <li class="focal-point">
-                            <div class="thumbnail thumb-60">
-                                <img src="http://placehold.it/60x60" alt="Profile Picture">
-                                <div class="btn-group">
-                                    <button class="btn btn-mini">Email</button>
-                                    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">vCard</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="focal-point-info">
-                                <h3>Person Name</h3>
-                                <p>Occupation</p>
-                                <span class="marker">Department</span>Department Name<br>
-                                <span class="marker">Institution</span>Institution Name<br>
-                                <span class="marker">Address</span>Institution Address
+                            <h3>Person Name</h3>
+                            <p>Occupation</p>
+                            <dl class="dl-horizontal">
+                                <dt>Department</dt><dd>Department Name</dd>
+                                <dt>Institution</dt><dd>Institution Name</dd>
+                                <dt>Address</dt><dd>Institution Address</dd>
+                            </dl>
+                            <div class="focal-point-actions">
+                                <a class="btn btn-link" href="">Email</a>&ensp;|&ensp;<a class="btn btn-link disabled" href="#">vCard</a>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </section>
+            </div>
 
             <!-- MEMBERS -->
             <?php if($parties_c): ?>
-            <section id="members">
+            <div class="section" id="members">
                 <h2 id="member_parties">Member parties</h2>
                 <ul class="nav nav-tabs" id="members-tabs">
                     <li class="active"><a href="#members-list" data-toggle="tab">List</a></li>
@@ -262,7 +231,7 @@ if($decisions_c && $cop_meetings_c) {
                         ...
                     </div>
                 </div>
-            </section>
+            </div>
             <?php endif; ?>
         </div><!-- /#content -->
     </div>
