@@ -108,7 +108,7 @@
 				<div class="nav-collapse search collapse">
 					<form class="navbar-search pull-right">
 						<input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-						<button type="submit" class="btn"><i class="icon-search"></i> <span class="hidden-desktop">Go</span></button>
+						<button type="submit" class="btn hidden-phone"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
 					</form>
 				</div>
 			</div>
