@@ -546,31 +546,54 @@ h1 + #term-definition {
 /************************************/
 /* A TREATY HEADER */
 .treaty-header {
+  margin-left: 0;
   margin-bottom: 18px;
   border-bottom: 1px solid #c6cedb;
   padding-bottom: 12px;
+  position: relative;
 }
 
 .treaty-header h1 {
   margin: 0;
 }
 
-.treaty-info1 {
-  float:left;
-  width:468px;
-  margin-right: 12px;
+.treaty-body {
+  margin-left: 72px;
 }
 
-.treaty-info2 {
-  float:left;
-  width:192px;
-  margin-right: 16px;
+.treaty-body .treaty-subject {
+  margin-left: 0;
+}
+
+.treaty-info {
+  margin-top: 0;
+  margin-left: 72px;
+  margin-right: 180px;
+  overflow: hidden;
+}
+
+.treaty-info strong:after {
+  content: ":";
+}
+
+.treaty-info .ti-1 {
+  float: left;
+  margin-right: 24px;
+}
+
+.treaty-info .ti-2 {
+  float: left;
 }
 
 .treaty-actions {
-  float:left;
-  width:180px;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
 }
+
+
+
+
 
 /* A TREATY LIST */
 #treaties-list li {
