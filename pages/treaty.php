@@ -11,14 +11,9 @@ $parties = InforMEA::get_treaty_member_parties($treaty);
 $parties_c = count($parties);
 $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
 $cop_meetings_c = count($cop_meetings);
-$decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
-$decisions = array();
+$decisions = InforMEA::get_treaty_decisions($treaty->id);
+$decisions_c = count($decisions);
 $cop = null;
-if($decisions_c && $cop_meetings_c) {
-    $cop = $cop_meetings[0];
-    $decisions = InforMEA::get_meeting_decisions($cop->id);
-}
-//var_dump($treaty);
 ?>
 <!-- TREATY HEADER -->
     <div class="treaty-header row">
@@ -58,7 +53,7 @@ if($decisions_c && $cop_meetings_c) {
     </div>
     <div class="row">
         <!-- NAVIGATION BOX -->
-        <div class="span3 scrollspy">
+        <div class="span3 scrollspy affix">
             <div class="well">
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
@@ -106,7 +101,7 @@ if($decisions_c && $cop_meetings_c) {
         </div>
 
         <!-- #content -->
-        <div class="span9" id="content">
+        <div class="span9 pull-right" id="content">
             <!-- SUMMARY -->
             <section id="summary">
                 <h2 id="summary">Summary</h2>
