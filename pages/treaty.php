@@ -110,30 +110,30 @@ $cop = null;
             <?php if($decisions_c && $cop_meetings_c): ?>
             <div class="section" id="decisions">
                 <h2 id="decisions">Decisions</h2>
-                <ul class="meeting-list">
+                <ul id="accordion2" class="accordion meeting-list">
                     <?php foreach($cop_meetings as $row): ?>
-                    <li>
-                        <a data-toggle="collapse" data-target="#collapse-meeting"><?php echo $row->title; ?></a>
-                        <div id="collapse-meeting">
-                            <p class="info">Date, Location&ensp;-&ensp;Number of Decisions</p>
-                            <ul class="decision-list">
-                            <?php foreach($decisions as $row): ?>
-                            <li class="clearfix">
-                                <div class="decision-number">
-                                    <span class="visible-phone">No.</span>
-                                    <strong><?php echo $row->number; ?></strong>
-                                </div>
-                                <div class="decision-type">
-                                    <span class="visible-phone">Type</span>
-                                    <strong><?php echo ucfirst($row->type); ?></strong>
-                                    <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?></span>
-                                </div>
-                                <div class="decision-title">
-                                    <a href="#"><?php echo $row->short_title; ?></a>
-                                </div>
-                            </li>
-                            <?php endforeach; ?>
-                            </ul>
+                    <li class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                <?php echo $row->title; ?>
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <table class="table table-bordered accordion-inner">
+                                <caption>!x Decisions taken on !Date in !Location</caption>
+                                <tbody>
+                                    <?php foreach($decisions as $row): ?>
+                                    <tr>
+                                        <td><?php echo $row->number; ?> <br/>
+                                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span> 
+                                        </td>
+                                        <td>
+                                            <a href="#"><?php echo $row->short_title; ?></a>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <?php endforeach; ?>
