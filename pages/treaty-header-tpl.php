@@ -25,7 +25,7 @@
             <a href="#">Go to Treaty Website</a>
         <?php else: ?>
         <div class="btn-group">
-            <button class="btn btn-primary" data-remote="<?php i3_treaty_url($treaty, '/text') ;?>" data-target="#treaty-text-modal" data-toggle="modal">Read Treaty Text</button>
+            <button class="btn btn-primary" data-remote="<?php i3_treaty_url($treaty, '/text?display=modal') ;?>" data-target="#treaty-text-modal" data-toggle="modal">Read Treaty Text</button>
             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
             </button>

@@ -1,8 +1,13 @@
 <?php
 global $treaty, $organization;
 
+$display = get_request_variable('display');
 $articles = InforMEA::get_treaty_articles($treaty->id);
 $paragraphs = InforMEA::get_treaty_paragraphs($treaty->id);
+
+if(!$display) {
+    get_header();
+}
 ?>
 <div class="row">
     <div class="span3">
@@ -46,3 +51,7 @@ $paragraphs = InforMEA::get_treaty_paragraphs($treaty->id);
         </div>
     </div>
 </div>
+<?php
+if(!$display) {
+    get_footer();
+}
