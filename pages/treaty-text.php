@@ -38,9 +38,19 @@ if(!$display) {
                     } else {
                         $ap = $paragraphs[$row->id];
                         foreach($ap as $p) {
-                            echo sprintf('<p id="paragraph-%s" class="treaty-indent-%s">', $p->id, $p->indent);
-                            echo $p->content;
-                            echo '</p>';
+                ?>
+                            <div>
+                                <p id="paragraph-<?php echo $p->id; ?>"
+                                   class="treaty-indent-<?php echo $p->indent; ?> tag-terms"
+                                   data-toggle="popover" data-placement="left" data-delay="300"
+                                   data-trigger="manual">
+                                    <?php echo $p->content; ?>
+                                </p>
+                                <div class="popover-content hide">
+                                    <a href="#">term1</a>, <a href="#">term2</a>
+                                </div>
+                            </div>
+                <?php
                         }
                     }
                 ?>
