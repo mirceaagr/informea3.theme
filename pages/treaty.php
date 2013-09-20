@@ -4,7 +4,7 @@
  * Created: 201309171041
  */
 
-global $treaty;
+global $treaty, $treaty_header_mode, $organization;
 
 /** Add the scrollspy classes to the body tag */
 function informea_treaties_body_attributes($c) {
@@ -27,40 +27,8 @@ get_header();
 
 ?>
 <!-- TREATY HEADER -->
-    <div class="treaty-header">
-        <div class="treaty-name">
-            <a class="logo logo-left" href="<?php echo $treaty->url; ?>" title="Visit Treaty Website">
-                <img src="<?php echo $treaty->logo_medium; ?>" alt="Treaty logo">
-            </a>
-            <h1><?php echo $treaty->short_title; ?></h1>
-        </div>
-        <div class="treaty-info">
-            <div class="ti-1">
-            <?php i3_treaty_print_topics($treaty); ?>
-            <?php if(!empty($organization->depository)) : ?>
-                <br />
-                <strong>Depository</strong>&ensp;<?php echo $organization->depository; ?>
-            <?php endif; ?>
-            </div>
-            <div class="ti-2">
-                <strong>Coverage</strong>&ensp;<?php i3_treaty_print_region($treaty); ?><br/>
-                 <?php i3_treaty_print_year($treaty); ?>
-            </div>
-        </div>
-        <div class="treaty-actions">
-            <div class="btn-group">
-                <button class="btn btn-primary" data-remote="/treaties" data-target="#treaty-text-modal" data-toggle="modal">Read Treaty Text</button>
-                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu pull-right">
-                    <li><a href="#">Read Treaty Text from Source</a></li>
-                    <li><a href="#">Go to Treaty Website</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="row">
+        <?php get_template_part('pages/treaty-header-tpl'); ?>
         <!-- NAVIGATION BOX -->
         <div class="span3 hidden-phone scrollspy affix-menu affix-top" data-offset="155">
             <div class="well">
@@ -97,13 +65,12 @@ get_header();
                 <select id="select_treaty" onchange="window.location = jQuery(this).val()"
                         class="input-block-level informea-tooltip"
                         data-placement="right" data-toggle="tooltip"
-                        title="View another treaty">
+                        title="Use this select to move to another treaty">
                     <option>View another treaty</option>
                 <?php
                     foreach($treaties as $row):
-                        $active = $row->id == $treaty->id ? ' selected="selected"' : '';
                 ?>
-                    <option value="<?php i3_treaty_url($row); ?>"<?php echo $active; ?>><?php echo $row->short_title; ?></option>
+                    <option value="<?php i3_treaty_url($row); ?>"><?php echo $row->short_title; ?></option>
                 <?php endforeach; ?>
                 </select>
             </div>
@@ -139,7 +106,7 @@ get_header();
                                     <?php foreach($decisions as $row): ?>
                                     <tr>
                                         <td><?php echo $row->number; ?> <br/>
-                                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span> 
+                                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span>
                                         </td>
                                         <td>
                                             <a href="#"><?php echo $row->short_title; ?></a>
@@ -250,7 +217,7 @@ get_header();
     <div id="treaty-text-modal" class="modal hide fade span9" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Modal header</h3>
+            <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-header-tpl'); ?>
         </div>
         <div class="modal-body">
             <p>One fine body…</p>
