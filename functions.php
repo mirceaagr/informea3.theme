@@ -81,9 +81,8 @@ function i3_treaty_url($treaty, $suffix = '', $echo = TRUE) {
  */
 function i3_treaty_print_topics($treaty) {
     if(!empty($treaty->theme) || !empty($treaty->theme_secondary)) {
-        echo '<span class="marker">Topics</span>';
         if(!empty($treaty->theme)) {
-            echo $treaty->theme;
+            echo sprintf('<strong>%s</strong>', $treaty->theme);
         }
         if(!empty($treaty->theme_secondary)) {
             if(!empty($treaty->theme)) {
@@ -103,7 +102,7 @@ function i3_treaty_print_year($treaty) {
     if(!empty($treaty->start)) {
         $date = i3_format_mysql_date($treaty->start, 'Y');
         if(!empty($date)) {
-            echo sprintf('<span class="marker">Year</span> %s', $date);
+            echo sprintf('<strong>Enter into force</strong> %s', $date);
         }
     }
 }
