@@ -215,81 +215,24 @@ a.tag:focus,
   margin: 0;
 }
 
-/*******************************/
-/********** DECISIONS **********/
-/*******************************/
-#decisions h2 { margin-bottom: -1px; }
-
-#decisions .meeting-bar {
-  list-style-type: none;
-  margin: 0 0 -1px 0;
-  border: 1px solid #c6cedb;
-  padding: 0;
-  line-height: 18px;
-}
-
-#decisions .meeting-bar > li { float: left; }
-
-#decisions .meeting-bar .next,
-#decisions .meeting-bar .prev {
-  width: 120px;
-  text-align: center;
-}
-
-#decisions .meeting-bar .next { border-left: 1px solid #c6cedb; }
-#decisions .meeting-bar .prev { border-right: 1px solid #c6cedb; }
-
-#decisions .meeting-bar .next a,
-#decisions .meeting-bar .prev a,
-#decisions .meeting-bar .meeting {
-  display: block;
-  padding: 3px 6px;
-}
-
-#decisions .meeting-bar .meeting {
-  position: relative;
-  width: 444px;
-}
-
-#decisions .meeting-bar .next a:hover,
-#decisions .meeting-bar .next a:focus,
-#decisions .meeting-bar .prev a:hover,
-#decisions .meeting-bar .prev a:focus {
-  text-decoration: none;
-  background: #f7f7f7;
-}
-
-
-#decisions .decisions-list {
-  min-height: 240px;
-  max-height: 600px;
-  overflow-y: auto;
-  margin: 0;
-  border: 1px solid #c6cedb;
-  padding: 6px 8px;
-  list-style-type: none;
-}
-
 /**********************************/
 /********** FOCAL POINTS **********/
 /**********************************/
 div.select {
-	margin-right: 20px;
   text-align: center;
 }
 
-div.select .box {
+div.select {
   margin-bottom: 12px;
 }
 
-div.select .box h3 {
+div.select h3 {
   font-size: 13px;
   margin: 3px 0;
 }
 
-div.select .box p {
-  font-size: 11px;
-  margin: 0;
+div.select p {
+  margin: 3px 0;
 }
 
 /****************************/
@@ -328,7 +271,8 @@ div.select .box p {
 }
 
 .footer .section {
-  padding: 6px 0 12px;
+  padding: 6px 0 6px;
+  margin-bottom: 12px;
   border-top: 1px solid #505c6a;
 }
 
@@ -348,29 +292,54 @@ div.select .box p {
   color: #8a95a6;
 }
 
-.footer li.logo {
+.logo-grid {
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+  list-style-type: none;
+}
+
+.logo-grid:before,
+.logo-grid:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.logo-grid:after {
+  clear: both;
+}
+
+.footer .logo-grid li {
+  padding: 0;
   float: left;
-  width: 80px;
 }
 
-.footer li.logo:hover,
-.footer li.logo:active,
-.footer li.logo:focus {
-    background-color: rgba(255,255,255,0.2);
+.footer .logo-grid .logo,
+.footer .logo-grid .logo:hover,
+.footer .logo-grid .logo:focus {
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
 }
 
-.footer li.logo a {
-  display: block;
+.footer .logo-grid li a {
+  padding: 0 6px;
+  line-height: 20px;
   text-align: center;
+  display: block;
 }
 
-.footer li.logo a:hover {
+.footer .logo-grid li a:hover,
+.footer .logo-grid li a:focus {
   text-decoration: none;
+  color: #565656;
+  background-color: #f7f7f7;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
 }
 
-.footer li.logo a p {
-  margin: 6px 0 0 0;
-}
 
 /******************************/
 /********** TREATIES **********/
@@ -550,31 +519,54 @@ h1 + #term-definition {
 /************************************/
 /* A TREATY HEADER */
 .treaty-header {
+  margin-left: 0;
   margin-bottom: 18px;
   border-bottom: 1px solid #c6cedb;
   padding-bottom: 12px;
+  position: relative;
 }
 
 .treaty-header h1 {
   margin: 0;
 }
 
-.treaty-info1 {
-  float:left;
-  width:468px;
-  margin-right: 12px;
+.treaty-body {
+  margin-left: 72px;
 }
 
-.treaty-info2 {
-  float:left;
-  width:192px;
-  margin-right: 16px;
+.treaty-body .treaty-subject {
+  margin-left: 0;
+}
+
+.treaty-info {
+  margin-top: 0;
+  margin-left: 72px;
+  margin-right: 180px;
+  overflow: hidden;
+}
+
+.treaty-info strong:after {
+  content: ":";
+}
+
+.treaty-info .ti-1 {
+  float: left;
+  margin-right: 24px;
+}
+
+.treaty-info .ti-2 {
+  float: left;
 }
 
 .treaty-actions {
-  float:left;
-  width:180px;
+  position: absolute;
+  right: 0;
+  bottom: 12px;
 }
+
+
+
+
 
 /* A TREATY LIST */
 #treaties-list li {
@@ -611,37 +603,24 @@ h1 + #term-definition {
   text-decoration: none;
 }
 
-/* A DECISION LIST */
-#decisions .decisions-list > li {
-  margin-bottom: 12px;
+/* FOCAL POINT */
+.focal-point-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-#decisions .decision-number {
-  width: 60px;
-  margin-right: 12px;
-}
-
-#decisions .decision-info {
-  margin-left: 72px;
-}
-
-#decisions .decision-info > span {
-  font-size: 11px;
-  font-weight: normal;
-  text-transform: uppercase;
-}
-
-/* A FOCAL POINT */
 .focal-point {
-  margin-bottom: 18px;
+  padding: 6px 8px;
+  border: 1px solid #f7f7f7;
+  margin-bottom: 12px;
+  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
 }
 
-.focal-point .thumbnail button:first-child {
-  width: 43px;
-}
-
-.focal-point .focal-point-info {
-  margin-left: 72px;
+.focal-point .dl-horizontal {
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 
 .focal-point h3 {
@@ -651,6 +630,7 @@ h1 + #term-definition {
 
 .focal-point h3 + p {
   margin-top: -12px;
+  margin-bottom: 8px;
   font-family: Georgia, serif;
   font-style: italic;
 }
@@ -711,27 +691,8 @@ h1 + #term-definition {
   border-bottom: 0;
 }
 
-.feature img,
-.select-country {
+.feature img {
   margin-bottom: 12px;
-}
-
-.select-country {
-  position: relative;
-}
-
-.select-country select {
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  left: 50%;
-  right: 50%;
-  width: 160px;
-  height: 24px;
-  margin-top: -11px;
-  margin-left: -80px;
-  padding: 1px;
-  border: 2px solid #1a3a6f;
 }
 
 /*******************************/
@@ -982,4 +943,72 @@ h1 + #term-definition {
 .dropdown-toggle + .dropdown-menu > li.info {
   white-space: nowrap;
   padding: 3px 6px;
+}
+
+
+
+
+
+/* A DECISION LIST */
+/*******************************/
+/********** DECISIONS **********/
+/*******************************/
+.meeting-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meeting-list > li {
+  margin-bottom: 6px;
+  border: 1px solid #c6cedb;
+}
+
+.meeting-list > li > a {
+  margin-bottom: -1px;
+  padding: 3px 6px;
+  border-bottom: 1px solid #c6cedb;
+  display: block;
+  /*font-family: Georgia, serif;*/
+  /*font-size: 15px;*/
+  line-height: 18px;
+  /*color: #565656;*/
+  /*background: #f7f7f7;*/
+}
+
+.meeting-list > li > a:hover,
+.meeting-list > li > a:focus {
+/*  text-decoration: none;
+  color: #fff;
+  background: #3399cc;*/
+}
+
+.meeting-list .info {
+  margin: 6px 6px 0;
+}
+
+.decision-list {
+  list-style-type: none;
+  margin: 0 0 0;
+  padding: 6px;
+}
+
+.decision-list > li {
+  border-top: 1px solid #f7f7f7;
+  padding: 6px 0;
+}
+
+.decision-list > li:first-child {
+  border-top: 0;
+}
+
+.decision-list .decision-number,
+.decision-list .decision-type {
+  float: left;
+  width: 60px;
+  margin-right: 12px;
+}
+
+.decision-list .decision-title {
+  margin-left: 144px;
 }

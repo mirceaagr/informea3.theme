@@ -29,7 +29,7 @@
                 <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.search">
                     <span class="icon-search"></span>
                 </a>
-                <a class="brand" href="<?php bloginfo('url'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png"></a>
+                <a class="brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png"></a>
                 <div class="nav-collapse menu collapse">
                     <ul class="nav">
                         <li class="sub-menu"><a href="/treaties">Treaties<span class="caret"></span></a>
@@ -99,7 +99,7 @@
                 <div class="nav-collapse search collapse">
                     <form class="navbar-search pull-right">
                         <input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-                        <button type="submit" class="btn"><i class="icon-search"></i> <span class="hidden-desktop">Go</span></button>
+                        <button type="submit" class="btn hidden-phone"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
                     </form>
                 </div>
             </div>

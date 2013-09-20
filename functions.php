@@ -126,7 +126,7 @@ function informea_the_breadcrumb() {
     }
     $items = apply_filters('the_breadcrumb', $items);
     if(!empty($items)) {
-        echo '<ul class="breadcrumb">';
+        echo '<ul class="breadcrumb hidden-phone">';
         foreach($items as $item) {
             echo $item;
         }

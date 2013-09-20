@@ -23,7 +23,9 @@
 }
 
 @media (max-width: 979px) {
-
+  .navbar .brand {
+    padding: 9px 20px 5px;
+  }
   .nav .caret,
   .nav div.sub-menu {
     display: none!important;
@@ -169,9 +171,67 @@
     color: #16232e;
     background: transparent;
   }
+
+  #focal-points .select {
+    padding: 4px 8px;
+  }
 }
 
 @media (max-width: 767px) {
+  .navbar {
+    margin-bottom: 12px;
+  }
+
+  .treaty-info {
+    margin-right: 0;
+  }
+
+  .treaty-info .ti-1,
+  .treaty-info .ti-2 {
+    float: none;
+    margin-right: 0;
+  }
+
+  .treaty-info strong {
+    min-width: 72px;
+    margin-right: 6px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    line-height: 20px;
+  }
+
+  .treaty-actions {
+    position: static;
+    margin-left: 72px;
+    margin-top: 6px;
+  }
+
+  #focal-points .select {
+    text-align: left;
+  }
+
+  #focal-points .select select {
+    margin-right: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50%;
+    min-width: 120px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+  }
+  #focal-points .select p {
+    display: inline;
+  }
+
+  .dl-horizontal dt {
+    float: left;
+  }
+  /*.focal-point .dl-horizontal dd {
+    margin-left: 0;
+  }*/
+
   .footer {
     margin-left: -20px;
     margin-right: -20px;
@@ -180,5 +240,46 @@
   .footer .container {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar .btn-navbar {
+    margin-left: -1px;
+    width: 20px;
+    -webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+  }
+
+  .nav-collapse .navbar-search {
+    margin-right: 48px;
+  }
+
+  .dl-horizontal dt {
+    float: none;
+  }
+
+  .focal-point .dl-horizontal dd {
+    margin-left: 0;
+  }
+
+  .decision-list .decision-number,
+  .decision-list .decision-title,
+  .decision-list .decision-type {
+    margin:0;
+    width: auto;
+    float: none;
+    clear: left;
+  }
+
+  .decision-list .visible-phone {
+    width: 48px;
+    display: block;
+    float: left;
+  }
+
+  .decision-list strong {
+    display: inline!important;
   }
 }
