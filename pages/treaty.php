@@ -93,7 +93,7 @@ get_header();
                     <li class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#collapse-meeting-<?php echo $cop->id; ?>">
-                                <?php echo $cop->title; ?>
+                                <?php echo $cop->abbreviation; ?>
                             </a>
                         </div>
                         <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">
