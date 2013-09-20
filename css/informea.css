@@ -407,6 +407,11 @@ div.dropdown.inline {
   *display: inline;
   *zoom: 1;
 }
+
+.treaty-indent-1 { margin-left: 20px; }
+.treaty-indent-2 { margin-left: 40px; }
+.treaty-indent-3 { margin-left: 60px; }
+.treaty-indent-4 { margin-left: 80px; }
 /************************************/
 /********** SEARCH RESULTS **********/
 /************************************/

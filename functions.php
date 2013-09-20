@@ -119,6 +119,19 @@ function i3_format_mysql_date($mysql_date, $format = 'd F Y', $empty = '&nbsp;')
     return $ret;
 }
 
+
+function i3_print_article_title($article) {
+    $number = '';
+    if(!empty($article->official_order)) {
+        $number = $article->official_order;
+        if(substr($number, -1) !== '.') {
+            $number .= '. ';
+        }
+    }
+    echo sprintf('%s %s', $number, $article->title);
+}
+
+
 /**
  * Build the website breadcrumbtrail
  */

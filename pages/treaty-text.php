@@ -1,5 +1,8 @@
 <?php
 global $treaty, $organization;
+
+$articles = InforMEA::get_treaty_articles($treaty->id);
+$paragraphs = InforMEA::get_treaty_paragraphs($treaty->id);
 ?>
 <div class="row">
     <div class="span3">
@@ -7,12 +10,9 @@ global $treaty, $organization;
             <strong>Table of Contents</strong>
         </div>
         <ul class="nav nav-list">
-            <li><a href="#">Target</a></li>
-            <li><a href="#">Target</a></li>
-            <li><a href="#">Target</a></li>
-            <li><a href="#">Target</a></li>
-            <li><a href="#">Target</a></li>
-            <li><a href="#">Target</a></li>
+            <?php foreach($articles as $row): ?>
+            <li><a href="#article-<?php echo $row->id; ?>"><?php i3_print_article_title($row); ?></a></li>
+            <?php endforeach; ?>
         </ul>
     </div>
     <div class="treaty-text-container span9">
@@ -23,8 +23,25 @@ global $treaty, $organization;
             </div>
         </div>
         <div class="treaty-text">
-            <h1>Title</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
+            <?php foreach($articles as $row): ?>
+                <h1 id="article-<?php echo $row->id; ?>"><?php i3_print_article_title($row); ?></h1>
+                <?php
+                    if(!array_key_exists($row->id, $paragraphs)) {
+                       if(!empty($row->content)) {
+                           echo '<p>';
+                           echo $row->content;
+                           echo '</p>';
+                       }
+                    } else {
+                        $ap = $paragraphs[$row->id];
+                        foreach($ap as $p) {
+                            echo sprintf('<p id="paragraph-%s" class="treaty-indent-%s">', $p->id, $p->indent);
+                            echo $p->content;
+                            echo '</p>';
+                        }
+                    }
+                ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

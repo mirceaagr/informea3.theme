@@ -185,4 +185,46 @@ class InforMEA {
             ', $id_event)
         );
     }
+
+
+    /**
+     * Retrieve articles for a treaty
+     *
+     * @param $id_treaty integer Treaty ID
+     * @return array Array with article objects
+     */
+    static function get_treaty_articles($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_results($wpdb->prepare(
+                'SELECT a.* FROM ai_treaty_article a WHERE a.id_treaty = %d ORDER BY a.order',
+                $id_treaty
+            )
+        );
+    }
+
+
+    /**
+     * Retrieve all paragraphs for a treaty
+     *
+     * @param $id_treaty integer Treaty ID
+     * @return array Array of paragraph objects keyed by article ID
+     */
+    static function get_treaty_paragraphs($id_treaty) {
+        global $wpdb;
+        $ret = array();
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT a.id, a.id_treaty_article, a.official_order, a.`order`, a.`indent`, a.`content`
+                  FROM ai_treaty_article_paragraph a
+                  INNER JOIN ai_treaty_article b ON b.id = a.id_treaty_article
+                  WHERE b.id_treaty = %d
+                  ORDER BY a.`order`',
+                $id_treaty
+            )
+        );
+        foreach ($rows as $paragraph) {
+            $ret[$paragraph->id_treaty_article][] = $paragraph;
+        }
+        return $ret;
+    }
 }

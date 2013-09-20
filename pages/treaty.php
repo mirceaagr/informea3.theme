@@ -214,16 +214,13 @@ get_header();
 
 
     <!-- Modal definition -->
-    <div id="treaty-text-modal" class="modal hide fade span9" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
+    <div id="treaty-text-modal" class="modal hide fade span11" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-header-tpl'); ?>
         </div>
         <div class="modal-body">
             <p>One fine body…</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
     </div>
 <?php
