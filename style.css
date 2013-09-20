@@ -303,7 +303,8 @@ textarea[readonly] {
 
 .table-bordered th:first-child,
 .table-bordered td:first-child {
-  border-left: 1px solid #c6cedb;
+  /*border-left: 1px solid #c6cedb;*/
+  border-left: 0;
 }
 
 .table-striped tbody > tr:nth-child(odd) > td,
@@ -1116,6 +1117,14 @@ a.thumbnail:focus {
 
 .media > .pull-right {
   margin-left: 12px;
+}
+
+table.accordion-inner {
+  padding: 0;
+}
+
+.accordion-body {
+  margin: -1px;
 }
 
 /* CAROUSEL */

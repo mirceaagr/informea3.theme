@@ -987,28 +987,6 @@ h1 + #term-definition {
   margin: 6px 6px 0;
 }
 
-.decision-list {
-  list-style-type: none;
-  margin: 0 0 0;
-  padding: 6px;
-}
-
-.decision-list > li {
-  border-top: 1px solid #f7f7f7;
-  padding: 6px 0;
-}
-
-.decision-list > li:first-child {
-  border-top: 0;
-}
-
-.decision-list .decision-number,
-.decision-list .decision-type {
-  float: left;
-  width: 60px;
-  margin-right: 12px;
-}
-
-.decision-list .decision-title {
-  margin-left: 144px;
+.collapse-content {
+  margin:-1px;
 }
