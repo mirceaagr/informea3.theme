@@ -1,6 +1,8 @@
 <?php
 
 $treaty_header_mode = '';
+$organization = NULL;
+$treaty = NULL;
 
 require_once(dirname(__FILE__) . '/functions_informea.php');
 
@@ -57,15 +59,15 @@ function i3_treaty_print_topic($treaty) {
 /**
  * Build the treaty URL (use this instead of hard-coding the URL inside pages)
  * @param $treaty stdClass Treaty object
+ * @param $suffix string Add suffix at the end of the URL
  * @param bool $echo (Optional) echo the URL instead of returning it
  * @return string The treaty URL
  */
-function i3_treaty_url($treaty, $echo = TRUE) {
-    if(is_string($treaty)) {
-        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty);
-    } else {
-        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $treaty->odata_name);
+function i3_treaty_url($treaty, $suffix = '', $echo = TRUE) {
+    if(!is_string($treaty)) {
+        $treaty = $treaty->odata_name;
     }
+    $url = sprintf('%s/treaties/%s%s', get_bloginfo('url'), $treaty, $suffix);
     if($echo) {
         echo $url;
     }
