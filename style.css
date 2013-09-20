@@ -4,6 +4,7 @@
 /*TEST*/
 
 
+<<<<<<< Updated upstream
 /*
   This CSS file is for Screen media only.
   Responsive and Print are in separate files.
@@ -43,6 +44,10 @@
 
 
 /*NORMALIZE*/
+=======
+
+
+>>>>>>> Stashed changes
 .input-block-level {
   min-height: 22px;
 }
@@ -430,6 +435,7 @@ input[type="submit"].btn::-moz-focus-inner {
 /* BUTTONS DISABLED */
 .nav > .disabled > a {
   color: #8a95a6;
+<<<<<<< Updated upstream
 }
 
 .nav > .disabled > a:hover,
@@ -439,6 +445,17 @@ input[type="submit"].btn::-moz-focus-inner {
   background-color: transparent;
 }
 
+=======
+}
+
+.nav > .disabled > a:hover,
+.nav > .disabled > a:focus {
+  text-decoration: none;
+  cursor: default;
+  background-color: transparent;
+}
+
+>>>>>>> Stashed changes
 .btn.disabled,
 .btn[disabled] {
   color: #c6cedb;
