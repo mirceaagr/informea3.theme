@@ -62,10 +62,7 @@ get_header();
             </div>
             <!-- SELECT TREATY -->
             <div class="box">
-                <select id="select_treaty" onchange="window.location = jQuery(this).val()"
-                        class="input-block-level informea-tooltip"
-                        data-placement="right" data-toggle="tooltip"
-                        title="Use this select to move to another treaty">
+                <select id="select_treaty" onchange="window.location = jQuery(this).val()" class="input-block-level" title="Use this select to move to another treaty">
                     <option>View another treaty</option>
                 <?php
                     foreach($treaties as $row):
