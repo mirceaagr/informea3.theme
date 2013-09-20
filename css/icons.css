@@ -1,5 +1,6 @@
 [class^="icon-"],
 [class*=" icon-"] {
+  vertical-align: middle;
   background-image: url("../images/glyphicons-halflings.png");
 }
 
@@ -18,8 +19,10 @@
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"],
-.toolbar a:hover i,
-.toolbar a:focus i {
+.btn-inline:hover [class^="icon-"],
+.btn-inline:focus [class^="icon-"],
+.btn-inline:hover [class*=" icon-"],
+.btn-inline:focus [class*=" icon-"] {
   background-image: url("../images/glyphicons-halflings-white.png");
 }
 

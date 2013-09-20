@@ -26,9 +26,9 @@ wp_enqueue_script('informea-treaties');
 get_header();
 
 ?>
-<!-- TREATY HEADER -->
+    <!-- TREATY HEADER -->
+    <?php get_template_part('pages/treaty-header-tpl'); ?>
     <div class="row">
-        <?php get_template_part('pages/treaty-header-tpl'); ?>
         <!-- NAVIGATION BOX -->
         <div class="span3 hidden-phone scrollspy affix-menu affix-top" data-offset="155">
             <div class="well">
@@ -101,11 +101,11 @@ get_header();
                         </div>
                         <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">
                             <table class="table table-bordered accordion-inner">
-                                <caption>!x Decisions taken on !Date in !Location</caption>
+                                <caption>Showing !x Decisions taken on !Date in !Location</caption>
                                 <tbody>
                                     <?php foreach($decisions as $row): ?>
                                     <tr>
-                                        <td><?php echo $row->number; ?> <br/>
+                                        <td class="span2"><?php echo $row->number; ?> <br/>
                                             <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span>
                                         </td>
                                         <td>
@@ -135,7 +135,7 @@ get_header();
                                 <option>Country</option>
                             </select>
                             <p>x Focal Points</p>
-                            <button class="btn btn-link">Show all</button>
+                            <button class="btn btn-inline">Show all</button>
                         </div>
                     </div>
                     <ul class="focal-point-list span7">
@@ -148,7 +148,7 @@ get_header();
                                 <dt>Address</dt><dd>Institution Address</dd>
                             </dl>
                             <div class="focal-point-actions">
-                                <a class="btn btn-link" href="">Email</a>&ensp;|&ensp;<a class="btn btn-link disabled" href="#">vCard</a>
+                                <a class="btn btn-inline" href="">Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
                             </div>
                         </li>
                         <li class="focal-point">
@@ -160,7 +160,7 @@ get_header();
                                 <dt>Address</dt><dd>Institution Address</dd>
                             </dl>
                             <div class="focal-point-actions">
-                                <a class="btn btn-link" href="">Email</a>&ensp;|&ensp;<a class="btn btn-link disabled" href="#">vCard</a>
+                                <a class="btn btn-inline" href="">Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
                             </div>
                         </li>
                     </ul>
