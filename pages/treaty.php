@@ -45,19 +45,19 @@ get_header();
                 </ul>
             </div>
             <!-- TAG CLOUD -->
-            <div class="tag-cloud well">
+            <div class="well">
                 <h4>Most Frequent Terms</h4>
-                <ol>
-                    <li><a class="tag10" href="#">Tag 10</a></li>
-                    <li><a class="tag9" href="#">Tag 9</a></li>
-                    <li><a class="tag8" href="#">Tag 8</a></li>
-                    <li><a class="tag7" href="#">Tag 7</a></li>
-                    <li><a class="tag6" href="#">Tag 6</a></li>
-                    <li><a class="tag5" href="#">Tag 5</a></li>
-                    <li><a class="tag4" href="#">Tag 4</a></li>
-                    <li><a class="tag3" href="#">Tag 3</a></li>
-                    <li><a class="tag2" href="#">Tag 2</a></li>
-                    <li><a class="tag1" href="#">Tag 1</a></li>
+                <ol class="tag-cloud">
+                    <li><a class="btn btn-inline tag10" href="#">Tag 10</a></li>
+                    <li><a class="btn btn-inline tag9" href="#">Tag 9</a></li>
+                    <li><a class="btn btn-inline tag8" href="#">Tag 8</a></li>
+                    <li><a class="btn btn-inline tag7" href="#">Tag 7</a></li>
+                    <li><a class="btn btn-inline tag6" href="#">Tag 6</a></li>
+                    <li><a class="btn btn-inline tag5" href="#">Tag 5</a></li>
+                    <li><a class="btn btn-inline tag4" href="#">Tag 4</a></li>
+                    <li><a class="btn btn-inline tag3" href="#">Tag 3</a></li>
+                    <li><a class="btn btn-inline tag2" href="#">Tag 2</a></li>
+                    <li><a class="btn btn-inline tag1" href="#">Tag 1</a></li>
                 </ol>
             </div>
             <!-- SELECT TREATY -->
@@ -134,8 +134,8 @@ get_header();
                             <select class="input-block-level">
                                 <option>Country</option>
                             </select>
-                            <p>x Focal Points</p>
-                            <button class="btn btn-inline">Show all</button>
+                            <p class="hidden-phone">x Focal Points</p>
+                            <button class="btn btn-inline hidden-phone">Show all</button>
                         </div>
                     </div>
                     <ul class="focal-point-list span7">
@@ -214,10 +214,17 @@ get_header();
 
 
     <!-- Modal definition -->
-    <div id="treaty-text-modal" class="modal hide fade span11" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
+    <div id="treaty-text-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-header-tpl'); ?>
+            <div class="treaty-text-toolbar hidden-phone clearfix">
+                <strong>Treaty Text</strong>
+                <div class="pull-right">
+                    <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
+                    <button class="btn btn-inline"><i class="icon-url"></i> Cite/Link</button>
+                </div>
+            </div>
         </div>
         <div class="modal-body">
             <p>One fine body…</p>

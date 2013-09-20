@@ -6,7 +6,8 @@
         </a>
         <h1><?php echo $treaty->short_title; ?></h1>
     </div>
-    <div class="treaty-info">
+    <div class="treaty-info 
+    <?php if ($treaty_header_mode == 'modal') { echo 'hidden-phone'; } ?>">
         <div class="ti-1">
             <?php i3_treaty_print_topics($treaty); ?>
             <?php if(!empty($organization->depository)) : ?>
