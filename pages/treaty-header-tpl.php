@@ -22,8 +22,8 @@
     </div>
     <div class="treaty-actions">
         <?php if ($treaty_header_mode == 'modal'): ?>
-            <a href="#">Read Treaty Text from Source</a><br>
-            <a href="#">Go to Treaty Website</a>
+            <a href="#">Read Treaty Text from Source</a> <i class="icon-new-window"></i><br>
+            <a href="#">Go to Treaty Website</a> <i class="icon-new-window"></i>
         <?php else: ?>
         <div class="btn-group">
             <button class="btn btn-primary" data-remote="<?php i3_treaty_url($treaty, '/text?display=modal') ;?>" data-target="#treaty-text-modal" data-toggle="modal">Read Treaty Text</button>
