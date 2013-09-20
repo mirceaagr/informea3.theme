@@ -1,5 +1,7 @@
 <?php
 
+$treaty_header_mode = '';
+
 require_once(dirname(__FILE__) . '/functions_informea.php');
 
 wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'));
