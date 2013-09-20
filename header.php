@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icons.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome.min.css">
 </head>
 <body <?php body_class($class); ?>>
     <div class="navbar navbar-static-top">
