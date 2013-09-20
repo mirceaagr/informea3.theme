@@ -5,6 +5,14 @@
  */
 
 global $treaty;
+
+/** Add the scrollspy classes to the body tag */
+function informea_treaties_body_attributes($c) {
+    $c[] = '" data-spy="scroll" data-target=".scrollspy';
+    return $c;
+}
+add_filter('body_class','informea_treaties_body_attributes');
+
 $treaties = InforMEA::get_treaties_enabled('a.short_title');
 $organization = InforMEA::get_organization($treaty->id_organization);
 $parties = InforMEA::get_treaty_member_parties($treaty);
@@ -14,6 +22,10 @@ $cop_meetings_c = count($cop_meetings);
 $decisions = InforMEA::get_treaty_decisions($treaty->id);
 $decisions_c = count($decisions);
 $cop = null;
+
+wp_enqueue_script('informea-treaties');
+get_header();
+
 ?>
 <!-- TREATY HEADER -->
     <div class="treaty-header">
@@ -230,3 +242,5 @@ $cop = null;
             <?php endif; ?>
         </div><!-- /#content -->
     </div>
+<?php
+get_footer();
