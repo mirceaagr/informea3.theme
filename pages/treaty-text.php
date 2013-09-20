@@ -7,25 +7,22 @@ $paragraphs = InforMEA::get_treaty_paragraphs($treaty->id);
 
 if(!$display) {
     get_header();
+    get_template_part('pages/treaty-header-tpl');
 }
 ?>
 <div class="row">
     <div class="span3">
-        Treaty Text
-    </div>
-    <div class="span9">
-        <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
-        <button class="btn btn-inline"><i class="icon-url"></i> Cite/Link</button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="span3">
-        <ul class="nav nav-list">
+        <ul class="nav nav-list hidden-phone">
             <?php foreach($articles as $row): ?>
             <li><a href="#article-<?php echo $row->id; ?>"><?php i3_print_article_title($row); ?></a></li>
             <?php endforeach; ?>
         </ul>
+        <select class="visible-phone input-block-level">
+            <option>Jump to Article</option>
+            <?php foreach($articles as $row): ?>
+            <option value="#article-<?php echo $row->id; ?>"><?php i3_print_article_title($row); ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="span9">
         <div class="treaty-text">
