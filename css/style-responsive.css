@@ -1,4 +1,10 @@
 
+@media (min-width: 1200px) {
+  .modal {
+    width: 1170px;
+    margin-left: -597px;
+  }
+}
 
 /* NAVBAR phone and tablet*/
 @media (min-width: 768px) and (max-width: 979px) {
