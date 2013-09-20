@@ -53,7 +53,7 @@ get_header();
     </thead>
     <tbody>
     <?php foreach ($treaties as $row): ?>
-        <tr>
+        <tr onclick="window.location='<?php i3_treaty_url($row); ?>'">
             <td><img src="<?php echo $row->logo_medium; ?>" alt="<?php echo $row->short_title; ?> logo"></td>
             <td class="treaty-title">
                 <h2>

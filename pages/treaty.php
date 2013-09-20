@@ -62,10 +62,7 @@ get_header();
             </div>
             <!-- SELECT TREATY -->
             <div class="box">
-                <select id="select_treaty" onchange="window.location = jQuery(this).val()"
-                        class="input-block-level informea-tooltip"
-                        data-placement="right" data-toggle="tooltip"
-                        title="Use this select to move to another treaty">
+                <select id="select_treaty" onchange="window.location = jQuery(this).val()" class="input-block-level" title="Use this select to move to another treaty">
                     <option>View another treaty</option>
                 <?php
                     foreach($treaties as $row):
@@ -96,7 +93,7 @@ get_header();
                     <li class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" href="#collapse-meeting-<?php echo $cop->id; ?>">
-                                <?php echo $cop->title; ?>
+                                <?php echo !empty($cop->abbreviation) ? $cop->abbreviation : $cop->title; ?>
                             </a>
                         </div>
                         <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">

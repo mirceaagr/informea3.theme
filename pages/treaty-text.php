@@ -38,9 +38,16 @@ if(!$display) {
                     } else {
                         $ap = $paragraphs[$row->id];
                         foreach($ap as $p) {
-                            echo sprintf('<p id="paragraph-%s" class="treaty-indent-%s">', $p->id, $p->indent);
-                            echo $p->content;
-                            echo '</p>';
+                ?>
+                            <div class="paragraph" style="position: relative;">
+                                <p id="paragraph-<?php echo $p->id; ?>">
+                                    <?php echo $p->content; ?>
+                                </p>
+                                <div class="paragraph-tags hide" style="position: absolute; bottom: -15px; background-color: white;">
+                                    <a href="#">Biological diversity</a>, <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a>
+                                </div>
+                            </div>
+                <?php
                         }
                     }
                 ?>
