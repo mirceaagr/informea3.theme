@@ -39,15 +39,12 @@ if(!$display) {
                         $ap = $paragraphs[$row->id];
                         foreach($ap as $p) {
                 ?>
-                            <div>
-                                <p id="paragraph-<?php echo $p->id; ?>"
-                                   class="treaty-indent-<?php echo $p->indent; ?> tag-terms"
-                                   data-toggle="popover" data-placement="left" data-delay="300"
-                                   data-trigger="manual">
+                            <div class="paragraph" style="position: relative;">
+                                <p id="paragraph-<?php echo $p->id; ?>">
                                     <?php echo $p->content; ?>
                                 </p>
-                                <div class="popover-content hide">
-                                    <a href="#">term1</a>, <a href="#">term2</a>
+                                <div class="paragraph-tags hide" style="position: absolute; bottom: -15px; background-color: white;">
+                                    <a href="#">Biological diversity</a>, <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a>
                                 </div>
                             </div>
                 <?php
