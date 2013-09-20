@@ -165,16 +165,24 @@ class InforMEA {
     }
 
 
-    static function get_treaty_decisions($id_treaty) {
+    static function get_treaty_decisions_count($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_var(
+            $wpdb->prepare('SELECT COUNT(*) FROM ai_decision a WHERE a.id_treaty = %d', $id_treaty)
+        );
+    }
+
+
+    static function get_treaty_decisions_by_cop($id_event) {
         global $wpdb;
         return $wpdb->get_results(
             $wpdb->prepare('
                 SELECT a.id, a.short_title, a.number, a.type, a.status
                   FROM ai_decision a
                   INNER JOIN ai_event b ON a.id_meeting = b.id
-                  WHERE a.id_treaty = %d
+                  WHERE b.id = %d
                   ORDER BY b.start DESC, a.`display_order` ASC
-            ', $id_treaty)
+            ', $id_event)
         );
     }
 }

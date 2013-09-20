@@ -19,8 +19,7 @@ $parties = InforMEA::get_treaty_member_parties($treaty);
 $parties_c = count($parties);
 $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
 $cop_meetings_c = count($cop_meetings);
-$decisions = InforMEA::get_treaty_decisions($treaty->id);
-$decisions_c = count($decisions);
+$decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
 $cop = null;
 
 wp_enqueue_script('informea-treaties');
@@ -50,7 +49,7 @@ get_header();
         </div>
         <div class="treaty-actions">
             <div class="btn-group">
-                <button class="btn btn-primary">Read Treaty Text</button>
+                <button class="btn btn-primary" data-remote="/treaties" data-target="#treaty-text-modal" data-toggle="modal">Read Treaty Text</button>
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                 </button>
@@ -123,14 +122,17 @@ get_header();
             <div class="section" id="decisions">
                 <h2 id="decisions">Decisions</h2>
                 <ul id="accordion2" class="accordion meeting-list">
-                    <?php foreach($cop_meetings as $row): ?>
+                <?php
+                    foreach($cop_meetings as $idx => $cop):
+                        $decisions = InforMEA::get_treaty_decisions_by_cop($cop->id);
+                ?>
                     <li class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                                <?php echo $row->title; ?>
+                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse-meeting-<?php echo $cop->id; ?>">
+                                <?php echo $cop->title; ?>
                             </a>
                         </div>
-                        <div id="collapseOne" class="accordion-body collapse in">
+                        <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">
                             <table class="table table-bordered accordion-inner">
                                 <caption>!x Decisions taken on !Date in !Location</caption>
                                 <tbody>
@@ -241,6 +243,21 @@ get_header();
             </div>
             <?php endif; ?>
         </div><!-- /#content -->
+    </div>
+
+
+    <!-- Modal definition -->
+    <div id="treaty-text-modal" class="modal hide fade span9" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Modal header</h3>
+        </div>
+        <div class="modal-body">
+            <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
     </div>
 <?php
 get_footer();

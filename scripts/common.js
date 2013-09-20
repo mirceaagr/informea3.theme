@@ -8,7 +8,7 @@ jQuery('document').ready(function() {
     setTimeout(function () {
         jQuery('.affix-menu').affix({
             offset: {
-                top: function () { return $window.width() <= 980 ? 220 : 155 },
+                top: function () { return $window.width() <= 980 ? 220 : 180 },
                 bottom: 100
             }
         })
