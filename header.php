@@ -38,7 +38,6 @@
                                     <div class="row">
                                         <ul class="nav-list span3">
                                             <li class="nav-header">Biological Diversity</li>
-                                            <li><a href="<?php i3_treaty_url('aewa'); ?>">AEWA</a></li>
                                             <li><a href="<?php i3_treaty_url('cartagena'); ?>">Cartagena Protocol</a></li>
                                             <li><a href="<?php i3_treaty_url('cbd'); ?>">CBD</a></li>
                                             <li><a href="<?php i3_treaty_url('cites'); ?>">CITES</a></li>
@@ -64,6 +63,7 @@
                                             <li class="nav-header">Regional Treaties</li>
                                             <li><a href="#">Aarhus Convention</a></li>
                                             <li><a href="#">Abidjan Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('aewa'); ?>">AEWA</a></li>
                                             <li><a href="#">Antigua Convention</a></li>
                                             <li><a href="#">Apia Convention</a></li>
                                             <li><a href="#">Barcelona</a></li>
