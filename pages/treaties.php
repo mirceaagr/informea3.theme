@@ -19,31 +19,33 @@ get_header();
     <tr>
         <th colspan="2">Showing <?php echo $count; ?> out of <?php echo $count_total; ?> treaties</th>
         <th class="hidden-phone">
-            <span class="placeholder">All Topics</span>
-
-            <div class="dropdown inline filter">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <?php foreach ($topics as $row): ?>
-                        <li><a tabindex="-1" href="#<?php echo $row; ?>"><?php echo $row; ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <span class="dropdown-value placeholder">All Topics</span>
+                    <button class="btn btn-select" data-toggle="dropdown">
+                        <i class="icon-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <?php foreach ($topics as $row): ?>
+                            <li><a tabindex="-1" href="#<?php echo $row; ?>"><?php echo $row; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
         </th>
         <th class="hidden-phone">
-            <span class="placeholder">Coverage</span>
-
-            <div class="dropdown inline filter">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <?php foreach ($regions as $row): ?>
-                        <li><a tabindex="-1" href="#<?php echo $row->name; ?>"><?php echo $row->name; ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
+            <div class="dropdown-container">
+                <div class="dropdown">
+                    <span class="dropdown-value placeholder">Coverage</span>
+                    <button class="btn btn-select" data-toggle="dropdown">
+                        <i class="icon-caret-down"></i>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <?php foreach ($regions as $row): ?>
+                            <li><a tabindex="-1" href="#<?php echo $row->name; ?>"><?php echo $row->name; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
         </th>
         <th class="hidden-phone">

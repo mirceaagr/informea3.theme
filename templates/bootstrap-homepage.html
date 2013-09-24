@@ -1,91 +1,163 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>InforMEA Test page</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="../style.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="../css/icons.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="../css/logos.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="../css/informea.css" media="screen">
-	</head>
-	<body>
-		<!-- NAVBAR -->
-		<div class="navbar">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand" href="#"><img src="../images/informea_logo.png" /></a>
-					<ul class="nav">
-						<li class="sub-menu"><a href="#">Treaties<span class="caret"></span></a>
-							<div class="sub-menu">
-								<div class="container clearfix">
-									<ul class="nav-list">
-										<li class="nav-header">Biological Diversity</li>
-										<li><a href="#">CBD</a></li>
-										<li><a href="#">Cartagena Protocol</a></li>
-										<li><a href="#">Nagoya Protocol</a></li>
-										<li><a href="#">CITES</a></li>
-										<li><a href="#">CMS</a></li>
-										<li><a href="#">AEWA</a></li>
-										<li><a href="#">ITPGRFA</a></li>
-										<li><a href="#">Ramsar</a></li>
-										<li><a href="#">WHCCBD</a></li>
-									</ul>
-									<ul class="nav-list">
-										<li class="nav-header">Chemicals / Waste</li>
-										<li><a href="#">Basel</a></li>
-										<li><a href="#">Rotterdam</a></li>
-										<li><a href="#">Stockholm</a></li>
-										<li class="nav-header">Climate / Atmosphere</li>
-										<li><a href="#">UNFCCC</a></li>
-										<li><a href="#">Kyoto Protocol</a></li>
-										<li><a href="#">UNCCD</a></li>
-										<li><a href="#">Vienna</a></li>
-										<li><a href="#">Montreal Protocol</a></li>
-									</ul>
-									<ul class="nav-list">
-										<li class="nav-header">Other Treaties</li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-										<li><a href="#">Treaty</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li><a href="#">Countries</a></li>
-						<li><a href="#">Glossary</a></li>
-					</ul>
-					<form class="navbar-search pull-right">
-  						<input type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-  						<button type="submit" class="btn"><i class="icon-search"></i> </button>
-					</form>
-				</div>
-			</div>
-		</div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="<?php bloginfo('charset'); ?>" />
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="../css/style-responsive.css">
+    <link rel="stylesheet" href="../css/logos.css">
+    <link rel="stylesheet" href="../css/informea.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="navbar navbar-static-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.menu">
+                    <i class="icon-reorder"></i>
+                </a>
+                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.search">
+                    <i class="icon-search"></i>
+                </a>
+                <a class="brand" href="#"><img src="../images/informea_logo.png"></a>
+                <div class="nav-collapse menu collapse">
+                    <ul class="nav">
+                        <li class="sub-menu"><a href="/treaties">Treaties<span class="caret"></span></a>
+                            <div class="sub-menu">
+                                <div class="container">
+                                    <div class="row">
+                                        <ul class="nav-list span3">
+                                            <li class="nav-header">Biological Diversity</li>
+                                            <li><a href="<?php i3_treaty_url('aewa'); ?>">AEWA</a></li>
+                                            <li><a href="<?php i3_treaty_url('cartagena'); ?>">Cartagena Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('cbd'); ?>">CBD</a></li>
+                                            <li><a href="<?php i3_treaty_url('cites'); ?>">CITES</a></li>
+                                            <li><a href="<?php i3_treaty_url('cms'); ?>">CMS</a></li>
+                                            <li><a href="<?php i3_treaty_url('nagoya'); ?>">Nagoya Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('plant-treaty'); ?>">Plant Treaty</a></li>
+                                            <li><a href="<?php i3_treaty_url('ramsar'); ?>">Ramsar</a></li>
+                                            <li><a href="<?php i3_treaty_url('whc'); ?>">WHC</a></li>
+                                        </ul>
+                                        <ul class="nav-list span3">
+                                            <li class="nav-header">Chemicals / Waste</li>
+                                            <li><a href="<?php i3_treaty_url('basel'); ?>">Basel</a></li>
+                                            <li><a href="<?php i3_treaty_url('rotterdam'); ?>">Rotterdam</a></li>
+                                            <li><a href="<?php i3_treaty_url('stockholm'); ?>">Stockholm</a></li>
+                                            <li class="nav-header">Climate / Atmosphere</li>
+                                            <li><a href="<?php i3_treaty_url('unccd'); ?>">UNCCD</a></li>
+                                            <li><a href="<?php i3_treaty_url('unfccc'); ?>">UNFCCC</a></li>
+                                            <li><a href="<?php i3_treaty_url('kyoto'); ?>">Kyoto Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('montreal'); ?>">Montreal Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('vienna'); ?>">Vienna</a></li>
+                                        </ul>
+                                        <ul class="nav-list span6">
+                                            <li class="nav-header">Regional Treaties</li>
+                                            <li><a href="#">Aarhus Convention</a></li>
+                                            <li><a href="#">Abidjan Convention</a></li>
+                                            <li><a href="#">Antigua Convention</a></li>
+                                            <li><a href="#">Apia Convention</a></li>
+                                            <li><a href="#">Barcelona</a></li>
+                                            <li><a href="#">Barcelona Dumping Protocol</a></li>
+                                            <li><a href="#">Bamako Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('cartagena-conv'); ?>">Cartagena Convention</a></li>
+                                            <li><a href="#">Espoo Convention</a></li>
+                                            <li><a href="#">Hazardous Wastes Protocol</a></li>
+                                            <li><a href="#">Industrial Accidents Convention</a></li>
+                                            <li><a href="#">Jeddah Convention</a></li>
+                                            <li><a href="#">Kiev Protocol</a></li>
+                                            <li><a href="#">Kuwait Regional Convention</a></li>
+                                            <li><a href="#">Long-Range Transmoundary Air Pollution</a></li>
+                                            <li><a href="#">Lusaka Agreement</a></li>
+                                            <li><a href="#">Nairobi Convention</a></li>
+                                            <li><a href="#">Noumea Convention</a></li>
+                                            <li><a href="#">Land-Based Sources Protocol</a></li>
+                                            <li><a href="#">Offshore Protocol</a></li>
+                                            <li><a href="#">Prevention and Emergency Protocol</a></li>
+                                            <li><a href="#">Specially Protected Areas Protocol</a></li>
+                                            <li><a href="#">The Kyiv Protocol</a></li>
+                                            <li><a href="#">Protocol on Water and Health</a></li>
+                                            <li><a href="#">Water Convention</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="#">Countries</a></li>
+                        <li><a href="#">Glossary</a></li>
+                    </ul>
+                </div>
+                <div class="nav-collapse search collapse">
+                    <form class="navbar-search pull-right">
+                        <input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
+                        <button type="submit" class="btn hidden-phone hidden-tablet"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+		
 
 		<!-- HERO -->
 		<div class="hero-unit">
 			<div class="container">
-
+				<div class="logo-description">
+					<img src="../images/logo_description.png" alt="United Nations Information Portal on Multilateral Environmental Agreements">
+				</div>
 				<div class="row">
-					<!-- DESCRIPTION -->
-					<div class="span6 what-is-informea">
-						<div class="logo-description">
-							<img src="../images/logo_description.png" alt="United Nations Information Portal on Multilateral Environmental Agreements">
+					<!-- CAROUSEL -->
+					<div class="span5 offset1 pull-right">
+						<div id="homepage-carousel" class="carousel slide">
+							<!-- Carousel items -->
+							<div class="carousel-inner">
+								<div class="active item">
+									<p class="item-title">Latest News</p>
+									<div class="news">
+										<a href="#" class="logo logo-left">
+											<img src="http://placehold.it/60x60" alt="Some logo" />
+										</a>
+										<p class="date">Date</p>
+										<p><a href="#">Meeting Name</a></p>
+									</div>
+								</div>
+								<div class="item">
+									<p class="item-title">Upcoming Meetings</p>
+									<div class="news">
+										<a href="#" class="logo logo-left">
+											<img src="http://placehold.it/60x60" alt="Some logo" />
+										</a>
+										<p class="date">24 - 25 Jul, 2013</p>
+										<p><a href="#">Ministerial Conference on Water for Food Crops and Food Security to Address Climate</a></p>
+									</div>
+								</div>
+								<div class="item">
+									<p class="item-title">Announcement</p>
+									<div>
+										<h2>Title</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam.</p>
+									</div>
+									<p><a href="#">Some link</a></p>
+								</div>
+							</div>
+							<!-- Carousel nav -->
+							<a class="carousel-control left" href="#homepage-carousel" data-slide="prev">
+								<i class="icon-angle-left"> </i>
+							</a>
+							<a class="carousel-control right" href="#homepage-carousel" data-slide="next">
+								<i class="icon-angle-right"> </i>
+							</a>
+							<!-- Carousel indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+								<li data-target="#homepage-carousel" data-slide-to="1"></li>
+								<li data-target="#homepage-carousel" data-slide-to="2"></li>
+							</ol>
 						</div>
+					</div>
+					<!-- DESCRIPTION -->
+					<div class="span6 what-is-informea pull-left">
 						<p>InforMEA harvests COP decisions, news, meetings, membership, national focal points and reports from MEAs. Information is organised by terms from MEA COP agendas.</p>
 						<p>InforMEA is a project of the MEA Information and Knowledge Management (IKM) Initiative with the support from the United Nations Environment Programme (UNEP).</p>
 						<!-- <ul class="logo">
@@ -95,51 +167,11 @@
 		                    </a>
 		                </ul> -->
 		                <div>
-		                	<a href="#">Learn more about InforMEA &rarr;</a>
+		                	<a href="#">Learn more about InforMEA <i class="icon-long-arrow-right"></i></a>
 		                </div>
 					</div>
 
-					<!-- CAROUSEL -->
-					<div class="span5 offset1">
-						<div id="myCarousel" class="carousel slide">
-							<!-- Carousel items -->
-							<div class="carousel-inner">
-								<div class="active item">
-									<h4>Latest News</h4>
-									<div class="news">
-										<strong>Date</strong>
-										<img class="thumbnail" src="http://placehold.it/60x60" alt="Some logo" />
-										<a href="#">Meeting Name</a>
-									</div>
-								</div>
-								<div class="item">
-									<h4>Upcoming Meetings</h4>
-									<div class="news">
-										<strong>24 - 25 Jul, 2013</strong>
-										<img class="thumbnail" src="http://placehold.it/60x60" alt="Some logo" />
-										<a href="#">Ministerial Conference on Water for Food Crops and Food Security to Address Climate</a>
-									</div>
-								</div>
-								<div class="item">
-									<h4>Announcement</h4>
-									<div>
-										<h2>Title</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam.</p>
-										<p><a href="#">Some link</a></p>
-									</div>
-								</div>
-							</div>
-							<!-- Carousel nav -->
-							<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-							<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-							<!-- Carousel indicators -->
-							<ol class="carousel-indicators">
-								<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-								<li data-target="#myCarousel" data-slide-to="1"></li>
-								<li data-target="#myCarousel" data-slide-to="2"></li>
-							</ol>
-						</div>
-					</div>
+			
 				</div>
 			</div>
 
@@ -147,26 +179,32 @@
 
 		<div id="homepage" class="container">
 			<!-- FEATURES -->
-			<h1>InforMEA Features</h1>
-			<div class="row">
-				<div class="feature span4">
-					<h2>Glossary</h2>
-					<img src="../images/f_glossary.gif">
+			<h2>InforMEA Features</h2>
+			<div class="row" style="position: relative;">
+				<div class="feature-glossary span4">
+					<h1>Glossary</h1>
+					<div class="feature-image">
+						<img src="../images/f_glossary.gif">
+					</div>
 					<p>Find the definition of any term related to MEAs as well as all of it's occurences on this website.</p>
 					<p><a href="#">Start searching for definitions</a></p>
 				</div>
-				<div class="feature treaties span4">
-					<h2>Treaties</h2>
-					<ul>
-						<li>Read the Complete Text<br/> on any Treaty</li>
-						<li>See Decisions/Resolutions<br/> with details</li>
-						<li>Study Map Coverage<br/> and Membership</li>
-					</ul>
-					<a href="#" class="btn btn-primary">Browse Treaties</a>
+				<div class="feature-treaties span4">
+					<div class="well">
+						<h1>Treaties</h1>
+						<div class="pitch">
+							<p>Read the Complete Text<br/> on any Treaty</p>
+							<hr/>
+							<p>See Decisions/Resolutions<br/> with details</p>
+							<hr/>
+							<p>Study Map Coverage<br/> and Membership</p>
+							<a href="#" class="btn btn-primary input-block-level">Browse Treaties</a>
+						</div>
+					</div>
 				</div>
-				<div class="feature span4">
-					<h2>Countries</h2>
-					<div class="select-country">
+				<div class="feature-countries span4">
+					<h1>Countries</h1>
+					<div class="feature-image">
 						<img src="../images/f_countries.gif">
 						<select>
 							<option>Select a country</option>
@@ -177,150 +215,6 @@
 				</div>
 			</div>
 		</div>
-
-		<footer>
-		        <section id="organizations">
-		            <h3>Organizations</h3>
-		            <ul class="no-ul clear">
-		                <li class="logo">
-		                    <a class="un" target="_blank" href="http://www.un.org/" title="Visit United Nations website">
-		                        <div></div><p>UN</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="unep" target="_blank" href="http://www.unep.org/" title="Visit United Nations Environment Programme website">
-		                        <div></div><p>UNEP</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="fao" target="_blank" href="http://www.fao.org/" title="Visit Food and Agriculture Organization website website">
-		                        <div></div><p>FAO</p>
-		                    </a>
-		                </li>
-		                <li class="logo"><a class="unesco" target="_blank" href="http://www.unesco.org/" title="Visit United Nations Educational, Scientific and Cultural Organization website">
-		                        <div></div><p>UNESCO</p></a>
-		                </li>
-		                <li class="logo"><a class="unece" target="_blank" href="http://www.unece.org/" title="Visit UNECE website">
-		                        <div></div><p>UNECE</p></a>
-		                </li>
-		            </ul>
-		        </section>
-		        <section id="participating_treaties">
-		            <h3>Global treaties</h3>
-		            <ul class="no-ul">
-		                <li class="logo">
-		                    <a class="unfccc" target="_blank" href="http://unfccc.int/" title="Visit United Nations Framework Convention on Climate Change website">
-		                        <div></div><p>UNFCCC</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="unccd" target="_blank" href="http://www.unccd.int/" title="Visit United Nations Convention to Combat Desertification website">
-		                        <div></div><p>UNCCD</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="ozone" target="_blank" href="http://ozone.unep.org/" title="Visit Ozone Secretariat website">
-		                        <div></div><p>OZONE</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="basel" target="_blank" href="http://www.basel.int/" title="Visit Basel Convention website">
-		                        <div></div><p>BASEL</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="rotterdam" target="_blank" href="http://www.pic.int/" title="Visit Rotterdam Convention website">
-		                        <div></div><p>ROTTERDAM</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="stockholm" target="_blank" href="http://chm.pops.int/" title="Visit Stockholm Convention website">
-		                        <div></div><p>STOCKHOLM</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="cbd" target="_blank" href="http://www.cbd.int/" title="Visit Convention on Biological Diversit website">
-		                        <div></div><p>CBD</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="cites" target="_blank" href="http://www.cites.org/" title="Visit Convention on International Trade in Endangered Species website">
-		                        <div></div><p>CITES</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="whc" target="_blank" href="http://whc.unesco.org/" title="Visit UNESCO World Heritage Convention website">
-		                        <div></div><p>WHC</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="ramsar" target="_blank" href="http://www.ramsar.org/" title="Visit Ramsar Convention website">
-		                        <div></div><p>Ramsar</p>
-		                    </a>
-		                </li>
-		                <li class="logo">
-		                    <a class="itpgrfa" target="_blank" href="http://www.planttreaty.org/" title="Visit International Treaty on Genetic Resources for Food and Agriculture website">
-		                        <div></div><p>ITPGRFA</p>
-		                    </a></li>
-		                <li class="logo">
-		                    <a class="cms" target="_blank" href="http://www.cms.int/" title="Visit Convention on Migratory Species website">
-		                        <div></div><p>CMS</p>
-		                    </a></li>
-		            </ul>
-		        </section>
-		        <section id="regional_treaties">
-		            <h3>Regional treaties</h3>
-	                <div>
-	                    <h4>UNECE</h4>
-	                    <ul class="no-ul">
-	                        <li><a target="_blank" href="http://www.unece.org/env/pp/welcome.html">Aarhus Convention</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/eia/welcome.html">Espoo Convention</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/lrtap/">Long-Renage Transboundary Air Pollution</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/eia/sea_protocol.html">The Kyiv Protocol</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/?id=2975">Protocol on Water and Health</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/water/">Water Convention</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/pp/prtr.html">Kiev Protocol</a></li>
-	                        <li><a target="_blank" href="http://www.unece.org/env/teia.html">Industrial Accidents Convention</a></li>
-	                    </ul>
-	                </div>
-	                <div>
-	                    <h4>CMS</h4>
-	                    <ul class="no-ul">
-	                        <li><a target="_blank" href="http://www.accobams.org/">ACCOBAMS</a></li>
-	                        <li><a target="_blank" href="http://www.unep-aewa.org/">AEWA</a></li>
-	                        <li><a target="_blank" href="http://www.ascobans.org/">ASCOBANS</a></li>
-	                        <li><a target="_blank" href="http://www.eurobats.org/">EUROBATS</a></li>
-	                        <li class="h-separator"></li>
-	                        <li><a target="_blank" href="http://www.the-acap.org/">ACAP</a></li>
-	                        <li><a target="_blank" href="http://www.igcp.org/">International Gorilla Conservation Programme</a></li>
-	                        <li><a target="_blank" href="http://www.waddensea-secretariat.org/">WADDEN SEA SEALS</a></li>
-	                    </ul>
-	                </div>
-	                <div>
-	                    <h4>Regional Seas</h4>
-	                    <ul class="no-ul">
-	                        <li><a target="_blank" href="http://abidjanconvention.org/">Abidjan Convention</a></li>
-	                        <li><a target="_blank" href="http://www.iattc.org/IATTCdocumentationENG.htm">Antigua Convention</a></li>
-	                        <li><a target="_blank" href="http://www.sprep.org/">Apia Convention</a></li>
-	                        <li><a target="_blank" href="http://www.unep.ch/regionalseas/regions/med/t_barcel.htm">Barcelona Convention</a></li>
-	                        <li class="h-separator"></li>
-	                        <li><a target="_blank" href="http://www.unep.ch/regionalseas/main/persga/redconv.html">Jeddah Convention</a></li>
-	                        <li><a target="_blank" href="http://www.unep.org/nairobiconvention/">Nairobi Convention</a></li>
-	                        <li><a target="_blank" href="http://www2.unitar.org/cwm/publications/cbl/synergy/cat1_agree/noumea.htm">Noumea Convention</a></li>
-	                    </ul>
-	                </div>
-	                <div>
-	                    <h4>Regional Treaties</h4>
-	                    <ul class="no-ul">
-	                        <li><a target="_blank" href="http://www.opcw.org/chemical-weapons-convention/related-international-agreements/toxic-chemicals-and-the-environment/bamako-convention/">Bamako Convention</a></li>
-	                        <li><a target="_blank" href="http://www.lusakaagreement.org/">Lusaka Agreement</a></li>
-	                    </ul>
-	                </div>
-		        </section>
-		        <section id="disclaimer">
-		        	<p><a href="">Terms and conditions</a> - Portions Copyright &copy; United Nations, FAO, UNEP, UNESCO</p>
-		        </section>
-			</footer>
 		<!-- SCRIPTS -->
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="../scripts/bootstrap.js"></script>

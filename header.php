@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-responsive.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icons.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome.min.css">
@@ -25,10 +24,10 @@
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.menu">
-                    <span class="icon-more"></span>
+                    <i class="icon-reorder"></i>
                 </a>
                 <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.search">
-                    <span class="icon-search"></span>
+                    <i class="icon-search"></i>
                 </a>
                 <a class="brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png"></a>
                 <div class="nav-collapse menu collapse">
@@ -100,7 +99,7 @@
                 <div class="nav-collapse search collapse">
                     <form class="navbar-search pull-right">
                         <input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-                        <button type="submit" class="btn hidden-phone"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
+                        <button type="submit" class="btn hidden-phone hidden-tablet"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
                     </form>
                 </div>
             </div>

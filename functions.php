@@ -102,7 +102,7 @@ function i3_treaty_print_year($treaty) {
     if(!empty($treaty->start)) {
         $date = i3_format_mysql_date($treaty->start, 'Y');
         if(!empty($date)) {
-            echo sprintf('<strong>Enter into force</strong> %s', $date);
+            echo $date;
         }
     }
 }
