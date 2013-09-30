@@ -15,3 +15,64 @@ TO DO
 7. select box on treaty page default=Go to a different treaty
 
 8. 
+
+/*
+  This CSS file is for Screen media only.
+  Responsive and Print are in separate files.
+  IE fixes are separate as well.
+
+  BOOTSTRAP v2.3.2:
+  Normalize
+  Grid
+  Typography
+  Forms
+  Tables
+  Dropdowns
+  Well (Box)
+  Buttons
+  Button Groups
+  Alerts
+  Navs
+  Nav Tabs
+  Navbar
+  Breadcrumbs
+  Pagination
+  Modal
+  Tooltip
+  Popover
+  Thumbnails
+  Media
+  Labels, Badges
+  Progress Bar
+  Accordion
+  Carousel
+  Hero
+  Helper classes
+
+  INFORMEA specific:
+  Sub-menu
+  Search
+  Navbox Numbering
+  Tagcloud
+  Section
+  Decision statuses
+  Treaty Header
+  Treaty Text
+  Treaty Text Toolbar
+  Decision List
+  Focal Points
+  Select(Well)
+  Footer
+
+  INFORMEA pages:
+  Homepage
+  Treaties
+  Treaty
+  Treaty Reader
+  Decision Reader
+  Contact FP
+  Search results
+  News
+  About
+  Multimedia
+*/

@@ -8,6 +8,7 @@ $paragraphs = InforMEA::get_treaty_paragraphs($treaty->id);
 if(!$display) {
     get_header();
     get_template_part('pages/treaty-header-tpl');
+    get_template_part('pages/treaty-toolbar-tpl');
 }
 ?>
 <div class="row">
@@ -39,12 +40,12 @@ if(!$display) {
                         $ap = $paragraphs[$row->id];
                         foreach($ap as $p) {
                 ?>
-                            <div class="paragraph" style="position: relative;">
+                            <div class="paragraph">
                                 <p id="paragraph-<?php echo $p->id; ?>">
                                     <?php echo $p->content; ?>
                                 </p>
-                                <div class="paragraph-tags hide" style="position: absolute; bottom: -15px; background-color: white;">
-                                    <a href="#">Biological diversity</a>, <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a>
+                                <div class="paragraph-tags">
+                                    <strong><i class="icon-tags"></i> Tagged Terms:</strong>&ensp;<a href="#">Biological diversity</a>, <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a> , <a href="#">Biological diversity</a>
                                 </div>
                             </div>
                 <?php

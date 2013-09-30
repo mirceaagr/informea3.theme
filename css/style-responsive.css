@@ -3,6 +3,14 @@
     width: 1170px;
     margin-left: -597px;
   }
+
+  #search-page .results .nav-tabs {
+    margin-left: -30px;
+    padding-left: 30px;
+  }
+
+  #term-definition .definition { padding-right: 11px; }
+  #term-definition .term-info { padding-left: 18px }
 }
 
 /* NAVBAR phone and tablet*/
@@ -27,19 +35,11 @@
   }
 
   .modal {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: 20px;
-    width: auto;
-    margin: 0;
+    margin-left: -374px;
+    width: 724px;
+    left:50%;
   }
-  .modal.fade {
-    top: -100px;
-  }
-  .modal.fade.in {
-    top: 20px;
-  }
+
 }
 
 @media (max-width: 979px) {
@@ -65,6 +65,7 @@
     margin: 18px 0 18px 12px;
     float: right;
   color: #565656;
+  text-shadow: none;
   background-color: #ffffff;
   *background-color: #f7f7f7;
   background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
@@ -93,20 +94,10 @@
     border-color: #fff;
   }
 
-  .navbar .btn-navbar.collapsed span {
-    background-image: url("../images/glyphicons-halflings-white.png");
-  }
-
-  .navbar .btn-navbar span,
-  .navbar .btn-navbar:hover span {
-    background-image: url("../images/glyphicons-halflings.png");
-  }
-
   .navbar .btn-navbar:hover,
   .navbar .btn-navbar:focus {
     text-decoration: none;
     color: #8a95a6;
-    text-shadow: none;
     background: #f7f7f7;
     border-color: #c6cedb;
   }
@@ -130,7 +121,7 @@
     position: relative;
     border: 0;
     padding: 0;
-    margin: 6px 80px 24px;
+    margin: 6px 80px 12px;
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -153,10 +144,6 @@
     -webkit-border-radius: 0 2px 2px 0;
        -moz-border-radius: 0 2px 2px 0;
             border-radius: 0 2px 2px 0;
-  }
-
-  .nav-collapse .navbar-search button .icon-search {
-    display: none;
   }
 
   .nav-collapse .nav > li,
@@ -194,8 +181,34 @@
     background: transparent;
   }
 
+  .treaty-header .treaty-body,
+  .treaty-header .treaty-actions {
+    margin-left: 84px;
+    float: none;
+  }
+
   #focal-points .select {
     padding: 4px 8px;
+  }
+
+  #search-page .results .nav-tabs {
+    margin-left: -30px;
+    padding-left: 30px;
+    margin-right: -30px;
+    padding-right: 30px;
+  }
+
+   #term-definition .definition {
+    margin-bottom: 12px;
+  }
+
+  .term-info .dl-horizontal dt{
+    float: left;
+  }
+
+  .term-info .dl-horizontal dt {
+    width: 84px;
+    margin-right: 8px;
   }
 }
 
@@ -204,29 +217,100 @@
     margin-bottom: 12px;
   }
 
-  .treaty-info {
+  .navbar + .hero-unit {
+    margin-top: -13px;
+  }
+
+  .hero-unit {
+    padding-left: 40px;
+    margin-left: -20px;
+    padding-right: 40px;
+    margin-right: -20px;
+  }
+
+  #homepage-carousel {
+    margin-top: 0;
+  }
+
+  #term-definition .definition,
+  #term-definition .term-info { 
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .what-is-informea {
+    text-align: center;
+  }
+
+  .feature-glossary,
+  .feature-treaties,
+  .feature-countries {
+    margin-bottom: 24px;
+  }
+
+  #term-definition .term-info .dl-horizontal {
+    margin-bottom: 0;
+  }
+
+  .modal-header .treaty-header {
+    padding: 0;
+    margin-bottom: 6px;
+  }
+
+  .treaty-header .treaty-actions > a { float: left; }
+  .treaty-header .treaty-actions > a:first-child { margin-right: 12px; }
+
+  #search-page  .search-category {
+    border-bottom: 0;
+  }
+
+  .modal {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    width: auto!important;
+    margin: 0!important;
+  }
+
+  .decision-reader .decision-info {
+    margin-top:0 ;
+  }
+  .decision-reader .decision-info dt {
+    border-top: 1px solid #f7f7f7;
+    width: auto;
+  }
+
+  .decision-reader .decision-info dt,
+  .decision-reader .decision-info dd {
+    padding: 0;
+  }
+
+  .decision-reader .decision-info dd {
+    border-top: 0;
+  }
+
+  #contact-fp form {
+    margin-left: 0;
     margin-right: 0;
   }
 
-  .treaty-info .ti-1,
-  .treaty-info .ti-2 {
-    float: none;
-    margin-right: 0;
+  #term-definition {
+    height: 0;
+    overflow: hidden;
   }
 
-  .treaty-info strong {
-    min-width: 72px;
-    margin-right: 6px;
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    line-height: 20px;
+  .modal.fade {
+    top: -100px;
   }
 
-  .treaty-actions {
-    position: static;
-    margin-left: 72px;
-    margin-top: 6px;
+  .modal.fade.in {
+    top: 20px;
+  }
+
+  .modal-header .treaty-body {
+    display: none;
   }
 
   #focal-points .select {
@@ -242,6 +326,7 @@
     *display: inline;
     *zoom: 1;
   }
+
   #focal-points .select p {
     display: inline;
   }
@@ -304,6 +389,34 @@
     -webkit-border-radius: 0px;
        -moz-border-radius: 0px;
             border-radius: 0px;
+  }
+
+  .treaty-header .well {
+    padding: 0;
+  }
+
+  .treaty-header .logo {
+    height: 48px;
+    width: 48px;
+  }
+
+  .treaty-header h1 {
+    line-height: 24px;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+
+  .treaty-header .treaty-body, .treaty-header .treaty-actions {
+    margin-left: 64px;
+  }
+
+  .treaty-actions .btn-group {
+    text-align: center;
+  }
+
+  .treaty-actions .dropdown-menu {
+    right: 0;
   }
 
   .dl-horizontal dt {

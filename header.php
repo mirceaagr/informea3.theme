@@ -11,27 +11,65 @@
             echo " | $site_description";
         wp_title(' - ', true, 'left');
     ?></title>
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style-responsive.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icons.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/informea.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/style-responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/logos.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome-ie7.min.css">
+    <![endif]-->
 </head>
 <body <?php body_class($class); ?>>
     <div class="navbar navbar-static-top">
         <div class="navbar-inner">
             <div class="container">
                 <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.menu">
-                    <span class="icon-more"></span>
+                    <i class="icon-reorder"></i>
                 </a>
-                <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.search">
-                    <span class="icon-search"></span>
-                </a>
-                <a class="brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png"></a>
+                <a class="brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png" alt="InforMEA logo"></a>
                 <div class="nav-collapse menu collapse">
-                    <ul class="nav">
+                    
+                    <form class="navbar-search pull-right">
+                        <input id="search" type="text" class="search-query" data-provide="typeahead" data-source="" placeholder="Explore InforMEA">
+                        <button type="submit" class="btn hidden-phone hidden-tablet"><i class="icon-search"></i></button>
+                        <ul class="typehead dropdown-menu">
+                            <li class="typehead-keyword">
+                                <a href="">Search InforMEA for</a>
+                            </li>
+                            <li class="typehead-category">
+                                Treaties
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img class="logo logo-left" src="http://placehold.it/60x60" alt="Treaty Logo"/>
+                                    Cartagen Protocol
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img class="logo logo-left" src="http://placehold.it/60x60" alt="Treaty Logo"/>
+                                    AEWA Convention
+                                </a>
+                            </li>
+                            <li class="typehead-category">
+                                Countries
+                            </li>
+                            <li>
+                                <a href="">
+                                    Romania
+                                </a>
+                            </li>
+                            <li class="typehead-category">
+                                Terms
+                            </li>
+                            <li>
+                                <a href="">Biological Diversity</a>
+                            </li>
+                        </ul>
+                    </form>
+                    <ul class="nav pull-left">
                         <li class="sub-menu"><a href="/treaties">Treaties<span class="caret"></span></a>
                             <div class="sub-menu">
                                 <div class="container">
@@ -95,12 +133,6 @@
                         <li><a href="#">Countries</a></li>
                         <li><a href="#">Glossary</a></li>
                     </ul>
-                </div>
-                <div class="nav-collapse search collapse">
-                    <form class="navbar-search pull-right">
-                        <input id="search" type="text" class="search-query" data-provide="typeahead" placeholder="Search">
-                        <button type="submit" class="btn hidden-phone"><i class="icon-search"></i> <!-- <span class="hidden-desktop">Go</span> --></button>
-                    </form>
                 </div>
             </div>
         </div>

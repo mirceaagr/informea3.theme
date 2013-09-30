@@ -5,93 +5,92 @@ a .logo {
     height: 60px;
     margin: 0 auto;
     
-    background: url("../images/all_logos.png") no-repeat;
-    background-position-x: 0;
-    background-position-y: 0px;
+    background: url("../images/all_logos_gray.png") no-repeat;
+    background-position: 0 0;
 }
 
 a:hover .logo,
 a:active .logo,
 a:focus .logo {
-    background-position-y: -60px;
+    background-image: url("../images/all_logos_colour.png");
 }
 
 /*later*/
 .later .logo {
-  background-position-x: 0;
+  background-position: 0 0;
 }
 .itpgrfa .logo {
-  background-position-x: -60px;
+  background-position: -60px 0;
 }
 .stockholm .logo {
-  background-position-x: -120px;
+  background-position: -120px 0;
 }
 .later .logo {
-  background-position-x: -180px;
+  background-position: -180px 0;
 }
 .un .logo {
-  background-position-x: -240px;
+  background-position: -240px 0;
 }
 .un .logo {
-  background-position-x: -300px;
+  background-position: -300px 0;
 }
 .basel .logo {
-  background-position-x: -360px;
+  background-position: -360px 0;
 }
 .ozone .logo {
-  background-position-x: -420px;
+  background-position: -420px 0;
 }
 .unccd .logo {
-  background-position-x: -480px;
+  background-position: -480px 0;
 }
 .cbd .logo {
-  background-position-x: -540px;
+  background-position: -540px 0;
 }
 .later .logo {
-  background-position-x: -600px;
+  background-position: -600px 0;
 }
 .unece .logo {
-  background-position-x: -660px;
+  background-position: -660px 0;
 }
 .cites .logo {
-  background-position-x: -720px;
+  background-position: -720px 0;
 }
 .ramsar .logo {
-  background-position-x: -780px;
+  background-position: -780px 0;
 }
 .unep .logo {
-  background-position-x: -840px;
+  background-position: -840px 0;
 }
 .unep .logo {
-  background-position-x: -840px;
+  background-position: -840px 0;
 }
 .abidjan .logo {
-  background-position-x: -840px;
+  background-position: -840px 0;
 }
 .cms .logo {
-  background-position-x: -900px;
+  background-position: -900px 0;
 }
 .later .logo {
-  background-position-x: -960px;
+  background-position: -960px 0;
 }
 .unesco .logo {
-  background-position-x: -1020px;
+  background-position: -1020px 0;
 }
 .fao .logo {
-  background-position-x: -1080px;
+  background-position: -1080px 0;
 }
 .rotterdam .logo {
-  background-position-x: -1140px;
+  background-position: -1140px 0;
 }
 .unfccc .logo {
-  background-position-x: -1200px;
+  background-position: -1200px 0;
 }
 .later .logo {
-  background-position-x: -1260px;
+  background-position: -1260px 0;
 }
 .later .logo {
-  background-position-x: -1320px;
+  background-position: -1320px 0;
 }
 .later .logo {
-  background-position-x: -1380px;
+  background-position: -1380px 0;
 }

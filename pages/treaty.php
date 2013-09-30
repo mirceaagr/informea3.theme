@@ -92,18 +92,18 @@ get_header();
                 ?>
                     <li class="accordion-group">
                         <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" href="#collapse-meeting-<?php echo $cop->id; ?>">
-                                <?php echo !empty($cop->abbreviation) ? $cop->abbreviation : $cop->title; ?>
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse-meeting-<?php echo $cop->id; ?>">
+                                <i class="icon-caret-right"></i> <?php echo !empty($cop->abbreviation) ? $cop->abbreviation : $cop->title; ?>
                             </a>
                         </div>
                         <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">
                             <table class="table table-bordered accordion-inner">
-                                <caption>Showing !x Decisions taken on !Date in !Location</caption>
+                                <caption>!x Decisions taken on !Date in !Location</caption>
                                 <tbody>
                                     <?php foreach($decisions as $row): ?>
                                     <tr>
                                         <td class="span2"><?php echo $row->number; ?> <br/>
-                                            <span class="status <?php echo strtolower($row->status); ?>"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span>
+                                            <span class="status <?php echo strtolower($row->status); ?> small"><?php echo strtoupper($row->status); ?>&ensp;<?php echo strtoupper(ucfirst($row->type)); ?></span>
                                         </td>
                                         <td>
                                             <a href="#"><?php echo $row->short_title; ?></a>
@@ -138,26 +138,14 @@ get_header();
                     <ul class="focal-point-list span7">
                         <li class="focal-point">
                             <h3>Person Name</h3>
-                            <p>Occupation</p>
+                            <p class="occupation">Occupation</p>
                             <dl class="dl-horizontal">
                                 <dt>Department</dt><dd>Department Name</dd>
                                 <dt>Institution</dt><dd>Institution Name</dd>
                                 <dt>Address</dt><dd>Institution Address</dd>
                             </dl>
                             <div class="focal-point-actions">
-                                <a class="btn btn-inline" href="">Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
-                            </div>
-                        </li>
-                        <li class="focal-point">
-                            <h3>Person Name</h3>
-                            <p>Occupation</p>
-                            <dl class="dl-horizontal">
-                                <dt>Department</dt><dd>Department Name</dd>
-                                <dt>Institution</dt><dd>Institution Name</dd>
-                                <dt>Address</dt><dd>Institution Address</dd>
-                            </dl>
-                            <div class="focal-point-actions">
-                                <a class="btn btn-inline" href="">Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
+                                <a class="btn btn-inline" href=""><i class="icon-envelope-alt"></i> Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
                             </div>
                         </li>
                     </ul>
@@ -213,15 +201,9 @@ get_header();
     <!-- Modal definition -->
     <div id="treaty-text-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
             <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-header-tpl'); ?>
-            <div class="treaty-text-toolbar hidden-phone clearfix">
-                <strong>Treaty Text</strong>
-                <div class="pull-right">
-                    <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
-                    <button class="btn btn-inline"><i class="icon-url"></i> Cite/Link</button>
-                </div>
-            </div>
+            <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-toolbar-tpl'); ?>
         </div>
         <div class="modal-body">
             <p>One fine body…</p>
