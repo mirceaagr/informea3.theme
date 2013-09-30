@@ -65,6 +65,7 @@
     margin: 18px 0 18px 12px;
     float: right;
   color: #565656;
+  text-shadow: none;
   background-color: #ffffff;
   *background-color: #f7f7f7;
   background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
@@ -97,7 +98,6 @@
   .navbar .btn-navbar:focus {
     text-decoration: none;
     color: #8a95a6;
-    text-shadow: none;
     background: #f7f7f7;
     border-color: #c6cedb;
   }
@@ -121,7 +121,7 @@
     position: relative;
     border: 0;
     padding: 0;
-    margin: 6px 80px 24px;
+    margin: 6px 80px 12px;
     -webkit-box-shadow: none;
        -moz-box-shadow: none;
             box-shadow: none;
@@ -253,6 +253,14 @@
     margin-bottom: 0;
   }
 
+  .modal-header .treaty-header {
+    padding: 0;
+    margin-bottom: 6px;
+  }
+
+  .treaty-header .treaty-actions > a { float: left; }
+  .treaty-header .treaty-actions > a:first-child { margin-right: 12px; }
+
   #search-page  .search-category {
     border-bottom: 0;
   }
@@ -381,6 +389,34 @@
     -webkit-border-radius: 0px;
        -moz-border-radius: 0px;
             border-radius: 0px;
+  }
+
+  .treaty-header .well {
+    padding: 0;
+  }
+
+  .treaty-header .logo {
+    height: 48px;
+    width: 48px;
+  }
+
+  .treaty-header h1 {
+    line-height: 24px;
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+
+  .treaty-header .treaty-body, .treaty-header .treaty-actions {
+    margin-left: 64px;
+  }
+
+  .treaty-actions .btn-group {
+    text-align: center;
+  }
+
+  .treaty-actions .dropdown-menu {
+    right: 0;
   }
 
   .dl-horizontal dt {

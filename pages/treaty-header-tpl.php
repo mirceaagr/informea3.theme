@@ -23,7 +23,7 @@
 
     <div class="treaty-actions">
         <?php if ($treaty_header_mode == 'modal'): ?>
-            <a href="#"><i class="icon-external-link"></i> Read from Source</a><br/>
+            <a href="#"><i class="icon-external-link"></i> Read from Source</a>
             <a href="#"><i class="icon-external-link"></i> Go to Treaty Website</a>
         <?php else: ?>
         <div class="btn-group">

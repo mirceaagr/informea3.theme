@@ -1,8 +1,10 @@
 <div class="treaty-text-toolbar well hidden-phone clearfix">
-    <strong>Treaty Text</strong>
+	<div class="pull-left">
+    	<strong>Treaty Text</strong>
+	</div>
     <div class="pull-right">
         <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
         <button class="btn btn-inline"><i class="icon-link"></i> Cite/Link</button>
-        <a href="" class="btn btn-inline"><i class="icon-resize-full"></i> Separate window</a>
+        <button class="btn btn-inline"><i class="icon-resize-full"></i> Separate window</button>
     </div>
 </div>

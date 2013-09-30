@@ -1,9 +1,3 @@
-/*SEARCH*/
-/*LATER*/
-/*REVIEW*/
-/*TEST*/
-
-
 /*
   This CSS file is for Screen media only.
   Responsive and Print are in separate files.
@@ -89,7 +83,12 @@ a:hover,
 a:focus {
   color: #3399cc;
   text-decoration: underline;
+  outline: none!important;
 }
+
+
+  
+
 
 a[data-toggle="collapse"] {
   cursor: pointer;
@@ -389,46 +388,54 @@ textarea[readonly] {
   position: relative;
 }
 
-.dropdown {
+.dropdown-container .dropdown {
   height: 100%;
 }
 
-.dropdown.open .btn-select {
+.dropdown-container .dropdown.open .btn-select {
   float: right;
   outline: none;
 }
 
-.dropdown.open .btn-select i:before {
-  content: "\f00d";
-}
+.dropdown-container .dropdown.open .btn-select i:before { content: "\f00d"; }
 
-.dropdown.open {
-  position: absolute;
-  width: 100%;
+.dropdown-menu,
+.dropdown-container .dropdown.open {
+  text-align: left;
   height: auto;
   padding: 12px;
-  /*top: -14px;*/
-  margin: -14px;
   background-color: #fff;
   border: 2px solid #ffcc66;
   -webkit-box-shadow: 0 1px 3px rgba(138, 149, 166, 0.5);
-       -moz-box-shadow: 0 1px 3px rgba(138, 149, 166, 0.5);
-            box-shadow: 0 1px 3px rgba(138, 149, 166, 0.5);
+     -moz-box-shadow: 0 1px 3px rgba(138, 149, 166, 0.5);
+          box-shadow: 0 1px 3px rgba(138, 149, 166, 0.5);
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+}
+
+.dropdown-container .dropdown.open {
+  position: absolute;
+  width: 100%;
+  margin: -14px;
 }
 
 .dropdown-menu {
+  top: 100%;
+  min-width: 120px;
+  margin: 0;
+}
+
+.dropdown-container .dropdown-menu {
   position: static;
   float: none;
   padding: 0;
-  margin: 0;
+  margin: 8px 0 0;
   font-size: 12px;
   border: 0;
   -webkit-box-shadow: none;
      -moz-box-shadow: none;
           box-shadow: none;
-  -webkit-border-radius: 0px;
-     -moz-border-radius: 0px;
-          border-radius: 0px;
 }
 
 .dropdown-menu .divider {
@@ -438,7 +445,7 @@ textarea[readonly] {
 
 .dropdown-menu > li > a {
   padding: 6px 12px;
-  margin: 6px -12px -6px;
+  margin: 0 -12px;
   line-height: 18px;
   white-space: nowrap;
   color: #565656;
@@ -449,6 +456,7 @@ textarea[readonly] {
 .dropdown-submenu:hover > a,
 .dropdown-submenu:focus > a {
   background: #3399cc; /*TEST*/
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 .dropdown-menu > .active > a,
@@ -492,16 +500,16 @@ textarea[readonly] {
   margin: 0 -12px;
 }
 
-.well > select { /*REVIEW*/
+.well > select {
   margin: 4px 0;
 }
 
 /* BUTTONS */
 .btn {
-  line-height: 20px; /*TEST 18px*/
+  line-height: 20px;
   color: #565656;
   background: #ffffff;
-/*  *background-color: #f7f7f7;
+/**background-color: #f7f7f7;
   background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f7f7f7));
   background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
@@ -529,6 +537,7 @@ textarea[readonly] {
   color: #8a95a6;
   text-shadow: none;
   background: #f7f7f7;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 .btn:hover,
@@ -590,7 +599,7 @@ textarea[readonly] {
   text-shadow: none;
   color: #fff;
   background-color: #3399cc;
-  *background-color: #267399;
+  *background: #267399;
   background-image: -moz-linear-gradient(top, #3399cc, #267399);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3399cc), to(#267399));
   background-image: -webkit-linear-gradient(top, #3399cc, #267399);
@@ -599,7 +608,7 @@ textarea[readonly] {
   background-repeat: repeat-x;
   border-color: #267399;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3399cc', endColorstr='#ff267399', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
 .btn-primary .caret {
@@ -695,6 +704,7 @@ textarea[readonly] {
 /* NAVBAR BUTTONS NORMAL */
 .navbar-search button {
   width: 72px;
+  *height: 30px;
   color: #16232e;
   background-color: #ffcc66;
   *background-color: #ffcc66;
@@ -730,7 +740,6 @@ textarea[readonly] {
   text-align: center;
   color: #fff;
   text-shadow: 0 1px 1px #1a3a6f;
-        filter: dropshadow(color=#1a3a6f, offx=, offy=1);
 }
 
 .navbar .btn-navbar {
@@ -1018,7 +1027,7 @@ a.thumbnail:focus {
   background-image: -o-linear-gradient(top, #3399cc, #267399);
   background-image: linear-gradient(to bottom, #3399cc, #267399);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff3399cc', endColorstr='#ff267399', GradientType=0);
 
   -webkit-border-radius: 0;
      -moz-border-radius: 0;
@@ -1071,6 +1080,7 @@ a.thumbnail:focus {
 .navbar-search {
   float: left;
   margin: 18px 0 18px 6px;
+  *+margin-left: 0;
 }
 
 .navbar-search .search-query {
@@ -1188,6 +1198,14 @@ a.thumbnail:focus {
   font-size: 15px;
 }
 
+.accordion-heading .accordion-toggle:hover,
+.accordion-heading .accordion-toggle:focus {
+  text-decoration: none;
+}
+
+.accordion-heading .accordion-toggle.collapsed {
+}
+
 .accordion-heading .accordion-toggle.collapsed i:before {
   content: "\f0d7";
 }
@@ -1201,9 +1219,8 @@ table.accordion-inner caption {
   border-bottom: 0;
 }
 
-.accordion-body {
-  margin: -1px;
-}
+.accordion-body {  margin: 0 -1px; }
+.accordion-body.in {  margin-bottom:-1px; }
 
 /* CAROUSEL */
 .carousel {
@@ -1402,7 +1419,7 @@ table.accordion-inner caption {
 .modal-body {
   padding-top: 12px;
   padding-bottom: 12px;
-  overflow: inherit;
+  overflow: hidden;
 }
 
 .modal-footer {
@@ -1468,6 +1485,7 @@ table.accordion-inner caption {
 /*SUBMENU*/
 li.sub-menu .caret {
   display: block;
+  *+display: none;
   border-top-color: #fff;
   border-width: 5px;
   margin: 6px auto -11px;
@@ -1489,6 +1507,47 @@ li.sub-menu:hover .caret {
 
 .sub-menu .container {
   padding: 12px 0;
+}
+
+/* TYPEHEAD */
+.typehead {
+  left: 0!important;
+  margin-top: 3px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.typehead > li > a {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 30px;
+  border-bottom: 1px solid #f7f7f7;
+}
+
+.typehead > li.typehead-keyword > a {
+  font-style: italic;
+}
+
+.typehead > li .logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+}
+
+.typehead > li.typehead-category {
+  font-size: 12px;
+  line-height: 16px;
+  color: #8a95a6;
+  margin: 0 -12px;
+  padding: 0 12px;
+  background: #f7f7f7;
+}
+
+.typehead-category {
+
 }
 
 /* SEARCH */
@@ -1593,6 +1652,9 @@ span.status.retired { color: #ff6666; }
   /*text-align: right;*/
 }
 
+.treaty-header .treaty-actions > a {
+  display: block;
+}
 
 .treaty-header .well {
   margin-bottom: 0;
@@ -1623,8 +1685,8 @@ span.status.retired { color: #ff6666; }
 }
 
 /* TREATY TEXT */
-#treaty-text-modal .span3,
-#treaty-text-modal .span9 {
+#treaty-text-modal .modal-body .span3,
+#treaty-text-modal .modal-body .span9 {
   height: 400px;
   overflow-y: auto;
 }
