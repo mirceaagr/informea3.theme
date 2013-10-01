@@ -86,10 +86,6 @@ a:focus {
   outline: none!important;
 }
 
-
-  
-
-
 a[data-toggle="collapse"] {
   cursor: pointer;
 }
@@ -520,12 +516,29 @@ textarea[readonly] {
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff7f7f7', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffcc66', endColorstr='#ffffcc66', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   *zoom: 1;
   -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+}
+
+/* NAVBAR BUTTONS NORMAL */
+.navbar .nav > li > a,
+.navbar .nav > li > div.sub-menu > a {
+  float: none;
+  padding: 24px 12px;
+  border-left: 1px solid rgba(247,247,247,0.25);
+  border-right: 1px solid rgba(26,58,111,0.25);
+  font-family: Georgia, serif;
+  font-size: 15px;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 1px #1a3a6f;
+        filter: dropshadow(color=#1a3a6f, offx=, offy=1);
 }
 
 /* BUTTONS HOVER/FOCUS */
@@ -873,8 +886,6 @@ a.thumbnail:focus {
   padding: 9px;
   color: #555555;
 }
-
-
 
 .dropdown.open .dropdown-toggle,
 .btn-group.open .dropdown-toggle {
@@ -1431,7 +1442,6 @@ table.accordion-inner caption {
   background: #f7f7f7;
   box-shadow: none;
 }
-
 
 
 /* Helper Classes */
