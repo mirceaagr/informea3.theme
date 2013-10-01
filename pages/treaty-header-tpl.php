@@ -23,8 +23,12 @@
 
     <div class="treaty-actions">
         <?php if ($treaty_header_mode == 'modal'): ?>
-            <a href="#"><i class="icon-external-link"></i> Read from Source</a>
-            <a href="#"><i class="icon-external-link"></i> Go to Treaty Website</a>
+            <?php if(!empty($treaty->url_treaty_text)): ?>
+            <a href="<?php echo $treaty->url_treaty_text; ?>" target="_blank"><i class="icon-external-link"></i> Read on convention website</a>
+            <?php endif; ?>
+            <?php if(!empty($treaty->url)): ?>
+            <a href="<?php echo $treaty->url; ?>" target="_blank"><i class="icon-external-link"></i> Visit convention website</a>
+            <?php endif; ?>
         <?php else: ?>
         <div class="btn-group">
             <button class="btn btn-primary" data-remote="<?php i3_treaty_url($treaty, '/text?display=modal') ;?>" data-target="#treaty-text-modal" data-toggle="modal"><i class="icon-file-text"></i> Treaty Text</button>
@@ -32,8 +36,12 @@
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu pull-right">
-                <li><a href="#"><i class="icon-external-link"></i> Read from Source</a></li>
-                <li><a href="#"><i class="icon-external-link"></i> Go to Treaty Website</a></li>
+                <?php if(!empty($treaty->url_treaty_text)): ?>
+                <li><a href="<?php echo $treaty->url_treaty_text; ?>" target="_blank"><i class="icon-external-link"></i> Read on convention website</a></li>
+                <?php endif; ?>
+                <?php if(!empty($treaty->url)): ?>
+                <li><a href="<?php echo $treaty->url; ?>" target="_blank"><i class="icon-external-link"></i> Visit convention website</a></li>
+                <?php endif; ?>
             </ul>
         </div>
         <?php endif; ?>
