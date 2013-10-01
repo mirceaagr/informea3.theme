@@ -45,7 +45,9 @@ get_header();
                     <?php endif; ?>
                 </ul>
             </div>
+
             <!-- TAG CLOUD -->
+            <?php if(count($tags)): ?>
             <div class="well">
                 <h4>Most Frequent Terms</h4>
                 <ol class="tag-cloud">
@@ -54,6 +56,8 @@ get_header();
                     <?php endforeach; ?>
                 </ol>
             </div>
+            <?php endif; ?>
+
             <!-- SELECT TREATY -->
             <div class="box">
                 <select id="select_treaty" onchange="window.location = jQuery(this).val()" class="input-block-level" title="Use this select to move to another treaty">
