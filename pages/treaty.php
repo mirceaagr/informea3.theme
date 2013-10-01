@@ -21,6 +21,7 @@ $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
 $cop_meetings_c = count($cop_meetings);
 $decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
 $cop = null;
+$tags = InforMEA::get_treaty_popular_tags($treaty->id);
 
 wp_enqueue_script('informea-treaties');
 get_header();
@@ -48,16 +49,9 @@ get_header();
             <div class="well">
                 <h4>Most Frequent Terms</h4>
                 <ol class="tag-cloud">
-                    <li><a class="btn btn-inline tag10" href="#">Tag 10</a></li>
-                    <li><a class="btn btn-inline tag9" href="#">Tag 9</a></li>
-                    <li><a class="btn btn-inline tag8" href="#">Tag 8</a></li>
-                    <li><a class="btn btn-inline tag7" href="#">Tag 7</a></li>
-                    <li><a class="btn btn-inline tag6" href="#">Tag 6</a></li>
-                    <li><a class="btn btn-inline tag5" href="#">Tag 5</a></li>
-                    <li><a class="btn btn-inline tag4" href="#">Tag 4</a></li>
-                    <li><a class="btn btn-inline tag3" href="#">Tag 3</a></li>
-                    <li><a class="btn btn-inline tag2" href="#">Tag 2</a></li>
-                    <li><a class="btn btn-inline tag1" href="#">Tag 1</a></li>
+                    <?php foreach($tags as $tag): ?>
+                    <li><a class="btn btn-inline tag<?php echo $tag->weight; ?>" href="#"><?php echo $tag->term; ?></a></li>
+                    <?php endforeach; ?>
                 </ol>
             </div>
             <!-- SELECT TREATY -->

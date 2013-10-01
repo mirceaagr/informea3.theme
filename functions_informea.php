@@ -259,4 +259,97 @@ class InforMEA {
         }
         return FALSE;
     }
+
+
+    /**
+     * Return the top terms used to tag a treaty (articles, paragraphs, decisions etc.).
+     *
+     * @param $id_treaty integer Treaty ID
+     * @param $limit integer Number of terms to return
+     *
+     * @return array Array of terms;
+     */
+    static function get_treaty_popular_tags($id_treaty, $limit = 10) {
+        global $wpdb;
+        $ret = array();
+        $tmp = array();
+
+        // Treaty / Article / Paragraph / Tags
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('SELECT a.id_concept, COUNT(a.id_concept) AS c
+                    FROM ai_treaty_article_paragraph_vocabulary a
+                    INNER JOIN ai_treaty_article b ON a.id_treaty_article_paragraph = b.id
+                    WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
+                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+        );
+        foreach($rows as $row) {
+            $tmp[$row->id_concept] += $row->c;
+        }
+
+        // Treaty / Article / Tags
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('SELECT a.id_concept, COUNT(a.id_concept) AS c
+                    FROM ai_treaty_article_vocabulary a
+                    INNER JOIN ai_treaty_article b ON a.id_treaty_article = b.id
+                    WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
+                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+        );
+        foreach($rows as $row) {
+            $tmp[$row->id_concept] += $row->c;
+        }
+
+        // Treaty / Tags
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('SELECT a.id_concept, COUNT(a.id_concept) AS c
+                    FROM ai_treaty_vocabulary a WHERE a.id_treaty = %d GROUP BY a.id_concept
+                    HAVING COUNT(a.id_concept) > 1 ORDER BY count(a.id_concept) DESC', $id_treaty)
+        );
+        foreach($rows as $row) {
+            $tmp[$row->id_concept] += $row->c;
+        }
+
+        // Treaty / Decisions / Paragraphs / Tags
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('SELECT a.id_concept, COUNT(a.id_concept) AS c
+                    FROM ai_decision_paragraph_vocabulary a
+                    INNER JOIN ai_decision_paragraph b ON a.id_decision_paragraph = b.id
+                    INNER JOIN ai_decision c ON b.id_decision = c.id
+                    WHERE c.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
+                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+        );
+        foreach($rows as $row) {
+            $tmp[$row->id_concept] += $row->c;
+        }
+
+        // Treaty / Decisions / Tags
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT a.id_concept, COUNT(a.id_concept) AS c
+                    FROM ai_decision_vocabulary a INNER JOIN ai_decision b ON a.id_decision = b.id
+                    WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
+                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+        );
+        foreach($rows as $row) {
+            $tmp[$row->id_concept] += $row->c;
+        }
+
+        // Build an array of terms and set weight on each term
+        $tmp = array_slice($tmp, 0, $limit, TRUE);
+        $objects = $wpdb->get_results(
+            sprintf(
+                'SELECT * FROM voc_concept WHERE id IN (%s)',
+                implode(',', array_keys($tmp))
+            ),
+            OBJECT_K
+        );
+        // Attach weight
+        $keys = array_keys($tmp);
+        $c = count($keys);
+        foreach($keys as $weight => $id_term) {
+            $term = $objects[$id_term];
+            $term->weight = ($c - $weight);
+            $ret[] = $term;
+        }
+        return $ret;
+    }
 }
