@@ -98,7 +98,7 @@ get_header();
                         </div>
                         <div id="collapse-meeting-<?php echo $cop->id; ?>" class="accordion-body collapse">
                             <table class="table table-bordered accordion-inner">
-                                <caption>!x Decisions taken on !Date in !Location</caption>
+                                <caption><?php i3_treaty_decision_caption($cop, count($decisions)); ?></caption>
                                 <tbody>
                                     <?php foreach($decisions as $row): ?>
                                     <tr>

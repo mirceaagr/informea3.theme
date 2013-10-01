@@ -227,4 +227,36 @@ class InforMEA {
         }
         return $ret;
     }
+
+
+    /**
+     * Retrieve the list of countries. Statically cached.
+     *
+     * @return array Array of objects with country information
+     */
+    static function get_countries() {
+        static $ret = array();
+        if(empty($ret)) {
+            global $wpdb;
+            $ret = $wpdb->get_results('SELECT * FROM ai_country ORDER BY name', OBJECT_K);
+        }
+        return $ret;
+    }
+
+
+    /**
+     * Retrieve a country by its ISO code.
+     *
+     * @param $code string ISO code
+     * @return mixed Country object or FALSE if not found
+     */
+    static function get_country($code) {
+        $countries = self::get_countries();
+        foreach($countries as $c) {
+            if($c->code == $code || $c->code2l == $code) {
+                return $c;
+            }
+        }
+        return FALSE;
+    }
 }

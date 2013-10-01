@@ -133,6 +133,29 @@ function i3_print_article_title($article) {
 
 
 /**
+ * Print the caption table for the decision listing inside treaty page
+ *
+ * @param $cop stdClass COP meeting
+ * @param $c integer Number of decisions
+ */
+function i3_treaty_decision_caption($cop, $c) {
+    echo sprintf('%d decisions.',  $c);
+    echo sprintf(' Meeting was held on %s, ', i3_format_mysql_date($cop->start));
+    if(!empty($cop->location)) {
+        echo sprintf(' %s', $cop->location);
+    }
+    if(!empty($cop->city)) {
+        echo sprintf(' in %s', $cop->city);
+    }
+    $countries = InforMEA::get_countries();
+    if(!empty($countries[$cop->id_country])) {
+        $c = $countries[$cop->id_country];
+        echo sprintf(', %s', $c->name);
+    }
+}
+
+
+/**
  * Build the website breadcrumbtrail
  */
 function informea_the_breadcrumb() {
