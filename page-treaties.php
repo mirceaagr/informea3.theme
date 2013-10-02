@@ -3,6 +3,11 @@ $odata_name = get_request_variable('odata_name');
 $view = get_request_variable('view');
 $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
 
+if($treaty) {
+    // Inject treaty into the JS scripts as config object
+    wp_localize_script('informea-treaties', 'i3_config_treaty', array('id' => $treaty->id));
+}
+
 /**
  * Filter used by the treaty pages
  */
