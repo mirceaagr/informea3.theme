@@ -13,9 +13,7 @@
  * @since Twenty Ten 1.0
  */
 // debug_wp_request();
-wp_enqueue_script('jquery-js', 'http://code.jquery.com/jquery.js', array(), FALSE, TRUE);
-wp_enqueue_script('bootstrap-js', get_bloginfo('template_directory') . '/scripts/bootstrap.js', array(), FALSE, TRUE);
-$breadcrumbtrail_handler = sprintf('informea_%s_breadcrumbtrail', $post-> post_name);
+$breadcrumbtrail_handler = sprintf('informea_%s_breadcrumbtrail', $post->post_name);
  if(function_exists($breadcrumbtrail_handler)) {
 	add_action('breadcrumbtrail', $breadcrumbtrail_handler);
 }

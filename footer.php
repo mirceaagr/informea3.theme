@@ -156,8 +156,6 @@
 		</div>
 	</div>
 <?php
-	wp_enqueue_script('informea-common');
-	wp_enqueue_script('bootstrap');
 	wp_footer();
 ?>
 </body>

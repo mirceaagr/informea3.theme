@@ -32,6 +32,7 @@ if($nfps > 0) {
 }
 
 wp_enqueue_script('informea-treaties');
+
 get_header();
 
 ?>

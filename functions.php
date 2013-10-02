@@ -6,9 +6,16 @@ $treaty = NULL;
 
 require_once(dirname(__FILE__) . '/functions_informea.php');
 
-wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'));
-wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'));
-wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'));
+//jQuery and migrate are always loaded in the header
+//http://blog.cloudfour.com/getting-all-javascript-into-the-footer-in-wordpress-not-so-fast-buster/
+
+wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'), FALSE, TRUE);
+wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'), FALSE, TRUE);
+wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
+wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
+
+wp_enqueue_script('informea-common');
+wp_enqueue_script('bootstrap');
 
 wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
 wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
@@ -17,6 +24,7 @@ wp_register_style('font-awesome-ie7', get_template_directory_uri() . '/font-awes
 wp_register_style('informea-style', get_bloginfo('stylesheet_url'));
 wp_register_style('informea-style-responsive', get_template_directory_uri() . '/css/style-responsive.css');
 wp_register_style('informea-logos', get_template_directory_uri() . '/css/logos.css');
+
 
 wp_enqueue_style('bootstrap');
 wp_enqueue_style('informea-style');
@@ -32,7 +40,7 @@ function i3_enqueue_styles() {
     wp_enqueue_style('font-awesome-ie7');
     $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
 }
-add_action( 'wp_enqueue_scripts', 'i3_enqueue_styles' );
+add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
 
 
 function i3_setup() {

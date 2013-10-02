@@ -11,6 +11,7 @@ $topics = InforMEA::get_treaties_enabled_primary_topics();
 $regions = InforMEA::get_treaties_enabled_regions_in_use();
 
 wp_enqueue_script('informea-treaties');
+
 get_header();
 ?>
 <h1><?php the_title(); ?></h1>

@@ -17,8 +17,7 @@ function informea_about_breadcrumbtrail($items) {
 }
 add_filter('the_breadcrumb', 'informea_about_breadcrumbtrail');
 
-wp_register_script('informea.about', get_template_directory_uri() . '/scripts/about.js', array('jquery'));
-wp_enqueue_script('informea.about');
+wp_enqueue_script('informea-about');
 
 get_header();
 if(have_posts()): while(have_posts()) : the_post();
