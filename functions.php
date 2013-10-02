@@ -34,6 +34,8 @@ wp_enqueue_style('informea-style-responsive');
 wp_enqueue_style('informea-logos');
 wp_enqueue_style('font-awesome');
 
+// Inject ajaxurl into the front-end scripts as config object
+wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
 
 function i3_enqueue_styles() {
     global $wp_styles;
