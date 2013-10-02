@@ -34,7 +34,6 @@ wp_enqueue_style('informea-style-responsive');
 wp_enqueue_style('informea-logos');
 wp_enqueue_style('font-awesome');
 
-add_action('wp_head','i3_ajaxurl');
 
 function i3_enqueue_styles() {
     global $wp_styles;
