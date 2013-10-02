@@ -353,4 +353,58 @@ class InforMEA {
         }
         return $ret;
     }
+
+
+    /**
+     * Retrieve the list of countries that have NFPs for the specified treaty
+     * @param $id_treaty integer ID of the treaty
+     * @return array List of country classes
+     */
+    static function get_treaty_nfp_countries($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT c.*
+                  FROM ai_people a
+                  INNER JOIN ai_people_treaty b ON a.id = b.id_people
+                  INNER JOIN ai_country c ON a.id_country = c.id
+                  WHERE b.id_treaty = %d GROUP BY c.id ORDER BY c.name', $id_treaty
+                ), OBJECT_K
+        );
+    }
+
+
+    /**
+     * Retrieve the total number of focal points for a treaty.
+     *
+     * @param $id_treaty integer ID of the treaty
+     * @return integer Global focal points count
+     */
+    static function get_treaty_nfp_count($id_treaty) {
+        global $wpdb;
+        return $wpdb->get_var(
+            $wpdb->prepare('SELECT COUNT(*) FROM ai_people_treaty WHERE id_treaty = %d', $id_treaty)
+        );
+    }
+
+
+    /**
+     * Retrieve the NFPs for a treaty within a country.
+     *
+     * @param $id_treaty integer ID of the treaty
+     * @param $id_country integer ID of the country
+     *
+     * @return array Array of people objects
+     */
+    static function get_treaty_country_nfp($id_treaty, $id_country) {
+        global $wpdb;
+        return $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT a.*
+                  FROM ai_people a
+                  INNER JOIN ai_people_treaty b ON a.id = b.id_people
+                  WHERE b.id_treaty = %d AND a.id_country = %d
+            ', $id_treaty, $id_country)
+        );
+    }
 }
