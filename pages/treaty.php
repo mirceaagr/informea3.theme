@@ -15,7 +15,7 @@ add_filter('body_class','informea_treaties_body_attributes');
 
 $treaties = InforMEA::get_treaties_enabled('a.short_title');
 $organization = InforMEA::get_organization($treaty->id_organization);
-$parties = InforMEA::get_treaty_member_parties($treaty);
+$parties = InforMEA::get_treaty_member_parties($treaty->id);
 $parties_c = count($parties);
 $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
 $cop_meetings_c = count($cop_meetings);

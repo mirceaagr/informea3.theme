@@ -80,11 +80,12 @@ class InforMEA {
 
 
     /**
-     * Retrieve the treaty member parties
-     * @param $treaty
+     * Retrieve the treaty member parties.
+     *
+     * @param $id_treaty integer ID of the treaty
      * @return array Array with membership information
      */
-    static function get_treaty_member_parties($treaty) {
+    static function get_treaty_member_parties($id_treaty) {
         global $wpdb;
         $ret = array();
         $rows = $wpdb->get_results(
@@ -93,7 +94,7 @@ class InforMEA {
                     FROM ai_treaty_country a
                     INNER JOIN ai_country b ON a.id_country = b.id
                 WHERE a.id_treaty = %d
-                ORDER BY b.name', $treaty->id)
+                ORDER BY b.name', $id_treaty)
         );
         foreach($rows as $row) {
             $update = array_key_exists($row->id, $ret);
