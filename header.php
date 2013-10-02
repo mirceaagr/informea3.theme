@@ -20,6 +20,9 @@
     <!--[if IE 7]>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
+    <?php
+        wp_head();
+    ?>
 </head>
 <body <?php body_class($class); ?>>
     <div class="navbar navbar-static-top">
