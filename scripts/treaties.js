@@ -8,22 +8,21 @@ jQuery('document').ready(function() {
 
     var tncs = jQuery('#treaty-nfp-country-select');
     tncs.on('change', function() {
-        tncs_on_change(tncs.val());
-    });
-});
-
-
-function tncs_on_change(country_iso) {
-    jQuery.ajax({
+        jQuery.ajax({
             url: i3_config_ajax.ajaxurl,
             data: {
                 dataType: 'html',
                 action: 'get_nfp_for_treaty_country',
-                iso: country_iso,
+                iso: tncs.val(),
                 id_treaty: i3_config_treaty.id
             }
-    })
-    .done(function(resp) {
-        jQuery('#focal-point-list').html(resp);
+        }).done(function(resp) {
+            var option = jQuery('select#treaty-nfp-country-select > option:selected');
+            jQuery('#treaty-nfp-country-flag').attr('src', option.data('flag'));
+            jQuery('#focal-point-list').html(resp);
+            jQuery('#treaty-nfp-country-count').text(
+                jQuery('ul#focal-point-list > li').length
+            );
+        });
     });
-}
+});

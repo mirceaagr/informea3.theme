@@ -28,7 +28,7 @@ $countries_nfps = InforMEA::get_treaty_nfp_countries($treaty->id);
 $nfps = array(); $c0 = NULL;
 if($nfps > 0) {
     $c0 = current($countries_nfps);
-    $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->id);
+    $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
 }
 
 wp_enqueue_script('informea-treaties');
@@ -136,14 +136,14 @@ get_header();
                     <div class="span2">
                         <div class="well select clearfix">
                             <a class="visible-desktop" href="" title="Go to Country Profile page">
-                                <img src="<?php echo i3_country_flag($c0, 'large'); ?>" alt="Country Flag">
+                                <img id="treaty-nfp-country-flag" src="<?php echo i3_country_flag($c0, 'large'); ?>" alt="Country Flag">
                             </a>
                             <select id="treaty-nfp-country-select" class="input-block-level">
                                 <?php foreach($countries_nfps as $row): ?>
-                                <option value="<?php echo $row->code; ?>"><?php echo $row->name; ?></option>
+                                <option value="<?php echo $row->code; ?>" data-flag="<?php echo i3_country_flag($row, 'large'); ?>"><?php echo $row->name; ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <p class="hidden-phone"><span id="focal-points-count"><?php echo count($nfps); ?></span> focal points</p>
+                            <p class="hidden-phone"><span id="treaty-nfp-country-count"><?php echo count($nfps); ?></span> focal points</p>
                             <button class="btn btn-inline hidden-phone">Show all</button>
                         </div>
                     </div>
