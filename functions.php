@@ -26,22 +26,22 @@ wp_enqueue_style('informea-logos');
 wp_enqueue_style('font-awesome');
 
 
-function informea3_enqueue_styles() {
+function i3_enqueue_styles() {
     global $wp_styles;
 
     wp_enqueue_style('font-awesome-ie7');
     $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
 }
-add_action( 'wp_enqueue_scripts', 'informea3_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'i3_enqueue_styles' );
 
 
-function informea3_setup() {
+function i3_setup() {
 	register_nav_menus(array(
 		'primary' =>__('Primary Navigation', 'informea'),
 		'footer' => __('Footer Menu', 'informea'),
 	));
 }
-add_action('after_setup_theme', 'informea3_setup');
+add_action('after_setup_theme', 'i3_setup');
 
 add_filter('nav_menu_css_class' , 'about_page_menu');
 function about_page_menu($classes){
