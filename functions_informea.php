@@ -392,19 +392,20 @@ class InforMEA {
      * Retrieve the NFPs for a treaty within a country.
      *
      * @param $id_treaty integer ID of the treaty
-     * @param $id_country integer ID of the country
+     * @param $iso string Country ISO code
      *
      * @return array Array of people objects
      */
-    static function get_treaty_country_nfp($id_treaty, $id_country) {
+    static function get_treaty_country_nfp($id_treaty, $iso) {
         global $wpdb;
         return $wpdb->get_results(
             $wpdb->prepare('
                 SELECT a.*
                   FROM ai_people a
                   INNER JOIN ai_people_treaty b ON a.id = b.id_people
-                  WHERE b.id_treaty = %d AND a.id_country = %d
-            ', $id_treaty, $id_country)
+                  INNER JOIN ai_country c ON a.id_country = c.id
+                  WHERE b.id_treaty = %d AND (c.code = %s OR c.code2l = %s)
+            ', $id_treaty, $iso, $iso)
         );
     }
 }
