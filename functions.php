@@ -172,3 +172,69 @@ function informea_the_breadcrumb() {
         echo '</ul>';
     }
 }
+
+
+/**
+ * Retrieve the country flag URL
+ * @param $country stdClass Country object
+ * @param $version string Size. Supported values: 'medium' (default) or 'large'
+ * @return string URL to the country flag image
+ */
+function i3_country_flag($country, $version = 'medium') {
+    $ret = 'http://placehold.it/60x60';
+    $field = 'icon_' . $version;
+    if(!empty($country->$field)) {
+        $ret = sprintf('%s/%s', get_template_directory_uri(), $country->$field);
+    }
+    return $ret;
+}
+
+/**
+ * Format the view for a single NFP listing inside treaty page
+ * @param $nfp stdClass People object
+ */
+function i3_treaty_nfp_format($nfp) {
+    $name = '';
+    if(!empty($nfp->prefix)) {
+        $name .= $nfp->prefix . ' ';
+    }
+    if(!empty($nfp->first_name)) {
+        if(strlen($name)) {
+            $name .= ' ';
+        }
+        $name .= $nfp->first_name;
+    }
+    if(!empty($nfp->last_name)) {
+        if(strlen($name)) {
+            $name .= ' ';
+        }
+        $name .= $nfp->last_name;
+    }
+    $position = !empty($nfp->position) ? sprintf('<p class="occupation">%s</p>', $nfp->position) : '';
+    $department = !empty($nfp->department) ? sprintf('<dt>Department</dt><dd>%s</dd>', $nfp->department) : '';
+    $institution = !empty($nfp->institution) ? sprintf('<dt>Institution</dt><dd>%s</dd>', $nfp->institution) : '';
+    $address = !empty($nfp->address) ? sprintf('<dt>Address</dt><dd>%s</dd>', $nfp->address) : '';
+    $telephone = !empty($nfp->telephone) ? sprintf('<dt>Telephone</dt><dd>%s</dd>', $nfp->telephone) : '';
+    $fax = !empty($nfp->fax) ? sprintf('<dt>Fax</dt><dd>%s</dd>', $nfp->fax) : '';
+?>
+    <li class="focal-point">
+        <h3><?php echo $name; ?></h3>
+        <?php echo $position; ?>
+        <dl class="dl-horizontal">
+            <?php echo $department; ?>
+            <?php echo $institution; ?>
+            <?php echo $address; ?>
+            <?php echo $telephone; ?>
+            <?php echo $fax; ?>
+        </dl>
+        <div class="focal-point-actions">
+            <?php if(!empty($nfp->email)): ?>
+            <a class="btn btn-inline" href=""><i class="icon-envelope-alt"></i> Send e-mail</a>&ensp;|&ensp;
+            <?php endif; ?>
+            <a class="btn btn-inline disabled informea-tooltip" href="javascript:void(0);"
+               data-toggle="tooltip" data-placement="right"
+               title="Download information in vCard format">Download vCard</a>
+        </div>
+    </li>
+<?php
+}
