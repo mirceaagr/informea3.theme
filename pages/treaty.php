@@ -23,6 +23,14 @@ $decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
 $cop = null;
 $tags = InforMEA::get_treaty_popular_tags($treaty->id);
 
+$nfp_c = InforMEA::get_treaty_nfp_count($treaty->id);
+$countries_nfps = InforMEA::get_treaty_nfp_countries($treaty->id);
+$nfps = array(); $c0 = NULL;
+if($nfps > 0) {
+    $c0 = current($countries_nfps);
+    $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->id);
+}
+
 wp_enqueue_script('informea-treaties');
 get_header();
 
@@ -36,13 +44,15 @@ get_header();
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
                     <li class="active"><a href="#summary">Summary</a></li>
-                    <?php if($decisions_c): ?>
+                <?php if($decisions_c): ?>
                     <li><a href="#decisions">Decisions<span class="qty"><?php echo $decisions_c; ?></span></a></li>
-                    <?php endif; ?>
-                    <li><a href="#nfp">Focal Points<span class="qty">12</span></a></li>
-                    <?php if($parties_c): ?>
+                <?php endif; ?>
+                <?php if($nfp_c): ?>
+                    <li><a href="#nfp">Focal Points<span class="qty"><?php echo $nfp_c; ?></span></a></li>
+                <?php endif; ?>
+                <?php if($parties_c): ?>
                     <li><a href="#member_parties">Member parties<span class="qty"><?php echo $parties_c; ?></span></a></li>
-                    <?php endif; ?>
+                <?php endif; ?>
                 </ul>
             </div>
 
@@ -117,6 +127,7 @@ get_header();
             </div>
             <?php endif; ?>
 
+            <?php if($nfp_c): ?>
             <!-- FOCAL POINTS -->
             <div class="section" id="focal-points">
                 <h2 id="nfp">Focal Points</h2>
@@ -124,31 +135,27 @@ get_header();
                     <div class="span2">
                         <div class="well select clearfix">
                             <a class="visible-desktop" href="" title="Go to Country Profile page">
-                                <img src="http://placehold.it/60x60" alt="Country Flag">
+                                <img src="<?php echo i3_country_flag($c0, 'large'); ?>" alt="Country Flag">
                             </a>
                             <select class="input-block-level">
-                                <option>Country</option>
+                                <?php foreach($countries_nfps as $row): ?>
+                                <option value="<?php echo $row->code; ?>"><?php echo $row->name; ?></option>
+                                <?php endforeach; ?>
                             </select>
-                            <p class="hidden-phone">x Focal Points</p>
+                            <p class="hidden-phone"><span id="focal-points-count"><?php echo count($nfps); ?></span> focal points</p>
                             <button class="btn btn-inline hidden-phone">Show all</button>
                         </div>
                     </div>
-                    <ul class="focal-point-list span7">
-                        <li class="focal-point">
-                            <h3>Person Name</h3>
-                            <p class="occupation">Occupation</p>
-                            <dl class="dl-horizontal">
-                                <dt>Department</dt><dd>Department Name</dd>
-                                <dt>Institution</dt><dd>Institution Name</dd>
-                                <dt>Address</dt><dd>Institution Address</dd>
-                            </dl>
-                            <div class="focal-point-actions">
-                                <a class="btn btn-inline" href=""><i class="icon-envelope-alt"></i> Email</a>&ensp;|&ensp;<a class="btn btn-inline disabled" href="#">vCard</a>
-                            </div>
-                        </li>
+                    <ul id="focal-point-list" class="focal-point-list span7">
+                    <?php
+                        foreach($nfps as $row):
+                            i3_treaty_nfp_format($row);
+                        endforeach;
+                    ?>
                     </ul>
                 </div>
             </div>
+            <?php endif; ?>
 
             <!-- MEMBERS -->
             <?php if($parties_c): ?>
