@@ -138,7 +138,7 @@ get_header();
                             <a class="visible-desktop" href="" title="Go to Country Profile page">
                                 <img src="<?php echo i3_country_flag($c0, 'large'); ?>" alt="Country Flag">
                             </a>
-                            <select class="input-block-level">
+                            <select id="treaty-nfp-country-select" class="input-block-level">
                                 <?php foreach($countries_nfps as $row): ?>
                                 <option value="<?php echo $row->code; ?>"><?php echo $row->name; ?></option>
                                 <?php endforeach; ?>
