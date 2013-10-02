@@ -5,6 +5,7 @@ $organization = NULL;
 $treaty = NULL;
 
 require_once(dirname(__FILE__) . '/functions_informea.php');
+require_once(dirname(__FILE__) . '/functions_informea_ajax.php');
 
 //jQuery and migrate are always loaded in the header
 //http://blog.cloudfour.com/getting-all-javascript-into-the-footer-in-wordpress-not-so-fast-buster/
@@ -33,6 +34,7 @@ wp_enqueue_style('informea-style-responsive');
 wp_enqueue_style('informea-logos');
 wp_enqueue_style('font-awesome');
 
+add_action('wp_head','i3_ajaxurl');
 
 function i3_enqueue_styles() {
     global $wp_styles;
