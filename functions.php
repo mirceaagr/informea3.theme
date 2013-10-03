@@ -7,45 +7,6 @@ $treaty = NULL;
 require_once(dirname(__FILE__) . '/functions_informea.php');
 require_once(dirname(__FILE__) . '/functions_informea_ajax.php');
 
-//jQuery and migrate are always loaded in the header
-//http://blog.cloudfour.com/getting-all-javascript-into-the-footer-in-wordpress-not-so-fast-buster/
-
-wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'), FALSE, TRUE);
-wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'), FALSE, TRUE);
-wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
-wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
-
-wp_enqueue_script('informea-common');
-wp_enqueue_script('bootstrap');
-
-wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
-wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
-wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');
-wp_register_style('font-awesome-ie7', get_template_directory_uri() . '/font-awesome/css/font-awesome-ie7.min.css');
-wp_register_style('informea-style', get_bloginfo('stylesheet_url'));
-wp_register_style('informea-style-responsive', get_template_directory_uri() . '/css/style-responsive.css');
-wp_register_style('informea-logos', get_template_directory_uri() . '/css/logos.css');
-
-
-wp_enqueue_style('bootstrap');
-wp_enqueue_style('informea-style');
-wp_enqueue_style('bootstrap-responsive');
-wp_enqueue_style('informea-style-responsive');
-wp_enqueue_style('informea-logos');
-wp_enqueue_style('font-awesome');
-
-// Inject ajaxurl into the front-end scripts as config object
-wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
-
-function i3_enqueue_styles() {
-    global $wp_styles;
-
-    wp_enqueue_style('font-awesome-ie7');
-    $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
-}
-add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
-
-
 function i3_setup() {
 	register_nav_menus(array(
 		'primary' =>__('Primary Navigation', 'informea'),
@@ -62,6 +23,40 @@ function about_page_menu($classes){
      return $classes;
 }
 
+function i3_enqueue_styles() {
+    global $wp_styles;
+
+    //jQuery and migrate are always loaded in the header
+    //http://blog.cloudfour.com/getting-all-javascript-into-the-footer-in-wordpress-not-so-fast-buster/
+
+    wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
+
+    wp_enqueue_script('informea-common');
+    wp_enqueue_script('bootstrap');
+
+    wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
+    wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
+    wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');
+    wp_register_style('font-awesome-ie7', get_template_directory_uri() . '/font-awesome/css/font-awesome-ie7.min.css');
+    wp_register_style('informea-style', get_bloginfo('stylesheet_url'));
+    wp_register_style('informea-style-responsive', get_template_directory_uri() . '/css/style-responsive.css');
+    wp_register_style('informea-logos', get_template_directory_uri() . '/css/logos.css');
+
+
+    wp_enqueue_style('bootstrap');
+    wp_enqueue_style('informea-style');
+    wp_enqueue_style('bootstrap-responsive');
+    wp_enqueue_style('informea-style-responsive');
+    wp_enqueue_style('informea-logos');
+    wp_enqueue_style('font-awesome');
+
+    wp_enqueue_style('font-awesome-ie7');
+    $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
+}
+add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
 
 /**
  * Echo the formatted region of a treaty (empty regions are treated as global)
