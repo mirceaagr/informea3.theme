@@ -31,6 +31,9 @@ if($nfps > 0) {
     $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
 }
 
+// Inject ajaxurl into the front-end scripts as config object
+wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
+
 wp_enqueue_script('informea-treaties');
 
 get_header();
