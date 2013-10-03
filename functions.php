@@ -34,9 +34,6 @@ function i3_enqueue_styles() {
     wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
 
-    wp_enqueue_script('informea-common');
-    wp_enqueue_script('bootstrap');
-
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
     wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
     wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');
@@ -45,6 +42,9 @@ function i3_enqueue_styles() {
     wp_register_style('informea-style-responsive', get_template_directory_uri() . '/css/style-responsive.css');
     wp_register_style('informea-logos', get_template_directory_uri() . '/css/logos.css');
 
+    // Add this to all the front-end pages
+    wp_enqueue_script('informea-common');
+    wp_enqueue_script('bootstrap');
 
     wp_enqueue_style('bootstrap');
     wp_enqueue_style('informea-style');
@@ -54,6 +54,7 @@ function i3_enqueue_styles() {
     wp_enqueue_style('font-awesome');
 
     wp_enqueue_style('font-awesome-ie7');
+
     $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
 }
 add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
