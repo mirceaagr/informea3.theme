@@ -16,14 +16,3 @@ function informea_get_nfp_for_treaty_country_callback() {
     }
     die();
 }
-
-
-add_action('wp_ajax_nopriv_load_nfp_contact_dialog', 'informea_load_nfp_contact_dialog_callback');
-add_action('wp_ajax_load_nfp_contact_dialog', 'informea_load_nfp_contact_dialog_callback');
-function informea_load_nfp_contact_dialog_callback() {
-    $request = WordPressHttpRequestFactory::createFromGlobals();
-    $id_contact = $request->get('id_contact');
-    $nfp = Informea::get_nfp($id_contact);
-    echo InforMEATemplate::nfp_contact_dlg($nfp);
-    die();
-}

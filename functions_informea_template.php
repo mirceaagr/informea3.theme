@@ -35,11 +35,6 @@ class InforMEATemplate {
         return sprintf('<li class="focal-point">%s</li>', self::nfp_format($nfp, $show_actions));
     }
 
-    public static function nfp_contact_dlg($nfp) {
-        $ctx = self::_nfp_format_ctx($nfp, FALSE);
-        $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
-        return $twig->render('nfp-contact-dlg.twig', $ctx);
-    }
 
     private static function _nfp_format_ctx($nfp, $show_actions) {
         $name = '';
