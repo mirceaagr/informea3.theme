@@ -94,11 +94,11 @@ class InforMEA {
                     FROM ai_treaty_country a
                     INNER JOIN ai_country b ON a.id_country = b.id
                 WHERE a.id_treaty = %d
-                ORDER BY b.name', $id_treaty)
+                ORDER BY b.name', $id_treaty), OBJECT_K
         );
-        foreach($rows as $row) {
-            $update = array_key_exists($row->id, $ret);
-            $ob = $update ? $ret[$row->id] : new stdClass();
+        foreach($rows as $id => $row) {
+            $update = array_key_exists($id, $ret);
+            $ob = $update ? $ret[$id] : new stdClass();
             $ob->country = $row->country;
             $ob->entryIntoForce = '';
             $ob->signed = '';
@@ -281,10 +281,14 @@ class InforMEA {
                     FROM ai_treaty_article_paragraph_vocabulary a
                     INNER JOIN ai_treaty_article b ON a.id_treaty_article_paragraph = b.id
                     WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
-                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+                    ORDER BY count(a.id_concept) DESC', $id_treaty),
+            OBJECT_K
         );
-        foreach($rows as $row) {
-            $tmp[$row->id_concept] += $row->c;
+        foreach($rows as $id => $row) {
+            if(!array_key_exists($id, $tmp)) {
+                $tmp[$id] = 0;
+            }
+            $tmp[$id] += $row->c;
         }
 
         // Treaty / Article / Tags
@@ -293,20 +297,27 @@ class InforMEA {
                     FROM ai_treaty_article_vocabulary a
                     INNER JOIN ai_treaty_article b ON a.id_treaty_article = b.id
                     WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
-                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+                    ORDER BY count(a.id_concept) DESC', $id_treaty), OBJECT_K
         );
-        foreach($rows as $row) {
-            $tmp[$row->id_concept] += $row->c;
+        foreach($rows as $id => $row) {
+            if(!array_key_exists($id, $tmp)) {
+                $tmp[$id] = 0;
+            }
+            $tmp[$id] += $row->c;
         }
 
         // Treaty / Tags
         $rows = $wpdb->get_results(
             $wpdb->prepare('SELECT a.id_concept, COUNT(a.id_concept) AS c
                     FROM ai_treaty_vocabulary a WHERE a.id_treaty = %d GROUP BY a.id_concept
-                    HAVING COUNT(a.id_concept) > 1 ORDER BY count(a.id_concept) DESC', $id_treaty)
+                    HAVING COUNT(a.id_concept) > 1 ORDER BY count(a.id_concept) DESC', $id_treaty),
+            OBJECT_K
         );
-        foreach($rows as $row) {
-            $tmp[$row->id_concept] += $row->c;
+        foreach($rows as $id => $row) {
+            if(!array_key_exists($id, $tmp)) {
+                $tmp[$id] = 0;
+            }
+            $tmp[$id] += $row->c;
         }
 
         // Treaty / Decisions / Paragraphs / Tags
@@ -316,10 +327,13 @@ class InforMEA {
                     INNER JOIN ai_decision_paragraph b ON a.id_decision_paragraph = b.id
                     INNER JOIN ai_decision c ON b.id_decision = c.id
                     WHERE c.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
-                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+                    ORDER BY count(a.id_concept) DESC', $id_treaty), OBJECT_K
         );
-        foreach($rows as $row) {
-            $tmp[$row->id_concept] += $row->c;
+        foreach($rows as $id => $row) {
+            if(!array_key_exists($id, $tmp)) {
+                $tmp[$id] = 0;
+            }
+            $tmp[$id] += $row->c;
         }
 
         // Treaty / Decisions / Tags
@@ -328,10 +342,13 @@ class InforMEA {
                 SELECT a.id_concept, COUNT(a.id_concept) AS c
                     FROM ai_decision_vocabulary a INNER JOIN ai_decision b ON a.id_decision = b.id
                     WHERE b.id_treaty = %d GROUP BY a.id_concept HAVING COUNT(a.id_concept) > 1
-                    ORDER BY count(a.id_concept) DESC', $id_treaty)
+                    ORDER BY count(a.id_concept) DESC', $id_treaty), OBJECT_K
         );
-        foreach($rows as $row) {
-            $tmp[$row->id_concept] += $row->c;
+        foreach($rows as $id => $row) {
+            if(!array_key_exists($id, $tmp)) {
+                $tmp[$id] = 0;
+            }
+            $tmp[$id] += $row->c;
         }
 
         // Build an array of terms and set weight on each term
