@@ -15,7 +15,7 @@
         wp_head();
     ?>
 </head>
-<body <?php body_class($class); ?>>
+<body <?php body_class(isset($class) ? $class : ''); ?>>
     <div class="navbar navbar-static-top">
         <div class="navbar-inner">
             <div class="container">
