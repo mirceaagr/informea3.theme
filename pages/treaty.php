@@ -148,7 +148,6 @@ get_header();
                                 <?php endforeach; ?>
                             </select>
                             <p class="hidden-phone"><span id="treaty-nfp-country-count"><?php echo count($nfps); ?></span> focal points</p>
-                            <button class="btn btn-inline hidden-phone">Show all</button>
                         </div>
                     </div>
                     <ul id="focal-point-list" class="focal-point-list span7">
