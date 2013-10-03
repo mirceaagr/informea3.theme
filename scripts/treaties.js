@@ -33,10 +33,24 @@ jQuery('document').ready(function() {
 });
 
 
-function do_contact_nfp(id) {
-    jQuery('#contact-nfp').modal({
-        remote: i3_config_ajax.ajaxurl + '?action=load_nfp_contact_dialog&id_contact=' + id
-    }).on('shown', function() {
-            jQuery('#name').focus();
-    });
+/**
+ * Open a pop-up on the center of the screen
+ * @param url URL to open
+ * @param title Window title
+ * @param w Width
+ * @param h Height
+ */
+function popup_center(url, title, w, h) {
+    // Fixes dual-screen position                       Most browsers      Firefox
+    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
+    var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
+
+    var left = ((screen.width / 2) - (w / 2)) + dualScreenLeft;
+    var top = ((screen.height / 2) - (h / 2)) + dualScreenTop;
+    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+    // Puts focus on the newWindow
+    if (window.focus) {
+        newWindow.focus();
+    }
 }

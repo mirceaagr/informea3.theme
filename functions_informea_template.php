@@ -14,6 +14,12 @@ class InforMEATemplate {
      */
     public static function nfp_format($nfp, $show_actions=TRUE) {
         $ctx = self::_nfp_format_ctx($nfp, $show_actions);
+        if(!empty($nfp->email)) {
+            //@todo: Indifference and neglect often do much more damage than outright dislike. — Albus Dumbledore
+            $public_key = '01UEHTQPwYi2IHSbgymy1i1g==';
+            $private_key = 'f7e38e0d41aa5d0bb7f0bd5901b33ecf';
+            $ctx['email_link'] = WordPressCaptcha::mailhide_url($nfp->email, $public_key, $private_key);
+        }
         $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
         return $twig->render('nfp-contact-info.twig', $ctx);
     }

@@ -21,13 +21,13 @@
 </dl>
 {% if show_actions %}
 <div class="focal-point-actions">
-    {% if nfp.email %}
-    <a class="btn btn-inline" href="javascript:void(0);"
-       onclick="do_contact_nfp({{ nfp.id }});"><i class="icon-envelope-alt"></i> Send e-mail</a>&ensp;|&ensp;
+    {% if email_link %}
+    <a class="btn btn-inline" title="Click to see the e-mail address"
+       onclick="popup_center('{{ email_link }}', 'Contact National Focal Point', 500, 400); return false;"
+       href="{{ email_link }}"><i class="icon-envelope-alt"></i> View e-mail</a>&ensp;|&ensp;
     {% endif %}
     <a class="btn btn-inline disabled informea-tooltip" href="javascript:void(0);"
        data-toggle="tooltip" data-placement="right"
        title="Download information in vCard format">Download vCard</a>
 </div>
 {% endif %}
-
