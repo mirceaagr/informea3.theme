@@ -1,6 +1,10 @@
 <?php
-$odata_name = get_request_variable('odata_name');
-$view = get_request_variable('view');
+
+$request = WordPressHttpRequestFactory::createFromGlobals();
+
+$odata_name = $request->get('odata_name');
+$view = $request->get('view');
+
 $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
 
 if($treaty) {
