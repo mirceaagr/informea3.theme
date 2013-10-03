@@ -1,0 +1,33 @@
+<h3>{{ name }}</h3>
+{% if nfp.position %}
+<p class="ocupation">{{ nfp.position }}</p>
+{% endif %}
+<dl class="dl-horizontal">
+    {% if nfp.department %}
+    <dt>Department</dt><dd>{{ nfp.department }}</dd>
+    {% endif %}
+    {% if nfp.institution %}
+    <dt>Institution</dt><dd>{{ nfp.institution }}</dd>
+    {% endif %}
+    {% if nfp.address %}
+    <dt>Address</dt><dd>{{ nfp.address }}</dd>
+    {% endif %}
+    {% if nfp.telephone %}
+        <dt>Telephone</dt><dd>{{ telephone }}</dd>
+    {% endif %}
+    {% if nfp.fax %}
+        <dt>Fax</dt><dd>{{ nfp.fax }}</dd>
+    {% endif %}
+</dl>
+{% if show_actions %}
+<div class="focal-point-actions">
+    {% if nfp.email %}
+    <a class="btn btn-inline" href="javascript:void(0);"
+       onclick="do_contact_nfp({{ nfp.id }});"><i class="icon-envelope-alt"></i> Send e-mail</a>&ensp;|&ensp;
+    {% endif %}
+    <a class="btn btn-inline disabled informea-tooltip" href="javascript:void(0);"
+       data-toggle="tooltip" data-placement="right"
+       title="Download information in vCard format">Download vCard</a>
+</div>
+{% endif %}
+

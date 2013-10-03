@@ -6,8 +6,11 @@ $view = $request->get('view');
 $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
 
 if($treaty) {
-    // Inject treaty into the JS scripts as config object
-    wp_localize_script('informea-treaties', 'i3_config_treaty', array('id' => $treaty->id));
+    add_action('wp_enqueue_scripts', function() {
+        global $treaty;
+        // Inject treaty into the JS scripts as config object
+        wp_localize_script('informea-treaties', 'i3_config_treaty', array('id' => $treaty->id));
+    });
 }
 
 /**

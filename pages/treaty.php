@@ -31,13 +31,12 @@ if($nfps > 0) {
     $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
 }
 
+// Inject ajaxurl into the front-end scripts as config object
 add_action('wp_enqueue_scripts',
     function() {
         wp_enqueue_script('informea-treaties');
-        // Inject ajaxurl into the front-end scripts as config object
         wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
 });
-
 get_header();
 
 ?>
@@ -155,7 +154,7 @@ get_header();
                     <ul id="focal-point-list" class="focal-point-list span7">
                     <?php
                         foreach($nfps as $row):
-                            i3_treaty_nfp_format($row);
+                            echo InforMEATemplate::nfp_format_li($row);
                         endforeach;
                     ?>
                     </ul>
@@ -209,7 +208,7 @@ get_header();
     </div>
 
 
-    <!-- Modal definition -->
+    <!-- Modal dialog - treaty viewer -->
     <div id="treaty-text-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
@@ -218,6 +217,20 @@ get_header();
         </div>
         <div class="modal-body">
             <p>One fine body…</p>
+        </div>
+    </div>
+
+    <!-- Modal dialog - contact NFP -->
+    <!-- PAGE CONTAINER -->
+    <div id="contact-nfp" class="modal hide fade">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+            <h2><i class="icon-envelope-alt"></i> Compose message</h2><hr />
+        </div>
+        <div class="modal-body">Loading contact form ...</div>
+        <div class="modal-footer text-center">
+            <button type="submit" id="confact-nfp-close" class="btn pull-left">Cancel</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
     </div>
 <?php

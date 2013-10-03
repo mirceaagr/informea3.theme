@@ -25,4 +25,18 @@ jQuery('document').ready(function() {
             );
         });
     });
+
+    // Close NFP contact modal dialog
+    jQuery('#confact-nfp-close').click(function() {
+        jQuery('#contact-nfp').modal('hide');
+    });
 });
+
+
+function do_contact_nfp(id) {
+    jQuery('#contact-nfp').modal({
+        remote: i3_config_ajax.ajaxurl + '?action=load_nfp_contact_dialog&id_contact=' + id
+    }).on('shown', function() {
+            jQuery('#name').focus();
+    });
+}

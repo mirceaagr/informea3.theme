@@ -425,4 +425,33 @@ class InforMEA {
             ', $id_treaty, $iso, $iso)
         );
     }
+
+
+    /**
+     * Load national focal point by its ID
+     *
+     * @param $id_people integer People ID
+     * @return mixed stdClass Object with 'treaties' property that keeps all the treaties for the person
+     */
+    static function get_nfp($id_people) {
+        global $wpdb;
+        $ret = $wpdb->get_row(
+            $wpdb->prepare('
+                SELECT a.*, b.icon_medium, b.icon_large
+                    FROM ai_people a
+                    LEFT JOIN ai_country b ON a.id_country = b.id
+                    WHERE a.id = %d
+            ', $id_people)
+        );
+        if(!empty($ret)) {
+            $ret->treaties = $wpdb->get_results(
+                $wpdb->prepare('
+                    SELECT a.* FROM ai_treaty a
+                        INNER JOIN ai_people_treaty b ON a.id = b.id_treaty
+                        WHERE b.id_people = %d
+                ', $id_people)
+            );
+        }
+        return $ret;
+    }
 }
