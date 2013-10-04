@@ -43,7 +43,6 @@ class InforMEATemplate {
      */
     public static function nfp_format_vcard($nfp) {
         $ctx = self::_nfp_format_ctx($nfp, FALSE);
-        $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
         if(!empty($nfp->rec_updated)) {
             $ctx['rec_updated'] = format_mysql_date($nfp->rec_updated, 'c');
         }
@@ -56,6 +55,7 @@ class InforMEATemplate {
             }
         }
         $ctx['notes'] = $notes;
+        $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
         return $twig->render('nfp-contact-vcard.twig', $ctx);
     }
 
