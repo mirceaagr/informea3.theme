@@ -206,30 +206,14 @@ get_header();
         </div><!-- /#content -->
     </div>
 
-
     <!-- Modal dialog - treaty viewer -->
     <div id="treaty-text-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
-            <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-header-tpl'); ?>
             <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-toolbar-tpl'); ?>
         </div>
         <div class="modal-body">
             <p>One fine body…</p>
-        </div>
-    </div>
-
-    <!-- Modal dialog - contact NFP -->
-    <!-- PAGE CONTAINER -->
-    <div id="contact-nfp" class="modal hide fade">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
-            <h2><i class="icon-envelope-alt"></i> Compose message</h2><hr />
-        </div>
-        <div class="modal-body">Loading contact form ...</div>
-        <div class="modal-footer text-center">
-            <button type="submit" id="confact-nfp-close" class="btn pull-left">Cancel</button>
-            <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
     </div>
 <?php
