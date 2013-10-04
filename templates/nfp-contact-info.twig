@@ -26,8 +26,10 @@
        onclick="popup_center('{{ email_link }}', 'Contact National Focal Point', 500, 400); return false;"
        href="{{ email_link }}"><i class="icon-envelope-alt"></i> View e-mail</a>&ensp;|&ensp;
     {% endif %}
-    <a class="btn btn-inline disabled informea-tooltip" href="javascript:void(0);"
+    {% if vcard_link %}
+    <a class="btn btn-inline informea-tooltip" href="{{ vcard_link }}"
        data-toggle="tooltip" data-placement="right"
        title="Download information in vCard format">Download vCard</a>
+    {% endif %}
 </div>
 {% endif %}

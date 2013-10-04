@@ -437,7 +437,7 @@ class InforMEA {
         global $wpdb;
         $ret = $wpdb->get_row(
             $wpdb->prepare('
-                SELECT a.*, b.icon_medium, b.icon_large
+                SELECT a.*, b.icon_medium, b.icon_large, b.name AS country_name, LOWER(b.code) AS country_code
                     FROM ai_people a
                     LEFT JOIN ai_country b ON a.id_country = b.id
                     WHERE a.id = %d
@@ -453,5 +453,30 @@ class InforMEA {
             );
         }
         return $ret;
+    }
+
+    /**
+     * Build NFP name field based on what is filled-in.
+     * @param $nfp stdClass Person object
+     * @return string Name
+     */
+    static function format_nfp_name($nfp) {
+        $name = '';
+        if(!empty($nfp->prefix)) {
+            $name .= $nfp->prefix . ' ';
+        }
+        if(!empty($nfp->first_name)) {
+            if(strlen($name)) {
+                $name .= ' ';
+            }
+            $name .= $nfp->first_name;
+        }
+        if(!empty($nfp->last_name)) {
+            if(strlen($name)) {
+                $name .= ' ';
+            }
+            $name .= $nfp->last_name;
+        }
+        return $name;
     }
 }

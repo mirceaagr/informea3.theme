@@ -1,0 +1,25 @@
+BEGIN:VCARD
+VERSION:2.1
+PRODID:-//UNEP//InforMEA//EN
+N:{{ nfp.first_name }};{{ nfp.last_name }};{{ nfp.prefix }};;
+FN:{{ name }}
+ORG:{{ nfp.institution }};
+{% if nfp.title %}
+TITLE:{{ nfp.title }};
+{% endif %}
+{% if nfp.telephone %}
+TEL;WORK;VOICE:{{ nfp.telephone }}
+{% endif %}
+{% if nfp.fax %}
+TEL;WORK;FAX:{{ nfp.fax }}
+{% endif %}
+{% if nfp.email %}
+EMAIL;PREF;INTERNET:{{ nfp.email }}
+{% endif %}
+{% if nfp.address %}
+ADR;WORK;PREF:;;{{ nfp.address }};;;;{{ nfp.country_name }}
+{% endif %}
+{% if rec_updated %}
+REV:{{ rec_updated }}
+{% endif %}
+END:VCARD
