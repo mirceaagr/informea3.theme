@@ -5,6 +5,30 @@
  */
 class InforMEATemplate {
 
+    private static function get_templates_dir() {
+        return sprintf('%s/templates', __DIR__);
+    }
+
+    /**
+     * Call this method to retrieve the twig library already configured.
+     *
+     * @return Twig_Environment Twig environment configured for the  project
+     */
+    public static function get_twig_template() {
+        $twig = WordPressTwigTemplateFactory::getTemplateEngine(self::get_templates_dir());
+
+        if(defined('WP_DEBUG') && WP_DEBUG == TRUE) {
+            $twig->addExtension(new Twig_Extension_Debug());
+        }
+        $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL) {
+            switch($type) {
+                case 'glossary_term':
+                    echo i3_url_glossary_term($ob);
+            }
+        }));
+        return $twig;
+    }
+
     /**
      * Format the view for a single NFP item
      *
@@ -21,12 +45,13 @@ class InforMEATemplate {
             $ctx['email_link'] = WordPressCaptcha::mailhide_url($nfp->email, $public_key, $private_key);
             $ctx['vcard_link'] = sprintf('%s/download?type=vcard&id=%s', get_bloginfo('url'), $nfp->id);
         }
-        $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
+        $twig = self::get_twig_template();
         return $twig->render('nfp-contact-info.twig', $ctx);
     }
 
     /**
-     * Same as nfp_format, but wraps the output inside a list (li) element
+     * Same as nfp_format, but wraps the output inside a list (li) element.
+     *
      * @see nfp_format($nfp)
      * @param $nfp stdClass People object
      * @param $show_actions boolean Show toolbar with actions. Default TRUE
@@ -37,7 +62,8 @@ class InforMEATemplate {
     }
 
     /**
-     * Output vCard format for the NFP
+     * Output vCard format for the NFP.
+     *
      * @param $nfp stdClass People object
      * @return string vCard 2.1 format
      */
@@ -55,8 +81,25 @@ class InforMEATemplate {
             }
         }
         $ctx['notes'] = $notes;
-        $twig = WordPressTwigTemplateFactory::getTemplateEngine(__DIR__ . '/templates');
+        $twig = self::get_twig_template();
         return $twig->render('nfp-contact-vcard.twig', $ctx);
+    }
+
+    /**
+     * Build the structure for the treaty text viewer (set-up articles, paragraphs tags etc.).
+     *
+     * @param $treaty stdClass Treaty object
+     * @return string Rendered template
+     */
+    public static function treaty_text_viewer($treaty) {
+        $ctx = array();
+        $treaty->articles = InforMEA::load_full_treaty_text($treaty->id);
+        foreach($treaty->articles as $row) {
+            $row->title_formatted = i3_format_article_title($row);
+        }
+        $ctx['treaty'] = $treaty;
+        $twig = self::get_twig_template();
+        return $twig->render('treaty-text-viewer.twig', $ctx);
     }
 
 

@@ -212,8 +212,7 @@ class InforMEA {
      */
     static function get_treaty_paragraphs($id_treaty) {
         global $wpdb;
-        $ret = array();
-        $rows = $wpdb->get_results(
+        return $wpdb->get_results(
             $wpdb->prepare('
                 SELECT a.id, a.id_treaty_article, a.official_order, a.`order`, a.`indent`, a.`content`
                   FROM ai_treaty_article_paragraph a
@@ -221,14 +220,94 @@ class InforMEA {
                   WHERE b.id_treaty = %d
                   ORDER BY a.`order`',
                 $id_treaty
-            )
+            ), OBJECT_K
         );
-        foreach ($rows as $paragraph) {
-            $ret[$paragraph->id_treaty_article][] = $paragraph;
+    }
+
+    /**
+     * Load all tags for a treaty, broken down by paragraph
+     * @param $id_treaty integer ID of the treaty
+     * @return array id_paragraph as key, array of tags as values
+     */
+    private static function get_treaty_paragraph_tags($id_treaty) {
+        global $wpdb;
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT c.*, a.id_treaty_article_paragraph AS id_paragraph
+                    FROM ai_treaty_article_paragraph_vocabulary a
+                    INNER JOIN ai_treaty_article b ON a.id_treaty_article_paragraph = b.id
+                    INNER JOIN voc_concept c ON a.id_concept = c.id
+                    WHERE b.id_treaty = %d;
+            ', $id_treaty)
+        );
+        $ret = array();
+        foreach($rows as $row) {
+            $ret[$row->id_paragraph][$row->id] = $row;
         }
         return $ret;
     }
 
+    /**
+     * @param $id_treaty integer ID of the treaty
+     * @return array id_paragraph as key, array of tags as values
+     */
+    private static function get_treaty_article_tags($id_treaty) {
+        global $wpdb;
+        $rows = $wpdb->get_results(
+            $wpdb->prepare('
+                SELECT c.*, a.id_treaty_article AS id_article
+                    FROM ai_treaty_article_vocabulary a
+                    INNER JOIN ai_treaty_article b ON a.id_treaty_article = b.id
+                    INNER JOIN voc_concept c ON a.id_concept = c.id
+                    WHERE b.id_treaty = %d;
+            ', $id_treaty)
+        );
+        $ret = array();
+        foreach($rows as $row) {
+            $ret[$row->id_article][$row->id] = $row;
+        }
+        return $ret;
+    }
+
+    /**
+     * This method loads all the treaty articles, paragraphs and tags.
+     * @param $id_treaty integer ID of the treaty
+     * @return array Array of articles. Each article has a property tags and one paragraphs.
+     *      array(id_article => article)
+     *          article->tags = array(id_concept => term)
+     *          article->paragraphs = array(id_paragraph => paragraph)
+     *              paragraph->tags = array(id_concept => term)
+     */
+    static function load_full_treaty_text($id_treaty) {
+        $paragraphs = self::get_treaty_paragraphs($id_treaty);
+        $paragraph_tags = self::get_treaty_paragraph_tags($id_treaty);
+        foreach($paragraphs as $id_paragraph => &$row) {
+            if(array_key_exists($id_paragraph, $paragraph_tags)) {
+                $row->tags = $paragraph_tags[$id_paragraph];
+            }
+        }
+
+        $grouped_paragraphs = array();
+        foreach($paragraphs as $row) {
+            $grouped_paragraphs[$row->id_treaty_article][] = $row;
+        }
+
+        $articles = self::get_treaty_articles($id_treaty);
+        $article_tags = self::get_treaty_article_tags($id_treaty);
+
+        // Assign paragraphs to articles
+        foreach($articles as $id_article => &$row) {
+            // Article tags
+            if(array_key_exists($id_article, $article_tags)) {
+                $row->tags = $article_tags[$id_article];
+            }
+            $row->paragraphs = FALSE;
+            if(array_key_exists($id_article, $grouped_paragraphs)) {
+                $row->paragraphs = $grouped_paragraphs[$id_article];
+            }
+        }
+        return $articles;
+    }
 
     /**
      * Retrieve the list of countries. Statically cached.
@@ -457,6 +536,7 @@ class InforMEA {
 
     /**
      * Build NFP name field based on what is filled-in.
+     *
      * @param $nfp stdClass Person object
      * @return string Name
      */

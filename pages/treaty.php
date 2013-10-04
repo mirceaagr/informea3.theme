@@ -213,7 +213,7 @@ get_header();
             <?php $treaty_header_mode = 'modal'; get_template_part('pages/treaty-toolbar-tpl'); ?>
         </div>
         <div class="modal-body">
-            <p>One fine body…</p>
+            <p>Loading information from server ...</p>
         </div>
     </div>
 <?php

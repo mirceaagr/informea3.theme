@@ -139,7 +139,13 @@ function i3_treaty_print_year($treaty) {
     }
 }
 
-
+/**
+ * Format MySQL datetime or timestamp field
+ * @param $mysql_date string date/timestamp
+ * @param string $format Output format
+ * @param string $empty Add this character when date is invalid. Default &nbsp;
+ * @return string formatted date
+ */
 function i3_format_mysql_date($mysql_date, $format = 'd F Y', $empty = '&nbsp;') {
     $ret = $empty;
     if(!empty($mysql_date)) {
@@ -152,7 +158,7 @@ function i3_format_mysql_date($mysql_date, $format = 'd F Y', $empty = '&nbsp;')
 }
 
 
-function i3_print_article_title($article) {
+function i3_format_article_title($article) {
     $number = '';
     if(!empty($article->official_order)) {
         $number = $article->official_order;
@@ -160,15 +166,14 @@ function i3_print_article_title($article) {
             $number .= '. ';
         }
     }
-    echo sprintf('%s %s', $number, $article->title);
+    return sprintf('%s %s', $number, $article->title);
 }
-
 
 /**
  * Print the caption table for the decision listing inside treaty page
  *
- * @param $cop stdClass COP meeting
- * @param $c integer Number of decisions
+ * @param stdClass $cop COP meeting
+ * @param integer $c Number of decisions
  */
 function i3_treaty_decision_caption($cop, $c) {
     echo sprintf('%d decisions.',  $c);
@@ -185,7 +190,6 @@ function i3_treaty_decision_caption($cop, $c) {
         echo sprintf(', %s', $c->name);
     }
 }
-
 
 /**
  * Build the website breadcrumbtrail
@@ -207,7 +211,8 @@ function informea_the_breadcrumb() {
 
 
 /**
- * Retrieve the country flag URL
+ * Retrieve the country flag URL.
+ *
  * @param $country stdClass Country object
  * @param $version string Size. Supported values: 'medium' (default) or 'large'
  * @return string URL to the country flag image
@@ -219,4 +224,14 @@ function i3_country_flag($country, $version = 'medium') {
         $ret = sprintf('%s/%s', get_template_directory_uri(), $country->$field);
     }
     return $ret;
+}
+
+/**
+ * Build an URL to the term inside glossary page.
+ *
+ * @param $term stdClass Term object
+ * @return string URL
+ */
+function i3_url_glossary_term($term) {
+    return sprintf('%s/glossary/%d', get_bloginfo('url'), $term->id);
 }
