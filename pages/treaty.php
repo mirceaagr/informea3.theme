@@ -167,7 +167,7 @@ get_header();
                 <h2 id="member_parties">Member parties</h2>
                 <ul class="nav nav-tabs" id="members-tabs">
                     <li class="active"><a href="#members-list" data-toggle="tab">List</a></li>
-                    <li><a href="#members-map" data-toggle="tab">Map</a></li>
+                    <li class="disabled"><a href="#members-map">Map</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- MEMBERS-LIST -->
