@@ -3,9 +3,11 @@ VERSION:2.1
 PRODID:-//UNEP//InforMEA//EN
 N:{{ nfp.first_name }};{{ nfp.last_name }};{{ nfp.prefix }};;
 FN:{{ name }}
+{% if nfp.institution %}
 ORG:{{ nfp.institution }};
-{% if nfp.title %}
-TITLE:{{ nfp.title }};
+{% endif %}
+{% if nfp.position %}
+TITLE:{{ nfp.position }};
 {% endif %}
 {% if nfp.telephone %}
 TEL;WORK;VOICE:{{ nfp.telephone }}
@@ -18,6 +20,9 @@ EMAIL;PREF;INTERNET:{{ nfp.email }}
 {% endif %}
 {% if nfp.address %}
 ADR;WORK;PREF:;;{{ nfp.address }};;;;{{ nfp.country_name }}
+{% endif %}
+{% if notes %}
+NOTE:{{ notes }};
 {% endif %}
 {% if rec_updated %}
 REV:{{ rec_updated }}
