@@ -40,6 +40,11 @@ function informea_treaties_breadcrumbtrail($items) {
 }
 add_filter('the_breadcrumb', 'informea_treaties_breadcrumbtrail');
 
+
 if (have_posts()) : while (have_posts()) : the_post();
-    get_template_part('pages/' . $view);
+    if($view == 'treaties') {
+        echo InforMEATemplate::treaties();
+    } else if($view == 'treaty') {
+
+    }
 endwhile; endif;

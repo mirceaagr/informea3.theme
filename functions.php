@@ -63,17 +63,19 @@ add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
 /**
  * Echo the formatted region of a treaty (empty regions are treated as global)
  * @param $treaty stdClass object
+ * @return string
  */
-function i3_treaty_print_region($treaty) {
-	echo !empty($treaty->region) ? $treaty->region : __('Global', 'informea');
+function i3_treaty_format_coverage($treaty) {
+    return !empty($treaty->region) ? $treaty->region : __('Global', 'informea');
 }
 
 
 /**
  * Echo the formatted topic of a treaty (printing primary and secondary topics)
  * @param $treaty stdClass Treaty object
+ * @return string Formatted topic
  */
-function i3_treaty_print_topic($treaty) {
+function i3_treaty_format_topic($treaty) {
 	$ret = '';
 	if(!empty($treaty->theme)) {
 		$ret = sprintf('<strong>%s</strong>', $treaty->theme);
@@ -84,7 +86,7 @@ function i3_treaty_print_topic($treaty) {
 		}
 		$ret .= sprintf('%s', $treaty->theme_secondary);
 	}
-	echo $ret;
+	return $ret;
 }
 
 
@@ -110,19 +112,22 @@ function i3_treaty_url($treaty, $suffix = '', $echo = TRUE) {
 /**
  * Echo the trety primary topics, in treaty index page
  * @param $treaty stdClass Treaty object
+ * @return string Treaty topics
  */
-function i3_treaty_print_topics($treaty) {
+function i3_treaty_format_topics($treaty) {
+    $ret = '';
     if(!empty($treaty->theme) || !empty($treaty->theme_secondary)) {
         if(!empty($treaty->theme)) {
-            echo sprintf('<strong>%s</strong>', $treaty->theme);
+            $ret = sprintf('<strong>%s</strong>', $treaty->theme);
         }
         if(!empty($treaty->theme_secondary)) {
             if(!empty($treaty->theme)) {
-                echo ', ';
+                $ret .= ', ';
             }
-            echo $treaty->theme_secondary;
+            $ret .= $treaty->theme_secondary;
         }
     }
+    return $ret;
 }
 
 
@@ -130,13 +135,15 @@ function i3_treaty_print_topics($treaty) {
  * Echo the year when treaty was created
  * @param $treaty stdClass Treaty object
  */
-function i3_treaty_print_year($treaty) {
+function i3_treaty_format_year($treaty) {
+    $ret = '';
     if(!empty($treaty->start)) {
         $date = i3_format_mysql_date($treaty->start, 'Y');
         if(!empty($date)) {
-            echo $date;
+            $ret = $date;
         }
     }
+    return $ret;
 }
 
 /**
@@ -227,11 +234,34 @@ function i3_country_flag($country, $version = 'medium') {
 }
 
 /**
- * Build an URL to the term inside glossary page.
+ * Build URLs to the glossary pages.
  *
- * @param $term stdClass Term object
+ * @param stdClass $ob Entity object
+ * @param string $suffix Additional suffix
  * @return string URL
  */
-function i3_url_glossary_term($term) {
-    return sprintf('%s/glossary/%d', get_bloginfo('url'), $term->id);
+function i3_url_glossary($ob = NULL, $suffix = '') {
+    if($ob) {
+        $url = sprintf('%s/glossary', get_bloginfo('url'));
+    } else {
+        $url = sprintf('%s/glossary/%d', get_bloginfo('url'), $ob->id);
+    }
+    return $url . $suffix;
+}
+
+
+/**
+ * Build URLs to the treaty pages.
+ *
+ * @param stdClass $ob Entity object
+ * @param string $suffix Additional suffix
+ * @return string URL
+ */
+function i3_url_treaty($ob = NULL, $suffix = '') {
+    if(!$ob) {
+        $url = sprintf('%s/treaties', get_bloginfo('url'));
+    } else {
+        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $ob->odata_name);
+    }
+    return $url . $suffix;
 }

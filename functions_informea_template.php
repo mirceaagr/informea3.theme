@@ -20,12 +20,21 @@ class InforMEATemplate {
         if(defined('WP_DEBUG') && WP_DEBUG == TRUE) {
             $twig->addExtension(new Twig_Extension_Debug());
         }
-        $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL) {
+        $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL, $suffix = NULL) {
+            $url = '';
             switch($type) {
                 case 'glossary_term':
-                    echo i3_url_glossary_term($ob);
+                    $url = i3_url_glossary($ob, $suffix);
+                    break;
+                case 'treaty':
+                    $url = i3_url_treaty($ob, $suffix);
+                    break;
             }
+            echo $url;
         }));
+        $twig->addFunction(new Twig_SimpleFunction('get_header', 'get_header'));
+        $twig->addFunction(new Twig_SimpleFunction('get_footer', 'get_footer'));
+        $twig->addFunction(new Twig_SimpleFunction('the_title', 'the_title'));
         return $twig;
     }
 
@@ -88,23 +97,72 @@ class InforMEATemplate {
     /**
      * Build the structure for the treaty text viewer (set-up articles, paragraphs tags etc.).
      *
-     * @param $treaty stdClass Treaty object
+     * @param stdClass $treaty Treaty object
+     * @param stdClass $organization Organization object
+     * @param boolean $modal Is modal or full
      * @return string Rendered template
      */
-    public static function treaty_text_viewer($treaty) {
+    public static function treaty_text_viewer($treaty, $organization, $modal) {
         $ctx = array();
         $treaty->articles = InforMEA::load_full_treaty_text($treaty->id);
         foreach($treaty->articles as $row) {
             $row->title_formatted = i3_format_article_title($row);
         }
         $ctx['treaty'] = $treaty;
+        $ctx['organization'] = $organization;
+        $ctx['modal'] = $modal;
         $twig = self::get_twig_template();
-        return $twig->render('treaty-text-viewer.twig', $ctx);
+        if($modal) {
+            return $twig->render('treaty-text-viewer.twig', $ctx);
+        } else {
+            return $twig->render('treaty-text-viewer-full.twig');
+        }
     }
 
+    public static function treaty_text_viewer_dlg($treaty, $modal) {
+        $ctx['treaty'] = $treaty;
+        $ctx['modal'] = $modal;
+        $twig = self::get_twig_template();
+        if($modal) {
+            return $twig->render('treaty-text-viewer.twig', $ctx);
+        } else {
+            return $twig->render('treaty-text-viewer-full.twig');
+        }
+    }
+
+    public static function treaty_header($treaty, $organization, $modal) {
+        $ctx = array();
+        $treaty->topics = i3_treaty_format_topics($treaty);
+        $treaty->coverage = i3_treaty_format_coverage($treaty);
+        $treaty->enter_into_force = i3_treaty_format_year($treaty);
+        $ctx['treaty'] = $treaty;
+        $ctx['organization'] = $organization;
+        $ctx['modal'] = $modal;
+        $twig = self::get_twig_template();
+        return $twig->render('treaty-header.twig', $ctx);
+    }
 
     private static function _nfp_format_ctx($nfp, $show_actions) {
        $name = Informea::format_nfp_name($nfp);
        return array('nfp' => $nfp, 'name' => $name, 'show_actions' => $show_actions);
+    }
+
+
+    public static function treaties() {
+        $ctx = array(
+            'count' => InforMEA::get_treaties_enabled_count(),
+            'count_total' => InforMEA::get_treaties_enabled_count(),
+            'topics' => InforMEA::get_treaties_enabled_primary_topics(),
+            'regions' => InforMEA::get_treaties_enabled_regions_in_use()
+        );
+        $treaties = InforMEA::get_treaties_enabled();
+        $ctx['treaties'] = $treaties;
+        foreach($treaties as &$row) {
+            $row->coverage = i3_treaty_format_coverage($row);
+            $row->topic = i3_treaty_format_topic($row);
+        }
+        wp_enqueue_script('informea-treaties');
+        $twig = self::get_twig_template();
+        return $twig->render('treaties.twig', $ctx);
     }
 }
