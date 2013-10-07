@@ -13,7 +13,7 @@
             {% endfor %}
         </select>
     </div>
-    <div class="span9">
+    <div class="span9" id="treaty-text-container">
         <div class="treaty-text">
             {% for article in treaty.articles %}
             <h1 id="article-h1-{{ article.id }}">{{ article.title_formatted }}</h1>
