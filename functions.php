@@ -34,6 +34,7 @@ function i3_enqueue_styles() {
     wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('jquery-scrollto', get_template_directory_uri() . '/scripts/jquery.scrollto.min.js', array('jquery'), FALSE, TRUE);
 
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
     wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
@@ -47,6 +48,7 @@ function i3_enqueue_styles() {
     // Add this to all the front-end pages
     wp_enqueue_script('informea-common');
     wp_enqueue_script('bootstrap');
+    wp_enqueue_script('jquery-scrollto');
 
     wp_enqueue_style('bootstrap');
     wp_enqueue_style('bootstrap-responsive');

@@ -6,7 +6,7 @@
             <li><a href="#article-h1-{{ row.id }}">{{ row.title_formatted }}</a></li>
             {% endfor %}
         </ul>
-        <select class="visible-phone input-block-level">
+        <select id="treaty-text-select" class="visible-phone input-block-level">
             <option>Jump to Article</option>
             {% for row in treaty.articles %}
             <option value="#article-h1-{{ row.id }}">{{ row.title_formatted }}</option>

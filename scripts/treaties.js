@@ -26,6 +26,27 @@ jQuery('document').ready(function() {
         });
     });
 
+    // Resize treaty reader according to the screen dimension
+    var dlg_tt = jQuery('#treaty-text-modal');
+    dlg_tt.on('shown',function () {
+        var head = jQuery('div.modal .modal-header').height();
+        var dlg_h = jQuery(window).height() * 0.83;
+        var height = (dlg_h - head - 25) + 'px'; // Some adjustements due to paddings
+        dlg_tt.css('max-height', dlg_h + 'px');
+        dlg_tt.css('height', dlg_h + 'px');
+        jQuery('.modal-body', dlg_tt).css('max-height', height);
+        jQuery('.modal-body', dlg_tt).css('height', height);
+        jQuery('.modal-body .span3', dlg_tt).css('max-height', height);
+        jQuery('.modal-body .span3', dlg_tt).css('height', height);
+        jQuery('#treaty-text-container', dlg_tt).css('max-height', height);
+        jQuery('#treaty-text-container', dlg_tt).css('height', height);
+        //var offset = jQuery(this).offset().top;
+        //jQuery(window).scrollTop(offset);
+        //jQuery('#treaty-text-select').on('change', function() {
+        //    jQuery('#treaty-text-container').scrollTo(jQuery('#treaty-text-select').val() - 50);
+        //});
+    });
+
     // Close NFP contact modal dialog
     jQuery('#confact-nfp-close').click(function() {
         jQuery('#contact-nfp').modal('hide');
