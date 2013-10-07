@@ -1,3 +1,4 @@
+{% if not modal %}{{ get_header() }}{% endif %}
 <div class="row">
     <div class="span3">
         <ul class="nav nav-list hidden-phone">
@@ -32,10 +33,11 @@
                 {% endfor %}
             {% else %}
                 <p id="article-{{ article.id }}">
-                    {{ article.content }}
+                    {{ article.content|raw }}
                 </p>
             {% endif %}
             {% endfor %}
         </div>
     </div>
 </div>
+{% if not modal %}{{ get_footer() }}{% endif %}

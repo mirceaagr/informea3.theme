@@ -29,6 +29,8 @@ class InforMEATemplate {
                 case 'treaty':
                     $url = i3_url_treaty($ob, $suffix);
                     break;
+                case 'flag':
+                    $url = i3_country_flag($ob, 'large');
             }
             echo $url;
         }));
@@ -111,11 +113,12 @@ class InforMEATemplate {
         $ctx['treaty'] = $treaty;
         $ctx['organization'] = $organization;
         $ctx['modal'] = $modal;
+
         $twig = self::get_twig_template();
         if($modal) {
             return $twig->render('treaty-text-viewer.twig', $ctx);
         } else {
-            return $twig->render('treaty-text-viewer-full.twig');
+            return $twig->render('treaty-text-viewer-full.twig', $ctx);
         }
     }
 
@@ -123,11 +126,7 @@ class InforMEATemplate {
         $ctx['treaty'] = $treaty;
         $ctx['modal'] = $modal;
         $twig = self::get_twig_template();
-        if($modal) {
-            return $twig->render('treaty-text-viewer.twig', $ctx);
-        } else {
-            return $twig->render('treaty-text-viewer-full.twig');
-        }
+        return $twig->render('treaty-text-viewer.twig', $ctx);
     }
 
     public static function treaty_header($treaty, $organization, $modal) {
@@ -164,5 +163,61 @@ class InforMEATemplate {
         wp_enqueue_script('informea-treaties');
         $twig = self::get_twig_template();
         return $twig->render('treaties.twig', $ctx);
+    }
+
+
+    public static function treaty($treaty) {
+        $treaties = Informea::get_treaties_enabled('a.order');
+        $organization = InforMEA::get_organization($treaty->id_organization);
+        $parties = InforMEA::get_treaty_member_parties($treaty->id);
+        $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
+        $decisions_c = InforMEA::get_treaty_decisions_count($treaty->id);
+        $tags = InforMEA::get_treaty_popular_tags($treaty->id);
+        $nfp_c = InforMEA::get_treaty_nfp_count($treaty->id);
+        $countries_nfps = InforMEA::get_treaty_nfp_countries($treaty->id);
+        $nfps = array(); $c0 = NULL;
+        if($nfps > 0) {
+            $c0 = current($countries_nfps);
+            $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
+        }
+
+        foreach($cop_meetings as &$row) {
+            $row->decisions = InforMEA::get_treaty_decisions_by_cop($row->id);
+            $row->meeting_title = !empty($row->abbreviation) ? $row->abbreviation : $row->title;
+            $row->caption = i3_treaty_decision_caption($row, count($row->decisions));
+            foreach($row->decisions as &$decision) {
+                $decision->status = ucfirst($decision->status);
+            }
+        }
+
+        foreach($parties as &$row) {
+            $row->entry_into_force_formatted = i3_format_mysql_date($row->entryIntoForce, 'Y');
+            $row->signed_formatted = i3_format_mysql_date($row->signed, 'Y');
+        }
+
+        $ctx = array(
+            'treaties' => $treaties,
+            'treaty' => $treaty,
+            'organization' => $organization,
+            'parties' => $parties,
+            'cop_meetings' => $cop_meetings,
+            'decisions_count' => $decisions_c,
+            'countries_nfps' => $countries_nfps,
+            'tags' => $tags,
+            'nfp_count' => $nfp_c,
+            'first_country' => $c0,
+            'first_country_nfps' => $nfps
+        );
+
+        // Required by treaty-header.twig
+        $treaty->topics = i3_treaty_format_topics($treaty);
+        $treaty->coverage = i3_treaty_format_coverage($treaty);
+        $treaty->enter_into_force = i3_treaty_format_year($treaty);
+        $ctx['treaty'] = $treaty;
+        $ctx['organization'] = $organization;
+        $ctx['modal'] = FALSE;
+
+        $twig = self::get_twig_template();
+        return $twig->render('treaty.twig', $ctx);
     }
 }

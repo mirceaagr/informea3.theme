@@ -1,0 +1,53 @@
+<!-- TREATY HEADER -->
+<div class="treaty-header clearfix">
+    <div class="logo-left well">
+        <a class="logo" href="{{ treaty.url }}" title="Visit Treaty Website">
+            <img src="{{ treaty.logo_medium }}" alt="Treaty logo">
+        </a>
+    </div>
+
+    <h1>{{ treaty.short_title }}</h1>
+    <div class="treaty-body clearfix">
+        <div class="pull-left">
+            {{ treaty.topics|raw }}
+            {% if organization.depository %}
+                <br />
+                <strong>Depository:</strong>&ensp;{{ organization.depository }}
+            {% endif %}
+        </div>
+        <div class="pull-left">
+            <strong>Coverage:</strong>&ensp;{{ treaty.coverage }}<br/>
+            <strong>Entry into force:</strong>&ensp;{{ treaty.enter_into_force }}
+        </div>
+    </div>
+
+    <div class="treaty-actions">
+        {% if modal %}
+            {% if treaty.url_treaty_text %}
+                <a href="{{ treaty.url_treaty_text }}" target="_blank"><i class="icon-external-link"></i> Read on convention website</a>
+            {% endif %}
+            {% if treaty.url %}
+                <a href="{{ treaty.url }}" target="_blank"><i class="icon-external-link"></i> Visit convention website</a>
+            {% endif %}
+        {% else %}
+            <div class="btn-group">
+                <button class="btn btn-primary" data-remote="{{ i3_url('treaty', treaty, '/text?display=modal') }}"
+                        data-target="#treaty-text-modal"
+                        data-toggle="modal"><i class="icon-file-text"></i> Treaty Text</button>
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                <ul class="dropdown-menu pull-right">
+                    {% if treaty.url_treaty_text %}
+                        <li>
+                            <a href="{{ treaty.url_treaty_text }}" target="_blank"><i class="icon-external-link"></i> Read on convention website</a>
+                        </li>
+                    {% endif %}
+                    {% if treaty.url %}
+                        <li>
+                            <a href="{{ treaty.url }}" target="_blank"><i class="icon-external-link"></i> Visit convention website</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>

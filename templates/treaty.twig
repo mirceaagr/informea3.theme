@@ -1,0 +1,163 @@
+{{ get_header() }}
+{% include 'treaty-header.twig' %}
+<div class="row">
+    <!-- NAVIGATION BOX -->
+    <div class="span3 hidden-phone scrollspy affix-menu affix-top" data-offset="155">
+        <div class="well">
+            <h4>Contents</h4>
+            <ul class="nav nav-list">
+                <li class="active"><a href="#summary">Summary</a></li>
+                {% if decisions_count > 0 %}
+                <li><a href="#decisions">Decisions<span class="qty">{{ decisions_count }}</span></a></li>
+                {% endif %}
+                {% if nfp|length %}
+                <li><a href="#nfp">Focal Points<span class="qty">{{ nfp|length }}</span></a></li>
+                {% endif %}
+                {% if parties|length %}
+                <li><a href="#member_parties">Member parties<span class="qty">{{ parties|length }}</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- TAG CLOUD -->
+        {% if tags|length > 0 %}
+        <div class="well">
+            <h4>Most Frequent Terms</h4>
+            <ol class="tag-cloud">
+                {% for tag in tags %}
+                <li><a class="btn btn-inline tag{{ tag.weight }}" href="#">{{ tag.term }}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+        {% endif %}
+
+        <!-- SELECT TREATY -->
+        <div class="box">
+            <select id="select_treaty" onchange="window.location = jQuery(this).val()" class="input-block-level"
+                    title="Use this select to move to another treaty">
+                <option>View another treaty</option>
+                {% for row in treaties %}
+                <option value="{{ i3_url('treaty', row) }}">{{ row.short_title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <!-- #content -->
+    <div class="span9 pull-right" id="content">
+        <!-- SUMMARY -->
+        <div class="section" id="summary">
+            <h2 id="summary">Summary</h2>
+            <p>{{ treaty.abstract }}</p>
+        </div>
+
+        <!-- SUMMARY -->
+        {% if decisions_count %}
+        <div class="section" id="decisions">
+            <h2 id="decisions">Decisions</h2>
+            <ul id="accordion2" class="accordion meeting-list">
+                {% for row in cop_meetings %}
+                <li class="accordion-group">
+                    <div class="accordion-heading">
+                        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#collapse-meeting-{{ row.id }}">
+                            <i class="icon-caret-right"></i> {{ row.meeting_title }}
+                        </a>
+                    </div>
+                    <div id="collapse-meeting-{{ row.id }}" class="accordion-body collapse">
+                        <table class="table table-bordered accordion-inner">
+                            <caption>{{ row.caption }}</caption>
+                            <tbody>
+                            {% for decision in row.decisions %}
+                            <tr>
+                                <td class="span2">{{ decision.number }} <br/>
+                                    <span class="status small {{ decision.status|lower }}">{{ decision.type|capitalize }}&ensp;{{ decision.status|capitalize }}</span>
+                                </td>
+                                <td>
+                                    <a href="#">{{ decision.short_title }}</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if nfp_count %}
+        <!-- FOCAL POINTS -->
+        <div class="section" id="focal-points">
+            <h2 id="nfp">Focal Points</h2>
+            <div class="row">
+                <div class="span2">
+                    <div class="well select clearfix">
+                        <a class="visible-desktop" href="" title="Go to Country Profile page">
+                            <img id="treaty-nfp-country-flag" src="{{ i3_url('flag', first_country) }}" alt="Country Flag">
+                        </a>
+                        <select id="treaty-nfp-country-select" class="input-block-level">
+                            {% for row in countries_nfps %}
+                            <option value="{{ row.code }}" data-flag="{{ i3_url('flag', row) }}">{{ row.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <p class="hidden-phone"><span id="treaty-nfp-country-count">{{ first_country_nfps|length }}</span> focal points</p>
+                    </div>
+                </div>
+                <ul id="focal-point-list" class="focal-point-list span7">
+                    {% for nfp in first_country_nfps %}
+                    <li class="focal-point">
+                        {% include 'nfp-contact-info.twig' %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- MEMBERS -->
+        {% if parties|length > 0 %}
+        <div class="section" id="members">
+            <h2 id="member_parties">Member parties</h2>
+            <ul class="nav nav-tabs" id="members-tabs">
+                <li class="active"><a href="#members-list" data-toggle="tab">List</a></li>
+                <li class="disabled"><a href="#members-map">Map</a></li>
+            </ul>
+            <div class="tab-content">
+                <!-- MEMBERS-LIST -->
+                <div class="tab-pane active" id="members-list">
+                    <table class="table table-striped">
+                        <caption>Member parties to {{ treaty.short_title }}</caption>
+                        <thead>
+                        <tr>
+                            <th class="span5">Country</th>
+                            <th>Status</th>
+                            <th>Entry into force</th>
+                            <th>Signed</th>
+                            <th>Notes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in parties %}
+                        <tr>
+                            <td>{{ row.country }}</td>
+                            <td>{{ row.status }}</td>
+                            <td>{{ row.entry_into_force_formatted|raw }}</td>
+                            <td>{{ row.signed_formatted|raw }}</td>
+                            <th>{{ row.notes }}</th>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- MEMBERS-MAP -->
+                <div class="tab-pane" id="members-map">
+                    ...
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div><!-- /#content -->
+</div>
+{% include 'treaty-text-viewer-dlg.twig' %}
+{{ get_footer() }}

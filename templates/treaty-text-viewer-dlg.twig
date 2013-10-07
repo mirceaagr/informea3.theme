@@ -1,0 +1,21 @@
+<!-- Modal dialog - treaty viewer -->
+<div id="treaty-text-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Read treaty text" aria-hidden="true">
+    <div class="modal-header">
+        {% set modal = TRUE %}
+        {% include 'treaty-header.twig' %}
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+        <div class="treaty-text-toolbar well hidden-phone clearfix">
+            <div class="pull-left">
+                <strong>Treaty Text</strong>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
+                <button class="btn btn-inline"><i class="icon-link"></i> Cite/Link</button>
+                <button class="btn btn-inline"><i class="icon-resize-full"></i> Separate window</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <p>Loading information from server ...</p>
+    </div>
+</div>
