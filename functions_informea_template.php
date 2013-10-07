@@ -122,13 +122,6 @@ class InforMEATemplate {
         }
     }
 
-    public static function treaty_text_viewer_dlg($treaty, $modal) {
-        $ctx['treaty'] = $treaty;
-        $ctx['modal'] = $modal;
-        $twig = self::get_twig_template();
-        return $twig->render('treaty-text-viewer.twig', $ctx);
-    }
-
     public static function treaty_header($treaty, $organization, $modal) {
         $ctx = array();
         $treaty->topics = i3_treaty_format_topics($treaty);
