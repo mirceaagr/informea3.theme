@@ -49,8 +49,8 @@ function i3_enqueue_styles() {
     wp_enqueue_script('bootstrap');
 
     wp_enqueue_style('bootstrap');
-    wp_enqueue_style('informea-style');
     wp_enqueue_style('bootstrap-responsive');
+    wp_enqueue_style('informea-style');
     wp_enqueue_style('informea-style-responsive');
     wp_enqueue_style('informea-logos');
     wp_enqueue_style('font-awesome');
