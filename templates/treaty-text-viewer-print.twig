@@ -1,0 +1,55 @@
+{{ get_header() }}
+<div class="row">
+    <div class="span12">
+        <h1>{{ treaty.long_title }}</h1>
+        <p>
+            Treaty text with InforMEA vocabulary
+        </p>
+        <div class="treaty-text">
+            <table class="table-striped">
+            {% for article in treaty.articles %}
+                <tr>
+                    <td colspan="2">
+                        <h1 id="article-h1-{{ article.id }}">{{ article.title_formatted }}</h1>
+                    </td>
+                </tr>
+                {% if article.paragraphs %}
+                    {% for p in article.paragraphs %}
+                        <tr>
+                            <td class="justify">
+                                {{ p.content|raw }}
+                            </td>
+                            <td>
+                                {% if p.tags %}
+                                    {% for t in p.tags %}
+                                        <strong>{{ t.term }}</strong>{{ loop.last ? '' : ', ' }}
+                                    {% endfor %}
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td class="justify">
+                            {{ article.content|raw }}
+                        </td>
+                        <td>
+                            {% if article.tags %}
+                                {% for t in article.tags %}
+                                    <strong>{{ t.term }}</strong>{{ loop.last ? '' : ', ' }}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% if print %}
+    <script type="text/javascript">
+        jQuery(document).ready(function() { window.print(); });
+    </script>
+{% endif %}
+{{ get_footer() }}

@@ -102,23 +102,32 @@ class InforMEATemplate {
      * @param stdClass $treaty Treaty object
      * @param stdClass $organization Organization object
      * @param boolean $modal Is modal or full
+     * @param boolean $print Show the print dialog
+     *
      * @return string Rendered template
      */
-    public static function treaty_text_viewer($treaty, $organization, $modal) {
+    public static function treaty_text_viewer($treaty, $organization, $modal, $print = FALSE) {
         $ctx = array();
         $treaty->articles = InforMEA::load_full_treaty_text($treaty->id);
         foreach($treaty->articles as $row) {
             $row->title_formatted = i3_format_article_title($row);
         }
+
+        // Required by treaty-header.twig
+        $treaty->topics = i3_treaty_format_topics($treaty);
+        $treaty->coverage = i3_treaty_format_coverage($treaty);
+        $treaty->enter_into_force = i3_treaty_format_year($treaty);
+
+
         $ctx['treaty'] = $treaty;
         $ctx['organization'] = $organization;
         $ctx['modal'] = $modal;
-
+        $ctx['print'] = $print;
         $twig = self::get_twig_template();
-        if($modal) {
-            return $twig->render('treaty-text-viewer.twig', $ctx);
+        if($print) {
+            return $twig->render('treaty-text-viewer-print.twig', $ctx);
         } else {
-            return $twig->render('treaty-text-viewer-full.twig', $ctx);
+            return $twig->render('treaty-text-viewer.twig', $ctx);
         }
     }
 
@@ -169,7 +178,7 @@ class InforMEATemplate {
         $nfp_c = InforMEA::get_treaty_nfp_count($treaty->id);
         $countries_nfps = InforMEA::get_treaty_nfp_countries($treaty->id);
         $nfps = array(); $c0 = NULL;
-        if($nfps > 0) {
+        if($nfp_c > 0) {
             $c0 = current($countries_nfps);
             $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
         }

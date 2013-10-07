@@ -46,6 +46,9 @@
                             <a href="{{ treaty.url }}" target="_blank"><i class="icon-external-link"></i> Visit convention website</a>
                         </li>
                     {% endif %}
+                    <li>
+                        <a href="{{ i3_url('treaty', treaty, '/text?act=print') }}" target="_blank"><i class="icon-print"></i> Print</a>
+                    </li>
                 </ul>
             </div>
         {% endif %}

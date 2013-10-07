@@ -1,0 +1,5 @@
+
+div.navbar { display: none; }
+div.footer { display: none; }
+div.treaty-text table td.justify { text-align: justify }
+div.treaty-text table td { vertical-align: top; }

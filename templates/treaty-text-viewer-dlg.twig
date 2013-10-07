@@ -9,9 +9,9 @@
                 <strong>Treaty Text</strong>
             </div>
             <div class="pull-right">
-                <button class="btn btn-inline"><i class="icon-print"></i> Print</button>
-                <button class="btn btn-inline"><i class="icon-link"></i> Cite/Link</button>
-                <button class="btn btn-inline"><i class="icon-resize-full"></i> Separate window</button>
+                <a href="{{ i3_url('treaty', treaty, '/text?act=print') }}" target="_blank" class="btn btn-inline"><i class="icon-print"></i> Print</a>
+                {# <button class="btn btn-inline"><i class="icon-link"></i> Cite/Link</button> #}
+                <a href="{{ i3_url('treaty', treaty, '/text') }}" target="_blank" class="btn btn-inline"><i class="icon-resize-full"></i> Separate window</a>
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ $request = WordPressHttpRequestFactory::createFromGlobals();
 $odata_name = $request->get('odata_name');
 $view = $request->get('view');
 $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
+$act = $request->get('act');
 
 if($treaty) {
     add_action('wp_enqueue_scripts', function() {
@@ -62,6 +63,10 @@ if (have_posts()) : while (have_posts()) : the_post();
     } else if($view == 'text') { // Ajax call
         $organization = InforMEA::get_organization($treaty->id_organization);
         $modal = $request->get('display') == 'modal';
-        echo InforMEATemplate::treaty_text_viewer($treaty, $organization, $modal);
+        $print = $act == 'print';
+        if($print) {
+            add_action('wp_enqueue_scripts', function() { wp_enqueue_style('informea-print'); });
+        }
+        echo InforMEATemplate::treaty_text_viewer($treaty, $organization, $modal, $print);
     }
 endwhile; endif;

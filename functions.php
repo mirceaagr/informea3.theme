@@ -42,6 +42,7 @@ function i3_enqueue_styles() {
     wp_register_style('informea-style', get_bloginfo('stylesheet_url'));
     wp_register_style('informea-style-responsive', get_template_directory_uri() . '/css/style-responsive.css');
     wp_register_style('informea-logos', get_template_directory_uri() . '/css/logos.css');
+    wp_register_style('informea-print', get_template_directory_uri() . '/css/print.css');
 
     // Add this to all the front-end pages
     wp_enqueue_script('informea-common');
