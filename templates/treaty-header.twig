@@ -16,8 +16,10 @@
             {% endif %}
         </div>
         <div class="pull-left">
-            <strong>Coverage:</strong>&ensp;{{ treaty.coverage }}<br/>
+            <strong>Coverage:</strong>&ensp;{{ treaty.coverage }}<br />
+            {% if treaty.enter_into_force %}
             <strong>Entry into force:</strong>&ensp;{{ treaty.enter_into_force }}
+            {% endif %}
         </div>
     </div>
 
