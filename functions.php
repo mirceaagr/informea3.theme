@@ -269,3 +269,13 @@ function i3_url_treaty($ob = NULL, $suffix = '') {
     }
     return $url . $suffix;
 }
+
+/**
+ * Server the 404 error page.
+ */
+function i3_404() {
+    global $wp_query;
+    $wp_query->set_404();
+    status_header(404);
+    get_template_part(404);
+}
