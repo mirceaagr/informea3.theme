@@ -73,7 +73,9 @@
                                     <span class="status small {{ decision.status|lower }}">{{ decision.type|capitalize }}&ensp;{{ decision.status|capitalize }}</span>
                                 </td>
                                 <td>
-                                    <a href="#">{{ decision.short_title }}</a>
+                                    <a href="#treaty-decision-modal"
+                                       data-remote="{{ i3_url('decision', decision, '?display=modal', treaty) }}"
+                                       data-toggle="modal">{{ decision.short_title }}</a>
                                 </td>
                             </tr>
                             {% endfor %}
@@ -160,4 +162,5 @@
     </div><!-- /#content -->
 </div>
 {% include 'treaty-text-viewer-dlg.twig' %}
+{% include 'treaty-decision-viewer-dlg.twig' %}
 {{ get_footer() }}

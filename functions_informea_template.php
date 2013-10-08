@@ -20,7 +20,7 @@ class InforMEATemplate {
         if(defined('WP_DEBUG') && WP_DEBUG == TRUE) {
             $twig->addExtension(new Twig_Extension_Debug());
         }
-        $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL, $suffix = NULL) {
+        $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL, $suffix = NULL, $parent = NULL) {
             $url = '';
             switch($type) {
                 case 'glossary_term':
@@ -28,6 +28,9 @@ class InforMEATemplate {
                     break;
                 case 'treaty':
                     $url = i3_url_treaty($ob, $suffix);
+                    break;
+                case 'decision':
+                    $url = sprintf('%s/decision/%s%s', i3_url_treaty($parent), $ob->id, $suffix);
                     break;
                 case 'flag':
                     $url = i3_country_flag($ob, 'large');
@@ -222,4 +225,24 @@ class InforMEATemplate {
         $twig = self::get_twig_template();
         return $twig->render('treaty.twig', $ctx);
     }
+
+    public static function treaty_decision_viewer($id_decision, $treaty, $organization, $modal) {
+        $decision = InforMEA::load_full_decision($id_decision);
+        $ctx = array(
+            'treaty' => $treaty,
+            'decision' => $decision,
+            'modal' => $modal
+        );
+
+        // Required by treaty-header.twig
+        $treaty->topics = i3_treaty_format_topics($treaty);
+        $treaty->coverage = i3_treaty_format_coverage($treaty);
+        $treaty->enter_into_force = i3_treaty_format_year($treaty);
+        $ctx['treaty'] = $treaty;
+        $ctx['organization'] = $organization;
+
+        $twig = self::get_twig_template();
+        return $twig->render('treaty-decision-viewer.twig', $ctx);
+    }
+
 }

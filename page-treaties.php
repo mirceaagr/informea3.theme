@@ -7,8 +7,11 @@ $modal = $request->get('display') == 'modal';
 $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
 $act = $request->get('act');
 $is_print = $act == 'print';
+$organization = FALSE;
 
 if($treaty) {
+    $organization = InforMEA::get_organization($treaty->id_organization);
+
     add_action('wp_enqueue_scripts', function() {
         global $treaty;
         // Inject treaty into the JS scripts as config object
@@ -66,7 +69,6 @@ if (have_posts()) : while (have_posts()) : the_post();
             echo InforMEATemplate::treaty($treaty);
             break;
         case 'text': // Normal page and Ajax call
-            $organization = InforMEA::get_organization($treaty->id_organization);
             if($is_print) {
                 add_action('wp_enqueue_scripts', function() { wp_enqueue_style('informea-print'); });
             }
@@ -74,6 +76,7 @@ if (have_posts()) : while (have_posts()) : the_post();
             break;
         case 'decision':
             $id_decision = $request->get('id_decision');
+            echo InforMEATemplate::treaty_decision_viewer($id_decision, $treaty, $organization, $modal);
             break;
         default:
             die("There nothing to do here. Nothing!");

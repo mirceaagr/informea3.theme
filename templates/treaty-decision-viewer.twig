@@ -1,0 +1,49 @@
+{% if not modal %}{{ get_header() }}{% endif %}
+<div class="row">
+    <div class="span9">
+        <strong>Decision Number</strong>
+        <h1>Decision Title</h1>
+        <dl class="decision-info dl-horizontal">
+            <dt>Meeting</dt>
+            <dd><a href="">Some meeting</a></dd>
+            <dt>Status</dt>
+            <dd><span class="status active">Active</span></dd>
+            <dt>Published</dt>
+            <dd>Date</dd>
+            <dt>Source</dt>
+            <dd><a href="">Go to online version <i class="icon-external-link"></i> </a></dd>
+            <dt>Files</dt>
+            <dd>
+                <ul class="inline">
+                    <li>EN</li>
+                    <li>FR</li>
+                    <li>RU</li>
+                    <li>DE</li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+    <div class="span3 hidden-phone">
+        <div class="well">
+            <h4>Tagged Terms</h4>
+            <ol class="tag-cloud">
+                <li><a class="btn btn-inline tag10" href="#">Tag 10</a></li>
+                <li><a class="btn btn-inline tag9" href="#">Tag 9</a></li>
+                <li><a class="btn btn-inline tag8" href="#">Tag 8</a></li>
+                <li><a class="btn btn-inline tag7" href="#">Tag 7</a></li>
+                <li><a class="btn btn-inline tag6" href="#">Tag 6</a></li>
+                <li><a class="btn btn-inline tag5" href="#">Tag 5</a></li>
+                <li><a class="btn btn-inline tag4" href="#">Tag 4</a></li>
+                <li><a class="btn btn-inline tag3" href="#">Tag 3</a></li>
+                <li><a class="btn btn-inline tag2" href="#">Tag 2</a></li>
+                <li><a class="btn btn-inline tag1" href="#">Tag 1</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <h2>Extracted paragraphs</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
+
+</div>
+{% if not modal %}{{ get_footer() }}{% endif %}
