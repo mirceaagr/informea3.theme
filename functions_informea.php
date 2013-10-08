@@ -432,20 +432,22 @@ class InforMEA {
 
         // Build an array of terms and set weight on each term
         $tmp = array_slice($tmp, 0, $limit, TRUE);
-        $objects = $wpdb->get_results(
-            sprintf(
-                'SELECT * FROM voc_concept WHERE id IN (%s)',
-                implode(',', array_keys($tmp))
-            ),
-            OBJECT_K
-        );
-        // Attach weight
-        $keys = array_keys($tmp);
-        $c = count($keys);
-        foreach($keys as $weight => $id_term) {
-            $term = $objects[$id_term];
-            $term->weight = ($c - $weight);
-            $ret[] = $term;
+        if(count($tmp)) {
+            $objects = $wpdb->get_results(
+                sprintf(
+                    'SELECT * FROM voc_concept WHERE id IN (%s)',
+                    implode(',', array_keys($tmp))
+                ),
+                OBJECT_K
+            );
+            // Attach weight
+            $keys = array_keys($tmp);
+            $c = count($keys);
+            foreach($keys as $weight => $id_term) {
+                $term = $objects[$id_term];
+                $term->weight = ($c - $weight);
+                $ret[] = $term;
+            }
         }
         return $ret;
     }
