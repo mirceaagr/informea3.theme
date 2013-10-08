@@ -199,7 +199,7 @@ class InforMEA {
         return $wpdb->get_results($wpdb->prepare(
                 'SELECT a.* FROM ai_treaty_article a WHERE a.id_treaty = %d ORDER BY a.order',
                 $id_treaty
-            )
+            ), OBJECT_K
         );
     }
 
@@ -214,7 +214,7 @@ class InforMEA {
         global $wpdb;
         return $wpdb->get_results(
             $wpdb->prepare('
-                SELECT a.id, a.id_treaty_article, a.official_order, a.`order`, a.`indent`, a.`content`
+                SELECT a.id, a.id_treaty_article AS id_article, a.official_order, a.`order`, a.`indent`, a.`content`
                   FROM ai_treaty_article_paragraph a
                   INNER JOIN ai_treaty_article b ON b.id = a.id_treaty_article
                   WHERE b.id_treaty = %d
@@ -289,7 +289,7 @@ class InforMEA {
 
         $grouped_paragraphs = array();
         foreach($paragraphs as $row) {
-            $grouped_paragraphs[$row->id_treaty_article][] = $row;
+            $grouped_paragraphs[$row->id_article][] = $row;
         }
 
         $articles = self::get_treaty_articles($id_treaty);
