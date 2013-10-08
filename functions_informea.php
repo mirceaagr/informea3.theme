@@ -297,6 +297,7 @@ class InforMEA {
 
         // Assign paragraphs to articles
         foreach($articles as $id_article => &$row) {
+            $row->tags = FALSE;
             // Article tags
             if(array_key_exists($id_article, $article_tags)) {
                 $row->tags = $article_tags[$id_article];

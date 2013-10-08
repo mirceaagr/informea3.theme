@@ -32,9 +32,17 @@
                 </div>
                 {% endfor %}
             {% else %}
-                <p id="article-{{ article.id }}">
+                <div class="article">
+                    {% if article.tags %}
+                    <div class="article-tags">
+                        <strong><i class="icon-tags"></i>Tagged Terms: </strong>&ensp;
+                        {% for t in article.tags %}
+                            <a href="{{ i3_url('glossary_term', t) }}">{{ t.term }}</a>{{ loop.last ? '' : ', ' }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                     {{ article.content|raw }}
-                </p>
+                </div>
             {% endif %}
             {% endfor %}
         </div>

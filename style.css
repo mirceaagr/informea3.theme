@@ -1738,7 +1738,9 @@ span.status.retired { color: #ff6666; }
   border: 0;
 }
 
-.treaty-text .paragraph {
+.treaty-text .paragraph,
+.treaty-text .article
+{
   margin-bottom: 12px;
   position: relative;
 }
@@ -1747,7 +1749,8 @@ span.status.retired { color: #ff6666; }
   /*margin-bottom: 0;*/
 }
 
-.treaty-text .paragraph-tags {
+.treaty-text .paragraph-tags,
+.treaty-text .article-tags {
   display: none;
   position: absolute;
   font-size: 12px;
@@ -1760,18 +1763,23 @@ span.status.retired { color: #ff6666; }
   font-family: Arial, sans-serif;
 }
 
-.treaty-text .paragraph:hover .paragraph-tags {
+.treaty-text .paragraph:hover .paragraph-tags,
+.treaty-text .article:hover .article-tags {
   display: block;
 }
 
 .treaty-text .paragraph-tags,
-.treaty-text .paragraph:hover p {
+.treaty-text .paragraph:hover p,
+.treaty-text .article-tags,
+.treaty-text .article:hover p
+{
   margin: -6px;
   padding: 6px;
   background-color: #f7f7f7;
 }
 
-.treaty-text .paragraph:hover p {
+.treaty-text .paragraph:hover p,
+.treaty-text .article:hover p {
   color: #16232e;
 }
 
