@@ -1592,6 +1592,8 @@ a:focus .qty {
   color: #8a95a6;
 }
 
+.tag-cloud .btn { text-align: left; }
+
 .tag10 { font-size:15px; line-height: 18px; }
 .tag9  { font-size:14px; line-height: 17px; }
 .tag8  { font-size:14px; line-height: 17px; }
