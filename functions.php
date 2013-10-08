@@ -245,7 +245,7 @@ function i3_country_flag($country, $version = 'medium') {
  * @return string URL
  */
 function i3_url_glossary($ob = NULL, $suffix = '') {
-    if($ob) {
+    if(!$ob) {
         $url = sprintf('%s/glossary', get_bloginfo('url'));
     } else {
         $url = sprintf('%s/glossary/%d', get_bloginfo('url'), $ob->id);
