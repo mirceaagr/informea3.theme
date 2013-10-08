@@ -588,6 +588,19 @@ class InforMEA {
     }
 
     /**
+     * Retrieve a sigle document from the database.
+     *
+     * @param integer $id_document Document ID
+     * @return stdClass Document object
+     */
+    static function get_document($id_document) {
+        global $wpdb;
+        return $wpdb->get_row(
+            $wpdb->prepare('SELECT url, path FROM ai_document WHERE id = %d', $id_document)
+        );
+    }
+
+    /**
      * Build NFP name field based on what is filled-in.
      *
      * @param $nfp stdClass Person object
