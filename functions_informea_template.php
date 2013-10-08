@@ -169,7 +169,7 @@ class InforMEATemplate {
 
 
     public static function treaty($treaty) {
-        $treaties = Informea::get_treaties_enabled('a.order');
+        $treaties = Informea::get_treaties_enabled('a.short_title');
         $organization = InforMEA::get_organization($treaty->id_organization);
         $parties = InforMEA::get_treaty_member_parties($treaty->id);
         $cop_meetings = InforMEA::get_treaty_cop_meetings($treaty->id);
