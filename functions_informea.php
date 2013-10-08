@@ -311,6 +311,56 @@ class InforMEA {
     }
 
     /**
+     * Load full decision data such as tags, paragraphs etc.
+     * @param integer $id_decision Decision ID
+     * @return stdClass Decision object with additional fields:
+     * - tags - Tags for the decision
+     * - paragraphs - Decision paragraphs
+     * - documents - Decision documents
+     * - meeting - Meeting information
+     */
+    static function load_full_decision($id_decision) {
+        global $wpdb;
+        $ret = $wpdb->get_row(
+            $wpdb->prepare('SELECT * FROM ai_decision WHERE id = %d', $id_decision)
+        );
+        if($ret) {
+            $ret->tags = $wpdb->get_results(
+                $wpdb->prepare('SELECT b.*
+                    FROM ai_decision_vocabulary a
+                    INNER JOIN voc_concept b ON a.id_concept = b.id WHERE a.id_decision = %d', $id_decision
+                ), OBJECT_K
+            );
+            $ret->paragraphs = $wpdb->get_results(
+                $wpdb->prepare('SELECT a.* FROM ai_decision_paragraph a WHERE a.id_decision = %d', $id_decision),
+                OBJECT_K
+            );
+            if(count($ret->paragraphs)) {
+                $paragraph_tags = $wpdb->get_results(
+                    $wpdb->prepare('SELECT c.*, a.id_decision_paragraph AS id_paragraph
+                    FROM ai_decision_paragraph_vocabulary a
+                    INNER JOIN ai_decision_paragraph b ON a.id_decision_paragraph = b.id
+                    INNER JOIN voc_concept c ON a.id_concept = c.id
+                    WHERE b.id_decision = %d', $id_decision)
+                );
+                $grouped = array();
+                foreach($paragraph_tags as $row) {
+                    $grouped[$row->id_paragraph][] = $row;
+                }
+                foreach($ret->paragraphs as &$row) {
+                    $row->tags = array_key_exists($row->id, $grouped) ? $grouped[$row->id] : FALSE;
+                }
+            }
+            $ret->documents = $wpdb->get_results(
+                $wpdb->prepare('SELECT * FROM ai_document a WHERE a.id_decision = %d', $id_decision),
+                OBJECT_K
+            );
+            $ret->meeting = $wpdb->get_row('SELECT * FROM ai_event WHERE id = %d', $ret->id_meeting);
+        }
+        return $ret;
+    }
+
+    /**
      * Retrieve the list of countries. Statically cached.
      *
      * @return array Array of objects with country information
