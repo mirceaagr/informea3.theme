@@ -93,32 +93,32 @@
                                         </ul>
                                         <ul class="nav-list span6">
                                             <li class="nav-header">Regional Treaties</li>
-                                            <li><a href="#">Aarhus Convention</a></li>
-                                            <li><a href="#">Abidjan Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('aarhus'); ?>">Aarhus Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('abidjan'); ?>">Abidjan Convention</a></li>
                                             <li><a href="<?php i3_treaty_url('aewa'); ?>">AEWA</a></li>
-                                            <li><a href="#">Antigua Convention</a></li>
-                                            <li><a href="#">Apia Convention</a></li>
-                                            <li><a href="#">Barcelona</a></li>
-                                            <li><a href="#">Barcelona Dumping Protocol</a></li>
-                                            <li><a href="#">Bamako Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('antigua'); ?>">Antigua Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('apia'); ?>">Apia Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('barcelona'); ?>">Barcelona</a></li>
+                                            <li><a href="<?php i3_treaty_url('dumping'); ?>">Barcelona Dumping Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('bamako'); ?>">Bamako Convention</a></li>
                                             <li><a href="<?php i3_treaty_url('cartagena-conv'); ?>">Cartagena Convention</a></li>
-                                            <li><a href="#">Espoo Convention</a></li>
-                                            <li><a href="#">Hazardous Wastes Protocol</a></li>
-                                            <li><a href="#">Industrial Accidents Convention</a></li>
-                                            <li><a href="#">Jeddah Convention</a></li>
-                                            <li><a href="#">Kiev Protocol</a></li>
-                                            <li><a href="#">Kuwait Regional Convention</a></li>
-                                            <li><a href="#">Long-Range Transmoundary Air Pollution</a></li>
-                                            <li><a href="#">Lusaka Agreement</a></li>
-                                            <li><a href="#">Nairobi Convention</a></li>
-                                            <li><a href="#">Noumea Convention</a></li>
-                                            <li><a href="#">Land-Based Sources Protocol</a></li>
-                                            <li><a href="#">Offshore Protocol</a></li>
-                                            <li><a href="#">Prevention and Emergency Protocol</a></li>
-                                            <li><a href="#">Specially Protected Areas Protocol</a></li>
-                                            <li><a href="#">The Kyiv Protocol</a></li>
-                                            <li><a href="#">Protocol on Water and Health</a></li>
-                                            <li><a href="#">Water Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('espoo'); ?>">Espoo Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('hazardous'); ?>">Hazardous Wastes Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('industrialaccidents'); ?>">Industrial Accidents Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('jeddah'); ?>">Jeddah Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('pollutantrelease'); ?>">Kiev Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('kuwait'); ?>">Kuwait Regional Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('lrtp'); ?>">Long-Range Transboundary Air Pollution</a></li>
+                                            <li><a href="<?php i3_treaty_url('lusakaagreement'); ?>">Lusaka Agreement</a></li>
+                                            <li><a href="<?php i3_treaty_url('nairobi'); ?>">Nairobi Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('noumea'); ?>">Noumea Convention</a></li>
+                                            <li><a href="<?php i3_treaty_url('land-based'); ?>">Land-Based Sources Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('offshore'); ?>">Offshore Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('preventionemergency'); ?>">Prevention and Emergency Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('barc-spa'); ?>">Specially Protected Areas Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('kyivsea'); ?>">The Kyiv Protocol</a></li>
+                                            <li><a href="<?php i3_treaty_url('protocolwaterhealth'); ?>">Protocol on Water and Health</a></li>
+                                            <li><a href="<?php i3_treaty_url('waterconvention'); ?>">Water Convention</a></li>
                                         </ul>
                                     </div>
                                 </div>
