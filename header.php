@@ -22,7 +22,7 @@
                 <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse.menu">
                     <i class="icon-reorder"></i>
                 </a>
-                <a class="brand" href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png" alt="InforMEA logo"></a>
+                <a class="brand" href="/"><img src="<?php echo get_template_directory_uri(); ?>/images/informea_logo.png" alt="InforMEA logo"></a>
                 <div class="nav-collapse menu collapse">
                     
                     <form class="navbar-search pull-right">
