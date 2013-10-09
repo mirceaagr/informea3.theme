@@ -320,10 +320,12 @@ class InforMEA {
      * - meeting - Meeting information
      */
     static function load_full_decision($id_decision) {
+        static $decision_cache = array();
+        if(array_key_exists($id_decision, $decision_cache)) {
+            return $decision_cache[$id_decision];
+        }
         global $wpdb;
-        $ret = $wpdb->get_row(
-            $wpdb->prepare('SELECT * FROM ai_decision WHERE id = %d', $id_decision)
-        );
+        $ret = self::get_decision($id_decision);
         if($ret) {
             $ret->tags = $wpdb->get_results(
                 $wpdb->prepare('SELECT b.*
@@ -358,6 +360,30 @@ class InforMEA {
             $ret->meeting = $wpdb->get_row(
                 $wpdb->prepare('SELECT * FROM ai_event WHERE id = %d', $ret->id_meeting)
             );
+        }
+        if($ret) {
+            $decision_cache[$ret->id] = $ret;
+        }
+        return $ret;
+    }
+
+    /**
+     * Load decision from the decisions table.
+     *
+     * @param integer $id_decision Decision ID
+     * @return stdClass Decision object from its table
+     */
+    static function get_decision($id_decision) {
+        static $decision_cache = array();
+        if(array_key_exists($id_decision, $decision_cache)) {
+            return $decision_cache[$id_decision];
+        }
+        global $wpdb;
+        $ret = $wpdb->get_row(
+            $wpdb->prepare('SELECT * FROM ai_decision WHERE id = %d', $id_decision)
+        );
+        if($ret) {
+            $decision_cache[$ret->id] = $ret;
         }
         return $ret;
     }
