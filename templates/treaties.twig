@@ -1,58 +1,61 @@
 {{ get_header() }}
-<h1>{{ the_title() }}</h1>
-<table id="treaties-table" class="table">
-    <thead>
-    <tr>
-        <th colspan="2">Showing {{ count }} out of {{ count_total }} treaties</th>
-        <th class="hidden-phone">
-            <div class="dropdown-container">
-                <div class="dropdown">
-                    <span class="dropdown-value placeholder">All Topics</span>
-                    <button class="btn btn-select" data-toggle="dropdown">
-                        <i class="icon-caret-down"></i>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        {% for row in topics %}
-                        <li><a tabindex="-1" href="#{{ row }}">{{ row }}</a></li>
-                        {% endfor %}
-                    </ul>
+<div class="container">
+    {{ informea_the_breadcrumb() }}
+    <h1>{{ the_title() }}</h1>
+    <table id="treaties-table" class="table">
+        <thead>
+        <tr>
+            <th colspan="2">Showing {{ count }} out of {{ count_total }} treaties</th>
+            <th class="hidden-phone">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <span class="dropdown-value placeholder">All Topics</span>
+                        <button class="btn btn-select" data-toggle="dropdown">
+                            <i class="icon-caret-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for row in topics %}
+                            <li><a tabindex="-1" href="#{{ row }}">{{ row }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </th>
-        <th class="hidden-phone">
-            <div class="dropdown-container">
-                <div class="dropdown">
-                    <span class="dropdown-value placeholder">Coverage</span>
-                    <button class="btn btn-select" data-toggle="dropdown">
-                        <i class="icon-caret-down"></i>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        {% for row in regions %}
-                        <li><a tabindex="-1" href="#{{ row.name }}">{{ row.name }}</a></li>
-                        {% endfor %}
-                    </ul>
+            </th>
+            <th class="hidden-phone">
+                <div class="dropdown-container">
+                    <div class="dropdown">
+                        <span class="dropdown-value placeholder">Coverage</span>
+                        <button class="btn btn-select" data-toggle="dropdown">
+                            <i class="icon-caret-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for row in regions %}
+                            <li><a tabindex="-1" href="#{{ row.name }}">{{ row.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </th>
-        <th class="hidden-phone">
-            <span>Year</span>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for row in treaties %}
-    <tr onclick="window.location='{{ i3_url('treaty', row) }}'">
-        <td><img src="{{ row.logo_medium }}" alt="{{ row.short_title }} logo"></td>
-        <td class="treaty-title">
-            <h2>
-                <a href="{{ i3_url('treaty', row) }}">{{ row.short_title }}</a>
-            </h2>
-        </td>
-        <td class="hidden-phone">{{ row.topic|raw }}</td>
-        <td class="hidden-phone">{{ row.coverage }}</td>
-        <td class="hidden-phone">{{ row.year }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+            </th>
+            <th class="hidden-phone">
+                <span>Year</span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in treaties %}
+        <tr onclick="window.location='{{ i3_url('treaty', row) }}'">
+            <td><img src="{{ row.logo_medium }}" alt="{{ row.short_title }} logo"></td>
+            <td class="treaty-title">
+                <h2>
+                    <a href="{{ i3_url('treaty', row) }}">{{ row.short_title }}</a>
+                </h2>
+            </td>
+            <td class="hidden-phone">{{ row.topic|raw }}</td>
+            <td class="hidden-phone">{{ row.coverage }}</td>
+            <td class="hidden-phone">{{ row.year }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div><!-- /container -->
 {{ get_footer() }}

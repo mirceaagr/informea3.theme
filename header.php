@@ -131,5 +131,3 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <?php informea_the_breadcrumb(); ?>

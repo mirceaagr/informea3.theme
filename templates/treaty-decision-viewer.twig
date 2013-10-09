@@ -1,75 +1,82 @@
-{% if not modal %}{{ get_header() }}{% endif %}
-<div class="row additional-header">
-    <a href="{{ i3_url('decision', decision, '', treaty) }}" target="_blank"
-       class="btn btn-inline pull-right"><i class="icon-resize-full"></i> Separate window</a>
-    <div class="span9">
-        Decision no.: <strong>{{ decision.number }}</strong>
-        <h1>{{ decision.title }}</h1>
-        <dl class="decision-info dl-horizontal">
-        {% if decision.meeting %}
-            <dt>Meeting</dt>
-            {% if decision.meeting.event_url %}
-            <dd><a href="{{ decision.meeting.event_url }}" target="_blank">{{ decision.meeting.title }}</a></dd>
-            {% else %}
-            <dd>{{ decision.meeting.title }}</dd>
+{% if not modal %}
+    {{ get_header() }}
+<div class="container">
+    {{ informea_the_breadcrumb() }}
+{% endif %}
+    <div class="row additional-header">
+        <a href="{{ i3_url('decision', decision, '', treaty) }}" target="_blank"
+           class="btn btn-inline pull-right"><i class="icon-resize-full"></i> Separate window</a>
+        <div class="span9">
+            Decision no.: <strong>{{ decision.number }}</strong>
+            <h1>{{ decision.title }}</h1>
+            <dl class="decision-info dl-horizontal">
+            {% if decision.meeting %}
+                <dt>Meeting</dt>
+                {% if decision.meeting.event_url %}
+                <dd><a href="{{ decision.meeting.event_url }}" target="_blank">{{ decision.meeting.title }}</a></dd>
+                {% else %}
+                <dd>{{ decision.meeting.title }}</dd>
+                {% endif %}
             {% endif %}
-        {% endif %}
-            <dt>Status</dt>
-            <dd><span class="status active">{{ decision.status | capitalize }}</span></dd>
-            <dt>Published</dt>
-            <dd>{{ decision.published_formatted }}</dd>
-            {% if decision.documents %}
-            <dt>Documents</dt>
-            <dd>
-                <ul class="inline">
-                    {% for row in decision.documents %}
+                <dt>Status</dt>
+                <dd><span class="status active">{{ decision.status | capitalize }}</span></dd>
+                <dt>Published</dt>
+                <dd>{{ decision.published_formatted }}</dd>
+                {% if decision.documents %}
+                <dt>Documents</dt>
+                <dd>
+                    <ul class="inline">
+                        {% for row in decision.documents %}
+                        <li>
+                            <i class="icon icon-file-text-alt"></i>
+                            <a href="{{ i3_url('decision-document', row) }}" target="_blank" title="Language is {{ row.language }}">{{ row.filename }}</a>
+                            {{ loop.last ? '' : ', ' }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </dd>
+                {% endif %}
+            </dl>
+        </div>
+        {% if decision.tag_cloud %}
+        <div class="span3 hidden-phone">
+            <div class="well">
+                <h4>Tagged Terms</h4>
+                <ol class="tag-cloud">
+                    {% for row in decision.tag_cloud %}
                     <li>
-                        <i class="icon icon-file-text-alt"></i>
-                        <a href="{{ i3_url('decision-document', row) }}" target="_blank" title="Language is {{ row.language }}">{{ row.filename }}</a>
-                        {{ loop.last ? '' : ', ' }}
+                        <a class="btn btn-inline tag{{ row.popularity }}" target="_blank"
+                           href="{{ i3_url('glossary-term', row) }}">{{ row.term }}</a>
                     </li>
                     {% endfor %}
-                </ul>
-            </dd>
-            {% endif %}
-        </dl>
-    </div>
-    {% if decision.tag_cloud %}
-    <div class="span3 hidden-phone">
-        <div class="well">
-            <h4>Tagged Terms</h4>
-            <ol class="tag-cloud">
-                {% for row in decision.tag_cloud %}
-                <li>
-                    <a class="btn btn-inline tag{{ row.popularity }}" target="_blank"
-                       href="{{ i3_url('glossary-term', row) }}">{{ row.term }}</a>
-                </li>
-                {% endfor %}
-            </ol>
-        </div>
-    </div>
-    {% endif %}
-</div>
-{% if decision.paragraphs %}
-<div class="section high-content vertical-scrollbar-ready">
-    <h2>Decision paragraphs</h2>
-    {% for row in decision.paragraphs %}
-        <div class="paragraph tagged-content">
-            <div class="content">
-            {% if row.tags %}
-                {% include 'tagged-terms.twig' with { 'tags': row.tags } %}
-            {% endif %}
-            <p>
-                <em>...</em>{{ row.content }}<em>...</em>
-            </p>
+                </ol>
             </div>
         </div>
-    {% endfor %}
-</div>
-{% elseif decision.body %}
-<div class="section high-content vertical-scrollbar-ready">
-    <h2>Decision text</h2>
-    {{ decision.body|raw }}
-</div>
+        {% endif %}
+    </div>
+    {% if decision.paragraphs %}
+    <div class="section high-content vertical-scrollbar-ready">
+        <h2>Decision paragraphs</h2>
+        {% for row in decision.paragraphs %}
+            <div class="paragraph tagged-content">
+                <div class="content">
+                {% if row.tags %}
+                    {% include 'tagged-terms.twig' with { 'tags': row.tags } %}
+                {% endif %}
+                <p>
+                    <em>...</em>{{ row.content }}<em>...</em>
+                </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% elseif decision.body %}
+    <div class="section high-content vertical-scrollbar-ready">
+        <h2>Decision text</h2>
+        {{ decision.body|raw }}
+    </div>
+    {% endif %}
+{% if not modal %}
+</div><!-- /container -->
+    {{ get_footer() }}
 {% endif %}
-{% if not modal %}{{ get_footer() }}{% endif %}

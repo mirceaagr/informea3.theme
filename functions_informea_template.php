@@ -48,6 +48,7 @@ class InforMEATemplate {
         $twig->addFunction(new Twig_SimpleFunction('get_header', 'get_header'));
         $twig->addFunction(new Twig_SimpleFunction('get_footer', 'get_footer'));
         $twig->addFunction(new Twig_SimpleFunction('the_title', 'the_title'));
+        $twig->addFunction(new Twig_SimpleFunction('informea_the_breadcrumb', 'informea_the_breadcrumb'));
         return $twig;
     }
 
