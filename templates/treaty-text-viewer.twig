@@ -1,6 +1,6 @@
 {% if not modal %}{{ get_header() }}{% endif %}
 <div class="row">
-    <div class="span3">
+    <div class="span3 high-content vertical-scrollbar-ready">
         <ul class="nav nav-list hidden-phone">
             {% for row in treaty.articles %}
             <li><a href="#article-h1-{{ row.id }}">{{ row.title_formatted }}</a></li>
@@ -13,38 +13,28 @@
             {% endfor %}
         </select>
     </div>
-    <div class="span9" id="treaty-text-container">
-        <div class="treaty-text">
-            {% for article in treaty.articles %}
+    <div class="span9 high-content vertical-scrollbar-ready">
+        <div class="treaty-text tagged-content">
+        {% for article in treaty.articles %}
             <h1 id="article-h1-{{ article.id }}">{{ article.title_formatted }}</h1>
             {% if article.paragraphs %}
-                {% for p in article.paragraphs %}
-                <div class="paragraph">
-                    <p id="paragraph-{{ p.id }}">{{ p.content|raw }}</p>
-                    {% if p.tags %}
-                    <div class="paragraph-tags">
-                        <strong><i class="icon-tags"></i>Tagged Terms: </strong>&ensp;
-                        {% for t in p.tags %}
-                        <a href="{{ i3_url('glossary-term', t) }}">{{ t.term }}</a>{{ loop.last ? '' : ', ' }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </div>
-                {% endfor %}
-            {% else %}
-                <div class="article">
-                    {% if article.tags %}
-                    <div class="article-tags">
-                        <strong><i class="icon-tags"></i>Tagged Terms: </strong>&ensp;
-                        {% for t in article.tags %}
-                            <a href="{{ i3_url('glossary-term', t) }}">{{ t.term }}</a>{{ loop.last ? '' : ', ' }}
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                    {{ article.content|raw }}
-                </div>
-            {% endif %}
+            {% for p in article.paragraphs %}
+            <div class="paragraph content">
+                <p id="paragraph-{{ p.id }}">{{ p.content|raw }}</p>
+                {% if p.tags %}
+                {% include 'tagged-terms.twig' with { 'tags': p.tags } %}
+                {% endif %}
+            </div>
             {% endfor %}
+            {% else %}
+            <div class="article tagged-content content">
+                {% if article.tags %}
+                {% include 'tagged-terms.twig' with { 'tags': article.tags } %}
+                {% endif %}
+                {{ article.content|raw }}
+            </div>
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
 </div>

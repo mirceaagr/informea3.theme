@@ -1,0 +1,6 @@
+<div class="tags">
+    <strong><i class="icon-tags"></i>Tagged Terms: </strong>&ensp;
+    {% for t in tags %}
+        <a href="{{ i3_url('glossary-term', t) }}" target="_blank">{{ t.term }}</a>{{ loop.last ? '' : ', ' }}
+    {% endfor %}
+</div>
