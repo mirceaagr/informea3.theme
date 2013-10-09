@@ -21,9 +21,8 @@ class InforMEATemplate {
             $twig->addExtension(new Twig_Extension_Debug());
         }
         $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL, $suffix = NULL, $parent = NULL) {
-            $url = '';
             switch($type) {
-                case 'glossary_term':
+                case 'glossary-term':
                     $url = i3_url_glossary($ob, $suffix);
                     break;
                 case 'treaty':
@@ -32,8 +31,14 @@ class InforMEATemplate {
                 case 'decision':
                     $url = sprintf('%s/decision/%s%s', i3_url_treaty($parent), $ob->id, $suffix);
                     break;
+                case 'decision-document':
+                    $url = sprintf('%s/download/decision-document/%s', get_bloginfo('url'), $ob->id);
+                    break;
                 case 'flag':
                     $url = i3_country_flag($ob, 'large');
+                    break;
+                default:
+                    $url = "javascript:alert('An internal error occurred while processing URL'); return false;";
             }
             echo $url;
         }));
@@ -228,6 +233,21 @@ class InforMEATemplate {
 
     public static function treaty_decision_viewer($id_decision, $treaty, $organization, $modal) {
         $decision = InforMEA::load_full_decision($id_decision);
+        // Prepare the decision for rendering
+        $decision->title = !empty($decision->long_title) ? $decision->long_title : $decision->short_title;
+        if($decision->meeting) {
+            $decision->meeting->title = !empty($decision->meeting->abbreviation)
+                ? $decision->meeting->abbreviation : $decision->meeting->title;
+        }
+        $decision->published_formatted = i3_format_mysql_date($decision->published);
+        $decision->tag_cloud = array();
+        if(count($decision->tags)) {
+            $decision->tag_cloud = array_slice($decision->tags, 0, 10);
+            foreach($decision->tag_cloud as $idx => &$row) {
+                $row->popularity = 10 - $idx;
+            }
+        }
+
         $ctx = array(
             'treaty' => $treaty,
             'decision' => $decision,

@@ -328,7 +328,7 @@ class InforMEA {
             $ret->tags = $wpdb->get_results(
                 $wpdb->prepare('SELECT b.*
                     FROM ai_decision_vocabulary a
-                    INNER JOIN voc_concept b ON a.id_concept = b.id WHERE a.id_decision = %d', $id_decision
+                    INNER JOIN voc_concept b ON a.id_concept = b.id WHERE a.id_decision = %d ORDER BY b.popularity DESC', $id_decision
                 ), OBJECT_K
             );
             $ret->paragraphs = $wpdb->get_results(
@@ -355,7 +355,9 @@ class InforMEA {
                 $wpdb->prepare('SELECT * FROM ai_document a WHERE a.id_decision = %d', $id_decision),
                 OBJECT_K
             );
-            $ret->meeting = $wpdb->get_row('SELECT * FROM ai_event WHERE id = %d', $ret->id_meeting);
+            $ret->meeting = $wpdb->get_row(
+                $wpdb->prepare('SELECT * FROM ai_event WHERE id = %d', $ret->id_meeting)
+            );
         }
         return $ret;
     }

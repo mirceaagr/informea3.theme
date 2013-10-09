@@ -26,25 +26,41 @@ jQuery('document').ready(function() {
         });
     });
 
+
+    // Manually open the dialogs to prevent data stalling (Bootstrap issue)
+    jQuery('.data-target-modal').click(function(e) {
+        e.preventDefault();
+        var dlg_id = jQuery(this).data('target');
+        jQuery(dlg_id).modal({
+            remote: jQuery(this).attr('href') + '?display=modal'
+        });
+    });
+
     // Resize treaty reader according to the screen dimension
-    var dlg_tt = jQuery('#treaty-text-modal');
+    // https://github.com/twbs/bootstrap/pull/5514 - Bootstrap issue with dialog reuse.
+    var dlg_tt = jQuery('.modal');
+    dlg_tt.on('hidden', function() {jQuery(this).data('modal', null);});
     dlg_tt.on('shown',function () {
-        var head = jQuery('div.modal .modal-header').height();
-        var dlg_h = jQuery(window).height() * 0.83;
-        var height = (dlg_h - head - 25) + 'px'; // Some adjustements due to paddings
-        dlg_tt.css('max-height', dlg_h + 'px');
-        dlg_tt.css('height', dlg_h + 'px');
-        jQuery('.modal-body', dlg_tt).css('max-height', height);
-        jQuery('.modal-body', dlg_tt).css('height', height);
-        jQuery('.modal-body .span3', dlg_tt).css('max-height', height);
-        jQuery('.modal-body .span3', dlg_tt).css('height', height);
-        jQuery('#treaty-text-container', dlg_tt).css('max-height', height);
-        jQuery('#treaty-text-container', dlg_tt).css('height', height);
-        //var offset = jQuery(this).offset().top;
-        //jQuery(window).scrollTop(offset);
-        //jQuery('#treaty-text-select').on('change', function() {
-        //    jQuery('#treaty-text-container').scrollTo(jQuery('#treaty-text-select').val() - 50);
-        //});
+        var w_height = jQuery(window).height();
+        var dlg_height = Math.floor(w_height * 0.90);
+        var top_spacing = Math.ceil((w_height - dlg_height) / 2);
+        var header_height = jQuery('.modal-header', this).height();
+
+        jQuery(this).css('top', top_spacing + 'px');
+        jQuery(this).css('height', dlg_height + 'px');
+        jQuery(this).css('max-height', dlg_height + 'px');
+
+        var height = (dlg_height - header_height - 25); // Some padding adjustment
+        jQuery('.modal-body', this).css('max-height', height + 'px');
+        jQuery('.modal-body', this).css('height', height + 'px');
+
+        var additional_head_height = jQuery('.modal-body .additional-header', this).height();
+        if(additional_head_height == null) { additional_head_height = 0; }
+        var high_content_height = (height - additional_head_height);
+        console.log(high_content_height);
+
+        jQuery('.modal-body .high-content', this).css('max-height', high_content_height + 'px');
+        jQuery('.modal-body .high-content', this).css('height', high_content_height + 'px');
     });
 
     // Close NFP contact modal dialog

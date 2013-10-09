@@ -1492,6 +1492,8 @@ table.accordion-inner caption {
 
 /* INFORMEA specific */
 
+.vertical-scrollbar-ready { overflow-y: auto; }
+
 /*SUBMENU*/
 li.sub-menu .caret {
   display: block;
@@ -1697,12 +1699,6 @@ span.status.retired { color: #ff6666; }
 }
 
 /* TREATY TEXT */
-#treaty-text-modal .modal-body .span3,
-#treaty-text-modal .modal-body .span9 {
-  height: 400px;
-  overflow-y: auto;
-}
-
 .modal-body .nav-list {
   margin-left: -12px;
 }
@@ -1749,10 +1745,9 @@ span.status.retired { color: #ff6666; }
   /*margin-bottom: 0;*/
 }
 
-.treaty-text .paragraph-tags,
-.treaty-text .article-tags {
+.tagged-content .tags {
   display: none;
-  position: absolute;
+  /* cristiroma - doesn't work for decision paragraphs position: absolute; */
   font-size: 12px;
   line-height: 18px;
   color: #8a95a6;
@@ -1763,23 +1758,18 @@ span.status.retired { color: #ff6666; }
   font-family: Arial, sans-serif;
 }
 
-.treaty-text .paragraph:hover .paragraph-tags,
-.treaty-text .article:hover .article-tags {
+.tagged-content .content:hover .tags {
   display: block;
 }
 
-.treaty-text .paragraph-tags,
-.treaty-text .paragraph:hover p,
-.treaty-text .article-tags,
-.treaty-text .article:hover p
-{
+.tagged-content .tags,
+.tagged-content .content:hover p {
   margin: -6px;
   padding: 6px;
   background-color: #f7f7f7;
 }
 
-.treaty-text .paragraph:hover p,
-.treaty-text .article:hover p {
+.tagged-content .content:hover p {
   color: #16232e;
 }
 

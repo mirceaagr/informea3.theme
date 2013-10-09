@@ -73,9 +73,9 @@
                                     <span class="status small {{ decision.status|lower }}">{{ decision.type|capitalize }}&ensp;{{ decision.status|capitalize }}</span>
                                 </td>
                                 <td>
-                                    <a href="#treaty-decision-modal"
-                                       data-remote="{{ i3_url('decision', decision, '?display=modal', treaty) }}"
-                                       data-toggle="modal">{{ decision.short_title }}</a>
+                                    <a href="{{ i3_url('decision', decision, '', treaty) }}"
+                                       target="_blank" class="data-target-modal"
+                                       data-target="#treaty-decision-modal">{{ decision.short_title }}</a>
                                 </td>
                             </tr>
                             {% endfor %}

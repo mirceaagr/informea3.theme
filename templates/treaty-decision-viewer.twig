@@ -1,49 +1,75 @@
 {% if not modal %}{{ get_header() }}{% endif %}
-<div class="row">
+<div class="row additional-header">
+    <a href="{{ i3_url('decision', decision, '', treaty) }}" target="_blank"
+       class="btn btn-inline pull-right"><i class="icon-resize-full"></i> Separate window</a>
     <div class="span9">
-        <strong>Decision Number</strong>
-        <h1>Decision Title</h1>
+        Decision no.: <strong>{{ decision.number }}</strong>
+        <h1>{{ decision.title }}</h1>
         <dl class="decision-info dl-horizontal">
+        {% if decision.meeting %}
             <dt>Meeting</dt>
-            <dd><a href="">Some meeting</a></dd>
+            {% if decision.meeting.event_url %}
+            <dd><a href="{{ decision.meeting.event_url }}" target="_blank">{{ decision.meeting.title }}</a></dd>
+            {% else %}
+            <dd>{{ decision.meeting.title }}</dd>
+            {% endif %}
+        {% endif %}
             <dt>Status</dt>
-            <dd><span class="status active">Active</span></dd>
+            <dd><span class="status active">{{ decision.status | capitalize }}</span></dd>
             <dt>Published</dt>
-            <dd>Date</dd>
-            <dt>Source</dt>
-            <dd><a href="">Go to online version <i class="icon-external-link"></i> </a></dd>
-            <dt>Files</dt>
+            <dd>{{ decision.published_formatted }}</dd>
+            {% if decision.documents %}
+            <dt>Documents</dt>
             <dd>
                 <ul class="inline">
-                    <li>EN</li>
-                    <li>FR</li>
-                    <li>RU</li>
-                    <li>DE</li>
+                    {% for row in decision.documents %}
+                    <li>
+                        <i class="icon icon-file-text-alt"></i>
+                        <a href="{{ i3_url('decision-document', row) }}" target="_blank" title="Language is {{ row.language }}">{{ row.filename }}</a>
+                        {{ loop.last ? '' : ', ' }}
+                    </li>
+                    {% endfor %}
                 </ul>
             </dd>
+            {% endif %}
         </dl>
     </div>
+    {% if decision.tag_cloud %}
     <div class="span3 hidden-phone">
         <div class="well">
             <h4>Tagged Terms</h4>
             <ol class="tag-cloud">
-                <li><a class="btn btn-inline tag10" href="#">Tag 10</a></li>
-                <li><a class="btn btn-inline tag9" href="#">Tag 9</a></li>
-                <li><a class="btn btn-inline tag8" href="#">Tag 8</a></li>
-                <li><a class="btn btn-inline tag7" href="#">Tag 7</a></li>
-                <li><a class="btn btn-inline tag6" href="#">Tag 6</a></li>
-                <li><a class="btn btn-inline tag5" href="#">Tag 5</a></li>
-                <li><a class="btn btn-inline tag4" href="#">Tag 4</a></li>
-                <li><a class="btn btn-inline tag3" href="#">Tag 3</a></li>
-                <li><a class="btn btn-inline tag2" href="#">Tag 2</a></li>
-                <li><a class="btn btn-inline tag1" href="#">Tag 1</a></li>
+                {% for row in decision.tag_cloud %}
+                <li>
+                    <a class="btn btn-inline tag{{ row.popularity }}" target="_blank"
+                       href="{{ i3_url('glossary-term', row) }}">{{ row.term }}</a>
+                </li>
+                {% endfor %}
             </ol>
         </div>
     </div>
+    {% endif %}
 </div>
-<div class="section">
-    <h2>Extracted paragraphs</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam. Quisque sit amet eleifend nisi, non gravida tellus. Vestibulum sem risus, rhoncus et mollis at, molestie vel dolor. Ut scelerisque arcu eu odio pharetra, quis condimentum enim gravida.</p>
-
+{% if decision.paragraphs %}
+<div class="section high-content vertical-scrollbar-ready">
+    <h2>Decision paragraphs</h2>
+    {% for row in decision.paragraphs %}
+        <div class="paragraph tagged-content">
+            <div class="content">
+            {% if row.tags %}
+                {% include 'tagged-terms.twig' with { 'tags': row.tags } %}
+            {% endif %}
+            <p>
+                <em>...</em>{{ row.content }}<em>...</em>
+            </p>
+            </div>
+        </div>
+    {% endfor %}
 </div>
+{% elseif decision.body %}
+<div class="section high-content vertical-scrollbar-ready">
+    <h2>Decision text</h2>
+    {{ decision.body|raw }}
+</div>
+{% endif %}
 {% if not modal %}{{ get_footer() }}{% endif %}
