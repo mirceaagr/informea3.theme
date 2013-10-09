@@ -269,7 +269,11 @@ class InforMEATemplate {
         return $twig->render('treaty-decision-viewer.twig', $ctx);
     }
 
-
+    /**
+     * Render the template for the index page.
+     *
+     * @return string Rendered template
+     */
     public static function index() {
         $ctx = array();
         $twig = self::get_twig_template();
