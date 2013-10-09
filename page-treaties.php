@@ -8,6 +8,7 @@ $treaty = InforMEA::get_treaty_by_odata_name($odata_name);
 $act = $request->get('act');
 $is_print = $act == 'print';
 $organization = FALSE;
+$id_decision = $request->get('id_decision');
 
 if($treaty) {
     $organization = InforMEA::get_organization($treaty->id_organization);
@@ -19,32 +20,39 @@ if($treaty) {
     });
 }
 
-/**
- * Filter used by the treaty pages
- */
-function i3_treaties_title($title, $sep) {
-    global $treaty;
-    if($treaty) {
-        $title = sprintf('%s %s', $sep, $treaty->short_title);
+add_filter('wp_title', function($title, $sep) use ($treaty, $act, $view, $id_decision) {
+        if($treaty) {
+            if($view == 'text') {
+                $title = sprintf('%sText of the %s', $sep, $treaty->short_title);
+            } else if($view == 'decision') {
+                $decision = InforMEA::get_decision($id_decision);
+                $title = sprintf('%sDecision %s of the %s', $sep, $decision->number, $treaty->short_title);
+            } else {
+                $title = sprintf('%s %s', $sep, $treaty->short_title);
+            }
+        }
+        return $title;
     }
-    return $title;
-}
-add_filter('wp_title', 'i3_treaties_title', 1, 2);
+    , 1, 2);
 
-/**
- * Breadcrumbtrail set-up
- */
-function informea_treaties_breadcrumbtrail($items) {
-    global $treaty;
+add_filter('the_breadcrumb',function ($items) use ($treaty, $view, $id_decision) {
     if($treaty) {
         $items[] = sprintf('<li><a href="%s">%s</a> <span class="divider">/</span></li>', get_permalink(), get_the_title());
-        $items[] = sprintf('<li class="active">%s</li>', $treaty->short_title);
+        if($view == 'text') {
+            $items[] = sprintf('<li><a href="%s">%s</a> <span class="divider">/</span></li>', i3_url_treaty($treaty), $treaty->short_title);
+            $items[] = '<li class="active">Treaty text</li>';
+        } else if($view == 'decision') {
+            $decision = InforMEA::get_decision($id_decision);
+            $items[] = sprintf('<li><a href="%s">%s</a> <span class="divider">/</span></li>', i3_url_treaty($treaty), $treaty->short_title);
+            $items[] = sprintf('<li class="active">Decision %s</li>', $decision->number);
+        } else {
+            $items[] = sprintf('<li class="active">%s</li>', $treaty->short_title);
+        }
     } else {
         $items[] = '<li class="active">Treaties</li>';
     }
     return $items;
-}
-add_filter('the_breadcrumb', 'informea_treaties_breadcrumbtrail');
+});
 
 
 if (have_posts()) : while (have_posts()) : the_post();
@@ -75,7 +83,6 @@ if (have_posts()) : while (have_posts()) : the_post();
             echo InforMEATemplate::treaty_text_viewer($treaty, $organization, $modal, $is_print);
             break;
         case 'decision':
-            $id_decision = $request->get('id_decision');
             echo InforMEATemplate::treaty_decision_viewer($id_decision, $treaty, $organization, $modal);
             break;
         default:
