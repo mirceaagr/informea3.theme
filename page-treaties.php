@@ -1,5 +1,4 @@
 <?php
-
 $request = WordPressHttpRequestFactory::createFromGlobals();
 $odata_name = $request->get('odata_name');
 $view = $request->get('view');
