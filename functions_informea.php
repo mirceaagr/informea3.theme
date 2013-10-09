@@ -629,6 +629,22 @@ class InforMEA {
     }
 
     /**
+     * Retrieve country by ISO code.
+     *
+     * @param string $iso Country ISO 2-letter or 3-letter code
+     * @return stdClass
+     */
+    static function get_country_by_iso($iso) {
+        global $wpdb;
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM ai_country WHERE LOWER(code) = LOWER(%s) OR LOWER(code2l) = LOWER(%s)',
+                $iso, $iso
+            )
+        );
+    }
+
+    /**
      * Build NFP name field based on what is filled-in.
      *
      * @param $nfp stdClass Person object

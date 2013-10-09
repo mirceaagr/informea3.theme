@@ -64,7 +64,7 @@
                         </ul>
                     </form>
                     <ul class="nav pull-left">
-                        <li class="sub-menu"><a href="/treaties">Treaties<span class="caret"></span></a>
+                        <li class="sub-menu"><a href="<?php echo get_permalink(get_page_by_title('treaties')); ?>">Treaties<span class="caret"></span></a>
                             <div class="sub-menu">
                                 <div class="container">
                                     <div class="row">
@@ -124,8 +124,8 @@
                                 </div>
                             </div>
                         </li>
-                        <li><a href="#">Countries</a></li>
-                        <li><a href="#">Glossary</a></li>
+                        <li><a href="<?php echo get_permalink(get_page_by_title('countries')); ?>">Countries</a></li>
+                        <li><a href="<?php echo get_permalink(get_page_by_title('glossary')); ?>">Glossary</a></li>
                     </ul>
                 </div>
             </div>

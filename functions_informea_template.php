@@ -275,4 +275,28 @@ class InforMEATemplate {
         $twig = self::get_twig_template();
         return $twig->render('index.twig', $ctx);
     }
+
+    /**
+     * Render the template for the countries listing page.
+     *
+     * @return string Rendered template
+     */
+    public static function countries() {
+        $ctx = array();
+        $twig = self::get_twig_template();
+        return $twig->render('countries.twig', $ctx);
+    }
+
+    /**
+     * Render the template for the country profile page.
+     *
+     * @param stdClass $country Country object
+     * @return string Rendered template
+     */
+    public static function country($country) {
+        $ctx = array();
+        $ctx['country'] = $country;
+        $twig = self::get_twig_template();
+        return $twig->render('country.twig', $ctx);
+    }
 }
