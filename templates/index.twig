@@ -1,0 +1,113 @@
+{{ get_header() }}
+<!-- HERO -->
+<div class="hero-unit">
+    <div class="container">
+        <div class="logo-description">
+            <img src="{{ i3_url('image', 'logo_description.png') }}" alt="United Nations Information Portal on Multilateral Environmental Agreements">
+        </div>
+        <div class="row">
+            <!-- CAROUSEL -->
+            <div class="span5 offset1 pull-right">
+                <div id="homepage-carousel" class="carousel slide">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <p class="item-title">Latest News</p>
+                            <div class="news">
+                                <a href="#" class="logo logo-left">
+                                    <img src="http://placehold.it/60x60" alt="Some logo" />
+                                </a>
+                                <p class="date">Date</p>
+                                <p><a href="#">Meeting Name</a></p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p class="item-title">Upcoming Meetings</p>
+                            <div class="news">
+                                <a href="#" class="logo logo-left">
+                                    <img src="http://placehold.it/60x60" alt="Some logo" />
+                                </a>
+                                <p class="date">24 - 25 Jul, 2013</p>
+                                <p><a href="#">Ministerial Conference on Water for Food Crops and Food Security to Address Climate</a></p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p class="item-title">Announcement</p>
+                            <div>
+                                <h2>Title</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc scelerisque risus eu neque accumsan imperdiet. Quisque blandit suscipit ante sit amet vehicula. Curabitur at felis scelerisque, venenatis ante nec, dictum diam.</p>
+                            </div>
+                            <p><a href="#">Some link</a></p>
+                        </div>
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#homepage-carousel" data-slide="prev">
+                        <i class="icon-angle-left"> </i>
+                    </a>
+                    <a class="carousel-control right" href="#homepage-carousel" data-slide="next">
+                        <i class="icon-angle-right"> </i>
+                    </a>
+                    <!-- Carousel indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#homepage-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#homepage-carousel" data-slide-to="1"></li>
+                        <li data-target="#homepage-carousel" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- DESCRIPTION -->
+            <div class="span6 what-is-informea pull-left">
+                <p>InforMEA harvests COP decisions, news, meetings, membership, national focal points and reports from MEAs. Information is organised by terms from MEA COP agendas.</p>
+                <p>InforMEA is a project of the MEA Information and Knowledge Management (IKM) Initiative with the support from the United Nations Environment Programme (UNEP).</p>
+                <!-- <ul class="logo">
+
+                    <a class="unep" target="_blank" href="http://www.unep.org/" title="Visit United Nations Environment Programme website">
+                    <div></div><p>UNEP</p>
+                    </a>
+                </ul> -->
+                <div>
+                    <a href="#">Learn more about InforMEA <i class="icon-long-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="homepage" class="container">
+    <!-- FEATURES -->
+    <h2>InforMEA Features</h2>
+    <div class="row" style="position: relative;">
+        <div class="feature-glossary span4">
+            <h1>Glossary</h1>
+            <div class="feature-image">
+                <img src="{{ i3_url('image', 'f_glossary.gif') }}">
+            </div>
+            <p>Find the definition of any term related to MEAs as well as all of it's occurences on this website.</p>
+            <p><a href="#">Start searching for definitions</a></p>
+        </div>
+        <div class="feature-treaties span4">
+            <div class="well">
+                <h1>Treaties</h1>
+                <div class="pitch">
+                    <p>Read the Complete Text<br/> on any Treaty</p>
+                    <hr/>
+                    <p>See Decisions/Resolutions<br/> with details</p>
+                    <hr/>
+                    <p>Study Map Coverage<br/> and Membership</p>
+                    <a href="#" class="btn btn-primary input-block-level">Browse Treaties</a>
+                </div>
+            </div>
+        </div>
+        <div class="feature-countries span4">
+            <h1>Countries</h1>
+            <div class="feature-image">
+                <img src="{{ i3_url('image', 'f_countries.gif') }}">
+                <select>
+                    <option>Select a country</option>
+                </select>
+            </div>
+            <p>Text to be inserted ... <br/> Membership, Focal Points, National Plans, etc.</p>
+            <p><a href="#">See this country's profile</a></p>
+        </div>
+    </div>
+</div>
+{{ get_footer() }}

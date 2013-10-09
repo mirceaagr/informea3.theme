@@ -34,6 +34,9 @@ class InforMEATemplate {
                 case 'decision-document':
                     $url = sprintf('%s/download/decision-document/%s', get_bloginfo('url'), $ob->id);
                     break;
+                case 'image':
+                    $url = sprintf('%s/images/%s', get_template_directory_uri(), $ob);
+                    break;
                 case 'flag':
                     $url = i3_country_flag($ob, 'large');
                     break;
@@ -265,4 +268,10 @@ class InforMEATemplate {
         return $twig->render('treaty-decision-viewer.twig', $ctx);
     }
 
+
+    public static function index() {
+        $ctx = array();
+        $twig = self::get_twig_template();
+        return $twig->render('index.twig', $ctx);
+    }
 }
