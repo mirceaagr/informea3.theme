@@ -164,6 +164,7 @@ function i3_format_article_title($article) {
  *
  * @param stdClass $cop COP meeting
  * @param integer $c Number of decisions
+ * @return string Formatted caption
  */
 function i3_treaty_decision_caption($cop, $c) {
     $ret = sprintf('%d decisions.',  $c);
@@ -225,12 +226,12 @@ function i3_url_country_flag($country, $version = 'medium') {
  * @return string URL
  */
 function i3_url_glossary($ob = NULL, $suffix = '') {
+    $base_url = get_permalink(get_page_by_title('treaties'));
     if(!$ob) {
-        $url = sprintf('%s/glossary', get_bloginfo('url'));
+        return $base_url;
     } else {
-        $url = sprintf('%s/glossary/%d', get_bloginfo('url'), $ob->id);
+        return sprintf('%s%s%s', $base_url , get_bloginfo('url'), slugify($ob->term), $suffix);
     }
-    return $url . $suffix;
 }
 
 /**
