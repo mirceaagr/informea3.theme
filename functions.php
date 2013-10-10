@@ -271,6 +271,22 @@ function i3_url_treaty($ob = NULL, $suffix = '') {
 }
 
 /**
+ * Build URLs to the glossary pages.
+ *
+ * @param stdClass $ob Entity object
+ * @param string $suffix Additional suffix
+ * @return string URL
+ */
+function i3_url_terms($ob = NULL, $suffix = '') {
+    if(!$ob) {
+        $url = sprintf('%s/terms', get_bloginfo('url'));
+    } else {
+        $url = sprintf('%s/terms/%s', get_bloginfo('url'), slugify($ob->term));
+    }
+    return $url . $suffix;
+}
+
+/**
  * Server the 404 error page.
  */
 function i3_404() {

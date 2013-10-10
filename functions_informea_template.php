@@ -40,6 +40,9 @@ class InforMEATemplate {
                 case 'flag':
                     $url = i3_country_flag($ob, 'large');
                     break;
+                case 'term':
+                    $url = i3_url_terms($ob, $suffix);
+                    break;
                 default:
                     $url = "javascript:alert('An internal error occurred while processing URL'); return false;";
             }
