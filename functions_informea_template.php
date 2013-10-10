@@ -40,6 +40,9 @@ class InforMEATemplate {
                 case 'country':
                     $url = i3_url_country($ob, $suffix);
                     break;
+                case 'page':
+                    $url = get_permalink(get_page_by_title($ob));
+                    break;
                 case 'flag':
                     $url = i3_url_country_flag($ob, $suffix);
                     break;
@@ -56,6 +59,9 @@ class InforMEATemplate {
         $twig->addFunction(new Twig_SimpleFunction('the_title', 'the_title'));
         $twig->addFunction(new Twig_SimpleFunction('informea_the_breadcrumb', 'informea_the_breadcrumb'));
         $twig->addFunction(new Twig_SimpleFunction('wp_footer', 'wp_footer'));
+        $twig->addFunction(new Twig_SimpleFunction('wp_head', 'wp_head'));
+        $twig->addFunction(new Twig_SimpleFunction('language_attributes', 'language_attributes'));
+        $twig->addFunction(new Twig_SimpleFunction('bloginfo', 'bloginfo'));
         return $twig;
     }
 
@@ -345,5 +351,22 @@ class InforMEATemplate {
         $ctx = array();
         $twig = self::get_twig_template();
         return $twig->render('footer.twig', $ctx);
+    }
+
+
+    public static function template_header() {
+        $ctx = array();
+
+        $page_title = get_bloginfo( 'name' );
+        $site_description = get_bloginfo('description', 'display');
+        if ($site_description && (is_home() || is_front_page()))
+            $page_title .= " | $site_description";
+        $page_title .= wp_title(' - ', FALSE, 'left');
+        $ctx['html_page_title'] = $page_title;
+        $ctx['body_tag_class'] = 'class="' . join(' ', get_body_class(isset($class) ? $class : '')) . '"';
+        $ctx['url_home'] = get_bloginfo('url');
+
+        $twig = self::get_twig_template();
+        return $twig->render('header.twig', $ctx);
     }
 }
