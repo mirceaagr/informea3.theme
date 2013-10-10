@@ -141,32 +141,13 @@ function i3_treaty_format_topics($treaty) {
 function i3_treaty_format_year($treaty) {
     $ret = '';
     if(!empty($treaty->start)) {
-        $date = i3_format_mysql_date($treaty->start, 'Y');
+        $date = format_mysql_date($treaty->start, 'Y');
         if(!empty($date)) {
             $ret = $date;
         }
     }
     return $ret;
 }
-
-/**
- * Format MySQL datetime or timestamp field
- * @param $mysql_date string date/timestamp
- * @param string $format Output format
- * @param string $empty Add this character when date is invalid. Default &nbsp;
- * @return string formatted date
- */
-function i3_format_mysql_date($mysql_date, $format = 'd F Y', $empty = '&nbsp;') {
-    $ret = $empty;
-    if(!empty($mysql_date)) {
-        $date = strtotime($mysql_date);
-        if(!empty($date)) {
-            $ret = date($format, $date);
-        }
-    }
-    return $ret;
-}
-
 
 function i3_format_article_title($article) {
     $number = '';
@@ -187,7 +168,7 @@ function i3_format_article_title($article) {
  */
 function i3_treaty_decision_caption($cop, $c) {
     $ret = sprintf('%d decisions.',  $c);
-    $ret .= sprintf(' Meeting was held on %s, ', i3_format_mysql_date($cop->start));
+    $ret .= sprintf(' Meeting was held on %s, ', format_mysql_date($cop->start));
     if(!empty($cop->location)) {
         $ret .= sprintf(' %s', $cop->location);
     }

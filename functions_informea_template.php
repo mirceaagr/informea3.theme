@@ -211,8 +211,8 @@ class InforMEATemplate {
         }
 
         foreach($parties as &$row) {
-            $row->entry_into_force_formatted = i3_format_mysql_date($row->entryIntoForce, 'Y');
-            $row->signed_formatted = i3_format_mysql_date($row->signed, 'Y');
+            $row->entry_into_force_formatted = format_mysql_date($row->entryIntoForce, 'Y');
+            $row->signed_formatted = format_mysql_date($row->signed, 'Y');
         }
 
         $ctx = array(
@@ -249,7 +249,7 @@ class InforMEATemplate {
             $decision->meeting->title = !empty($decision->meeting->abbreviation)
                 ? $decision->meeting->abbreviation : $decision->meeting->title;
         }
-        $decision->published_formatted = i3_format_mysql_date($decision->published);
+        $decision->published_formatted = format_mysql_date($decision->published);
         $decision->tag_cloud = array();
         if(count($decision->tags)) {
             $decision->tag_cloud = array_slice($decision->tags, 0, 10);
