@@ -230,7 +230,7 @@ function i3_url_glossary($ob = NULL, $suffix = '') {
     if(!$ob) {
         return $base_url;
     } else {
-        return sprintf('%s%s%s', $base_url , get_bloginfo('url'), slugify($ob->term), $suffix);
+        return sprintf('%s%s%s', $base_url , slugify($ob->term), $suffix);
     }
 }
 
@@ -242,12 +242,12 @@ function i3_url_glossary($ob = NULL, $suffix = '') {
  * @return string URL
  */
 function i3_url_country($ob = NULL, $suffix = '') {
+    $base_url = get_permalink(get_page_by_title('countries'));
     if(!$ob) {
-        $url = sprintf('%s/countries', get_bloginfo('url'));
+        return $base_url;
     } else {
-        $url = sprintf('%s/countries/%s', get_bloginfo('url'), $ob->code);
+        return sprintf('%s%s%s', $base_url, $ob->code, $suffix);
     }
-    return $url . $suffix;
 }
 
 
@@ -259,12 +259,12 @@ function i3_url_country($ob = NULL, $suffix = '') {
  * @return string URL
  */
 function i3_url_terms($ob = NULL, $suffix = '') {
+    $base_url = get_permalink(get_page_by_title('terms'));
     if(!$ob) {
-        $url = sprintf('%s/terms', get_bloginfo('url'));
+        return $base_url;
     } else {
-        $url = sprintf('%s/terms/%s', get_bloginfo('url'), slugify($ob->term));
+        return sprintf('%s%s%s', $base_url, slugify($ob->term), $suffix);
     }
-    return $url . $suffix;
 }
 
 /**
