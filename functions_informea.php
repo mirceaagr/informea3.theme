@@ -645,6 +645,43 @@ class InforMEA {
     }
 
     /**
+     * Retrieve a term by its ID OR slug.
+     *
+     * @param string $identifier Term identifier (numeric ID, slug)
+     * @return stdClass Term object
+     */
+    static function get_term_by_slug_or_id($identifier) {
+        if(is_numeric($identifier)) {
+            return self::get_term($identifier);
+        } else {
+            global $wpdb;
+            $skel = $wpdb->get_results('SELECT id, term FROM voc_concept', OBJECT_K);
+            foreach($skel as $id => $row) {
+                if(slugify($row->term) == $identifier) {
+                    return self::get_term($id);
+                }
+            }
+        }
+        return FALSE;
+    }
+
+
+    /**
+     * Retrieve a term by its numeric ID.
+     *
+     * @param integer $id_term Term ID
+     * @return stdClass Term object
+     */
+    static function get_term($id_term) {
+        global $wpdb;
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                'SELECT * FROM voc_concept WHERE id = %d', $id_term
+            )
+        );
+    }
+
+    /**
      * Build NFP name field based on what is filled-in.
      *
      * @param $nfp stdClass Person object
