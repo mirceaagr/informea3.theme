@@ -253,6 +253,22 @@ function i3_url_glossary($ob = NULL, $suffix = '') {
     return $url . $suffix;
 }
 
+/**
+ * Build URLs to the country pages.
+ *
+ * @param stdClass $ob Entity object
+ * @param string $suffix Additional suffix
+ * @return string URL
+ */
+function i3_url_country($ob = NULL, $suffix = '') {
+    if(!$ob) {
+        $url = sprintf('%s/countries', get_bloginfo('url'));
+    } else {
+        $url = sprintf('%s/countries/%s', get_bloginfo('url'), $ob->code);
+    }
+    return $url . $suffix;
+}
+
 
 /**
  * Build URLs to the treaty pages.

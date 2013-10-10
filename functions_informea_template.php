@@ -37,8 +37,11 @@ class InforMEATemplate {
                 case 'image':
                     $url = sprintf('%s/images/%s', get_template_directory_uri(), $ob);
                     break;
+                case 'country':
+                    $url = i3_url_country($ob, $suffix);
+                    break;
                 case 'flag':
-                    $url = i3_country_flag($ob, 'large');
+                    $url = i3_country_flag($ob, $suffix);
                     break;
                 case 'term':
                     $url = i3_url_terms($ob, $suffix);
@@ -290,6 +293,7 @@ class InforMEATemplate {
      */
     public static function countries() {
         $ctx = array();
+        $ctx['countries'] = InforMEA::get_countries();
         $twig = self::get_twig_template();
         return $twig->render('countries.twig', $ctx);
     }
