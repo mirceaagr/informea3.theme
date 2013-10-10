@@ -1,1 +1,1 @@
-<?php echo InforMEATemplate::footer();
+<?php echo InforMEATemplate::template_footer();

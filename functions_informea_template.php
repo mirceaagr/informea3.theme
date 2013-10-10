@@ -341,7 +341,7 @@ class InforMEATemplate {
      *
      * @return string Rendered template
      */
-    public static function footer() {
+    public static function template_footer() {
         $ctx = array();
         $twig = self::get_twig_template();
         return $twig->render('footer.twig', $ctx);
