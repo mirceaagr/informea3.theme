@@ -93,18 +93,18 @@ function i3_treaty_format_topic($treaty) {
 }
 
 /**
- * Build the treaty URL (use this instead of hard-coding the URL inside pages)
- * @param $treaty stdClass Treaty object
- * @param $suffix string Add suffix at the end of the URL
- * @param bool $echo (Optional) echo the URL instead of returning it
- * @return string The treaty URL
+ * Build the URL to the treaty pages.
+ *
+ * @param stdClass $treaty Treaty object
+ * @param string $suffix Additional URL suffix
+ * @return string The URL to the treaty page
  */
 function i3_url_treaty($treaty, $suffix = '') {
     if(!is_string($treaty)) {
         $treaty = '/' . $treaty->odata_name;
     }
-    $url = sprintf('%s/treaties%s%s', get_bloginfo('url'), $treaty, $suffix);
-    return $url;
+    $base_url = get_permalink(get_page_by_title('treaties'));
+    return sprintf('%s%s%s', $base_url, $treaty, $suffix);
 }
 
 /**
