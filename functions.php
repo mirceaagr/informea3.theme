@@ -92,7 +92,6 @@ function i3_treaty_format_topic($treaty) {
 	return $ret;
 }
 
-
 /**
  * Build the treaty URL (use this instead of hard-coding the URL inside pages)
  * @param $treaty stdClass Treaty object
@@ -100,17 +99,13 @@ function i3_treaty_format_topic($treaty) {
  * @param bool $echo (Optional) echo the URL instead of returning it
  * @return string The treaty URL
  */
-function i3_treaty_url($treaty, $suffix = '', $echo = TRUE) {
+function i3_url_treaty($treaty, $suffix = '') {
     if(!is_string($treaty)) {
-        $treaty = $treaty->odata_name;
+        $treaty = '/' . $treaty->odata_name;
     }
-    $url = sprintf('%s/treaties/%s%s', get_bloginfo('url'), $treaty, $suffix);
-    if($echo) {
-        echo $url;
-    }
+    $url = sprintf('%s/treaties%s%s', get_bloginfo('url'), $treaty, $suffix);
     return $url;
 }
-
 
 /**
  * Echo the trety primary topics, in treaty index page
@@ -250,22 +245,6 @@ function i3_url_country($ob = NULL, $suffix = '') {
     return $url . $suffix;
 }
 
-
-/**
- * Build URLs to the treaty pages.
- *
- * @param stdClass $ob Entity object
- * @param string $suffix Additional suffix
- * @return string URL
- */
-function i3_url_treaty($ob = NULL, $suffix = '') {
-    if(!$ob) {
-        $url = sprintf('%s/treaties', get_bloginfo('url'));
-    } else {
-        $url = sprintf('%s/treaties/%s', get_bloginfo('url'), $ob->odata_name);
-    }
-    return $url . $suffix;
-}
 
 /**
  * Build URLs to the glossary pages.
