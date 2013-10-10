@@ -132,8 +132,10 @@ function i3_treaty_format_topics($treaty) {
 
 
 /**
- * Echo the year when treaty was created
+ * Echo the year when treaty was created.
+ *
  * @param $treaty stdClass Treaty object
+ * @return string Year with 4-letters
  */
 function i3_treaty_format_year($treaty) {
     $ret = '';
