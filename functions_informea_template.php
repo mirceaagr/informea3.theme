@@ -41,7 +41,7 @@ class InforMEATemplate {
                     $url = i3_url_country($ob, $suffix);
                     break;
                 case 'flag':
-                    $url = i3_country_flag($ob, $suffix);
+                    $url = i3_url_country_flag($ob, $suffix);
                     break;
                 case 'term':
                     $url = i3_url_terms($ob, $suffix);

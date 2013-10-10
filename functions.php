@@ -209,7 +209,7 @@ function informea_the_breadcrumb() {
  * @param $version string Size. Supported values: 'medium' (default) or 'large'
  * @return string URL to the country flag image
  */
-function i3_country_flag($country, $version = 'medium') {
+function i3_url_country_flag($country, $version = 'medium') {
     $ret = 'http://placehold.it/60x60';
     $field = 'icon_' . $version;
     if(!empty($country->$field)) {
