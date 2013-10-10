@@ -306,4 +306,28 @@ class InforMEATemplate {
         $twig = self::get_twig_template();
         return $twig->render('country.twig', $ctx);
     }
+
+    /**
+     * Render the template for the glossary listing page.
+     *
+     * @return string Rendered template
+     */
+    public static function terms() {
+        $ctx = array();
+        $twig = self::get_twig_template();
+        return $twig->render('terms.twig', $ctx);
+    }
+
+    /**
+     * Render the template for the term index page.
+     *
+     * @param stdClass $term Vocabulary term object
+     * @return string Rendered template
+     */
+    public static function term($term) {
+        $ctx = array();
+        $ctx['term'] = $term;
+        $twig = self::get_twig_template();
+        return $twig->render('term.twig', $ctx);
+    }
 }
