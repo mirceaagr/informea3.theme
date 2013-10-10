@@ -55,6 +55,7 @@ class InforMEATemplate {
         $twig->addFunction(new Twig_SimpleFunction('get_footer', 'get_footer'));
         $twig->addFunction(new Twig_SimpleFunction('the_title', 'the_title'));
         $twig->addFunction(new Twig_SimpleFunction('informea_the_breadcrumb', 'informea_the_breadcrumb'));
+        $twig->addFunction(new Twig_SimpleFunction('wp_footer', 'wp_footer'));
         return $twig;
     }
 
@@ -333,5 +334,16 @@ class InforMEATemplate {
         $ctx['term'] = $term;
         $twig = self::get_twig_template();
         return $twig->render('term.twig', $ctx);
+    }
+
+    /**
+     * Render the footer template.
+     *
+     * @return string Rendered template
+     */
+    public static function footer() {
+        $ctx = array();
+        $twig = self::get_twig_template();
+        return $twig->render('footer.twig', $ctx);
     }
 }
