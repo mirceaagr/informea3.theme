@@ -12,12 +12,20 @@ class InforMEA {
      * @return stdClass Treaty object or NULL
      */
     static function get_treaty_by_odata_name($odata_name) {
-        global $wpdb;
-        return $wpdb->get_row(
-            $wpdb->prepare('SELECT * FROM ai_treaty WHERE odata_name = %s', $odata_name)
-        );
+        static $cache = array();
+        $ret = FALSE;
+        if(empty($cache)) {
+            global $wpdb;
+            $arr = $wpdb->get_results('SELECT * FROM ai_treaty');
+            foreach($arr as $row) {
+                $cache[$row->odata_name] = $row;
+            }
+        }
+        if(array_key_exists($odata_name, $cache)) {
+            $ret = $cache[$odata_name];
+        }
+        return $ret;
     }
-
 
     /**
      * Retrieve organization by primary key
