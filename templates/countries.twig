@@ -3,18 +3,49 @@
     {{ informea_the_breadcrumb() }}
     <h1>{{ the_title() }}</h1>
 
-    @todo: Under work <a href="http://support.informea.org/issues/283" target="_blank">Issue #283</a>
-    <table class="table">
-        {% for row in countries %}
-        <tr>
-            <td>
-                <img src="{{ i3_url('flag', row, 'medium') }}" />
-            </td>
-            <td>
-                <a href="{{ i3_url('country', row) }}">{{ row.name }}</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    
+
+    <div class="text-center well visible-desktop">
+    {% for letter in 'A'..'Z' %}
+        {% if letter == 'W' or letter == 'X' %}
+            <span class="btn btn-inline disabled">{{ letter }}</span>
+        {% else %}
+            <a href="#{{ letter }}" class="btn btn-inline">{{ letter }}</a>
+        {% endif %}
+    {% endfor %}
+    </div>
+
+    {% set letter = "" %}
+
+    {% for country in countries %}
+
+        {% if letter != country.name|first %}
+            {% if letter|length > 0 %}
+            {# Close Section #}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% set letter = country.name|first %}
+            {# Open Section #}
+            <div class="section" id="{{ letter }}">
+                <h2>{{ letter }}</h2>
+                <ul class="country-listing row">
+        {% endif %}
+
+        <li class="span3">
+            <div class="flag">
+                <img src="{{ i3_url('flag', country, 'medium') }}" />
+            </div>
+            <a href="{{ i3_url('country', country) }}">{{ country.name }}</a>
+        </li>
+
+    {% endfor %}
+    {# Close final section #}
+        </ul>
+    </div>
+
+    {# @todo: Under work <a href="http://support.informea.org/issues/283" target="_blank">Issue #283</a> #}
+
 </div><!-- /container -->
 {{ get_footer() }}

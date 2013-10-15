@@ -338,6 +338,11 @@
     margin-left: 0;
   }*/
 
+  .country-listing .span3 {
+    width: 33%;
+    float: left;
+  }
+
   .footer {
     margin-left: -20px;
     margin-right: -20px;
@@ -444,5 +449,17 @@
 
   .decision-list strong {
     display: inline!important;
+  }
+
+  .country-listing .span3 {
+    display: block;
+    width: auto;
+    float: none;
+    text-align: left;
+  }
+
+  .country-listing li a,
+  .country-listing li .flag {
+    display: inline;
   }
 }
