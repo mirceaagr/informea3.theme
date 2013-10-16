@@ -1634,11 +1634,11 @@ a:focus .qty {
   margin: -1px;
 }
 
-.section > .tab-content > .tab-pane#members-list {
+.section > .tab-content > .tab-pane#membership-list {
   padding: 0;
 }
 
-.section > .tab-content > .tab-pane#members-list table {
+.section > .tab-content > .tab-pane#membership-list table {
   margin: 0;
 }
 

@@ -13,10 +13,10 @@
                     <li><a href="#decisions">Decisions<span class="qty">{{ decisions_count }}</span></a></li>
                     {% endif %}
                     {% if nfp_count %}
-                    <li><a href="#nfp">Focal Points<span class="qty">{{ nfp_count }}</span></a></li>
+                    <li><a href="#focal-points">Focal Points<span class="qty">{{ nfp_count }}</span></a></li>
                     {% endif %}
                     {% if parties|length %}
-                    <li><a href="#member_parties">Member parties<span class="qty">{{ parties|length }}</span></a></li>
+                    <li><a href="#membership">Member parties<span class="qty">{{ parties|length }}</span></a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -49,14 +49,14 @@
         <div class="span9 pull-right" id="content">
             <!-- SUMMARY -->
             <div class="section" id="summary">
-                <h2 id="summary">Summary</h2>
+                <h2>Summary</h2>
                 <p>{{ treaty.abstract }}</p>
             </div>
 
-            <!-- SUMMARY -->
+            <!-- DECISIONS -->
             {% if decisions_count %}
             <div class="section" id="decisions">
-                <h2 id="decisions">Decisions</h2>
+                <h2>Decisions</h2>
                 <ul id="accordion2" class="accordion meeting-list">
                     {% for row in cop_meetings %}
                     <li class="accordion-group">
@@ -93,7 +93,7 @@
             {% if nfp_count %}
             <!-- FOCAL POINTS -->
             <div class="section" id="focal-points">
-                <h2 id="nfp">Focal Points</h2>
+                <h2>Focal Points</h2>
                 <div class="row">
                     <div class="span2">
                         <div class="well select clearfix">
@@ -121,15 +121,15 @@
 
             <!-- MEMBERS -->
             {% if parties|length > 0 %}
-            <div class="section" id="members">
-                <h2 id="member_parties">Member parties</h2>
+            <div class="section" id="membership">
+                <h2>Member parties</h2>
                 <ul class="nav nav-tabs" id="members-tabs">
-                    <li class="active"><a href="#members-list" data-toggle="tab">List</a></li>
-                    <li class="disabled"><a href="#members-map">Map</a></li>
+                    <li class="active"><a href="#membership-list" data-toggle="tab">List</a></li>
+                    <li class=""><a href="#membership-map" data-toggle="tab">Map</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- MEMBERS-LIST -->
-                    <div class="tab-pane active" id="members-list">
+                    <div class="tab-pane active" id="membership-list">
                         <table class="table table-striped">
                             <caption>Member parties to {{ treaty.short_title }}</caption>
                             <thead>
@@ -155,7 +155,7 @@
                         </table>
                     </div>
                     <!-- MEMBERS-MAP -->
-                    <div class="tab-pane" id="members-map">
+                    <div class="tab-pane" id="membership-map">
                         ...
                     </div>
                 </div>
