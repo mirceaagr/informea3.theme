@@ -55,6 +55,7 @@
   News
   About
   Multimedia
+  Country listing (Countries)
 */
 
 /*NORMALIZE*/
@@ -1633,11 +1634,11 @@ a:focus .qty {
   margin: -1px;
 }
 
-.section > .tab-content > .tab-pane#members-list {
+.section > .tab-content > .tab-pane#membership-list {
   padding: 0;
 }
 
-.section > .tab-content > .tab-pane#members-list table {
+.section > .tab-content > .tab-pane#membership-list table {
   margin: 0;
 }
 
@@ -2265,4 +2266,33 @@ div.select p {
 .latest-news a {
   font-size: 15px;
   margin-left: 0;
+}
+
+/* Country listing */
+.country-listing {
+  list-style-type: none;
+}
+
+.country-listing li {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.country-listing li a {
+  display: block;
+  height: 36px;
+}
+.country-listing li .flag {
+  margin-bottom: 2px;
+}
+
+.country-listing li .flag img {
+/*  -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+          border-radius: 2px;
+  -webkit-box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
+     -moz-box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
+          box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
+  padding: 3px;
+  background: #f7f7f7;*/
 }
