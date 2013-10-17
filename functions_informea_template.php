@@ -324,9 +324,8 @@ class InforMEATemplate {
         $ctx['ecolex_caselaw'] = NULL;
 
         $ctx['nfp'] = InforMEA::get_country_nfp_by_treaty($country->id);
-        //@todo: http://support.informea.org/issues/284#note-5
-        $ctx['national_plans'] = NULL;
-        $ctx['national_reports'] = NULL;
+        $ctx['national_plans'] = InforMEA::get_country_action_plans_by_year($country->id);
+        $ctx['national_reports'] = InforMEA::get_country_national_reports_by_year($country->id);
         $ctx['un_environmental_indicators'] = $rUN->get_environmental_data();
         $ctx['un_map'] = $rUN->get_map_image();
         $ctx['countries'] = InforMEA::get_countries();
