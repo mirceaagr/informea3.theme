@@ -312,7 +312,7 @@ class InforMEATemplate {
      * @return string Rendered template
      */
     public static function country($country) {
-        $rUN = new UNDataWebsiteParser($country->id, $country->name);
+        $rUN = new UNDataOrgParser($country->id, $country->name);
 
         $ctx = array();
         $ctx['country'] = $country;
