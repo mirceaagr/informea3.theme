@@ -312,8 +312,24 @@ class InforMEATemplate {
      * @return string Rendered template
      */
     public static function country($country) {
+        $rUN = new UNDataWebsiteParser($country->id, $country->name);
+
         $ctx = array();
         $ctx['country'] = $country;
+        $ctx['sites_whc'] = InforMEA::get_country_whc_sites($country->id);
+        $ctx['sites_ramsar'] = InforMEA::get_country_ramsar_sites($country->id);
+        $ctx['membership'] = InforMEA::get_country_mea_membership($country->id);
+        //@todo: See http://support.informea.org/issues/284#note-6
+        $ctx['ecolex_legislation'] = NULL;
+        $ctx['ecolex_caselaw'] = NULL;
+
+        $ctx['nfp'] = InforMEA::get_country_nfp_by_treaty($country->id);
+        //@todo: http://support.informea.org/issues/284#note-5
+        $ctx['national_plans'] = NULL;
+        $ctx['national_reports'] = NULL;
+        $ctx['un_environmental_indicators'] = $rUN->get_environmental_data();
+        $ctx['un_map'] = $rUN->get_map_image();
+        $ctx['countries'] = InforMEA::get_countries();
         $twig = self::get_twig_template();
         return $twig->render('country.twig', $ctx);
     }
