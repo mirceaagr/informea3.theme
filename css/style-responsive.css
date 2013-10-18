@@ -12,8 +12,7 @@
   #term-definition .definition { padding-right: 11px; }
   #term-definition .term-info { padding-left: 18px }
 
-  .tab-pane .twocol { width: 411px; }
-  .tab-pane .twocol:last-child { margin-left: 24px; }
+  .tab-pane .twocol { width: 411px; margin-left: 24px; }
 }
 
 /* NAVBAR phone and tablet*/
@@ -214,8 +213,7 @@
     margin-right: 8px;
   }
 
-  .tab-pane .twocol { width: 251px; }
-  .tab-pane .twocol:last-child { margin-left: 12px; }
+  .tab-pane .twocol { width: 251px; margin-left: 12px; }
 }
 
 @media (max-width: 767px) {
@@ -359,8 +357,25 @@
     padding-right: 20px;
   }
 
-  .tab-pane .twocol { width: auto; float:none; }
-  .tab-pane .twocol:last-child { margin-left: 0; }
+  .tab-pane .twocol { width: auto; float:none; margin-left: 0;}
+
+  .country-header {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #c6cedb;
+    margin-bottom: 18px;
+  }
+
+  .country-header h1,
+  .country-header p {
+    text-align: center;
+  }
+
+  .country-header .flag {
+    width: 50px;
+    height: 32px;
+    float: none;
+    margin: 0 auto 6px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -409,7 +424,7 @@
     padding: 0;
   }
 
-  .treaty-header .logo {
+  .logo {
     height: 48px;
     width: 48px;
   }
