@@ -4,7 +4,6 @@ $treaty_header_mode = '';
 $organization = NULL;
 $treaty = NULL;
 
-require_once(dirname(__FILE__) . '/functions_informea.php');
 require_once(dirname(__FILE__) . '/functions_informea_ajax.php');
 require_once(dirname(__FILE__) . '/functions_informea_template.php');
 
