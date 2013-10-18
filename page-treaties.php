@@ -60,19 +60,6 @@ if (have_posts()) : while (have_posts()) : the_post();
             echo InforMEATemplate::treaties();
             break;
         case 'treaty':
-            /** Add the scrollspy classes to the body tag */
-            function informea_treaties_body_attributes($c) {
-                $c[] = '" data-spy="scroll" data-target=".scrollspy';
-                return $c;
-            }
-            add_filter('body_class','informea_treaties_body_attributes');
-            // Inject ajaxurl into the front-end scripts as config object
-            add_action('wp_enqueue_scripts',
-                function() {
-                    wp_enqueue_script('informea-treaties');
-                    wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
-                }
-            );
             echo InforMEATemplate::treaty($treaty);
             break;
         case 'text': // Normal page and Ajax call

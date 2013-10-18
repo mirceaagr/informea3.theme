@@ -3,8 +3,41 @@
  * @globals: i3_config_treaty injected by treaties page
  */
 
+/*filter treaties list by li.active from dropdowns*/
+function filter_treaties_list(){
+    jQuery('#treaties-table>tbody>tr').show();
+    jQuery('#treaties-table>thead>tr .dropdown-menu>li.active').each(function(){
+        var col = jQuery(this).closest('th').index();
+        var filter = jQuery(this).children('a').attr('href');
+        filter = filter.substr(1);
+        jQuery('#treaties-table>tbody>tr').each(function(){
+            var text = jQuery(this).children('td').eq(col+1).html();
+            if (text.lastIndexOf(filter) == -1) {
+                jQuery(this).hide();
+            }
+        });
+        jQuery("#treaties-count").html(jQuery('#treaties-table>tbody>tr:visible').length);
+    });
+    jQuery("#treaties-count").html(jQuery('#treaties-table>tbody>tr:visible').length);
+}
+
+(function($) {
+      $('#treaties-table>thead>tr .dropdown-menu>li').on('click',function(){
+            var $filter_label = jQuery(this).closest('div.dropdown').children('.dropdown-value.placeholder');
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+                filter_treaties_list();
+                $filter_label.html($filter_label.attr('data-default'));
+            } else {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+                filter_treaties_list();
+                $filter_label.html($(this).children('a').html());
+            }
+  });
+})(jQuery);
+
 jQuery('document').ready(function() {
-    // @todo Add filtering here
 
     var tncs = jQuery('#treaty-nfp-country-select');
     tncs.on('change', function() {

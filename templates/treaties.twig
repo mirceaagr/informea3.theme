@@ -5,11 +5,11 @@
     <table id="treaties-table" class="table">
         <thead>
         <tr>
-            <th colspan="2">Showing {{ count }} out of {{ count_total }} treaties</th>
+            <th colspan="2">Showing <span id="treaties-count"> {{ count }} </span> out of {{ count_total }} treaties</th>
             <th class="hidden-phone">
                 <div class="dropdown-container">
                     <div class="dropdown">
-                        <span class="dropdown-value placeholder">All Topics</span>
+                        <span class="dropdown-value placeholder" data-default="All Topics">All Topics</span>
                         <button class="btn btn-select" data-toggle="dropdown">
                             <i class="icon-caret-down"></i>
                         </button>
@@ -24,7 +24,7 @@
             <th class="hidden-phone">
                 <div class="dropdown-container">
                     <div class="dropdown">
-                        <span class="dropdown-value placeholder">Coverage</span>
+                        <span class="dropdown-value placeholder" data-default="Coverage">Coverage</span>
                         <button class="btn btn-select" data-toggle="dropdown">
                             <i class="icon-caret-down"></i>
                         </button>
@@ -54,6 +54,19 @@
             <td class="hidden-phone">{{ row.coverage }}</td>
             <td class="hidden-phone">{{ row.year }}</td>
         </tr>
+        {% for child in row.childs %}
+        <tr onclick="window.location='{{ i3_url('treaty', child) }}'" class="child-row">
+            <td><img src="{{ child.logo_medium }}" alt="{{ child.short_title }} logo"></td>
+            <td class="treaty-title">
+                <h2>
+                    <a href="{{ i3_url('treaty', child) }}">{{ child.short_title }}</a>
+                </h2>
+            </td>
+            <td class="hidden-phone">{{ child.topic|raw }}</td>
+            <td class="hidden-phone">{{ child.coverage }}</td>
+            <td class="hidden-phone">{{ child.year }}</td>
+        </tr>
+        {% endfor %}
         {% endfor %}
         </tbody>
     </table>

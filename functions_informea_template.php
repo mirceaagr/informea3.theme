@@ -175,25 +175,51 @@ class InforMEATemplate {
 
 
     public static function treaties() {
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-treaties');
+                wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
+            }
+        );
         $ctx = array(
             'count' => InforMEA::get_treaties_enabled_count(),
             'count_total' => InforMEA::get_treaties_enabled_count(),
             'topics' => InforMEA::get_treaties_enabled_primary_topics(),
             'regions' => InforMEA::get_treaties_enabled_regions_in_use()
         );
-        $treaties = InforMEA::get_treaties_enabled();
+        //$treaties = InforMEA::get_treaties_enabled();
+        $treaties = InforMEA::get_treaties_enabled_grouped_by_parents();
         $ctx['treaties'] = $treaties;
         foreach($treaties as &$row) {
             $row->coverage = i3_treaty_format_coverage($row);
             $row->topic = i3_treaty_format_topic($row);
+            if (isset($row->childs)) {
+                foreach($row->childs as &$child_row) {
+                    $child_row->coverage = i3_treaty_format_coverage($child_row);
+                    $child_row->topic = i3_treaty_format_topic($child_row);
+                }
+            }
         }
-        wp_enqueue_script('informea-treaties');
         $twig = self::get_twig_template();
         return $twig->render('treaties.twig', $ctx);
     }
 
 
     public static function treaty($treaty) {
+        /** Add the scrollspy classes to the body tag */
+        function informea_treaties_body_attributes($c) {
+            $c[] = '" data-spy="scroll" data-target=".scrollspy';
+            return $c;
+        }
+        add_filter('body_class','informea_treaties_body_attributes');
+        // Inject ajaxurl into the front-end scripts as config object
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-treaties');
+                wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
+            }
+        );
+
         $treaties = Informea::get_treaties_enabled('a.short_title');
         $organization = InforMEA::get_organization($treaty->id_organization);
         $parties = InforMEA::get_treaty_member_parties($treaty->id);
