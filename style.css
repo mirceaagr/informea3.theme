@@ -74,6 +74,30 @@ body {
 .row-snap { margin-left: 0!important; }
 .row-snap [class*="span"]:first-child { margin-left: 0!important; }
 
+.tab-pane {
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+}
+
+.tab-pane:before,
+.tab-pane:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.tab-pane:after {
+  clear: both;
+}
+
+.tab-pane .twocol {
+  float: left;
+  width: 330px;
+}
+
+.tab-pane .twocol:last-child { margin-left: 16px; }
+
 /*TYPOGRAPHY*/
 a {
   color: #3399cc;

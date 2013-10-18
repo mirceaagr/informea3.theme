@@ -11,6 +11,9 @@
 
   #term-definition .definition { padding-right: 11px; }
   #term-definition .term-info { padding-left: 18px }
+
+  .tab-pane .twocol { width: 411px; }
+  .tab-pane .twocol:last-child { margin-left: 24px; }
 }
 
 /* NAVBAR phone and tablet*/
@@ -210,6 +213,9 @@
     width: 84px;
     margin-right: 8px;
   }
+
+  .tab-pane .twocol { width: 251px; }
+  .tab-pane .twocol:last-child { margin-left: 12px; }
 }
 
 @media (max-width: 767px) {
@@ -352,6 +358,9 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+
+  .tab-pane .twocol { width: auto; float:none; }
+  .tab-pane .twocol:last-child { margin-left: 0; }
 }
 
 @media (max-width: 480px) {

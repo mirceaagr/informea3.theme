@@ -34,15 +34,13 @@
             {% endif %}
 
             <!-- SELECT TREATY -->
-            <div class="box">
-                <select id="select_treaty" onchange="window.location = jQuery(this).val()" class="input-block-level"
-                        title="Use this select to move to another treaty">
-                    <option>View another treaty</option>
-                    {% for row in treaties %}
-                    <option value="{{ i3_url('treaty', row) }}">{{ row.short_title }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+            <select onchange="window.location = jQuery(this).val()" class="input-block-level"
+                    title="Use this select to move to another treaty">
+                <option>View another treaty</option>
+                {% for row in treaties %}
+                <option value="{{ i3_url('treaty', row) }}">{{ row.short_title }}</option>
+                {% endfor %}
+            </select>
         </div>
 
         <!-- #content -->

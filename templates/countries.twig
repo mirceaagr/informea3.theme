@@ -3,9 +3,7 @@
     {{ informea_the_breadcrumb() }}
     <h1>{{ the_title() }}</h1>
 
-    
-
-    <div class="text-center well hidden-phone">
+        <div class="text-center well hidden-phone">
     {% for letter in 'A'..'Z' %}
         {% if letter == 'W' or letter == 'X' %}
             <span class="btn btn-inline disabled">{{ letter }}</span>
