@@ -31,11 +31,13 @@
                 <ul class="country-listing row">
         {% endif %}
 
-        <li class="span3">
-            <div class="flag">
-                <img src="{{ i3_url('flag', country, 'medium') }}" />
-            </div>
-            <a href="{{ i3_url('country', country) }}">{{ country.name }}</a>
+        <li class="country-list-item clearfix">
+            <a href="{{ i3_url('country', country) }}">
+                <div class="flag">
+                    <img src="{{ i3_url('flag', country, 'large') }}" />
+                </div>
+                <div class="country-name">{{ country.name }}</div>
+            </a>
         </li>
 
     {% endfor %}
