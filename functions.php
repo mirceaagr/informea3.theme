@@ -70,6 +70,13 @@ add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
 function i3_treaty_format_coverage($treaty) {
     return !empty($treaty->region) ? $treaty->region : __('Global', 'informea');
 }
+function i3_treaty_format_coverage_multiple_regions($regions) {
+    $coverage = array();
+    foreach ($regions as $region) {
+        $coverage []= $region->name;
+    }
+    return implode(", ", $coverage);
+}
 
 
 /**

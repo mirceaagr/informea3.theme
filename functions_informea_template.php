@@ -191,7 +191,8 @@ class InforMEATemplate {
         $treaties = InforMEA::get_treaties_enabled_grouped_by_parents();
         $ctx['treaties'] = $treaties;
         foreach($treaties as &$row) {
-            $row->coverage = i3_treaty_format_coverage($row);
+            $regions = InforMEA::get_treaty_regions($row->id);;
+            $row->coverage = i3_treaty_format_coverage_multiple_regions($regions);
             $row->topic = i3_treaty_format_topic($row);
             if (isset($row->childs)) {
                 foreach($row->childs as &$child_row) {
