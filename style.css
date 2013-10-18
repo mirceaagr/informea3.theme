@@ -724,6 +724,7 @@ textarea[readonly] {
 
 /* ALERTS */
 .alert {
+  padding: 4px 12px;
   margin-bottom: 8px;
   text-shadow: none;
   -webkit-border-radius: 2px;
