@@ -208,6 +208,9 @@ class InforMEATemplate {
 
 
     public static function treaty($treaty) {
+        if (empty($treaty)) {
+            self::show_404();
+        }
         /** Add the scrollspy classes to the body tag */
         function informea_treaties_body_attributes($c) {
             $c[] = '" data-spy="scroll" data-target=".scrollspy';
@@ -362,6 +365,10 @@ class InforMEATemplate {
      * @return string Rendered template
      */
     public static function country($country) {
+        if (empty($country)) {
+            self::show_404();
+        }
+
         $rUN = new UNDataOrgParser($country->id, $country->name);
 
         $ctx = array();
@@ -401,6 +408,9 @@ class InforMEATemplate {
      * @return string Rendered template
      */
     public static function term($term) {
+        if (empty($term)) {
+            self::show_404();
+        }
         $ctx = array();
         $ctx['term'] = $term;
         $twig = self::get_twig_template();
@@ -433,5 +443,13 @@ class InforMEATemplate {
 
         $twig = self::get_twig_template();
         return $twig->render('header.twig', $ctx);
+    }
+    public static function show_404()
+    {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header( 404 );
+        get_template_part( 404 );
+        exit();
     }
 }
