@@ -62,6 +62,7 @@ class InforMEATemplate {
         $twig->addFunction(new Twig_SimpleFunction('wp_head', 'wp_head'));
         $twig->addFunction(new Twig_SimpleFunction('language_attributes', 'language_attributes'));
         $twig->addFunction(new Twig_SimpleFunction('bloginfo', 'bloginfo'));
+        $twig->addFunction(new Twig_SimpleFunction('subwords', 'subwords'));
         return $twig;
     }
 
@@ -317,6 +318,27 @@ class InforMEATemplate {
     public static function index() {
         $ctx = array();
         $twig = self::get_twig_template();
+        $ctx['countries'] = InforMEA::get_countries();
+        $ctx['news_posts'] = get_posts(array(
+                                'category'         => 7,
+                                'posts_per_page'   => 3,
+                        ));
+        $ctx['upcoming_meetings'] = InforMEA::get_upcoming_meetings(3);
+        foreach ($ctx['news_posts'] as &$post) {
+            $categs = array();
+            $post->categories = wp_get_post_categories($post->ID);
+            $post->url = get_permalink($post->ID);
+            foreach ($post->categories as $category_id) {
+                $categ = get_category($category_id);
+                $treaty = InforMEA::get_treaty_by_name($categ->name);
+                if ($treaty) {
+                    $post->treaty = $treaty;
+                }
+            }
+        }
+        foreach ($ctx['upcoming_meetings'] as &$meeting) {
+            $meeting->treatyObj = InforMEA::get_treaty_by_name($meeting->treaty);
+        }
         return $twig->render('index.twig', $ctx);
     }
 
@@ -328,6 +350,7 @@ class InforMEATemplate {
     public static function countries() {
         $ctx = array();
         $ctx['countries'] = InforMEA::get_countries();
+
         $twig = self::get_twig_template();
         return $twig->render('countries.twig', $ctx);
     }
