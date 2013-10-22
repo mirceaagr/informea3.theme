@@ -32,6 +32,7 @@ jQuery('document').ready(function() {
     });*/
     jQuery('#search').on('keyup', function(){
         var term = jQuery(this).val();
+        jQuery('#search-term').html(term);
         if (term.length > 1) {
             jQuery(this).siblings('ul.typeahead').show();
             search(term);
