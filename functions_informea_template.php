@@ -179,7 +179,6 @@ class InforMEATemplate {
         add_action('wp_enqueue_scripts',
             function() {
                 wp_enqueue_script('informea-treaties');
-                wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
             }
         );
         $ctx = array(
@@ -221,7 +220,6 @@ class InforMEATemplate {
         add_action('wp_enqueue_scripts',
             function() {
                 wp_enqueue_script('informea-treaties');
-                wp_localize_script('informea-treaties', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
             }
         );
 

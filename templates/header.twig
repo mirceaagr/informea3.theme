@@ -15,40 +15,20 @@
             <a class="brand" href="{{ url_home }}"><img src="{{ i3_url('image', 'informea_logo.png') }}" alt="InforMEA logo"></a>
             <div class="nav-collapse menu collapse">
                 <form class="navbar-search pull-right">
-                    <input id="search" type="text" class="search-query" data-provide="typeahead" data-source="" placeholder="Explore InforMEA">
+                    <input id="search" type="text" class="search-query" autocomplete="off" data-provide="typeahead" placeholder="Explore InforMEA">
                     <button type="submit" class="btn hidden-phone hidden-tablet"><i class="icon-search"></i></button>
-                    <ul class="typehead dropdown-menu">
-                        <li class="typehead-keyword">
+                    <ul class="typeahead dropdown-menu">
+                        <li class="typeahead-keyword">
                             <a href="">Search InforMEA for</a>
                         </li>
-                        <li class="typehead-category">
+                        <li class="typeahead-category treaties-category">
                             Treaties
                         </li>
-                        <li>
-                            <a href="">
-                                <img class="logo logo-left" src="http://placehold.it/60x60" alt="Treaty Logo"/>
-                                Cartagen Protocol
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <img class="logo logo-left" src="http://placehold.it/60x60" alt="Treaty Logo"/>
-                                AEWA Convention
-                            </a>
-                        </li>
-                        <li class="typehead-category">
+                        <li class="typeahead-category countries-category">
                             Countries
                         </li>
-                        <li>
-                            <a href="">
-                                Romania
-                            </a>
-                        </li>
-                        <li class="typehead-category">
+                        <li class="typeahead-category terms-category">
                             Terms
-                        </li>
-                        <li>
-                            <a href="">Biological Diversity</a>
                         </li>
                     </ul>
                 </form>

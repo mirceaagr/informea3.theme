@@ -59,6 +59,7 @@ function i3_enqueue_styles() {
     wp_enqueue_style('font-awesome-ie7');
 
     $wp_styles->add_data('font-awesome-ie7', 'conditional', 'IE 7');
+    wp_localize_script('informea-common', 'i3_config_ajax', array('ajaxurl' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts', 'i3_enqueue_styles');
 
