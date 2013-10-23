@@ -7,16 +7,22 @@
  * @since Twenty Thirteen 1.0
  */
 
-$post = get_page_by_title('404', OBJECT, 'post');
-
+$page = get_posts(
+    array(
+        'name'      => 'page-not-found',
+        'post_type' => 'page'
+    )
+);
+$post = current($page);
 get_header(); ?>
 
     <div class="container">
+    <?php if(empty($post)) { ?>
         <h1>Page not found</h1>
-        <?php if(empty($post)) {
-            echo "Create a post with title 404 to override this text.";
-        } else {
-            echo $post->post_content;
+        <p>Create a post with slug 'page-not-found' to override this page.</p>
+    <?php } else { ?>
+        <h1><?php echo $post->post_title; ?></h1>
+        <?php echo $post->post_content;
         } ?>
     </div><!-- #primary -->
 
