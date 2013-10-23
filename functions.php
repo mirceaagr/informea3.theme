@@ -233,7 +233,7 @@ function i3_url_country_flag($country, $version = 'medium') {
  * @return string URL
  */
 function i3_url_glossary($ob = NULL, $suffix = '') {
-    $base_url = get_permalink(get_page_by_title('treaties'));
+    $base_url = get_permalink(get_page_by_title('terms'));
     if(!$ob) {
         return $base_url;
     } else {

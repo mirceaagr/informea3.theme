@@ -395,6 +395,7 @@ class InforMEATemplate {
      */
     public static function terms() {
         $ctx = array();
+
         $twig = self::get_twig_template();
         return $twig->render('terms.twig', $ctx);
     }
@@ -410,7 +411,14 @@ class InforMEATemplate {
             self::show_404();
         }
         $ctx = array();
+        $term->treaties = InforMEA::get_term_treaties($term->id);
+        $term->broader = InforMEA::get_term_related_terms($term->id, 'broader');
+        $term->related = InforMEA::get_term_related_terms($term->id, 'related');
+        $term->narrower = InforMEA::get_term_related_terms($term->id, 'narrower');
         $ctx['term'] = $term;
+        /*echo '<pre>';
+        print_r($term);
+        echo '</pre>';*/
         $twig = self::get_twig_template();
         return $twig->render('term.twig', $ctx);
     }

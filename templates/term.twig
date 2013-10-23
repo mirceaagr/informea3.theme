@@ -2,5 +2,132 @@
 <div class="container">
     {{ informea_the_breadcrumb() }}
     <h1>{{ term.term }}</h1>
+    <div class="alert alert-info visible-phone">
+                <i class="icon-info-sign"></i> This term was found in the InforMEA Glossary.
+                <a data-toggle="collapse" data-target="#term-definition">Show definition?</a>
+            </div>
+            <!-- TERM DEFINITION -->
+            <div id="term-definition" class="row row-snap">
+                <div class="definition span6">
+                    <p>{{ term.description }}</p>
+                </div>
+                <div class="term-info span6">
+                    <p>
+                        <a href="{{ term.geg_tools_url }}" target="_blank">
+                            <strong>Environmental Goal</strong>
+                        </a>&ensp;<span class="info"><i class="icon-external-link"></i> Visit GEG Website</span>
+                    </p>
+                    <dl class="dl-horizontal">
+                        <dt>Broader</dt>
+                        <dd>
+                        {% for broader in term.broader %}
+                            <a class="btn btn-inline" href="{{ i3_url('glossary-term', broader) }}" class="tag">
+                                {{ broader.term }}
+                            </a>{% if loop.last == false %}, {% endif %} 
+                        {% endfor %}
+                        </dd>
+                        <dt>Related</dt>
+                        <dd>
+                        {% for related in term.related %}
+                            <a class="btn btn-inline" href="{{ i3_url('glossary-term', related) }}" class="tag">
+                                {{ related.term }}
+                            </a>{% if loop.last == false %}, {% endif %} 
+                        {% endfor %}
+                        </dd>
+                        <dt>Narrower</dt>
+                        <dd>
+                        {% for narrower in term.narrower %}
+                            <a class="btn btn-inline" href="{{ i3_url('glossary-term', narrower) }}" class="tag">
+                                {{ narrower.term }}
+                            </a>{% if loop.last == false %}, {% endif %}
+                        {% endfor %}
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+
+            <!-- ACTUAL PAGE STARTS HERE -->
+            <div id="search-page" class="row">
+                <div class="filters span2 hidden-phone">
+                    <div class="search-category dropdown-container">
+
+                        <div class="dropdown">
+                            <span class="dropdown-value">Treaties</span>
+                            <button class="btn btn-select" data-toggle="dropdown">
+                                <i class="icon-caret-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a tabindex="-1" href="#">Treaties</a></li>
+                                <li><a tabindex="-1" href="#">Meetings</a></li>
+                                <li><a tabindex="-1" href="#">Countries</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-list">
+                        <ul class="unstyled">
+                            <li class="list-header">Global Treaties</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="list-header">Regional Treaties</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                        </ul>
+                        <ul id="more-filters" class="unstyled collapse">
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                            <li class="checkbox"><input type="checkbox">Treaty</li>
+                        </ul>
+                        <div class="show-more">
+                            <a data-toggle="collapse" data-target="#more-filters">Show more <i class="icon-double-angle-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results span10">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#treaty-texts" data-toggle="tab">Treaty Texts</a></li>
+                        <li><a href="#decisions" data-toggle="tab">Decisions/Resolutions</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <!-- MEMBERS-LIST -->
+                        <div class="tab-pane active" id="treaty-texts">
+                            <p class="info">X results found on 'This thing'</p>
+                            <ul class="unstyled">
+                                <li class="search-result">
+                                    <a class="logo logo-left" href="#">
+                                        <img src="http://placehold.it/60x60" alt="Treaty Logo"/>
+                                    </a>
+                                    <a href="" class="title">Result title</a>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ligula dolor, commodo non feugiat quis, sodales in nisi. Vivamus in lorem non ipsum suscipit semper. Proin imperdiet highlighted term placerat. Vestibulum id enim semper, ornar</p>
+
+                                    <!-- Add ... when paragraph extend beyond 2 rows -->
+                                    <div class="search-result-info small">
+                                        <a href="#">Treaty</a> - 
+                                        <a href="#">Meeting</a> - 
+                                        Type Number - 
+                                        <span class="status active">Status</span> - 
+                                        <a href="#" target="_blank"><i class="icon-file"></i> if_any.file</a>
+                                        <span class="pull-right">Month/Year</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- MEMBERS-MAP -->
+                        <div class="tab-pane" id="decisions">
+                            ...
+                        </div>
+                    </div>
+                </div>
+            </div>
 </div><!-- /container -->
 {{ get_footer() }}
