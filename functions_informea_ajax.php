@@ -20,6 +20,7 @@ function informea_get_nfp_for_treaty_country_callback() {
     die();
 }
 
+
 function informea_get_search_result_callback(){
     $request = WordPressHttpRequestFactory::createFromGlobals();
     $q = $request->get('q');

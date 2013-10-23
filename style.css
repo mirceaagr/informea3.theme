@@ -56,6 +56,7 @@
   About
   Multimedia
   Country listing (Countries)
+  Country page
 */
 
 /*NORMALIZE*/
@@ -71,8 +72,39 @@ body {
   background-color: #ffffff;
 }
 
+body > div.container {
+  min-height: 360px;
+}
+
 .row-snap { margin-left: 0!important; }
 .row-snap [class*="span"]:first-child { margin-left: 0!important; }
+
+.tab-pane {
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+}
+
+.tab-pane:before,
+.tab-pane:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.tab-pane:after {
+  clear: both;
+}
+
+.tab-pane .twocol {
+  float: left;
+  width: 330px;
+  margin-left: 16px;
+}
+
+.tab-pane .twocol:first-child {
+  margin-left: 0; 
+}
 
 /*TYPOGRAPHY*/
 a {
@@ -89,10 +121,6 @@ a:focus {
 
 a[data-toggle="collapse"] {
   cursor: pointer;
-}
-
-body > div.container {
-  min-height: 360px;
 }
 
 .container-fluid:after {
@@ -696,6 +724,7 @@ textarea[readonly] {
 
 /* ALERTS */
 .alert {
+  padding: 4px 12px;
   margin-bottom: 8px;
   text-shadow: none;
   -webkit-border-radius: 2px;
@@ -762,6 +791,7 @@ textarea[readonly] {
 }
 
 /* THUMBNAILS */
+
 .logo {
   margin: 0 auto;
   width: 60px;
@@ -770,9 +800,9 @@ textarea[readonly] {
   -webkit-border-radius: 2px;
      -moz-border-radius: 2px;
           border-radius: 2px;
-  /*-webkit-box-shadow: 0 0 4px rgba(198, 206, 219, 0.5);
-     -moz-box-shadow: 0 0 4px rgba(198, 206, 219, 0.5);
-          box-shadow: 0 0 4px rgba(198, 206, 219, 0.5);*/
+  -webkit-box-shadow: 0 0 1px rgba(198, 206, 219, 1);
+     -moz-box-shadow: 0 0 1px rgba(198, 206, 219, 1);
+          box-shadow: 0 0 1px rgba(198, 206, 219, 1);
 }
 
 a.logo:hover,
@@ -794,6 +824,7 @@ a.logo:focus {
   float: left;
   margin-right: 12px;
 }
+
 
 .upcoming-meetings {
   list-style-type: none;
@@ -1447,6 +1478,11 @@ table.accordion-inner caption {
 
 /* Helper Classes */
 
+/* NO BREAK */
+.nobreak {
+  white-space: nowrap;
+}
+
 /* MARKER */
 .marker {
   display: inline-block;
@@ -1625,7 +1661,7 @@ a:focus .qty {
 }
 
 .section {
-  margin-bottom: 24px;
+  margin-bottom: 36px;
 }
 
 .section > .tab-content {
@@ -1668,7 +1704,6 @@ span.status.retired { color: #ff6666; }
 
 .treaty-header .treaty-actions {
   float: right;
-  /*text-align: right;*/
 }
 
 .treaty-header .treaty-actions > a {
@@ -2018,7 +2053,7 @@ div.select p {
 
 .feature-treaties .pitch p,
 .feature-treaties .pitch hr {
-  margin: 12px 0;
+  margin: 8px 0;
 }
 
 .feature-treaties .btn-primary {
@@ -2273,30 +2308,93 @@ div.select p {
 }
 
 /* Country listing */
+.flag {
+  width: 75px;
+  height: 48px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0 0 1px rgba(198, 206, 219, 1);
+     -moz-box-shadow: 0 0 1px rgba(198, 206, 219, 1);
+          box-shadow: 0 0 1px rgba(198, 206, 219, 1);
+}
+
+a:hover .flag,
+a:focus .flag {
+  -webkit-box-shadow: 0 0 4px rgba(51, 153, 204, 1);
+     -moz-box-shadow: 0 0 4px rgba(51, 153, 204, 1);
+          box-shadow: 0 0 4px rgba(51, 153, 204, 1); 
+}
+
 .country-listing {
   list-style-type: none;
 }
 
 .country-listing li {
   text-align: center;
-  margin-bottom: 4px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  width: 24.8%;
+  float: left;
 }
 
-.country-listing li a {
-  display: block;
-  height: 36px;
-}
-.country-listing li .flag {
-  margin-bottom: 2px;
+.country-listing li a { display: block; }
+
+.country-listing .country-name {
+  min-height: 36px;
 }
 
-.country-listing li .flag img {
-/*  -webkit-border-radius: 2px;
-     -moz-border-radius: 2px;
-          border-radius: 2px;
-  -webkit-box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
-     -moz-box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
-          box-shadow: inset 0 0px 1px rgba(138, 149, 166, 0.5);
-  padding: 3px;
-  background: #f7f7f7;*/
+/* Country page */
+.country-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #c6cedb;
+  margin-bottom: 18px;
+}
+
+.country-header h1,
+.country-header p {
+  margin-bottom: 0;
+}
+
+.country-header .flag {
+  float: left;
+  margin-right: 12px;
+  /*-webkit-box-shadow: 0 0px 1px rgba(138, 149, 166, 0.5);
+     -moz-box-shadow: 0 0px 1px rgba(138, 149, 166, 0.5);
+          box-shadow: 0 0px 1px rgba(138, 149, 166, 0.5);*/
+}
+
+
+
+/* UN provided data */
+.un_data.environmental_indicators {
+}
+
+.un_data.environmental_indicators table {
+  width: 100%;
+  margin-bottom: 8px;
+  border: 1px solid #c6cedb;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  border-left: 0;
+}
+
+.un_data.environmental_indicators table th,
+.un_data.environmental_indicators table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #f7f7f7;
+  border-left: 1px solid #f7f7f7;
+  width: auto!important;
+}
+
+.un_data.environmental_indicators table th:first-child,
+.un_data.environmental_indicators table td:first-child {
+  border-left: 1px solid #c6cedb;
+}
+
+.un_data.environmental_indicators table th {
+  font-weight: bold;
+  vertical-align: bottom;
+  border-top: 0;
 }

@@ -1,7 +1,238 @@
 {{ get_header() }}
 <div class="container">
     {{ informea_the_breadcrumb() }}
-    <h1>{{ country.name }}</h1>
+    <div class="country-header clearfix">
+    	<div class="flag">
+    		<img src="{{ i3_url('flag', country, 'large') }}">
+    	</div>
+    	<h1>{{ country.long_name }}</h1>
+    	<p>Member of {{ membership|length }} treaties</p>
+	</div>
+    <div class="row">
+        <!-- NAVIGATION BOX -->
+        <div class="span3 hidden-phone scrollspy affix-menu affix-top" data-offset="155">
+            <div class="well">
+                <h4>Contents</h4>
+                <ul class="nav nav-list">
+                    <li class="active"><a href="#summary">Summary</a></li>
+                    {% set sites = sites_whc|length + sites_ramsar|length %}
+                    {% if sites %}
+                    <li><a href="#sites">Sites<span class="qty">{{ sites }}</span></a></li>
+                    {% endif %}
+                    {% if nfp|length %}
+                    <li><a href="#focal-points">Focal Points<span class="qty">{{ nfp|length }}</span></a></li>
+                    {% endif %}
+                    {% if membership|length %}
+                    <li><a href="#membership">Membership<span class="qty">{{ membership|length }}</span></a></li>
+                    {% endif %}
+                    {% if national_plans|length %}
+                    <li><a href="#national_plans">National Plans<span class="qty">{{ national_plans|length }}</span></a></li>
+                    {% endif %}
+                    {% if national_reports|length %}
+                    <li><a href="#national_reports">National Reports<span class="qty">{{ national_reports|length }}</span></a></li>
+                    {% endif %}
+                    <li><a href="#ecolex_literature">Ecolex Literature</a></li>
 
+                </ul>
+            </div>
+            <!-- SELECT country -->
+            <select onchange="window.location = jQuery(this).val()" class="input-block-level"
+                    title="Use this select to move to another country">
+                <option>View another country</option>
+                {% for row in countries %}
+                <option value="{{ i3_url('country', row) }}">{{ row.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- #content -->
+        <div class="span9 pull-right" id="content">
+            <!-- SUMMARY -->
+            <div class="section" id="summary">
+            	<div class="clearfix">
+                	<h2 class="pull-left" style="border:0; margin:0;">Summary</h2>
+            		<div class="info small pull-right" style="line-height:24px;">Data provided by the UN.</div>
+            	</div>
+                <div class="un_data environmental_indicators" id="testing">
+                	{{ un_environmental_indicators|raw }}
+            	</div>
+            </div>
+
+            <!-- SITES -->
+            {% if sites %}
+            <div class="section" id="sites">
+                <h2>Sites</h2>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#sites-list" data-toggle="tab">List</a></li>
+                    <li class=""><a href="#sites-map" data-toggle="tab">Map</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- SITES-LIST -->
+                    <div class="tab-pane active" id="sites-list">
+                    	<div class="twocol">
+                    		<h3>WHC Sites</h3>
+                    		<ul>
+                    		{% for row in sites_whc %}
+	                        	<li><a href="{{ row.url }}">{{ row.name }}</a></li>
+	                        {% endfor %}
+                    		</ul>
+                    	</div>
+                    	<div class="twocol">
+                    		<h3>Ramsar Sites</h3>
+                    		<ul>
+                    		{% for row in sites_ramsar %}
+	                        	<li><a href="{{ row.url }}">{{ row.name }}</a></li>
+	                        {% endfor %}
+                    	</div>
+                    </div>
+                    <!-- SITES-MAP -->
+                    <div class="tab-pane" id="sites-map">
+                        ...
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if nfp|length > 0 %}
+            <!-- FOCAL POINTS -->
+            <div class="section" id="focal-points">
+                <h2>Focal Points</h2>
+                <div class="row">
+                    <div class="span2">
+                        <div class="well select clearfix">
+                            <a class="visible-desktop" href="{{ i3_url('treaty', membership[0]) }}" title="Go to treaty page">
+                                <img id="country-nfp-treaty-logo" src="{{ membership[0].logo_medium }}" alt="Treaty logo">
+                            </a>
+                            <select id="treaty-nfp-country-select" class="input-block-level">
+                                {% for row in membership %}
+                                <option value="{{ row.name }}" data-flag="{{ i3_url('treaty', row) }}">{{ row.short_title }}</option>
+                                {% endfor %}
+                            </select>
+                            <p class="hidden-phone"><span id="treaty-nfp-country-count">{{ nfp|length }}</span> focal points</p>
+                        </div>
+                    </div>
+                    <ul id="focal-point-list" class="focal-point-list span7">
+                        {% for nfp in first_country_nfps %}
+                        <li class="focal-point">
+                            {% include 'nfp-contact-info.twig' %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- MEMBERS -->
+            {% if membership|length > 0 %}
+            <div class="section" id="membership">
+                <h2>Membership</h2>
+                <ul class="nav nav-tabs" id="members-tabs">
+                    <li class="active"><a href="#membership-list" data-toggle="tab">List</a></li>
+                    <li class=""><a href="#membership-map" data-toggle="tab">Map</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- MEMBERS-LIST -->
+                    <div class="tab-pane active" id="membership-list">
+                        <table class="table table-striped">
+                            <caption>The following treaties have ...... in {{ country.name }}</caption>
+                            <thead>
+                            <tr>
+                                <th>Treaty</th>
+                                <th>Entry</th>
+                                <th>Status</th>
+                                <th class="hidden-phone">Instrument</th>
+                                <th class="hidden-phone">Declaration</th>
+                                <th class="hidden-phone">Notes</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for row in membership %}
+                            <tr>
+                                <td><a href="{{ row.url }}">{{ row.short_title }}</a></td>
+                                <td>{{ row.year }}</td>
+                                <td>{{ row.status }}</td>
+                                <td class="hidden-phone">{{ row.legal_instrument_name }}</td>
+                                <td class="hidden-phone">{{ row.declarations }}</td>
+                                <td class="hidden-phone">{{ row.notes }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- MEMBERS-MAP -->
+                    <div class="tab-pane" id="membership-map">
+                        ...
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- National Plans -->
+            {% if national_plans|length %}
+            <div class="section" id="national_plans">
+            	<h2>National Plans</h2>
+            	<!-- <p class="info">I don't think we need this anymore</p> -->
+            	<ul class="unstyled">
+            		{% for row in national_plans %}
+            		<li class="search-result clearfix">
+            			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
+							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
+						</a>
+						<a href="{{ row.document_url }}" class="title" title="To be added" target="_blank">{{ row.title }}</a>
+						<!-- <p>Perhaps a short piece of text</p> -->
+
+						<!-- Add ... when paragraph extend beyond 2 rows -->
+						<div class="search-result-info small hidden-phone">
+							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+							<span class="nobreak">{{ row.submission }}</span>
+						</div>
+            		</li>
+            		{% endfor %}
+            	</ul>
+            </div>
+            {% endif %}
+
+            <!-- National Reports -->
+            {% if national_reports|length %}
+            <div class="section" id="national_reports">
+            	<h2>National Reports</h2>
+            	<!-- <p class="info">I don't think we need this anymore</p> -->
+            	<ul class="unstyled">
+            		{% for row in national_reports %}
+            		<li class="search-result clearfix">
+            			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
+							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
+						</a>
+						<a href="{{ row.document_url }}" class="title" title="To be added" target="_blank">{{ row.title }}</a>
+						<!-- <p>Perhaps a short piece of text</p> -->
+
+						<!-- Add ... when paragraph extend beyond 2 rows -->
+						<div class="search-result-info small hidden-phone">
+							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+							<span class="nobreak">{{ row.submission }}</span>
+						</div>
+            		</li>
+            		{% endfor %}
+            	</ul>
+            </div>
+            {% endif %}
+            
+            <!-- Ecolex literature -->
+            <div class="section" id="ecolex_literature">
+            	<h2>Ecolex Literature</h2>
+            	<div class="alert alert-info">
+            		<i class="icon-info-sign"></i>
+            		The Ecolex literature is available offsite. 
+            		<a href="" title="" class="nobreak">
+            			Read Ecolex literature for {{ country.name }} 
+        				<i class="icon-external-link"></i>
+        			</a>
+        		</div>
+            </div>
+
+        </div><!-- /#content -->
+    </div>
 </div><!-- /container -->
 {{ get_footer() }}
