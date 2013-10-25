@@ -57,6 +57,7 @@
   Multimedia
   Country listing (Countries)
   Country page
+  Terms listing
 */
 
 /*NORMALIZE*/
@@ -91,6 +92,7 @@ body > div.container {
   line-height: 0;
   content: "";
 }
+
 
 .tab-pane:after {
   clear: both;
@@ -1250,7 +1252,7 @@ a.thumbnail:focus {
 }
 
 .accordion-heading .accordion-toggle.collapsed i:before {
-  content: "\f0d7";
+  content: "\f0da";
 }
 
 table.accordion-inner {
@@ -2239,7 +2241,7 @@ div.select p {
   overflow: hidden;
 }
 
-.show-more {
+.toggle-filters {
   width: 100%;
   border-top: 1px solid #c6cedb;
   text-align: center;
@@ -2247,7 +2249,7 @@ div.select p {
   line-height: 14px;
 }
 
-.show-more a {
+.toggle-filters a {
   color: #8a95a6;
   display: inline-block;
   *display: inline;
@@ -2257,7 +2259,7 @@ div.select p {
   margin-top: -1px;
 }
 
-.show-more a:hover {
+.toggle-filters a:hover {
   text-decoration: none;
 }
 
@@ -2397,4 +2399,54 @@ a:focus .flag {
   font-weight: bold;
   vertical-align: bottom;
   border-top: 0;
+}
+
+/* Terms listing */
+.tree-view,
+.tree-view ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*.tree-view ul,
+.tree-view ul ul {
+  margin-left: 20px;
+}*/
+
+.tree-view li {
+  margin: 3px 0;
+  padding-left: 20px;
+}
+
+.tree-view button {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-left: -20px;
+  float: left;
+  padding: 0;
+  border: 0;
+  color: #c6cedb;
+  background: transparent;
+}
+
+.tree-view button.collapsed > i:before {
+  content: "\f0da";
+}
+
+.tree-view button:focus {
+  outline:none;
+}
+
+.tree-view button:hover {
+  color: #16232e;
+}
+
+.tree-view .active > button,
+.tree-view .active > a,
+.tree-view .active > a:hover {
+  color: #16232e;
+  text-decoration: none;
+  font-weight: bold;
 }
