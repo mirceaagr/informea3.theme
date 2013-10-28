@@ -17,13 +17,18 @@ function informea_about_breadcrumbtrail($items) {
 }
 add_filter('the_breadcrumb', 'informea_about_breadcrumbtrail');
 
-wp_enqueue_script('informea-about');
+add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-about');
+            }
+        );
 
 get_header();
 if(have_posts()): while(have_posts()) : the_post();
 ?>
     <div class="container">
-        <h1><?php the_title(); ?></h1></div>
+        <?php echo informea_the_breadcrumb(); ?>
+        <h1><?php the_title(); ?></h1>
         <div class="row">
             <div class="span3 affix-menu affix hidden-phone">
                 <div class="well scrollspy" data-spy="scroll">
@@ -32,6 +37,7 @@ if(have_posts()): while(have_posts()) : the_post();
             </div>
             <div class="user-article span9 pull-right" id="content">  <?php  the_content(); ?> </div>
         </div>
+    </div>
 <?php
 endwhile; endif;
 get_footer();
