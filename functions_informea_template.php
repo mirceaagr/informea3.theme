@@ -332,14 +332,14 @@ class InforMEATemplate {
             $post->url = get_permalink($post->ID);
             foreach ($post->categories as $category_id) {
                 $categ = get_category($category_id);
-                $treaty = InforMEA::get_treaty_by_name($categ->name);
+                $treaty = InforMEA::get_treaty_by_name($categ->name, FALSE);
                 if ($treaty) {
                     $post->treaty = $treaty;
                 }
             }
         }
         foreach ($ctx['upcoming_meetings'] as &$meeting) {
-            $meeting->treatyObj = InforMEA::get_treaty_by_name($meeting->treaty);
+            $meeting->treatyObj = InforMEA::get_treaty_by_name($meeting->treaty, FALSE);
         }
         return $twig->render('index.twig', $ctx);
     }
