@@ -96,11 +96,11 @@
                     <div class="span2">
                         <div class="well select clearfix">
                             <a class="visible-desktop" href="" title="Go to Country Profile page">
-                                <img id="treaty-nfp-country-flag" src="{{ i3_url('flag', first_country) }}" alt="Country Flag">
+                                <img id="treaty-nfp-country-flag" src="{{ i3_url('flag', first_country, 'large') }}" alt="Country Flag">
                             </a>
                             <select id="treaty-nfp-country-select" class="input-block-level">
                                 {% for row in countries_nfps %}
-                                <option value="{{ row.code }}" data-flag="{{ i3_url('flag', row) }}">{{ row.name }}</option>
+                                <option value="{{ row.code }}" data-flag="{{ i3_url('flag', row, 'large') }}">{{ row.name }}</option>
                                 {% endfor %}
                             </select>
                             <p class="hidden-phone"><span id="treaty-nfp-country-count">{{ first_country_nfps|length }}</span> focal points</p>
@@ -109,7 +109,7 @@
                     <ul id="focal-point-list" class="focal-point-list span7">
                         {% for nfp in first_country_nfps %}
                         <li class="focal-point">
-                            {% include 'nfp-contact-info.twig' %}
+                            {{ nfp.html|raw }}
                         </li>
                         {% endfor %}
                     </ul>

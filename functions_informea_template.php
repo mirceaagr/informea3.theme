@@ -235,6 +235,9 @@ class InforMEATemplate {
         if($nfp_c > 0) {
             $c0 = current($countries_nfps);
             $nfps = InforMEA::get_treaty_country_nfp($treaty->id, $c0->code);
+            foreach ($nfps as &$focal_point) {
+                $focal_point->html = InforMEATemplate::nfp_format($focal_point);
+            }
         }
 
         foreach($cop_meetings as &$row) {
@@ -249,8 +252,7 @@ class InforMEATemplate {
         foreach($parties as &$row) {
             $row->entry_into_force_formatted = format_mysql_date($row->entryIntoForce, 'Y');
             $row->signed_formatted = format_mysql_date($row->signed, 'Y');
-        }
-
+        }       
         $ctx = array(
             'treaties' => $treaties,
             'treaty' => $treaty,
@@ -264,7 +266,6 @@ class InforMEATemplate {
             'first_country' => $c0,
             'first_country_nfps' => $nfps
         );
-
         // Required by treaty-header.twig
         $treaty->topics = i3_treaty_format_topics($treaty);
         $treaty->coverage = i3_treaty_format_coverage($treaty);
