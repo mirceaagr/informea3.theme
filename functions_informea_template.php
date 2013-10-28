@@ -366,6 +366,11 @@ class InforMEATemplate {
         if (empty($country)) {
             self::show_404();
         }
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-country');
+            }
+        );
 
         $rUN = new UNDataOrgParser($country->id, $country->name);
 
@@ -378,9 +383,18 @@ class InforMEATemplate {
         $ctx['ecolex_legislation'] = NULL;
         $ctx['ecolex_caselaw'] = NULL;
 
-        $ctx['nfp'] = InforMEA::get_country_nfp_by_treaty($country->id);
+        $first_treaty = current($ctx['membership']);
+        $ctx['nfps'] = InforMEA::get_country_nfp_by_treaty($country->id);
+        $ctx['nfps_first'] = current($ctx['nfps']);
+        foreach ($ctx['nfps_first']->focal_points as &$focal_point) {
+            $focal_point->html = InforMEATemplate::nfp_format($focal_point);
+        }
         $ctx['national_plans'] = InforMEA::get_country_action_plans_by_year($country->id);
         $ctx['national_reports'] = InforMEA::get_country_national_reports_by_year($country->id);
+
+        /*echo "<pre>";
+        print_r($ctx['national_reports']);
+        echo "</pre>";*/
         $ctx['un_environmental_indicators'] = $rUN->get_environmental_data();
         $ctx['un_map'] = $rUN->get_map_image();
         $ctx['countries'] = InforMEA::get_countries();

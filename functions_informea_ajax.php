@@ -8,6 +8,8 @@ add_action('wp_ajax_nopriv_get_nfp_for_treaty_country', 'informea_get_nfp_for_tr
 add_action('wp_ajax_get_nfp_for_treaty_country', 'informea_get_nfp_for_treaty_country_callback');
 add_action('wp_ajax_nopriv_get_search_result', 'informea_get_search_result_callback');
 add_action('wp_ajax_get_search_result', 'informea_get_search_result_callback');
+add_action('wp_ajax_nopriv_get_country_nfp_from_treaty', 'informea_get_country_nfp_from_treaty_callback');
+add_action('wp_ajax_get_country_nfp_from_treaty', 'informea_get_country_nfp_from_treaty_callback');
 
 function informea_get_nfp_for_treaty_country_callback() {
     $request = WordPressHttpRequestFactory::createFromGlobals();
@@ -59,4 +61,14 @@ function informea_get_search_result_callback(){
 
     echo json_encode($result);
     exit();
+}
+function informea_get_country_nfp_from_treaty_callback(){
+    $request = WordPressHttpRequestFactory::createFromGlobals();
+    $id_treaty = $request->get('id_treaty');
+    $id_country = $request->get('id_country');
+    $nfps = InforMEA::get_country_nfp_from_treaty($id_country, $id_treaty);
+    foreach($nfps as $nfp) {
+        echo InforMEATemplate::nfp_format_li($nfp);
+    }
+    die();
 }

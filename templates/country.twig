@@ -19,7 +19,7 @@
                     {% if sites %}
                     <li><a href="#sites">Sites<span class="qty">{{ sites }}</span></a></li>
                     {% endif %}
-                    {% if nfp|length %}
+                    {% if nfps|length %}
                     <li><a href="#focal-points">Focal Points<span class="qty">{{ nfp|length }}</span></a></li>
                     {% endif %}
                     {% if membership|length %}
@@ -93,28 +93,31 @@
             </div>
             {% endif %}
 
-            {% if nfp|length > 0 %}
+            {% if nfps|length > 0 %}
             <!-- FOCAL POINTS -->
             <div class="section" id="focal-points">
+                <input type="hidden" id="id_country" value="{{ country.id }}" />
                 <h2>Focal Points</h2>
                 <div class="row">
                     <div class="span2">
                         <div class="well select clearfix">
-                            <a class="visible-desktop" href="{{ i3_url('treaty', membership[0]) }}" title="Go to treaty page">
-                                <img id="country-nfp-treaty-logo" src="{{ membership[0].logo_medium }}" alt="Treaty logo">
+                            <a class="visible-desktop" id="country-treaty-nfp-link" href="{{ i3_url('treaty', nfps_first) }}" title="Go to treaty page">
+                                <img id="country-nfp-treaty-logo" src="{{ nfps_first.logo_medium }}" alt="Treaty logo">
                             </a>
                             <select id="treaty-nfp-country-select" class="input-block-level">
-                                {% for row in membership %}
-                                <option value="{{ row.name }}" data-flag="{{ i3_url('treaty', row) }}">{{ row.short_title }}</option>
+                                {% for treaty in nfps %}
+                                <option value="{{ treaty.id }}" data-url="{{ i3_url('treaty', treaty) }}" data-src="{{ treaty.logo_medium }}">
+                                    {{ treaty.short_title }}
+                                </option>
                                 {% endfor %}
                             </select>
-                            <p class="hidden-phone"><span id="treaty-nfp-country-count">{{ nfp|length }}</span> focal points</p>
+                            <p class="hidden-phone"><span id="treaty-nfp-country-count">{{ nfps_first.focal_points|length }}</span> focal points</p>
                         </div>
                     </div>
                     <ul id="focal-point-list" class="focal-point-list span7">
-                        {% for nfp in first_country_nfps %}
+                        {% for nfp in nfps_first.focal_points %}
                         <li class="focal-point">
-                            {% include 'nfp-contact-info.twig' %}
+                            {{ nfp.html|raw }}
                         </li>
                         {% endfor %}
                     </ul>
@@ -172,24 +175,25 @@
             <div class="section" id="national_plans">
             	<h2>National Plans</h2>
             	<!-- <p class="info">I don't think we need this anymore</p> -->
-            	<ul class="unstyled">
-            		{% for row in national_plans %}
-            		<li class="search-result clearfix">
-            			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
-							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
-						</a>
-						<a href="{{ row.document_url }}" class="title" title="To be added" target="_blank">{{ row.title }}</a>
-						<!-- <p>Perhaps a short piece of text</p> -->
-
-						<!-- Add ... when paragraph extend beyond 2 rows -->
-						<div class="search-result-info small hidden-phone">
-							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
-							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
-							<span class="nobreak">{{ row.submission }}</span>
-						</div>
-            		</li>
-            		{% endfor %}
-            	</ul>
+            	{% for key, year in national_plans %}
+                	<ul class="unstyled">
+                		{% for row in year %}
+                		<li class="search-result clearfix">
+                			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
+    							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
+    						</a>
+    						<h3>{{ row.title }}</h3>
+    						<div class="search-result-info small hidden-phone">
+    							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+    							{% if row.document_url %}
+    							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+    							{% endif %}
+    							<span class="nobreak">{{ row.submission }}</span>
+    						</div>
+                		</li>
+                		{% endfor %}
+                	</ul>
+        		{% endfor %}
             </div>
             {% endif %}
 
@@ -198,24 +202,25 @@
             <div class="section" id="national_reports">
             	<h2>National Reports</h2>
             	<!-- <p class="info">I don't think we need this anymore</p> -->
+            	{% for key, year in national_reports %}
             	<ul class="unstyled">
-            		{% for row in national_reports %}
+            		{% for row in year %}
             		<li class="search-result clearfix">
             			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
 							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
 						</a>
-						<a href="{{ row.document_url }}" class="title" title="To be added" target="_blank">{{ row.title }}</a>
-						<!-- <p>Perhaps a short piece of text</p> -->
-
-						<!-- Add ... when paragraph extend beyond 2 rows -->
+						<h3>{{ row.title }}</h3>
 						<div class="search-result-info small hidden-phone">
 							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+							{% if row.document_url %}
 							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+							{% endif %}
 							<span class="nobreak">{{ row.submission }}</span>
 						</div>
             		</li>
             		{% endfor %}
             	</ul>
+        		{% endfor %}
             </div>
             {% endif %}
             
