@@ -252,7 +252,7 @@ class InforMEATemplate {
         foreach($parties as &$row) {
             $row->entry_into_force_formatted = format_mysql_date($row->entryIntoForce, 'Y');
             $row->signed_formatted = format_mysql_date($row->signed, 'Y');
-        }       
+        }
         $ctx = array(
             'treaties' => $treaties,
             'treaty' => $treaty,
@@ -367,6 +367,13 @@ class InforMEATemplate {
         if (empty($country)) {
             self::show_404();
         }
+        /** Add the scrollspy classes to the body tag */
+        function informea_treaties_body_attributes($c) {
+            $c[] = '" data-spy="scroll" data-target=".scrollspy';
+            return $c;
+        }
+        add_filter('body_class','informea_treaties_body_attributes');
+
         add_action('wp_enqueue_scripts',
             function() {
                 wp_enqueue_script('informea-country');
