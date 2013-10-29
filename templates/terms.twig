@@ -1,6 +1,91 @@
 {{ get_header() }}
 <div class="container">
     {{ informea_the_breadcrumb() }}
-    <h1>{{ the_title() }}</h1>
+    {# <h1>{{ the_title() }}</h1> #}
+    <div class="row">
+    	<div class="span4 hidden-phone">
+            <ul class="tree-view">
+    			<li class="active">
+                    <button class="" data-toggle="collapse" data-target="#substantive">
+                        <i class="icon-caret-down"></i>
+                    </button><!-- This comment leaves no space between the two elements
+                    --><a href="#">Substantive terms</a>
+                    <ul class="collapse in" id="substantive">
+                        <li>
+                            <button class="collapsed" data-toggle="collapse" data-target="#first_term">
+                                <i class="icon-caret-down"></i>
+                            </button><!-- This comment leaves no space between the two elements
+                            --><a href="#">First term</a>
+                            <ul class="collapse" id="first_term">
+                                <li>Repeat</li>
+                                <li>Repeat</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Second term</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="" data-toggle="collapse" data-target="#generic">
+                        <i class="icon-caret-down"></i>
+                    </button><!-- This comment leaves no space between the two elements
+                    --><a href="#">Generic terms</a>
+                    <ul class="collapse in" id="generic">
+                        <li>Repeat</li>
+                        <li>Repeat</li>
+                    </ul>
+                </li>
+    		</ul>
+    	</div>
+    	<div class="span8">
+    		<h1>{{ the_title() }}</h1>
+            <div class="section">
+    			<p>InforMEA Glossary is a collection of terms gathered from ... [sources] ... </p>
+    			<div class="alert alert-warning">
+    				Please note that Treaty portions and decisions are manually tagged and some omissions may occur. 
+    			</div>
+                <p>To ensure comprehensive results, combine terms from the analytical index with terms used in a free-text search which can be entered in the search fields found in the Explorer.</p>
+                <p><a href="#" class="btn">See the A-Z listing of terms</a></p>
+            </div>
+            <div class="section">
+                <h2>Sources</h2>
+                <p>or contributors, whatever</p>
+            </div>
+    		<div class="section">
+    			<h2>Most popular terms</h2>
+                <div class="row">
+                    <div class="span4">
+                        <ul class="unstyled">
+                            <li><a href="#">First term</a></li>
+                            <li><a href="#">Second term</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">[...]</a></li>
+                            <li><a href="#">Tenth term</a></li>
+                        </ul>
+                    </div>
+                    <div class="span4">
+                        <h3>Substantive terms</h2>
+                        <ul class="unstyled">
+                            <li><a href="#">First term</a></li>
+                            <li><a href="#">Second term</a></li>
+                            <li><a href="#">And so on</a></li>
+                        </ul>
+                        <h3>Generic terms</h2>
+                        <ul class="unstyled">
+                            <li><a href="#">First term</a></li>
+                            <li><a href="#">Second term</a></li>
+                            <li><a href="#">And so on</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    </div>
 </div><!-- /container -->
 {{ get_footer() }}
