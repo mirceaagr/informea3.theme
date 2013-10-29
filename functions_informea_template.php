@@ -399,10 +399,9 @@ class InforMEATemplate {
         }
         $ctx['national_plans'] = InforMEA::get_country_action_plans_by_year($country->id);
         $ctx['national_reports'] = InforMEA::get_country_national_reports_by_year($country->id);
+        krsort($ctx['national_plans']);
+        krsort($ctx['national_reports']);
 
-        /*echo "<pre>";
-        print_r($ctx['national_reports']);
-        echo "</pre>";*/
         $ctx['un_environmental_indicators'] = $rUN->get_environmental_data();
         $ctx['un_map'] = $rUN->get_map_image();
         $ctx['countries'] = InforMEA::get_countries();

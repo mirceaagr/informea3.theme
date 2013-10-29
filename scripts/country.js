@@ -26,3 +26,4 @@ function get_country_nfp_from_treaty(id_treaty){
             jQuery('#country-nfp-treaty-logo').attr('src', $option.attr('data-src'));
         });
 }
+

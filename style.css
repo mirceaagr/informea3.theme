@@ -105,7 +105,7 @@ body > div.container {
 }
 
 .tab-pane .twocol:first-child {
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 /*TYPOGRAPHY*/
@@ -1881,6 +1881,33 @@ span.status.retired { color: #ff6666; }
   font-style: italic;
 }
 
+/* National LIST */
+.np-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.np-list > li {
+  margin-bottom: 6px;
+  border: 1px solid #c6cedb;
+}
+.np-list .accordion-body > ul > li{
+    border-left: 1px solid #c6cedb;
+    margin-bottom:10px;
+}
+.np-list > li > a {
+  margin-bottom: -1px;
+  padding: 3px 6px;
+  border-bottom: 1px solid #c6cedb;
+  display: block;
+  /*font-family: Georgia, serif;*/
+  /*font-size: 15px;*/
+  line-height: 18px;
+  /*color: #565656;*/
+  /*background: #f7f7f7;*/
+}
+
 /* SELECT(Well) */
 div.select {
   text-align: center;
@@ -2323,7 +2350,7 @@ a:hover .flag,
 a:focus .flag {
   -webkit-box-shadow: 0 0 4px rgba(51, 153, 204, 1);
      -moz-box-shadow: 0 0 4px rgba(51, 153, 204, 1);
-          box-shadow: 0 0 4px rgba(51, 153, 204, 1); 
+          box-shadow: 0 0 4px rgba(51, 153, 204, 1);
 }
 
 .country-listing {

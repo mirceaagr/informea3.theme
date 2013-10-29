@@ -10,11 +10,11 @@
 	</div>
     <div class="row">
         <!-- NAVIGATION BOX -->
-        <div class="span3 hidden-phone scrollspy affix-menu affix-top" data-offset="155">
+        <div class="span3 hidden-phone scrollspy affix-menu" data-offset="155">
             <div class="well">
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
-                    <li class="active"><a href="#summary">Summary</a></li>
+                    <li><a href="#summary">Summary</a></li>
                     {% set sites = sites_whc|length + sites_ramsar|length %}
                     {% if sites %}
                     <li><a href="#sites">Sites<span class="qty">{{ sites }}</span></a></li>
@@ -32,7 +32,6 @@
                     <li><a href="#national_reports">National Reports<span class="qty">{{ national_reports|length }}</span></a></li>
                     {% endif %}
                     <li><a href="#ecolex_literature">Ecolex Literature</a></li>
-
                 </ul>
             </div>
             <!-- SELECT country -->
@@ -174,26 +173,36 @@
             {% if national_plans|length %}
             <div class="section" id="national_plans">
             	<h2>National Plans</h2>
-            	<!-- <p class="info">I don't think we need this anymore</p> -->
-            	{% for key, year in national_plans %}
-                	<ul class="unstyled">
-                		{% for row in year %}
-                		<li class="search-result clearfix">
-                			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
-    							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
-    						</a>
-    						<h3>{{ row.title }}</h3>
-    						<div class="search-result-info small hidden-phone">
-    							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
-    							{% if row.document_url %}
-    							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
-    							{% endif %}
-    							<span class="nobreak">{{ row.submission }}</span>
-    						</div>
-                		</li>
-                		{% endfor %}
-                	</ul>
+            	 <ul id="accordion-np" class="accordion np-list">
+                	{% for key, year in national_plans %}
+                    <li class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle {% if loop.index0 >0 %} collapsed {% endif %}" data-toggle="collapse" href="#collapse-np-{{ key }}">
+                                <i class="icon-caret-down"></i> {{ key }}
+                            </a>
+                        </div>
+                        <div id="collapse-np-{{ key }}" class="accordion-body {% if loop.index0 >0 %} collapse {% endif %}">
+                            <ul class="unstyled">
+                                {% for row in year %}
+                                <li class="clearfix">
+                                    <a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
+                                        <img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
+                                    </a>
+                                    <h3>{{ row.title }}</h3>
+                                    <div class="search-result-info small hidden-phone">
+                                        <a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
+                                        {% if row.document_url %}
+                                        <a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+                                        {% endif %}
+                                        <span class="nobreak">{{ row.submission }}</span>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                    	   </ul>
+                        </div>
+                    </li>
         		{% endfor %}
+        		</ul>
             </div>
             {% endif %}
 
@@ -201,42 +210,50 @@
             {% if national_reports|length %}
             <div class="section" id="national_reports">
             	<h2>National Reports</h2>
-            	<!-- <p class="info">I don't think we need this anymore</p> -->
-            	{% for key, year in national_reports %}
-            	<ul class="unstyled">
-            		{% for row in year %}
-            		<li class="search-result clearfix">
-            			<a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
-							<img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
-						</a>
-						<h3>{{ row.title }}</h3>
-						<div class="search-result-info small hidden-phone">
-							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
-							{% if row.document_url %}
-							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
-							{% endif %}
-							<span class="nobreak">{{ row.submission }}</span>
-						</div>
-            		</li>
-            		{% endfor %}
-            	</ul>
-        		{% endfor %}
+            	<ul id="accordion-nr" class="accordion np-list">
+                    {% for key, year in national_reports %}
+                    <li class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle {% if loop.index0 >0 %} collapsed {% endif %}" data-toggle="collapse" href="#collapse-nr-{{ key }}">
+                                <i class="icon-caret-down"></i> {{ key }}
+                            </a>
+                        </div>
+                        <div id="collapse-nr-{{ key }}" class="accordion-body {% if loop.index0 >0 %} collapse {% endif %}">
+                            <ul class="unstyled">
+                                {% for row in year %}
+                                <li class="clearfix">
+                                <a class="logo logo-left" href="{{ i3_url('treaty', row.treaty) }}" title="Go to treaty page">
+                                    <img src="{{ row.treaty.logo_medium }}" alt="Treaty Logo"/>
+                                </a>
+                                <h3>{{ row.title }}</h3>
+                                <div class="search-result-info small hidden-phone">
+                                    <a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
+                                    {% if row.document_url %}
+                                    <a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
+                                    {% endif %}
+                                    <span class="nobreak">{{ row.submission }}</span>
+                                </div>
+                            </li>
+                            {% endfor %}
+                           </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
             </div>
             {% endif %}
-
             <!-- Ecolex literature -->
             <div class="section" id="ecolex_literature">
             	<h2>Ecolex Literature</h2>
             	<div class="alert alert-info">
             		<i class="icon-info-sign"></i>
             		The Ecolex literature is available offsite.
-            		<a href="" title="" class="nobreak">
+            		<a href="http://www.ecolex.org/ecolex/ledge/view/SearchResults?screen=Literature&index=literature&country={{ country.name }}" title="" class="nobreak" target="_blank">
             			Read Ecolex literature for {{ country.name }}
         				<i class="icon-external-link"></i>
         			</a>
         		</div>
             </div>
-
         </div><!-- /#content -->
     </div>
 </div><!-- /container -->
