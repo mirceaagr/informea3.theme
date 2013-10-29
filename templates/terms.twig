@@ -8,32 +8,25 @@
     			<li class="active">
                     <button class="" data-toggle="collapse" data-target="#substantive">
                         <i class="icon-caret-down"></i>
-                    </button><!-- This comment leaves no space between the two elements
-                    --><a href="#">Substantive terms</a>
+                    </button>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#substantive">
+                        Substantive terms
+                    </a>
+                    {% import "term_children.twig" as macros %}
                     <ul class="collapse in" id="substantive">
-                        <li>
-                            <button class="collapsed" data-toggle="collapse" data-target="#first_term">
-                                <i class="icon-caret-down"></i>
-                            </button><!-- This comment leaves no space between the two elements
-                            --><a href="#">First term</a>
-                            <ul class="collapse" id="first_term">
-                                <li>Repeat</li>
-                                <li>Repeat</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Second term</a>
-                        </li>
+                        {{ macros.term_children(substantive_terms) }}
                     </ul>
                 </li>
-                <li>
+                <li class="active">
                     <button class="" data-toggle="collapse" data-target="#generic">
                         <i class="icon-caret-down"></i>
-                    </button><!-- This comment leaves no space between the two elements
-                    --><a href="#">Generic terms</a>
+                    </button>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#generic">
+                        Generic terms
+                    </a>
+                    {% import "term_children.twig" as macros %}
                     <ul class="collapse in" id="generic">
-                        <li>Repeat</li>
-                        <li>Repeat</li>
+                        {{ macros.term_children(generic_terms) }}
                     </ul>
                 </li>
     		</ul>
@@ -43,7 +36,7 @@
             <div class="section">
     			<p>InforMEA Glossary is a collection of terms gathered from ... [sources] ... </p>
     			<div class="alert alert-warning">
-    				Please note that Treaty portions and decisions are manually tagged and some omissions may occur. 
+    				Please note that Treaty portions and decisions are manually tagged and some omissions may occur.
     			</div>
                 <p>To ensure comprehensive results, combine terms from the analytical index with terms used in a free-text search which can be entered in the search fields found in the Explorer.</p>
                 <p><a href="#" class="btn">See the A-Z listing of terms</a></p>
@@ -57,30 +50,23 @@
                 <div class="row">
                     <div class="span4">
                         <ul class="unstyled">
-                            <li><a href="#">First term</a></li>
-                            <li><a href="#">Second term</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">[...]</a></li>
-                            <li><a href="#">Tenth term</a></li>
+                        {% for term in popular_terms %}
+                            <li><a href="{{ i3_url('term', term) }}">{{ term.term }}</a></li>
+                        {% endfor %}
                         </ul>
                     </div>
                     <div class="span4">
                         <h3>Substantive terms</h2>
                         <ul class="unstyled">
-                            <li><a href="#">First term</a></li>
-                            <li><a href="#">Second term</a></li>
-                            <li><a href="#">And so on</a></li>
+                            {% for term in popular_substantive %}
+                            <li><a href="{{ i3_url('term', term) }}">{{ term.term }}</a></li>
+                            {% endfor %}
                         </ul>
                         <h3>Generic terms</h2>
                         <ul class="unstyled">
-                            <li><a href="#">First term</a></li>
-                            <li><a href="#">Second term</a></li>
-                            <li><a href="#">And so on</a></li>
+                            {% for term in popular_generic %}
+                            <li><a href="{{ i3_url('term', term) }}">{{ term.term }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

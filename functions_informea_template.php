@@ -417,6 +417,11 @@ class InforMEATemplate {
     public static function terms() {
         $ctx = array();
 
+        $ctx['popular_terms'] = InforMEA::get_terms(null, 'popularity', 'DESC', 10);
+        $ctx['popular_substantive'] = InforMEA::get_terms('substantive', 'popularity', 'DESC', 3);
+        $ctx['popular_generic'] = InforMEA::get_terms('generic', 'popularity', 'DESC', 3);
+        $ctx['substantive_terms'] = InforMEA::get_terms_hierarchy('substantive');
+        $ctx['generic_terms'] = InforMEA::get_terms_hierarchy('generic');
         $twig = self::get_twig_template();
         return $twig->render('terms.twig', $ctx);
     }
