@@ -99,3 +99,10 @@ function clear_search_result(){
     jQuery('.typeahead > .country-result').remove();
     jQuery('.typeahead > .term-result').remove();
 }
+function toggle_filters(item){
+    if (item.innerHTML === 'Show more') {
+        item.innerHTML = 'Show less';
+    } else {
+        item.innerHTML = 'Show more';
+    };
+}
