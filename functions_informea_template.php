@@ -41,7 +41,7 @@ class InforMEATemplate {
                     $url = i3_url_country($ob, $suffix);
                     break;
                 case 'page':
-                    $url = get_permalink(get_page_by_title($ob));
+                    $url = get_permalink(get_page_by_path($ob));
                     break;
                 case 'flag':
                     $url = i3_url_country_flag($ob, $suffix);

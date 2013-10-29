@@ -52,6 +52,7 @@ jQuery('document').ready(function() {
         }).done(function(resp) {
             var option = jQuery('select#treaty-nfp-country-select > option:selected');
             jQuery('#treaty-nfp-country-flag').attr('src', option.data('flag'));
+            jQuery('#treaty-nfp-country-link').attr('href', option.data('url'));
             jQuery('#focal-point-list').html(resp);
             jQuery('#treaty-nfp-country-count').text(
                 jQuery('ul#focal-point-list > li').length
@@ -90,7 +91,6 @@ jQuery('document').ready(function() {
         var additional_head_height = jQuery('.modal-body .additional-header', this).height();
         if(additional_head_height == null) { additional_head_height = 0; }
         var high_content_height = (height - additional_head_height);
-        console.log(high_content_height);
 
         jQuery('.modal-body .high-content', this).css('max-height', high_content_height + 'px');
         jQuery('.modal-body .high-content', this).css('height', high_content_height + 'px');

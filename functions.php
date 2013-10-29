@@ -113,7 +113,7 @@ function i3_url_treaty($treaty, $suffix = '') {
     } else {
         $t = $treaty;
     }
-    $base_url = get_permalink(get_page_by_title('treaties'));
+    $base_url = get_permalink(get_page_by_path('treaties'));
     return sprintf('%s%s%s', $base_url, $t, $suffix);
 }
 
@@ -234,7 +234,7 @@ function i3_url_country_flag($country, $version = 'medium') {
  * @return string URL
  */
 function i3_url_glossary($ob = NULL, $suffix = '') {
-    $base_url = get_permalink(get_page_by_title('terms'));
+    $base_url = get_permalink(get_page_by_path('terms'));
     if(!$ob) {
         return $base_url;
     } else {
@@ -250,7 +250,7 @@ function i3_url_glossary($ob = NULL, $suffix = '') {
  * @return string URL
  */
 function i3_url_country($ob = NULL, $suffix = '') {
-    $base_url = get_permalink(get_page_by_title('countries'));
+    $base_url = get_permalink(get_page_by_path('countries'));
     if(!$ob) {
         return $base_url;
     } else {
@@ -267,7 +267,7 @@ function i3_url_country($ob = NULL, $suffix = '') {
  * @return string URL
  */
 function i3_url_terms($ob = NULL, $suffix = '') {
-    $base_url = get_permalink(get_page_by_title('terms'));
+    $base_url = get_permalink(get_page_by_path('terms'));
     if(!$ob) {
         return $base_url;
     } else {
