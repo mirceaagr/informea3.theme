@@ -60,15 +60,15 @@
 
             <!-- SITES -->
             {% if sites %}
-            <div class="section" id="sites">
+            <div class="section tabbable" id="sites">
                 <h2>Sites</h2>
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#sites-list" data-toggle="tab">List</a></li>
+                    <li class=""><a href="#sites-list" data-toggle="tab">List</a></li>
                     <li class=""><a href="#sites-map" data-toggle="tab">Map</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- SITES-LIST -->
-                    <div class="tab-pane active" id="sites-list">
+                    <div class="tab-pane" id="sites-list">
                     	<div class="twocol">
                     		<h3>WHC Sites</h3>
                     		<ul>
@@ -127,17 +127,17 @@
 
             <!-- MEMBERS -->
             {% if membership|length > 0 %}
-            <div class="section" id="membership">
+            <div class="section tabbable" id="membership">
                 <h2>Membership</h2>
                 <ul class="nav nav-tabs" id="members-tabs">
-                    <li class="active"><a href="#membership-list" data-toggle="tab">List</a></li>
+                    <li class=""><a href="#membership-list" data-toggle="tab">List</a></li>
                     <li class=""><a href="#membership-map" data-toggle="tab">Map</a></li>
                 </ul>
                 <div class="tab-content">
                     <!-- MEMBERS-LIST -->
                     <div class="tab-pane active" id="membership-list">
                         <table class="table table-striped">
-                            <caption>The following treaties have ...... in {{ country.name }}</caption>
+                            <caption>{{ country.name }} is party to the following treaties</caption>
                             <thead>
                             <tr>
                                 <th>Treaty</th>
@@ -184,7 +184,7 @@
     						</a>
     						<h3>{{ row.title }}</h3>
     						<div class="search-result-info small hidden-phone">
-    							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+    							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
     							{% if row.document_url %}
     							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
     							{% endif %}
@@ -211,7 +211,7 @@
 						</a>
 						<h3>{{ row.title }}</h3>
 						<div class="search-result-info small hidden-phone">
-							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;	
+							<a href="{{ i3_url('treaty', row.treaty) }}">{{ row.treaty.short_title }}</a>&ensp;|&ensp;
 							{% if row.document_url %}
 							<a href="{{ row.document_url }}" target="_blank"><i class="icon-file"></i> Document</a>&ensp;|&ensp;
 							{% endif %}
@@ -223,15 +223,15 @@
         		{% endfor %}
             </div>
             {% endif %}
-            
+
             <!-- Ecolex literature -->
             <div class="section" id="ecolex_literature">
             	<h2>Ecolex Literature</h2>
             	<div class="alert alert-info">
             		<i class="icon-info-sign"></i>
-            		The Ecolex literature is available offsite. 
+            		The Ecolex literature is available offsite.
             		<a href="" title="" class="nobreak">
-            			Read Ecolex literature for {{ country.name }} 
+            			Read Ecolex literature for {{ country.name }}
         				<i class="icon-external-link"></i>
         			</a>
         		</div>

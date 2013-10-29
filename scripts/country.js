@@ -2,6 +2,11 @@ jQuery('document').ready(function() {
     jQuery('#treaty-nfp-country-select').on('change', function(){
         get_country_nfp_from_treaty(jQuery(this).val());
     });
+
+   /*Fixes the bug when page loads, the tab li is not set active*/
+   jQuery('#sites ul>li:first a').tab('show');
+   jQuery('#membership ul>li:first a').tab('show');
+
 });
 
 function get_country_nfp_from_treaty(id_treaty){
