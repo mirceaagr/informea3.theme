@@ -1907,6 +1907,11 @@ span.status.retired { color: #ff6666; }
   /*color: #565656;*/
   /*background: #f7f7f7;*/
 }
+/*Ecolex*/
+#ecolex-content .results-header,
+#ecolex-content .table-pager{
+    display: none;
+}
 
 /* SELECT(Well) */
 div.select {
@@ -2477,3 +2482,4 @@ a:focus .flag {
   text-decoration: none;
   font-weight: bold;
 }
+

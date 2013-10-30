@@ -6,7 +6,10 @@ jQuery('document').ready(function() {
    /*Fixes the bug when page loads, the tab li is not set active*/
    jQuery('#sites ul>li:first a').tab('show');
    jQuery('#membership ul>li:first a').tab('show');
+   jQuery('#ecolex_literature ul>li:first a').tab('show');
 
+   /*fix a bug where last link from afix is preactivated (if affix has more than 4 li)*/
+   jQuery('.affix-menu a[href="#ecolex_literature"]').delay(100).parent().removeClass('active');
 });
 
 function get_country_nfp_from_treaty(id_treaty){

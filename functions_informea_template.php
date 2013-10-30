@@ -405,6 +405,25 @@ class InforMEATemplate {
         $ctx['un_environmental_indicators'] = $rUN->get_environmental_data();
         $ctx['un_map'] = $rUN->get_map_image();
         $ctx['countries'] = InforMEA::get_countries();
+
+        $url_ecolex_case = "http://www.ecolex.org/ecolex/ledge/view/SearchResults?screen=CourtDecisions&index=courtdecisions&listingField=&allFields=&allFields_allWords=allWords&titleOfText=&titleOfText_allWords=allWords&subject=&subject_allWords=allWords&country_allWords=allWords&territorialSubdivision=&territorialSubdivision_allWords=allWords&region=&region_allWords=allWords&basin=&basin_allWords=allWords&keyword=&keyword_allWords=allWords&seatOfCourt=&seatOfCourt_allWords=allWords&courtName=&courtName_allWords=allWords&justices=&justices_allWords=allWords&languageOfDocument=&languageOfDocument_allWords=allWords&searchDate_start=&searchDate_end=&sortField=searchDate";
+        $url_ecolex_case .= "&country=$country->name";
+        $ctx['ecolex_case_url'] = $url_ecolex_case;
+        $ecolex_case = new EcolexParser($url_ecolex_case);
+        $ctx['ecolex_case'] = $ecolex_case->get_content();
+        if (strpos($ctx['ecolex_case'], 'no_matches') != false) {
+            $ctx['ecolex_case'] = "";
+        }
+
+        $url_ecolex_legislation = "http://www.ecolex.org/ecolex/ledge/view/SearchResults?screen=Legislation&index=documents&listingField=&allFields=&allFields_allWords=allWords&titleOfText=&titleOfText_allWords=allWords&subject=&subject_allWords=allWords&country_allWords=allWords&territorialSubdivision=&territorialSubdivision_allWords=allWords&region=&region_allWords=allWords&basin=&basin_allWords=allWords&keyword=&keyword_allWords=allWords&searchDate_start=&searchDate_end=&sortField=searchDate";
+        $url_ecolex_legislation .= "&country=$country->name";
+        $ctx['ecolex_legislation_url'] = $url_ecolex_legislation;
+        $ecolex_legislation = new EcolexParser($url_ecolex_legislation);
+        $ctx['ecolex_legislation'] = $ecolex_legislation->get_content();
+        if (strpos($ctx['ecolex_legislation'], 'no_matches') != false) {
+            $ctx['ecolex_legislation'] = "";
+        }
+
         $twig = self::get_twig_template();
         return $twig->render('country.twig', $ctx);
     }
@@ -422,6 +441,7 @@ class InforMEATemplate {
         $ctx['popular_generic'] = InforMEA::get_terms('generic', 'popularity', 'DESC', 3);
         $ctx['substantive_terms'] = InforMEA::get_terms_hierarchy('substantive');
         $ctx['generic_terms'] = InforMEA::get_terms_hierarchy('generic');
+        $ctx['sources'] = InforMEA::get_voc_sources();
         $twig = self::get_twig_template();
         return $twig->render('terms.twig', $ctx);
     }

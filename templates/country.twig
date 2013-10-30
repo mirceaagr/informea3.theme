@@ -243,16 +243,77 @@
             </div>
             {% endif %}
             <!-- Ecolex literature -->
-            <div class="section" id="ecolex_literature">
-            	<h2>Ecolex Literature</h2>
-            	<div class="alert alert-info">
-            		<i class="icon-info-sign"></i>
-            		The Ecolex literature is available offsite.
-            		<a href="http://www.ecolex.org/ecolex/ledge/view/SearchResults?screen=Literature&index=literature&country={{ country.name }}" title="" class="nobreak" target="_blank">
-            			Read Ecolex literature for {{ country.name }}
-        				<i class="icon-external-link"></i>
-        			</a>
-        		</div>
+            <div class="section tabbable" id="ecolex_literature">
+                <h2>Ecolex literature</h2>
+                <ul class="nav nav-tabs">
+                    <li class=""><a href="#ecolex-legislation" data-toggle="tab">Legislation</a></li>
+                    <li class=""><a href="#ecolex-case" data-toggle="tab">Case Law</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!-- Legislation -->
+                    <div class="tab-pane" id="ecolex-legislation">
+                        {% if ecolex_legislation|length > 0 %}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            The Ecolex literature is available offsite.
+                            <a href="{{ ecolex_legislation_url }}" title="" class="nobreak" target="_blank">
+                                Read more on Ecolex Legislation for {{ country.name }}
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {{ ecolex_legislation|raw }}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            The Ecolex literature is available offsite.
+                            <a href="{{ ecolex_legislation_url }}" title="" class="nobreak" target="_blank">
+                                Read more on Ecolex Legsilation for {{ country.name }}
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            We couldn't find any Legislation about {{ country.name }}.
+                            <a href="{{ ecolex_legislation_url }}" title="" class="nobreak" target="_blank">
+                                You can check Ecolex site
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <!-- CASE Law -->
+                    <div class="tab-pane" id="ecolex-case">
+                        {% if ecolex_case|length > 0 %}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            The Ecolex literature is available offsite.
+                            <a href="{{ ecolex_case_url }}" title="" class="nobreak" target="_blank">
+                                Read more on Ecolex Case Law for {{ country.name }}
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {{ ecolex_case|raw }}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            The Ecolex literature is available offsite.
+                            <a href="{{ ecolex_case_url }}" title="" class="nobreak" target="_blank">
+                                Read more on Ecolex Case Law for {{ country.name }}
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info">
+                            <i class="icon-info-sign"></i>
+                            We couldn't find any Case Laws about {{ country.name }}.
+                            <a href="{{ ecolex_case_url }}" title="" class="nobreak" target="_blank">
+                                You can check Ecolex site
+                                <i class="icon-external-link"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div><!-- /#content -->
     </div>
