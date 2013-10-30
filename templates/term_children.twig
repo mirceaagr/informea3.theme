@@ -1,0 +1,18 @@
+{% macro term_children(children) %}
+    {% for term in children %}
+        <li>
+            {% set rand = random(1000) %}
+            {% if term.children|length > 0 %}
+            <button class="collapsed" data-toggle="collapse" data-target="#term-{{ term.id }}-{{ rand }}">
+                <i class="icon-caret-down"></i>
+            </button><!-- This comment leaves no space between the two elements
+            -->{% endif %}
+            <a href="{{ i3_url('term', term) }}">{{ term.term }}</a>
+            {% if term.children|length > 0 %}
+                <ul class="collapse" id="term-{{ term.id }}-{{ rand }}">
+                    {{ _self.term_children(term.children) }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+{% endmacro %}
