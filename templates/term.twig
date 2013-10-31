@@ -2,28 +2,29 @@
 <div class="container">
     {{ informea_the_breadcrumb() }}
     <div class="span4 hidden-phone">
+            <input type='hidden' value="{{ term.id }}" name='current_term_id'/>
             <ul class="tree-view">
-                <li>
-                    <button class="" data-toggle="collapse" data-target="#substantive">
+                <li class="active">
+                    <button class="collapsed" data-toggle="collapse" data-target="#substantive">
                         <i class="icon-caret-down"></i>
                     </button>
                     <a href="javascript:void(0);" data-toggle="collapse" data-target="#substantive">
                         Substantive terms
                     </a>
                     {% import "term_children.twig" as macros %}
-                    <ul class="collapse in" id="substantive">
+                    <ul class="collapse" id="substantive">
                         {{ macros.term_children(substantive_terms) }}
                     </ul>
                 </li>
-                <li>
-                    <button class="" data-toggle="collapse" data-target="#generic">
+                <li class="active">
+                    <button class="collapsed" data-toggle="collapse" data-target="#generic">
                         <i class="icon-caret-down"></i>
                     </button>
                     <a href="javascript:void(0);" data-toggle="collapse" data-target="#generic">
                         Generic terms
                     </a>
                     {% import "term_children.twig" as macros %}
-                    <ul class="collapse in" id="generic">
+                    <ul class="collapse" id="generic">
                         {{ macros.term_children(generic_terms) }}
                     </ul>
                 </li>

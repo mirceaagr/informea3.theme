@@ -7,7 +7,9 @@
                 <i class="icon-caret-down"></i>
             </button><!-- This comment leaves no space between the two elements
             -->{% endif %}
-            <a href="{{ i3_url('term', term) }}">{{ term.term }}</a>
+            <a href="{{ i3_url('term', term) }}" data-id="{{ term.id }}">
+                {{ term.term }}
+            </a>
             {% if term.children|length > 0 %}
                 <ul class="collapse" id="term-{{ term.id }}-{{ rand }}">
                     {{ _self.term_children(term.children) }}

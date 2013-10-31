@@ -468,6 +468,11 @@ class InforMEATemplate {
         if (empty($term)) {
             self::show_404();
         }
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-term');
+            }
+        );
         $ctx = array();
         $term->treaties = InforMEA::get_term_treaties($term->id);
         $term->broader = InforMEA::get_term_related_terms($term->id, 'broader');
