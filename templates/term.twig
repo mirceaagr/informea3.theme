@@ -37,7 +37,13 @@
                             <a data-toggle="collapse" data-target="#term-definition">Show definition?</a>
                 </div>
                 <div class="row row-snap">
+                    {% if term.description|length > 0 %}
                     <p>{{ term.description }}</p>
+                    {% else %}
+                    <div class="alert alert-warning">
+                        Description is not available for this term.
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="row-snap">
                     <p>
