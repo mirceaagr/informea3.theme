@@ -445,6 +445,18 @@ class InforMEATemplate {
         $twig = self::get_twig_template();
         return $twig->render('terms.twig', $ctx);
     }
+    /**
+     * Render the template for the listing a-z page.
+     *
+     * @return string Rendered template
+     */
+    public static function terms_list_az() {
+        $ctx = array();
+
+        $ctx['terms'] = InforMEA::get_terms(null, 'term', 'ASC');
+        $twig = self::get_twig_template();
+        return $twig->render('terms_list_az.twig', $ctx);
+    }
 
     /**
      * Render the template for the term index page.
@@ -462,6 +474,8 @@ class InforMEATemplate {
         $term->related = InforMEA::get_term_related_terms($term->id, 'related');
         $term->narrower = InforMEA::get_term_related_terms($term->id, 'narrower');
         $ctx['term'] = $term;
+        $ctx['substantive_terms'] = InforMEA::get_terms_hierarchy('substantive');
+        $ctx['generic_terms'] = InforMEA::get_terms_hierarchy('generic');
         /*echo '<pre>';
         print_r($term);
         echo '</pre>';*/

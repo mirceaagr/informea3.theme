@@ -1,0 +1,4 @@
+{% for term in terms %}
+   <a href="{{ i3_url('term', term) }}">{{ term.term }}</a>
+   <p>{{ term.description }}</p>
+{% endfor %}

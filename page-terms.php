@@ -12,6 +12,9 @@ if (have_posts()) : while (have_posts()) : the_post();
         case 'term':
             echo InforMEATemplate::term($term);
             break;
+        case 'terms-list-az':
+            echo InforMEATemplate::terms_list_az();
+            break;
         default:
             die("Emergency! Four-0-four (404).");
     }
