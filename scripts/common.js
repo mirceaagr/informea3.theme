@@ -36,7 +36,7 @@ jQuery('document').ready(function() {
         if (e.keyCode == 13) {
            // e.preventDefault();
             url = jQuery('.dropdown-menu li.active a').attr('href');
-            if(url !=''){
+            if(url !='undefined'){
                 window.location.replace(url);
             }
         return false;
