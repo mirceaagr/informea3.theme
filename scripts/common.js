@@ -30,14 +30,67 @@ jQuery('document').ready(function() {
             return item;
         }
     });*/
-    jQuery('#search').on('keyup', function(){
-        var term = jQuery(this).val();
-        jQuery('#search-term').html(term);
-        if (term.length > 1) {
-            jQuery(this).siblings('ul.typeahead').show();
-            search(term);
-        } else {
-            jQuery(this).siblings('ul.typeahead').hide();
+    jQuery('#search').on('keyup', function(e){
+
+        //if enter is pressed will relocate to the href attr
+        if (e.keyCode == 13) {
+           // e.preventDefault();
+            url = jQuery('.dropdown-menu li.active a').attr('href');
+            if(url !=''){
+                window.location.replace(url);
+            }
+        return false;
+        }
+
+        // binds arrow down key to navigate over searched items
+        if (e.keyCode == 40) {
+           //navigate down
+            //search for the first element with class active
+            var cls = jQuery('.dropdown-menu li').hasClass('active');
+            if (!cls) {
+                jQuery('ul.dropdown-menu li:nth-child(4)').addClass('active');
+            }else{
+                jQuery('ul.dropdown-menu li.active').next('li').addClass('active');
+                jQuery('ul.dropdown-menu li.active').prev().removeClass('active');
+            };
+             // if there are to many elements in list, the selected one will not be visible
+            var container = jQuery('ul.dropdown-menu'),
+            scrollTo = jQuery('ul.dropdown-menu li.active');
+            container.animate({
+                scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+            });
+           return false;
+        }
+
+        if (e.keyCode == 38) {
+           //navigate down
+            //search for the first element with class active
+            var cls = jQuery('.dropdown-menu li').hasClass('active');
+            if (!cls) {
+                jQuery('ul.dropdown-menu li:last').addClass('active');
+            }else{
+                jQuery('ul.dropdown-menu li.active').prev('li').addClass('active');
+                jQuery('ul.dropdown-menu li.active').next().removeClass('active');
+            };
+
+            // if there are to many elements in list, the selected one will not be visible
+            var container = jQuery('ul.dropdown-menu'),
+            scrollTo = jQuery('ul.dropdown-menu li.active');
+            container.animate({
+            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+            });
+           return false;
+        }
+
+        if((e.keyCode != 38) && (e.keyCode != 40)){
+            var term = jQuery(this).val();
+            jQuery('#search-term').html(term);
+            if (term.length > 1) {
+                jQuery(this).siblings('ul.typeahead').show();
+                search(term);
+            } else {
+                jQuery(this).siblings('ul.typeahead').hide();
+            }
         }
     });
 });

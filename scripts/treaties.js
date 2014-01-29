@@ -37,8 +37,6 @@ function filter_treaties_list(){
   });
 })(jQuery);
 
-jQuery('document').ready(function() {
-
     var tncs = jQuery('#treaty-nfp-country-select');
     tncs.on('change', function() {
         jQuery.ajax({
