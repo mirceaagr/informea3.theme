@@ -15,9 +15,11 @@
                         <div class="item {% if loop.first %} active {% endif %}">
                             <p class="item-title">Latest News</p>
                                 <div class="news">
+                                    {% if post.treaty.logo_medium %}
                                     <a href="{{ i3_url('treaty', post.treaty) }}" class="logo logo-left">
                                         <img src="{{ post.treaty.logo_medium }}" alt="{{ post.treaty.short_title }}" title="{{ post.treaty.short_title }}" />
                                     </a>
+                                    {% endif %}
                                     <p class="date">{{ post.post_date|date('d M, Y') }}</p>
                                     <p><a title="{{ post.post_title }}" href="{{ post.url }}">{{ subwords(post.post_title, 15) }}</a></p>
                                     <p>
