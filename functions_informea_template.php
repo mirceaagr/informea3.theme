@@ -17,7 +17,7 @@ class InforMEATemplate {
     public static function get_twig_template() {
         $twig = WordPressTwigTemplateFactory::getTemplateEngine(self::get_templates_dir());
 
-        if(defined('WP_DEBUG') && WP_DEBUG == TRUE) {
+        if((defined('WP_DEBUG') && WP_DEBUG == TRUE) || defined('WP_TWIG_DEBUG')) {
             $twig->addExtension(new Twig_Extension_Debug());
         }
         $twig->addFunction(new Twig_SimpleFunction('i3_url', function($type, $ob = NULL, $suffix = NULL, $parent = NULL) {
