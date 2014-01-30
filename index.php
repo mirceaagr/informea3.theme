@@ -27,8 +27,11 @@ get_header(); ?>
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="border: none !important;">
                     <?php if (is_front_page()) { ?>
                         <h2><?php the_title(); ?></h2>
-                    <?php } else { ?>
+                    <?php } elseif(is_single()) { ?>
+                    <?php get_template_part( 'content', 'post' ); ?>
                         <h1><?php the_title(); ?></h1>
+                    <?php }else{?>
+
                     <?php } ?>
 
                     <div class="entry-content">

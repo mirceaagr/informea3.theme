@@ -35,6 +35,7 @@ function i3_enqueue_styles() {
     wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
     wp_register_script('jquery-scrollto', get_template_directory_uri() . '/scripts/jquery.scrollto.min.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-country', get_stylesheet_directory_uri() . '/scripts/country.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('informea-countries', get_stylesheet_directory_uri() . '/scripts/countries.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-term', get_stylesheet_directory_uri() . '/scripts/term.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-general-page', get_stylesheet_directory_uri() . '/scripts/general_page.js', array('jquery'), FALSE, TRUE);
 

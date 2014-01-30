@@ -353,6 +353,12 @@ class InforMEATemplate {
         $ctx = array();
         $ctx['countries'] = InforMEA::get_countries();
 
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-countries');
+            }
+        );
+
         $twig = self::get_twig_template();
         return $twig->render('countries.twig', $ctx);
     }

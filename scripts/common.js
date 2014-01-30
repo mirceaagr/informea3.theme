@@ -35,8 +35,9 @@ jQuery('document').ready(function() {
         //if enter is pressed will relocate to the href attr
         if (e.keyCode == 13) {
            // e.preventDefault();
+           var cls = jQuery('.dropdown-menu li').hasClass('active');
             url = jQuery('.dropdown-menu li.active a').attr('href');
-            if(url !='undefined'){
+            if((url !='undefined') && cls){
                 window.location.replace(url);
             }
         return false;
@@ -56,9 +57,7 @@ jQuery('document').ready(function() {
              // if there are to many elements in list, the selected one will not be visible
             var container = jQuery('ul.dropdown-menu'),
             scrollTo = jQuery('ul.dropdown-menu li.active');
-            container.animate({
-                scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-            });
+            container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
            return false;
         }
 
@@ -76,9 +75,7 @@ jQuery('document').ready(function() {
             // if there are to many elements in list, the selected one will not be visible
             var container = jQuery('ul.dropdown-menu'),
             scrollTo = jQuery('ul.dropdown-menu li.active');
-            container.animate({
-            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-            });
+            container.scrollTop(scrollTo.offset().top - container.offset().top + container.scrollTop());
            return false;
         }
 

@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
     jQuery('.text-center a').each(function(index,a){
-        jQuery(a).attr('href','Javascript:void(0)');
+        jQuery(a).attr('href','javascript:void(0)');
     });
 
     // filters the countries in countries page

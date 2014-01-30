@@ -4,11 +4,12 @@
     <h1>{{ the_title() }}</h1>
 
         <div class="text-center well hidden-phone">
+        <a href="All" data-link = 'all' class="btn btn-inline">All</a>
     {% for letter in 'A'..'Z' %}
         {% if letter == 'W' or letter == 'X' %}
             <span class="btn btn-inline disabled">{{ letter }}</span>
         {% else %}
-            <a href="#{{ letter }}" class="btn btn-inline">{{ letter }}</a>
+            <a href="#{{ letter }}" data-link = "{{ letter }}" class="btn btn-inline">{{ letter }}</a>
         {% endif %}
     {% endfor %}
     </div>
