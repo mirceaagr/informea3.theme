@@ -1,10 +1,10 @@
 {{ get_header() }}
-<div class="container">
+<div class="container" id = "treaty-container">
     {{ informea_the_breadcrumb() }}
     {% include 'treaty-header.twig' %}
     <div class="row">
         <!-- NAVIGATION BOX -->
-        <div class="span3 hidden-phone scrollspy affix-menu affix-top affix-bottom" data-spy="affix" data-offset-top="155" data-offset-bottom="655" >
+        <div class="span3 hidden-phone scrollspy" id="sidebar-scroll">
             <div class="well">
                 <h4>Contents</h4>
                 <ul class="nav nav-list">
@@ -167,3 +167,4 @@
     {% include 'treaty-decision-viewer-dlg.twig' %}
 </div><!-- /container -->
 {{ get_footer() }}
+

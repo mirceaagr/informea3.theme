@@ -32,6 +32,7 @@ function i3_enqueue_styles() {
     wp_register_script('bootstrap', get_stylesheet_directory_uri() . '/scripts/bootstrap.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-common', get_stylesheet_directory_uri() . '/scripts/common.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-treaties', get_stylesheet_directory_uri() . '/scripts/treaties.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('informea-treaty', get_stylesheet_directory_uri() . '/scripts/treaty.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-about', get_template_directory_uri() . '/scripts/about.js', array('jquery'), FALSE, TRUE);
     wp_register_script('jquery-scrollto', get_template_directory_uri() . '/scripts/jquery.scrollto.min.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-country', get_stylesheet_directory_uri() . '/scripts/country.js', array('jquery'), FALSE, TRUE);

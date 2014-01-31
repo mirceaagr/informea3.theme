@@ -207,6 +207,11 @@ class InforMEATemplate {
 
 
     public static function treaty($treaty) {
+        add_action('wp_enqueue_scripts',
+            function() {
+                wp_enqueue_script('informea-treaty');
+            }
+        );
         if (empty($treaty)) {
             self::show_404();
         }
