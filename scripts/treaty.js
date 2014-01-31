@@ -1,34 +1,33 @@
 jQuery(function() {
-    var sticky_navigation_offset_top = jQuery('#sidebar-scroll').offset().top;
+    var sidebar = jQuery('#sidebar-scroll'),
+    sticky_navigation_offset_top = sidebar.offset().top;
     var sticky_navigation = function(){
         var scroll_top = Math.floor(jQuery(window).scrollTop()),
-        onePos = Math.floor(jQuery('#sidebar-scroll').offset().top+jQuery('#sidebar-scroll').outerHeight(true)),
+        onePos = Math.floor(sidebar.offset().top+sidebar.outerHeight(true)),
         twoPos = Math.floor(jQuery('.footer').offset().top),
         container_min_size = 360,
-        container_actual_size = jQuery('#treaty-container').height();
+        container_actual_size = sidebar.height();
         if(container_actual_size >= container_min_size){
             if (scroll_top > sticky_navigation_offset_top) { 
-                jQuery('#sidebar-scroll').css({'position':'fixed','top':'10px'});
-                console.log(onePos);
+                sidebar.css({'position':'fixed','top':'10px'});
                 if(onePos >= twoPos) {
                     dif = Math.floor(onePos - twoPos) + 360;
-                   if(dif <= jQuery('#sidebar-scroll').height()){
-                     jQuery('#sidebar-scroll').css({'top':'-'+dif+'px'});
+                   if(dif <= sidebar.height()){
+                     sidebar.css({'top':'-'+dif+'px'});
                    }else{
-                     jQuery('#sidebar-scroll').hide();   
+                     sidebar.hide();   
                    }
                 }else{
-                    jQuery('#sidebar-scroll').show('fast','linear');
-                    jQuery('#sidebar-scroll').css({'margin-top':'10px'});
+                    sidebar.show('fast','linear');
+                    sidebar.css({'margin-top':'10px'});
                 }
             } else {
-                jQuery('#sidebar-scroll').css({'position':'relative','top':'0'});
-                jQuery('#sidebar-scroll').show('fast','linear');
+                sidebar.css({'position':'relative','top':'0'});
+                sidebar.show('fast','linear');
             } 
         }
           
     };
-    sticky_navigation();
     jQuery(window).scroll(function() {
          sticky_navigation();
     });
