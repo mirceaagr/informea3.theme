@@ -44,7 +44,7 @@
         <tbody>
         {% for row in treaties %}
         <tr onclick="window.location='{{ i3_url('treaty', row) }}'">
-            <td><img src="{{ row.logo_medium }}" alt="{{ row.short_title }} logo"></td>
+            <td colspan="1"><img src="{{ row.logo_medium }}" alt="{{ row.short_title }} logo"></td>
             <td class="treaty-title">
                 <h2>
                     <a href="{{ i3_url('treaty', row) }}">{{ row.short_title }}</a>
@@ -56,6 +56,7 @@
         </tr>
         {% for child in row.childs %}
         <tr onclick="window.location='{{ i3_url('treaty', child) }}'" class="child-row">
+            <td><i class="icon-minus"></i></td>
             <td><img src="{{ child.logo_medium }}" alt="{{ child.short_title }} logo"></td>
             <td class="treaty-title">
                 <h2>
