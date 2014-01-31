@@ -6,7 +6,7 @@ jQuery(function() {
         onePos = Math.floor(sidebar.offset().top+sidebar.outerHeight(true)),
         twoPos = Math.floor(jQuery('.footer').offset().top),
         container_min_size = 360,
-        container_actual_size = sidebar.height();
+        container_actual_size = jQuery('#treaty-container').height();
         if(container_actual_size >= container_min_size){
             if (scroll_top > sticky_navigation_offset_top) { 
                 sidebar.css({'position':'fixed','top':'10px'});
