@@ -3,8 +3,10 @@ jQuery('document').ready(function() {
     form = jQuery("#search");
     form.tagit({
         placeholderText:'Explore InforMEA',
+        allowSpaces:true,
         beforeTagAdded: function(event,ui){
             form.val('');
+            jQuery('.ui-widget-content').trigger('keyup');
         },
         afterTagAdded: function(event, ui) {
             tag = form.tagit('tags');
@@ -56,7 +58,7 @@ jQuery('document').ready(function() {
             return item;
         }
     });*/
-    jQuery('#search').on('keyup', function(e){
+    form.on('keyup', function(e){
         //if enter is pressed will relocate to the href attr
         if (e.keyCode == 13) {
            // e.preventDefault();

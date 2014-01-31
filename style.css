@@ -1123,9 +1123,7 @@ a.thumbnail:focus {
 }
 
 .navbar-search {
-  float: left;
-  margin: 18px 0 18px 6px;
-  *+margin-left: 0;
+  float: right;
 }
 
 .navbar-search .search-query {
@@ -1612,7 +1610,8 @@ input.search-query {
 }
 
 .navbar .btn {
-  margin-top: 0;
+  height: 38px;
+  margin: 0 0 0 5px;
 }
 
 /* NAVBOX NUMBERING */
