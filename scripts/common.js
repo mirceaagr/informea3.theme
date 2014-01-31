@@ -1,4 +1,30 @@
 jQuery('document').ready(function() {
+    vl = "";
+    form = jQuery("#search");
+    form.tagit({
+        placeholderText:'Explore InforMEA',
+        beforeTagAdded: function(event,ui){
+            form.val('');
+        },
+        afterTagAdded: function(event, ui) {
+            tag = form.tagit('tags');
+            jQuery.each( tag, function( key, value ) {
+                vl += value.value;
+            });
+            form.val(vl);
+            form.trigger('keyup');
+        },
+        afterTagRemoved: function(event, ui){
+            form.val('');
+            vl = "";
+            tag = form.tagit('tags');
+            jQuery.each( tag, function( key, value ) {
+                vl += value.value;
+            });
+            form.val(vl);
+            form.trigger('keyup');
+        }
+    });
 
     var $window = jQuery(window);
     // Set the focus on the search box on every page
@@ -31,7 +57,6 @@ jQuery('document').ready(function() {
         }
     });*/
     jQuery('#search').on('keyup', function(e){
-
         //if enter is pressed will relocate to the href attr
         if (e.keyCode == 13) {
            // e.preventDefault();

@@ -39,7 +39,11 @@ function i3_enqueue_styles() {
     wp_register_script('informea-countries', get_stylesheet_directory_uri() . '/scripts/countries.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-term', get_stylesheet_directory_uri() . '/scripts/term.js', array('jquery'), FALSE, TRUE);
     wp_register_script('informea-general-page', get_stylesheet_directory_uri() . '/scripts/general_page.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('jqueryUi', get_stylesheet_directory_uri() . '/scripts/jqueryUi.js', array('jquery'), FALSE, TRUE);
+    wp_register_script('tag-it', get_stylesheet_directory_uri() . '/scripts/tag-it.js', array('jquery'), FALSE, TRUE);
 
+    wp_register_style('tagit', get_template_directory_uri() . '/css/tagit.css');
+    wp_register_style('jqueryUi', get_template_directory_uri() . '/css/jqueryUi.css');
     wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.css');
     wp_register_style('bootstrap-responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css');
     wp_register_style('font-awesome', get_template_directory_uri() . '/font-awesome/css/font-awesome.min.css');
@@ -51,6 +55,8 @@ function i3_enqueue_styles() {
 
     // Add this to all the front-end pages
     wp_enqueue_script('informea-common');
+    wp_enqueue_script('jqueryUi');
+    wp_enqueue_script('tag-it');
     wp_enqueue_script('bootstrap');
     wp_enqueue_script('jquery-scrollto');
 
@@ -60,6 +66,8 @@ function i3_enqueue_styles() {
     wp_enqueue_style('informea-style-responsive');
     wp_enqueue_style('informea-logos');
     wp_enqueue_style('font-awesome');
+    wp_enqueue_style('tagit');
+    wp_enqueue_style('jqueryUi');
 
     wp_enqueue_style('font-awesome-ie7');
 
